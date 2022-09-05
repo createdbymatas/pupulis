@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pupulis:)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        *{
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    body{
+        background-color: snow;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+    }
+    p{
+        transition: 0.2s;
+    }
+    nav{
+        width: 100%;
+        height: 50px;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: white;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-radius: 0 0 25px 25px;
+    }
+    nav button{
+        width: 40px;
+        height: 40px;
+        border-radius: 100%;
+        border: 1px solid lightgrey;
+        background-color: white;
+        font-size: 20px;
+        transition: 0.2s;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    #menuWindow{
+        width: 40px;
+        height: 40px;
+        background-color: snow;
+        position: fixed;
+        z-index: 1;
+        top: 5px;
+        left: 5px;
+        border-radius: 100%;
+        display: none;
+        transform: scale(0.0);
+        transition: 0.2s;
+        text-align: left;
+        padding-left: 15px;
+    }
+        #loader2 {
+  width: 48px;
+  height: 48px;
+  border: 3px solid black;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation2 1s linear infinite;
+  position: absolute;
+  transition: 0.2s;
+}
+#loader2::after {
+  content: '';  
+  position: absolute;
+  box-sizing: border-box;
+  left: 20px;
+  top: 31px;
+  border: 10px solid transparent;
+  border-right-color: black;
+  transform: rotate(-40deg);
+}
+
+@keyframes rotation2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+    </style>
+    <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.9; display: flex; justify-content: center; align-items: center;"><span id="loader2"></span></div>
+    <img src="logo.jpg" alt="Pupulis" style="width: 50px; border-radius: 100%; text-align: left; left: 20px; top: 70px; position: absolute;">
+    <nav>
+        <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
+        <button id="tasks" onclick="tasksOpen()"><i class="fa-solid fa-list-check"></i></button>
+        <button id="logOut" onclick="logOutOpen()" style="position: absolute; z-index: 10; top: 5px; right: 45px;"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+    </nav>
+    <div style="position: fixed; top: 60px; background-color: white; width: 90%; left: 5%; height: 125px; border-radius: 25px; border: 1px solid lightgrey; opacity: 0; transition: 0.2s;" id="logOutWindow">
+        <p style="margin: 10px auto;">Ar tikrai norite atsijungti?</p>
+        <p style="border: 1px solid lightgrey; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="taip" onclick="logOutOk()">Taip</p>
+        <p style="border: 1px solid lightgrey; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="ne" onclick="logOutClose()">Ne</p>
+    </div>
+    <div id="menuWindow">
+        <p style="font-size: 30px; position: absolute; top: -10px; right: 15px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
+        <h1>Meniu</h1>
+        <p style="font-size: 20px;" onclick="pagrindinis()" id="pap">Pagrindinis puslapis</p>
+        <p style="font-size: 20px;" onclick="tvarkarastis()" id="tvp">Tvarkaraštis</p>
+        <p style="font-size: 20px;" onclick="pamokos()" id="pamp">Pamokos</p>
+        <p style="font-size: 20px; color: lightgrey;">Namų darbai</p>
+        <p style="font-size: 20px;" onclick="komentarai()" id="kop">Komentarai</p>
+        <p style="font-size: 20px;" onclick="lankomumas()" id="lap">Lankomumas</p>
+        <p style="font-size: 20px;" onclick="pranesimai()" id="prp">Pranešimai</p>
+    </div>
+    <p style="position: absolute; top: 67px; left: 85px;">Ieva Kasparavičiūtė</p>
+    <h1 style="margin-top: 150px;">Namų darbai</h1>
+    <p style="width: 100%; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 15px;">Nėra įvestų namų darbų.</p>
+    <p style="position: fixed; right: 5px; bottom: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script>
+        setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+        }, 5000);
+        setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+        }, 6000);
+        setTimeout(() => {
+                document.getElementById("loading").style.transform = "scale(0.8)";
+        }, 6000);
+        setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+        }, 6200);
+        function tasksOpen() {
+            document.getElementById("tasks").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("tasks").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("uzduotys.html")
+                }, 500);
+        }
+        function pagrindinis() {
+            document.getElementById("pap").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("pap").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("pagrindinis.html")
+                }, 500);
+        }
+        function tvarkarastis() {
+            document.getElementById("tvp").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("tvp").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("tvarkarastis.html")
+                }, 500);
+        }
+        function pamokos() {
+            document.getElementById("pamp").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("pamp").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("pamokos.html")
+                }, 500);
+        }
+        function namudarbai() {
+            document.getElementById("nap").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("nap").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("namu-darbai.html")
+                }, 500);
+        }
+        function komentarai() {
+            document.getElementById("kop").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("kop").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("komentarai.html")
+                }, 500);
+        }
+        function lankomumas() {
+            document.getElementById("lap").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("lap").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("lankomumas.html")
+                }, 500);
+        }
+        function pranesimai() {
+            document.getElementById("prp").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("prp").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("pranesimai.html")
+                }, 500);
+        }
+        function menuOpen() {
+            document.getElementById("menu").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("menu").style.transform = "scale(1.0)";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.display = "block";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.transform = "scale(1.0)";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.borderRadius = "0";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.width = "100%";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.height = "100%";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.top = "0";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.left = "0";
+            }, 500);
+        }
+        function menuClose() {
+            document.getElementById("x").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("x").style.transform = "scale(1.0)";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.display = "none";
+            }, 700);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.transform = "scale(0.0)";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.borderRadius = "100%";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.width = "40px";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.height = "40px";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.top = "5px";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("menuWindow").style.left = "5px";
+            }, 500);
+        }
+        function logOutOpen() {
+            document.getElementById("logOut").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("logOut").style.transform = "scale(1.0)";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.opacity = "1";
+            }, 500);
+        }
+        function logOutClose() {
+            document.getElementById("ne").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("ne").style.transform = "scale(1.0)";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.opacity = "0";
+            }, 500);
+        }
+        function logOutOk() {
+            document.getElementById("taip").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("taip").style.transform = "scale(1.0)";
+            }, 200);
+            setTimeout(() => {
+                location.replace("index.html")
+            }, 500);
+        }
+    </script>
+</body>
+</html>

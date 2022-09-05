@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="lt">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pupulis:)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<style>
+    *{
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+    body{
+        background-color: snow;
+        font-family: 'Poppins', sans-serif;
+        text-align: center;
+    }
+    button{
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        border: 1px solid lightgrey;
+        background-color: white;
+        font-size: 50px;
+        transition: 0.2s;
+    }
+    p{
+        transition: 0.2s;
+    }
+    #loginDiv{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+    }
+    #divLoginInfo{
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        border: none;
+        background-color: snow;
+        transition: 0.2s;
+        position: absolute;
+        margin-bottom: -44px;
+        transform: scale(0.0);
+        overflow: hidden;
+    }
+    input{
+        width: 90%;
+        border-radius: 25px;
+        border: 1px solid lightgrey;
+        text-align: center;
+        height: 30px;
+        transition: 0.3s;
+    }
+    input:focus{
+        outline: none;
+    }
+    #loader {
+  width: 48px;
+  height: 48px;
+  border: 3px solid black;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  position: absolute;
+  margin-top: 16.5px;
+  margin-left: -48.5px;
+  opacity: 0;
+  display: none;
+  transition: 0.2s;
+}
+#loader::after {
+  content: '';  
+  position: absolute;
+  box-sizing: border-box;
+  left: 20px;
+  top: 31px;
+  border: 10px solid transparent;
+  border-right-color: black;
+  transform: rotate(-40deg) scale(0.8);
+}
+#loader2 {
+  width: 48px;
+  height: 48px;
+  border: 3px solid black;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation2 1s linear infinite;
+  position: absolute;
+  transition: 0.2s;
+}
+#loader2::after {
+  content: '';  
+  position: absolute;
+  box-sizing: border-box;
+  left: 20px;
+  top: 31px;
+  border: 10px solid transparent;
+  border-right-color: black;
+  transform: rotate(-40deg);
+}
+
+@keyframes rotation2 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+} 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg) scale(0.8);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.8);
+  }
+} 
+</style>
+<body>
+    <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.9; display: flex; justify-content: center; align-items: center;"><span id="loader2"></span></div>
+    <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
+    <h1 style="margin-bottom: 50px;">Pupulio pamokos</h1>
+    <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+    <div id="loginDiv">
+        <div id="divLoginInfo">
+            <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
+            <h1 style="margin-bottom: 50px;">Pupulio pamokos</h1>
+            <div style="width: 90%; height: auto; margin-left: 5%; padding: 15px; border-radius: 25px; background-color: white; border: 1px solid lightgrey;">
+            <form>
+            <p id="el">El. paštas</p>
+            <input name="elpastas" id="myInput" type="email" placeholder="El. paštas">
+            <p id="sl">Slaptažodis</p>
+            <input name="slaptazodis" id="myInput2" type="password" placeholder="Slaptažodis">
+            <button style="width: 50px; height: 50px; font-size: 25px; margin-top: 15px;" type="button" onclick="check(this.form)" id="loginNow"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+            <span id="loader"></span>
+            </form>
+            </div>
+        </div>
+    </div>
+    <p style="position: fixed; right: 5px; bottom: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script>
+        setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+        }, 5000);
+        setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+        }, 6000);
+        setTimeout(() => {
+                document.getElementById("loading").style.transform = "scale(0.8)";
+        }, 6000);
+        setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+        }, 6200);
+        function check(form)
+        {
+            if(form.elpastas.value == "ievakasparav@gmail.com" && form.slaptazodis.value == "Ievute123")
+                {
+                    document.getElementById("myInput").style.borderColor = "lightgrey";
+                document.getElementById("myInput2").style.borderColor = "lightgrey";
+                document.getElementById("el").style.color = "black";
+                document.getElementById("sl").style.color = "black";
+                document.getElementById("loginNow").style.transform = "scale(0.8)";
+                document.getElementById("loginNow").style.pointerEvents = "none";
+                setTimeout(() => {
+                document.getElementById("loginNow").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                document.getElementById("loader").style.display = "inline-block";
+                }, 200);
+                setTimeout(() => {
+                document.getElementById("loginNow").style.opacity = "0";
+                }, 500);
+                setTimeout(() => {
+                document.getElementById("loader").style.opacity = "1";
+                }, 500);
+                setTimeout(() => {
+                document.getElementById("myInput").style.borderColor = "green";
+                }, 3500);
+                setTimeout(() => {
+                document.getElementById("myInput2").style.borderColor = "green";
+                }, 3500);
+                setTimeout(() => {
+                document.getElementById("el").style.color = "green";
+                }, 3500);
+                setTimeout(() => {
+                document.getElementById("sl").style.color = "green";
+                }, 3500);
+                setTimeout(() => {
+                location.replace("pagrindinis.html")
+                }, 5500);
+                }
+            else{
+                document.getElementById("myInput").style.borderColor = "lightgrey";
+                document.getElementById("myInput2").style.borderColor = "lightgrey";
+                document.getElementById("el").style.color = "black";
+                document.getElementById("sl").style.color = "black";
+                document.getElementById("loginNow").style.transform = "scale(0.8)";
+                document.getElementById("loginNow").style.pointerEvents = "none";
+                setTimeout(() => {
+                document.getElementById("loginNow").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                document.getElementById("loader").style.display = "inline-block";
+                }, 200);
+                setTimeout(() => {
+                document.getElementById("loginNow").style.opacity = "0";
+                }, 500);
+                setTimeout(() => {
+                document.getElementById("loader").style.opacity = "1";
+                }, 500);
+                setTimeout(() => {
+                document.getElementById("loader").style.opacity = "0";
+                }, 3500);
+                setTimeout(() => {
+                document.getElementById("loginNow").style.opacity = "1";
+                }, 3500);
+                setTimeout(() => {
+                document.getElementById("myInput").style.borderColor = "red";
+                }, 3500);
+                setTimeout(() => {
+                document.getElementById("myInput2").style.borderColor = "red";
+                }, 3500);
+                setTimeout(() => {
+                document.getElementById("el").style.color = "red";
+                }, 3500);
+                setTimeout(() => {
+                document.getElementById("sl").style.color = "red";
+                }, 3500);
+                setTimeout(() => {
+                document.getElementById("loader").style.display = "none";
+                }, 3700);
+                setTimeout(() => {
+                document.getElementById("loginNow").style.pointerEvents = "all";
+                }, 3700);
+            }
+        }
+        function login() {
+            document.getElementById("loginBtn").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("loginBtn").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                document.getElementById("loginDiv").style.display = "flex";
+                }, 400);
+                setTimeout(() => {
+                document.getElementById("divLoginInfo").style.transform = "scale(1.0)";
+                }, 500);
+                setTimeout(() => {
+                document.getElementById("divLoginInfo").style.width = "100%";
+                }, 500);
+                setTimeout(() => {
+                document.getElementById("divLoginInfo").style.height = "100%";
+                }, 500);
+                setTimeout(() => {
+                document.getElementById("divLoginInfo").style.top = "0";
+                }, 700);
+                setTimeout(() => {
+                document.getElementById("divLoginInfo").style.left = "0";
+                }, 700);
+                setTimeout(() => {
+                document.getElementById("divLoginInfo").style.right = "0";
+                }, 700);
+                setTimeout(() => {
+                document.getElementById("divLoginInfo").style.bottom = "0";
+                }, 700);
+                setTimeout(() => {
+                document.getElementById("divLoginInfo").style.marginBottom = "0";
+                }, 500);
+                setTimeout(() => {
+                document.getElementById("divLoginInfo").style.borderRadius = "0";
+                }, 500);
+        }
+        // Get the input field
+var input = document.getElementById("myInput2");
+
+// Execute a function when the user presses a key on the keyboard
+input.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("loginNow").click();
+  }
+});
+
+// Get the input field
+var input = document.getElementById("myInput");
+
+// Execute a function when the user presses a key on the keyboard
+input.addEventListener("keypress", function(event) {
+  // If the user presses the "Enter" key on the keyboard
+  if (event.key === "Enter") {
+    // Cancel the default action, if needed
+    event.preventDefault();
+    // Trigger the button element with a click
+    document.getElementById("loginNow").click();
+  }
+});
+    </script>
+</body>
+</html>
