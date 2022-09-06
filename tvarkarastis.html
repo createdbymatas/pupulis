@@ -101,7 +101,7 @@
         <button id="tasks" onclick="tasksOpen()"><i class="fa-solid fa-list-check"></i></button>
         <button id="logOut" onclick="logOutOpen()" style="position: absolute; z-index: 10; top: 5px; right: 45px;"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
     </nav>
-    <div style="position: fixed; top: 60px; background-color: white; width: 90%; left: 5%; height: 125px; border-radius: 25px; border: 1px solid lightgrey; opacity: 0; transition: 0.2s;" id="logOutWindow">
+    <div style="position: fixed; top: 60px; background-color: white; z-index: 5; width: 90%; left: 5%; height: 125px; border-radius: 25px; border: 1px solid lightgrey; opacity: 0; transition: 0.2s;" id="logOutWindow">
         <p style="margin: 10px auto;">Ar tikrai norite atsijungti?</p>
         <p style="border: 1px solid lightgrey; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="taip" onclick="logOutOk()">Taip</p>
         <p style="border: 1px solid lightgrey; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="ne" onclick="logOutClose()">Ne</p>
