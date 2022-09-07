@@ -25,9 +25,9 @@
     }
     nav{
         width: 100%;
-        height: 50px;
+        height: 70px;
         position: fixed;
-        top: 0;
+        bottom: 0;
         left: 0;
         right: 0;
         background-color: white;
@@ -37,23 +37,23 @@
         border-radius: 0 0 25px 25px;
     }
     nav button{
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
         border-radius: 100%;
         border: 1px solid lightgrey;
         background-color: white;
-        font-size: 20px;
+        font-size: 35px;
         transition: 0.2s;
         margin-left: 5px;
         margin-right: 5px;
     }
     #menuWindow{
-        width: 40px;
-        height: 40px;
+        width: 60px;
+        height: 60px;
         background-color: snow;
         position: fixed;
         z-index: 6;
-        top: 5px;
+        bottom: 5px;
         left: 5px;
         border-radius: 100%;
         display: none;
@@ -99,15 +99,15 @@
     <nav>
         <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
         <button style="opacity: 0.2;"><i class="fa-solid fa-list-check"></i></button>
-        <button id="logOut" onclick="logOutOpen()" style="position: absolute; z-index: 10; top: 5px; right: 45px;"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button id="logOut" onclick="logOutOpen()" style="position: absolute; z-index: 10; bottom: 5px; right: 65px;"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
     </nav>
-    <div style="position: fixed; top: 60px; background-color: white; z-index: 5; width: 90%; left: 5%; height: 125px; border-radius: 25px; border: 1px solid lightgrey; opacity: 0; transition: 0.2s;" id="logOutWindow">
+    <div style="position: fixed; bottom: 80px; background-color: white; z-index: 5; width: 90%; left: 5%; height: 125px; border-radius: 25px; border: 1px solid lightgrey; opacity: 0; transition: 0.2s;" id="logOutWindow">
         <p style="margin: 10px auto;">Ar tikrai norite atsijungti?</p>
         <p style="border: 1px solid lightgrey; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="taip" onclick="logOutOk()">Taip</p>
         <p style="border: 1px solid lightgrey; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="ne" onclick="logOutClose()">Ne</p>
     </div>
     <div id="menuWindow">
-        <p style="font-size: 30px; position: absolute; top: -10px; right: 15px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
+        <p style="font-size: 30px; position: absolute; bottom: -10px; left: 25px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
         <h1>Meniu</h1>
         <p style="font-size: 20px;" onclick="pagrindinis()" id="pap">Pagrindinis puslapis</p>
         <p style="font-size: 20px;" onclick="tvarkarastis()" id="tvp">Tvarkaraštis</p>
@@ -120,7 +120,7 @@
     <p style="position: absolute; top: 67px; left: 85px;">Ieva Kasparavičiūtė</p>
     <h1 style="margin-top: 150px;">Užduotys</h1>
     <p style="width: 100%; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 15px;">Nėra užduotų užduočių.</p>
-    <p style="position: fixed; right: 5px; bottom: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
+    <p style="position: fixed; right: 5px; top: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
         setTimeout(() => {
@@ -228,7 +228,7 @@
                 document.getElementById("menuWindow").style.height = "100%";
             }, 500);
             setTimeout(() => {
-                document.getElementById("menuWindow").style.top = "0";
+                document.getElementById("menuWindow").style.bottom = "0";
             }, 500);
             setTimeout(() => {
                 document.getElementById("menuWindow").style.left = "0";
@@ -249,13 +249,13 @@
                 document.getElementById("menuWindow").style.borderRadius = "100%";
             }, 500);
             setTimeout(() => {
-                document.getElementById("menuWindow").style.width = "40px";
+                document.getElementById("menuWindow").style.width = "60px";
             }, 500);
             setTimeout(() => {
-                document.getElementById("menuWindow").style.height = "40px";
+                document.getElementById("menuWindow").style.height = "60px";
             }, 500);
             setTimeout(() => {
-                document.getElementById("menuWindow").style.top = "5px";
+                document.getElementById("menuWindow").style.bottom = "5px";
             }, 500);
             setTimeout(() => {
                 document.getElementById("menuWindow").style.left = "5px";
