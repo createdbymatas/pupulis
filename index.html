@@ -13,6 +13,7 @@
     *{
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
+        color: pink;
     }
     body{
         background-color: snow;
@@ -23,10 +24,11 @@
         width: 100px;
         height: 100px;
         border-radius: 100%;
-        border: 1px solid lightgrey;
+        box-shadow: 0 0 15px pink;
         background-color: white;
         font-size: 50px;
         transition: 0.2s;
+        border: none;
     }
     p{
         transition: 0.2s;
@@ -58,7 +60,8 @@
     input{
         width: 90%;
         border-radius: 25px;
-        border: 1px solid lightgrey;
+        border: none;
+        box-shadow: 0 0 15px pink;
         text-align: center;
         height: 30px;
         transition: 0.3s;
@@ -69,7 +72,7 @@
     #loader {
   width: 48px;
   height: 48px;
-  border: 3px solid black;
+  border: 3px solid pink;
   border-bottom-color: transparent;
   border-radius: 50%;
   position: relative;
@@ -89,13 +92,13 @@
   left: 20px;
   top: 31px;
   border: 10px solid transparent;
-  border-right-color: black;
+  border-right-color: pink;
   transform: rotate(-40deg) scale(0.8);
 }
 #loader2 {
   width: 48px;
   height: 48px;
-  border: 3px solid black;
+  border: 3px solid pink;
   border-bottom-color: transparent;
   border-radius: 50%;
   position: relative;
@@ -111,7 +114,7 @@
   left: 20px;
   top: 31px;
   border: 10px solid transparent;
-  border-right-color: black;
+  border-right-color: pink;
   transform: rotate(-40deg);
 }
 
@@ -141,7 +144,7 @@
         <div id="divLoginInfo">
             <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
             <h1 style="margin-bottom: 50px;">Pupulio pamokos</h1>
-            <div style="width: 90%; height: auto; margin-left: 5%; padding: 15px; border-radius: 25px; background-color: white; border: 1px solid lightgrey;">
+            <div style="width: 90%; height: auto; margin-left: 5%; padding: 15px; border-radius: 25px; background-color: white; box-shadow: 0 0 15px pink;">
             <form>
             <p id="el">El. paštas</p>
             <input name="elpastas" id="myInput" type="email" placeholder="El. paštas">
@@ -172,10 +175,10 @@
         {
             if(form.elpastas.value == "ievakasparav@gmail.com" && form.slaptazodis.value == "Ievute123")
                 {
-                    document.getElementById("myInput").style.borderColor = "lightgrey";
-                document.getElementById("myInput2").style.borderColor = "lightgrey";
-                document.getElementById("el").style.color = "black";
-                document.getElementById("sl").style.color = "black";
+                    document.getElementById("myInput").style.boxShadow = "0 0 15px pink";
+                document.getElementById("myInput2").style.boxShadow = "0 0 15px pink";
+                document.getElementById("el").style.color = "pink";
+                document.getElementById("sl").style.color = "pink";
                 document.getElementById("loginNow").style.transform = "scale(0.8)";
                 document.getElementById("loginNow").style.pointerEvents = "none";
                 setTimeout(() => {
@@ -191,10 +194,10 @@
                 document.getElementById("loader").style.opacity = "1";
                 }, 500);
                 setTimeout(() => {
-                document.getElementById("myInput").style.borderColor = "green";
+                document.getElementById("myInput").style.boxShadow = "0 0 15px green";
                 }, 3500);
                 setTimeout(() => {
-                document.getElementById("myInput2").style.borderColor = "green";
+                document.getElementById("myInput2").style.boxShadow = "0 0 15px green";
                 }, 3500);
                 setTimeout(() => {
                 document.getElementById("el").style.color = "green";
@@ -207,10 +210,10 @@
                 }, 5500);
                 }
             else{
-                document.getElementById("myInput").style.borderColor = "lightgrey";
-                document.getElementById("myInput2").style.borderColor = "lightgrey";
-                document.getElementById("el").style.color = "black";
-                document.getElementById("sl").style.color = "black";
+                document.getElementById("myInput").style.boxShadow = "0 0 15px pink";
+                document.getElementById("myInput2").style.boxShadow = "0 0 15px pink";
+                document.getElementById("el").style.color = "pink";
+                document.getElementById("sl").style.color = "pink";
                 document.getElementById("loginNow").style.transform = "scale(0.8)";
                 document.getElementById("loginNow").style.pointerEvents = "none";
                 setTimeout(() => {
@@ -232,10 +235,10 @@
                 document.getElementById("loginNow").style.opacity = "1";
                 }, 3500);
                 setTimeout(() => {
-                document.getElementById("myInput").style.borderColor = "red";
+                document.getElementById("myInput").style.boxShadow = "0 0 15px red";
                 }, 3500);
                 setTimeout(() => {
-                document.getElementById("myInput2").style.borderColor = "red";
+                document.getElementById("myInput2").style.boxShadow = "0 0 15px red";
                 }, 3500);
                 setTimeout(() => {
                 document.getElementById("el").style.color = "red";
