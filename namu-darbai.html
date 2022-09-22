@@ -154,9 +154,15 @@
     </div>
     <p style="position: absolute; top: 67px; left: 85px;">Ieva Kasparavičiūtė</p>
     <h1 style="margin-top: 150px;">Namų darbai</h1>
-    <!-- <p style="width: 100%; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 15px;">Nėra įvestų namų darbų.</p> -->
+    <p style="width: 100%; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 15px;">Nėra neatliktų namų darbų.</p>
+    <p style="text-align: left; display: inline;" id="pad" onclick="padaryta()">Atlikti namų darbai</p>
+    <p style="text-align: left; display: inline;" id="pada"><i class="fa-solid fa-chevron-down" style="transition: 0.3s;" id="chevron"></i></p>
+    <p style="text-align: left; display: none;" id="pad2" onclick="padaryta2()">Atlikti namų darbai</p>
+    <p style="text-align: left; display: none;" id="pada2"><i class="fa-solid fa-chevron-down" style="transition: 0.3s;" id="chevron2"></i></p>
+    <div style="opacity: 0; display: none; transition: 0.3s;" id="padarytiNd">
     <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">09 24</p><p style="margin-top: -27px;">Atlikti iki</p></div><p style="position: absolute; top: -10px; left: 110px; text-align: left;"><b><i>Pamokos data:</i></b> 09 07</p><p style="position: absolute; top: 18px; left: 110px; text-align: left;"><b><i>Namų darbas: </i></b>Atlikti užduotį "Matematika - apskritimo ilgis".</p></div>
     <div class="pamoka2"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">09 24</p><p style="margin-top: -27px;">Atlikti iki</p></div><p style="position: absolute; top: -10px; left: 110px; text-align: left;"><b><i>Pamokos data:</i></b> 09 07</p><p style="position: absolute; top: 18px; left: 110px; text-align: left;"><b><i>Namų darbas: </i></b>Atlikti užduotį "Matematika - perimetrai".</p></div>
+    </div>
     <p style="position: fixed; right: 5px; top: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
@@ -180,6 +186,34 @@
                 setTimeout(() => {
                 location.replace("uzduotys.html")
                 }, 500);
+        }
+        function padaryta() {
+            document.getElementById("pad").style.display = "none";
+            document.getElementById("pada").style.display = "none";
+            document.getElementById("chevron").style.transform = "rotate(180deg)";
+            document.getElementById("pad2").style.display = "inline";
+            document.getElementById("pada2").style.display = "inline";
+            setTimeout(() => {
+                document.getElementById("chevron2").style.transform = "rotate(180deg)";
+            }, 50);
+            document.getElementById("padarytiNd").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("padarytiNd").style.opacity = "1";
+            }, 50);
+        }
+        function padaryta2() {
+            document.getElementById("pad2").style.display = "none";
+            document.getElementById("pada2").style.display = "none";
+            document.getElementById("chevron2").style.transform = "rotate(0deg)";
+            document.getElementById("pad").style.display = "inline";
+            document.getElementById("pada").style.display = "inline";
+            setTimeout(() => {
+                document.getElementById("chevron").style.transform = "rotate(0deg)";
+            }, 50);
+            document.getElementById("padarytiNd").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("padarytiNd").style.display = "none";
+            }, 350);
         }
         function pagrindinis() {
             document.getElementById("pap").style.transform = "scale(0.8)";

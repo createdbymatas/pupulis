@@ -144,9 +144,15 @@
     </div>
     <p style="position: absolute; top: 67px; left: 85px;">Ieva Kasparavičiūtė</p>
     <h1 style="margin-top: 150px;">Užduotys</h1>
-    <!-- <p style="width: 100%; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 15px;">Nėra užduotų užduočių.</p> -->
-    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Matematika - apskritimo ilgis"</p><p style="position: absolute; top: -11px; right: 5px; background-color: purple; color: white; border-radius: 15px; width: 60px; height: 45px; display: flex; justify-content: center; align-items: center; transition: 0.2s;" onclick="uzduotis1()" id="uzd1">Atlikti</p></div>
-    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Matematika - perimetrai"</p><p style="position: absolute; top: -11px; right: 5px; background-color: purple; color: white; border-radius: 15px; width: 60px; height: 45px; display: flex; justify-content: center; align-items: center; transition: 0.2s;" onclick="uzduotis2()" id="uzd2">Atlikti</p></div>
+    <p style="width: 100%; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 15px;">Nėra neatliktų užduočių.</p>
+    <p style="text-align: left; display: inline;" id="pad" onclick="padaryta()">Atliktos užduotys</p>
+    <p style="text-align: left; display: inline;" id="pada"><i class="fa-solid fa-chevron-down" style="transition: 0.3s;" id="chevron"></i></p>
+    <p style="text-align: left; display: none;" id="pad2" onclick="padaryta2()">Atliktos užduotys</p>
+    <p style="text-align: left; display: none;" id="pada2"><i class="fa-solid fa-chevron-down" style="transition: 0.3s;" id="chevron2"></i></p>
+    <div style="opacity: 0; display: none; transition: 0.3s;" id="padarytiUzd">
+    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Matematika - apskritimo ilgis"</p><p style="position: absolute; top: -11px; right: 5px; background-color: purple; color: white; border-radius: 15px; width: 60px; height: 45px; display: none; justify-content: center; align-items: center; transition: 0.2s;" onclick="uzduotis1()" id="uzd1">Atlikti</p></div>
+    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Matematika - perimetrai"</p><p style="position: absolute; top: -11px; right: 5px; background-color: purple; color: white; border-radius: 15px; width: 60px; height: 45px; display: none; justify-content: center; align-items: center; transition: 0.2s;" onclick="uzduotis2()" id="uzd2">Atlikti</p></div>
+    </div>
     <div class="atlikimas" id="atl1"><div id="uzd1atli" style="display: none;"><h1 style="text-align: left; margin-left: 20px;">Užduotis</h1><img src="uzduotis1.png" alt="Užduotis" style="border-radius: 15px;"><p style="font-size: 20px;">Apskaičiuokite pirmo ir antro apskritimų ilgius.</p><p style="text-align: left; margin-left: 10px;"><i>Sprendimas:</i></p><p style="text-align: left; margin-left: 10px;">1 apskritimas:</p><p style="text-align: left; margin-left: 10px;">C=</p><p style="text-align: left; margin-left: 10px;">2 apskritimas:</p><p style="text-align: left; margin-left: 10px;">C=</p><p style="background-color: white; border-radius: 15px; padding: 15px; width: 170px; transition: 0.3s; margin: 0 auto;" id="uzd1Dabar" onclick="uzduotis1dabar()">Užduotį atlikau</p><p style="background-color: white; border-radius: 15px; padding: 15px; width: 220px; transition: 0.3s; margin: 10px auto;" id="uzd1Veliau" onclick="uzduotis1veliau()">Užduotį atliksiu vėliau</p></div><div id="uzd2atli" style="display: none;"><h1 style="text-align: left; margin-left: 20px;">Užduotis</h1><img src="uzduotis2.png" alt="Užduotis" style="border-radius: 15px;"><p style="font-size: 20px;">Apskaičiuokite nežinomus dydžius.</p><p style="text-align: left; margin-left: 10px;"><i>Sprendimas:</i></p><p style="text-align: left; margin-left: 10px;">1 figūra:</p><p style="text-align: left; margin-left: 10px;">?=</p><p style="text-align: left; margin-left: 10px;">2 figūra:</p><p style="text-align: left; margin-left: 10px;">?=</p><p style="background-color: white; border-radius: 15px; padding: 15px; width: 170px; transition: 0.3s; margin: 0 auto;" id="uzd2Dabar" onclick="uzduotis2dabar()">Užduotį atlikau</p><p style="background-color: white; border-radius: 15px; padding: 15px; width: 220px; transition: 0.3s; margin: 10px auto;" id="uzd2Veliau" onclick="uzduotis2veliau()">Užduotį atliksiu vėliau</p></div></div>
     <p style="position: fixed; width: 95%; height: 50px; background-color: white; border-radius: 15px; top: -100px; z-index: 20; left: 2.5%; right: 2.5%; box-shadow: 0 0 15px purple; display: flex; justify-content: center; align-items: center; transition: 0.3s;" id="veliauAtlikti">Gerai! Užduotį atlik vėliau.</p>
     <p style="position: fixed; width: 95%; height: 70px; background-color: white; border-radius: 15px; top: -100px; z-index: 20; left: 2.5%; right: 2.5%; box-shadow: 0 0 15px purple; display: flex; justify-content: center; align-items: center; transition: 0.3s;" id="dabarAtlikti">Gerai! Mokytojas peržiūrėjęs užduotį panaikins ją iš pridėtų užduočių.</p>
@@ -182,6 +188,34 @@
                 setTimeout(() => {
                 location.replace("pagrindinis.html")
                 }, 500);
+        }
+        function padaryta() {
+            document.getElementById("pad").style.display = "none";
+            document.getElementById("pada").style.display = "none";
+            document.getElementById("chevron").style.transform = "rotate(180deg)";
+            document.getElementById("pad2").style.display = "inline";
+            document.getElementById("pada2").style.display = "inline";
+            setTimeout(() => {
+                document.getElementById("chevron2").style.transform = "rotate(180deg)";
+            }, 50);
+            document.getElementById("padarytiUzd").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("padarytiUzd").style.opacity = "1";
+            }, 50);
+        }
+        function padaryta2() {
+            document.getElementById("pad2").style.display = "none";
+            document.getElementById("pada2").style.display = "none";
+            document.getElementById("chevron2").style.transform = "rotate(0deg)";
+            document.getElementById("pad").style.display = "inline";
+            document.getElementById("pada").style.display = "inline";
+            setTimeout(() => {
+                document.getElementById("chevron").style.transform = "rotate(0deg)";
+            }, 50);
+            document.getElementById("padarytiUzd").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("padarytiUzd").style.display = "none";
+            }, 350);
         }
         function tvarkarastis() {
             document.getElementById("tvp").style.transform = "scale(0.8)";
