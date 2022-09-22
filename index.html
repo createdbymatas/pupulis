@@ -156,7 +156,8 @@
             </div>
         </div>
     </div>
-    <p style="position: fixed; right: 5px; bottom: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
+    <img src="hehe.jpeg" style="position: fixed; top: 25%; z-index: 15; left: 0; width: 100%; opacity: 0; border-radius: 15px; display: none;" id="poo">
+    <p style="position: fixed; right: 5px; top: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
         setTimeout(() => {
@@ -191,6 +192,9 @@
                 document.getElementById("loginNow").style.opacity = "0";
                 }, 500);
                 setTimeout(() => {
+                document.getElementById("poo").style.display = "block";
+                }, 500);
+                setTimeout(() => {
                 document.getElementById("loader").style.opacity = "1";
                 }, 500);
                 setTimeout(() => {
@@ -205,6 +209,9 @@
                 setTimeout(() => {
                 document.getElementById("sl").style.color = "green";
                 }, 3500);
+                setTimeout(() => {
+                document.getElementById("poo").style.opacity = "1";
+                }, 5450);
                 setTimeout(() => {
                 location.replace("pagrindinis.html")
                 }, 5500);
