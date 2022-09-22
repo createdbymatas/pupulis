@@ -14,7 +14,7 @@
         *{
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
-        color: pink;
+        color: purple;
     }
     body{
         background-color: snow;
@@ -36,7 +36,7 @@
         justify-content: space-around;
         align-items: center;
         border-radius: 25px 25px 0 0;
-        box-shadow: 0 0 15px pink;
+        box-shadow: 0 0 15px purple;
     }
     nav button{
         width: 60px;
@@ -51,11 +51,11 @@
     }
     #menuWindow{
         width: 100%;
-        height: 450px;
+        height: 495px;
         background-color: snow;
         position: fixed;
         z-index: 6;
-        bottom: -500px;
+        bottom: -550px;
         left: 0;
         border-radius: 15px 15px 0 0;
         display: block;
@@ -63,12 +63,12 @@
         transition: 0.2s;
         text-align: left;
         padding-left: 15px;
-        box-shadow: 0 0 15px pink;
+        box-shadow: 0 0 15px purple;
     }
         #loader2 {
   width: 48px;
   height: 48px;
-  border: 3px solid pink;
+  border: 3px solid purple;
   border-bottom-color: transparent;
   border-radius: 50%;
   position: relative;
@@ -84,7 +84,7 @@
   left: 20px;
   top: 31px;
   border: 10px solid transparent;
-  border-right-color: pink;
+  border-right-color: purple;
   transform: rotate(-40deg);
 }
 
@@ -105,10 +105,10 @@
         <button id="logOut" onclick="logOutOpen()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         <button id="tasks" onclick="tasksOpen()"><i class="fa-solid fa-list-check"></i></button>
     </nav>
-    <div style="position: fixed; bottom: 80px; background-color: white; z-index: 5; width: 90%; left: 5%; height: 125px; border-radius: 25px; box-shadow: 0 0 15px pink; opacity: 0; transition: 0.2s;" id="logOutWindow">
+    <div style="position: fixed; bottom: 80px; background-color: white; z-index: 5; width: 90%; left: 5%; height: 125px; border-radius: 25px; box-shadow: 0 0 15px purple; opacity: 0; transition: 0.2s;" id="logOutWindow">
         <p style="margin: 10px auto;">Ar tikrai norite atsijungti?</p>
-        <p style="box-shadow: 0 0 15px pink; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="taip" onclick="logOutOk()">Taip</p>
-        <p style="box-shadow: 0 0 15px pink; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="ne" onclick="logOutClose()">Ne</p>
+        <p style="box-shadow: 0 0 15px purple; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="taip" onclick="logOutOk()">Taip</p>
+        <p style="box-shadow: 0 0 15px purple; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="ne" onclick="logOutClose()">Ne</p>
     </div>
     <div id="menuWindow">
         <p style="font-size: 30px; position: absolute; bottom: -10px; left: 25px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
@@ -116,6 +116,7 @@
         <p style="font-size: 20px; width: 150px; color: lightgrey;">Tvarkaraštis</p>
         <p style="font-size: 20px; width: 150px;" onclick="pamokos()" id="pamp">Pamokos</p>
         <p style="font-size: 20px; width: 150px;" onclick="namudarbai()" id="nap">Namų darbai</p>
+        <p style="font-size: 20px; width: 150px;" onclick="pazymiai()" id="pazp">Pažymiai</p>
         <p style="font-size: 20px; width: 150px;" onclick="komentarai()" id="kop">Komentarai</p>
         <p style="font-size: 20px; width: 150px;" onclick="lankomumas()" id="lap">Lankomumas</p>
         <p style="font-size: 20px; width: 150px;" onclick="pranesimai()" id="prp">Pranešimai</p>
@@ -183,6 +184,15 @@
                 location.replace("namu-darbai.html")
                 }, 500);
         }
+        function pazymiai() {
+            document.getElementById("pazp").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("pazp").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("pazymiai.html")
+                }, 500);
+        }
         function komentarai() {
             document.getElementById("kop").style.transform = "scale(0.8)";
             setTimeout(() => {
@@ -231,7 +241,7 @@
                 document.getElementById("menuWindow").style.display = "none";
             }, 700);
             setTimeout(() => {
-                document.getElementById("menuWindow").style.bottom = "-500px";
+                document.getElementById("menuWindow").style.bottom = "-550px";
             }, 500);
         }
         function logOutOpen() {
