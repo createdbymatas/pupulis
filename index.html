@@ -175,14 +175,14 @@
         {
             if(form.elpastas.value == "ievakasparav@gmail.com" && form.slaptazodis.value == "Ievute123")
                 {
-                    document.getElementById("myInput").style.boxShadow = "0 0 15px urple";
+                    document.getElementById("myInput").style.boxShadow = "0 0 15px purple";
                 document.getElementById("myInput2").style.boxShadow = "0 0 15px purple";
                 document.getElementById("el").style.color = "purple";
                 document.getElementById("sl").style.color = "purple";
-                document.getElementById("loginNow").style.transform = "scale(0.8)";
+                document.getElementById("loginNow").style.boxShadow = "none";
                 document.getElementById("loginNow").style.pointerEvents = "none";
                 setTimeout(() => {
-                document.getElementById("loginNow").style.transform = "scale(1.0)";
+                document.getElementById("loginNow").style.boxShadow = "0 0 15px purple";
                 }, 200);
                 setTimeout(() => {
                 document.getElementById("loader").style.display = "inline-block";
@@ -214,10 +214,10 @@
                 document.getElementById("myInput2").style.boxShadow = "0 0 15px purple";
                 document.getElementById("el").style.color = "purple";
                 document.getElementById("sl").style.color = "purple";
-                document.getElementById("loginNow").style.transform = "scale(0.8)";
+                document.getElementById("loginNow").style.boxShadow = "none";
                 document.getElementById("loginNow").style.pointerEvents = "none";
                 setTimeout(() => {
-                document.getElementById("loginNow").style.transform = "scale(1.0)";
+                document.getElementById("loginNow").style.boxShadow = "0 0 15px purple";
                 }, 200);
                 setTimeout(() => {
                 document.getElementById("loader").style.display = "inline-block";
@@ -255,9 +255,9 @@
             }
         }
         function login() {
-            document.getElementById("loginBtn").style.transform = "scale(0.8)";
+            document.getElementById("loginBtn").style.boxShadow = "none";
             setTimeout(() => {
-                document.getElementById("loginBtn").style.transform = "scale(1.0)";
+                document.getElementById("loginBtn").style.boxShadow = "0 0 15px purple";
                 }, 200);
                 setTimeout(() => {
                 document.getElementById("loginDiv").style.display = "flex";
