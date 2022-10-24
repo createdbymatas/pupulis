@@ -9,12 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="loadFunction()">
     <style>
         *{
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
-        color: purple;
+        color: cornflowerblue;
     }
     body{
         background-color: snow;
@@ -36,7 +36,8 @@
         justify-content: space-around;
         align-items: center;
         border-radius: 25px 25px 0 0;
-        box-shadow: 0 0 15px purple;
+        box-shadow: 0 0 15px cornflowerblue;
+        z-index: 4;
     }
     nav button{
         width: 60px;
@@ -52,142 +53,134 @@
     #menuWindow{
         width: 100%;
         height: 495px;
-        background-color: snow;
+        background-color: white;
         position: fixed;
         z-index: 6;
         bottom: -550px;
         left: 0;
-        border-radius: 15px 15px 0 0;
+        border-radius: 25px 25px 0 0;
         display: block;
         transform: scale(1.0);
         transition: 0.2s;
         text-align: left;
         padding-left: 15px;
-        box-shadow: 0 0 15px purple;
+        box-shadow: 0 0 15px cornflowerblue;
     }
-        #loader2 {
-  width: 48px;
-  height: 48px;
-  border: 3px solid purple;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotation2 1s linear infinite;
-  position: absolute;
-  transition: 0.2s;
-}
-#loader2::after {
-  content: '';  
-  position: absolute;
-  box-sizing: border-box;
-  left: 20px;
-  top: 31px;
-  border: 10px solid transparent;
-  border-right-color: purple;
-  transform: rotate(-40deg);
+#loader2{
+  width: 50px;
+  height: 50px;
+  background-color: snow;
+  border-radius: 100%;
+  border: 5px solid cornflowerblue;
+  animation: blink 1s ease-in-out infinite;
 }
 
-@keyframes rotation2 {
+@keyframes blink {
   0% {
-    transform: rotate(0deg);
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
   }
   100% {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 } 
 .uzduotis{
     width: 100%;
-    height: 55px;
-    border-radius: 15px;
-    box-shadow: 0 0 15px purple;
+    height: 60px;
+    border-radius: 25px;
+    border: 2px solid cornflowerblue;
     text-align: left;
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
 }
-.atlikimas{
-    width: 100%;
-    height: 100%;
-    background-color: snow;
-    z-index: 10;
+#complete{
+    width: 90%;
+    height: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 25px;
+    background-color: white;
     position: fixed;
-    top: 0;
-    right: -100%;
-    bottom: 0;
+    bottom: -100px;
+    left: 5%;
+    right: 5%;
+    z-index: 2;
+    border: 1px solid cornflowerblue;
+    transition: 0.3s;
+}
+#complete2{
+    width: 90%;
+    height: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 25px;
+    background-color: white;
+    position: fixed;
+    bottom: -100px;
+    left: 5%;
+    right: 5%;
+    z-index: 2;
+    border: 1px solid cornflowerblue;
     transition: 0.3s;
 }
     </style>
     <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.9; display: flex; justify-content: center; align-items: center;"><span id="loader2"></span></div>
     <img src="logo.jpg" alt="Pupulis" style="width: 50px; border-radius: 100%; text-align: left; left: 20px; top: 70px; position: absolute;">
     <nav>
-        <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
         <button id="pap" onclick="pagrindinis()"><i class="fa-solid fa-house"></i></button>
-        <button id="logOut" onclick="logOutOpen()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         <button id="tasks" style="opacity: 0.2;"><i class="fa-solid fa-list-check"></i></button>
+        <button id="logOut" onclick="logOutOpen()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
     </nav>
-    <div style="position: fixed; bottom: 80px; background-color: white; z-index: 5; width: 90%; left: 5%; height: 125px; border-radius: 25px; box-shadow: 0 0 15px purple; opacity: 0; transition: 0.2s;" id="logOutWindow">
+    <div style="position: fixed; bottom: 80px; background-color: white; z-index: 5; width: 90%; transform: scale(0); left: 5%; height: 125px; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; opacity: 0; transition: 0.2s; display: none;" id="logOutWindow">
         <p style="margin: 10px auto;">Ar tikrai norite atsijungti?</p>
-        <p style="box-shadow: 0 0 15px purple; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="taip" onclick="logOutOk()">Taip</p>
-        <p style="box-shadow: 0 0 15px purple; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="ne" onclick="logOutClose()">Ne</p>
+        <p style="border: 1px solid cornflowerblue; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="taip" onclick="logOutOk()">Taip</p>
+        <p style="border: 1px solid cornflowerblue; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="ne" onclick="logOutClose()">Ne</p>
     </div>
+    <div style="width: 100%; height: 100%; position: fixed; transition: 0.3s; top: 0; left: 0; right: 0; bottom: 0; z-index: 5; background-color: snow; opacity: 0; display: none;" id="background" onclick="menuClose()"></div>
     <div id="menuWindow">
-        <p style="font-size: 30px; position: absolute; bottom: -10px; left: 25px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
+        <p style="font-size: 30px; position: absolute; bottom: -15px; right: 25px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
         <h1>Meniu</h1>
-        <p style="font-size: 20px; width: 150px;" onclick="tvarkarastis()" id="tvp">Tvarkaraštis</p>
-        <p style="font-size: 20px; width: 150px;" onclick="pamokos()" id="pamp">Pamokos</p>
-        <p style="font-size: 20px; width: 150px;" onclick="namudarbai()" id="nap">Namų darbai</p>
-        <p style="font-size: 20px; width: 150px;" onclick="pazymiai()" id="pazp">Pažymiai</p>
-        <p style="font-size: 20px; width: 150px;" onclick="komentarai()" id="kop">Komentarai</p>
-        <p style="font-size: 20px; width: 150px;" onclick="lankomumas()" id="lap">Lankomumas</p>
-        <p style="font-size: 20px; width: 150px;" onclick="pranesimai()" id="prp">Pranešimai</p>
+        <p style="font-size: 20px; width: 180px;" onclick="tvarkarastis()" id="tvp"><i class="fa-solid fa-calendar-days"></i> Tvarkaraštis</p>
+        <p style="font-size: 20px; width: 180px;" onclick="pamokos()" id="pamp"><i class="fa-solid fa-list-check"></i> Pamokos</p>
+        <p style="font-size: 20px; width: 180px;" onclick="namudarbai()" id="nap"><i class="fa-solid fa-pen-nib"></i> Namų darbai</p>
+        <p style="font-size: 20px; width: 180px;" onclick="pazymiai()" id="pazp"><i class="fa-sharp fa-solid fa-graduation-cap"></i> Pažymiai</p>
+        <p style="font-size: 20px; width: 180px;" onclick="komentarai()" id="kop"><i class="fa-solid fa-comment"></i> Komentarai</p>
+        <p style="font-size: 20px; width: 180px;" onclick="lankomumas()" id="lap"><i class="fa-solid fa-clipboard-user"></i> Lankomumas</p>
+        <p style="font-size: 20px; width: 180px;" onclick="pranesimai()" id="prp"><i class="fa-solid fa-envelope"></i> Pranešimai (0)</p>
     </div>
     <p style="position: absolute; top: 67px; left: 85px;">Ieva Kasparavičiūtė</p>
-    <h1 style="margin-top: 150px;">Užduotys</h1>
-    <p style="width: 100%; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 15px;">Nėra neatliktų užduočių.</p>
-    <p style="text-align: left; display: inline;" id="pad" onclick="padaryta()">Atliktos užduotys</p>
+    <h1 style="margin-top: 150px;"><i class="fa-solid fa-list-check"></i> Užduotys</h1>
+    <!-- <p style="width: 100%; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open"></i> Nieko nėra... pabandykite vėliau.</p> -->
+    <p style="width: 100%; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-circle-check"></i> Visos užduotys atliktos.</p>
+    <p style="text-align: left; display: inline;" id="pad" onclick="padaryta()"><i class="fa-solid fa-user-check"></i> Atliktos užduotys</p>
     <p style="text-align: left; display: inline;" id="pada"><i class="fa-solid fa-chevron-down" style="transition: 0.3s;" onclick="padaryta()" id="chevron"></i></p>
-    <p style="text-align: left; display: none;" id="pad2" onclick="padaryta2()">Atliktos užduotys</p>
+    <p style="text-align: left; display: none;" id="pad2" onclick="padaryta2()"><i class="fa-solid fa-user-check"></i> Atliktos užduotys</p>
     <p style="text-align: left; display: none;" id="pada2"><i class="fa-solid fa-chevron-down" style="transition: 0.3s;" onclick="padaryta2()" id="chevron2"></i></p>
     <div style="opacity: 0; display: none; transition: 0.3s;" id="padarytiUzd">
-    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Matematika - apskritimo ilgis"</p><p style="position: absolute; top: -11px; right: 5px; background-color: purple; color: white; border-radius: 15px; width: 60px; height: 45px; display: none; justify-content: center; align-items: center; transition: 0.2s;" onclick="uzduotis1()" id="uzd1">Atlikti</p></div>
-    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Matematika - perimetrai"</p><p style="position: absolute; top: -11px; right: 5px; background-color: purple; color: white; border-radius: 15px; width: 60px; height: 45px; display: none; justify-content: center; align-items: center; transition: 0.2s;" onclick="uzduotis2()" id="uzd2">Atlikti</p></div>
+    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Matematika - apskritimo ilgis"</p><p style="position: absolute; top: -11px; right: 5px; background-color: cornflowerblue; color: white; border-radius: 15px; width: 60px; height: 45px; display: none; justify-content: center; align-items: center; transition: 0.2s;" onclick="uzduotis1()" id="uzd1">Atlikti</p></div>
+    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Matematika - perimetrai"</p><p style="position: absolute; top: -11px; right: 5px; background-color: cornflowerblue; color: white; border-radius: 15px; width: 60px; height: 45px; display: none; justify-content: center; align-items: center; transition: 0.2s;" onclick="uzduotis2()" id="uzd2">Atlikti</p></div>
     </div>
-    <div class="atlikimas" id="atl1"><div id="uzd1atli" style="display: none;"><h1 style="text-align: left; margin-left: 20px;">Užduotis</h1><img src="uzduotis1.png" alt="Užduotis" style="border-radius: 15px;"><p style="font-size: 20px;">Apskaičiuokite pirmo ir antro apskritimų ilgius.</p><p style="text-align: left; margin-left: 10px;"><i>Sprendimas:</i></p><p style="text-align: left; margin-left: 10px;">1 apskritimas:</p><p style="text-align: left; margin-left: 10px;">C=</p><p style="text-align: left; margin-left: 10px;">2 apskritimas:</p><p style="text-align: left; margin-left: 10px;">C=</p><p style="background-color: white; border-radius: 15px; padding: 15px; width: 170px; transition: 0.3s; margin: 0 auto;" id="uzd1Dabar" onclick="uzduotis1dabar()">Užduotį atlikau</p><p style="background-color: white; border-radius: 15px; padding: 15px; width: 220px; transition: 0.3s; margin: 10px auto;" id="uzd1Veliau" onclick="uzduotis1veliau()">Užduotį atliksiu vėliau</p></div><div id="uzd2atli" style="display: none;"><h1 style="text-align: left; margin-left: 20px;">Užduotis</h1><img src="uzduotis2.png" alt="Užduotis" style="border-radius: 15px;"><p style="font-size: 20px;">Apskaičiuokite nežinomus dydžius.</p><p style="text-align: left; margin-left: 10px;"><i>Sprendimas:</i></p><p style="text-align: left; margin-left: 10px;">1 figūra:</p><p style="text-align: left; margin-left: 10px;">?=</p><p style="text-align: left; margin-left: 10px;">2 figūra:</p><p style="text-align: left; margin-left: 10px;">?=</p><p style="background-color: white; border-radius: 15px; padding: 15px; width: 170px; transition: 0.3s; margin: 0 auto;" id="uzd2Dabar" onclick="uzduotis2dabar()">Užduotį atlikau</p><p style="background-color: white; border-radius: 15px; padding: 15px; width: 220px; transition: 0.3s; margin: 10px auto;" id="uzd2Veliau" onclick="uzduotis2veliau()">Užduotį atliksiu vėliau</p></div></div>
-    <p style="position: fixed; width: 95%; height: 50px; background-color: white; border-radius: 15px; top: -100px; z-index: 20; left: 2.5%; right: 2.5%; box-shadow: 0 0 15px purple; display: flex; justify-content: center; align-items: center; transition: 0.3s;" id="veliauAtlikti">Gerai! Užduotį atlik vėliau.</p>
-    <p style="position: fixed; width: 95%; height: 70px; background-color: white; border-radius: 15px; top: -100px; z-index: 20; left: 2.5%; right: 2.5%; box-shadow: 0 0 15px purple; display: flex; justify-content: center; align-items: center; transition: 0.3s;" id="dabarAtlikti">Gerai! Mokytojas peržiūrėjęs užduotį panaikins ją iš pridėtų užduočių.</p>
+    <div style="width: 100%; height: 100%; position: fixed; top: 0; right: -100%; bottom: 0; background-color: white; z-index: 6; transition: 0.3s;" id="atlikimas"><h1 style="text-align: left; padding-left:  15px; margin-top: 40px;">Užduotis</h1><img src="logo.jpg" alt="Užduotis" style="width: 300px; border: 2px solid cornflowerblue; border-radius: 25px; background-color: snow;"><p style="text-align: left; padding-left: 15px;"><i><i class="fa-solid fa-magnifying-glass"></i> Sprendimas:</i></p><p style="text-align: left; padding-left: 15px;">...</p><button style="display: block; background-color: snow; border-radius: 25px; width: 170px; height: 30px; font-size: 17px; border: 1px solid cornflowerblue; margin: 10px auto;" onclick="atlikoDabar()"><i class="fa-regular fa-circle-check"></i> Atlikta</button><button style="display: block; background-color: snow; border-radius: 25px; width: 170px; height: 30px; font-size: 17px; border: 1px solid cornflowerblue; margin: 10px auto;" onclick="atlikoVeliau()"><i class="fa-solid fa-clock"></i> Atlikti vėliau</button></div>
+    <div id="complete"><p><i class="fa-regular fa-circle-check"></i> Gerai! Mokytojas peržiūrėjęs užduotį pažymės ją kaip atliktą.</p></div>
+    <div id="complete2"><p><i class="fa-regular fa-circle-check"></i> Gerai! Užduotis išsaugota atlikimui vėliau.</p></div>
     <p style="position: fixed; right: 5px; top: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
-        setTimeout(() => {
-                document.getElementById("loading").style.opacity = "1";
-        }, 5000);
+        function loadFunction() {
+        document.getElementById("loading").style.opacity = "1";
         setTimeout(() => {
                 document.getElementById("loading").style.opacity = "0";
-        }, 6000);
+        }, 1000);
         setTimeout(() => {
-                document.getElementById("loading").style.transform = "scale(0.8)";
-        }, 6000);
+                document.getElementById("loading").style.transform = "scale(0)";
+        }, 1000);
         setTimeout(() => {
                 document.getElementById("loading").style.display = "none";
-        }, 6200);
-        function tasksOpen() {
-            document.getElementById("tasks").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("tasks").style.transform = "scale(1.0)";
-                }, 200);
-                setTimeout(() => {
-                location.replace("uzduotys.html")
-                }, 500);
-        }
-        function pagrindinis() {
-            document.getElementById("pap").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("pap").style.transform = "scale(1.0)";
-                }, 200);
-                setTimeout(() => {
-                location.replace("pagrindinis.html")
-                }, 500);
+        }, 1200);
         }
         function padaryta() {
             document.getElementById("pad").style.display = "none";
@@ -216,6 +209,38 @@
             setTimeout(() => {
                 document.getElementById("padarytiUzd").style.display = "none";
             }, 350);
+        }
+        function atlikoDabar() {
+            document.getElementById("atlikimas").style.right = "-100%";
+            document.getElementById("complete").style.bottom = "90px";
+            setTimeout(() => {
+                document.getElementById("complete").style.bottom = "-100px";
+            }, 5000);
+        }
+        function atlikoVeliau() {
+            document.getElementById("atlikimas").style.right = "-100%";
+            document.getElementById("complete2").style.bottom = "90px";
+            setTimeout(() => {
+                document.getElementById("complete2").style.bottom = "-100px";
+            }, 5000);
+        }
+        function tasksOpen() {
+            document.getElementById("tasks").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("tasks").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("uzduotys.html")
+                }, 500);
+        }
+        function pagrindinis() {
+            document.getElementById("pap").style.transform = "scale(0.8)";
+            setTimeout(() => {
+                document.getElementById("pap").style.transform = "scale(1.0)";
+                }, 200);
+                setTimeout(() => {
+                location.replace("pagrindinis.html")
+                }, 500);
         }
         function tvarkarastis() {
             document.getElementById("tvp").style.transform = "scale(0.8)";
@@ -291,18 +316,22 @@
             setTimeout(() => {
                 document.getElementById("menuWindow").style.bottom = "-1px";
             }, 500);
+            setTimeout(() => {
+                document.getElementById("background").style.display = "block";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("background").style.opacity = "0.9";
+            }, 500);
         }
         function menuClose() {
-            document.getElementById("x").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("x").style.transform = "scale(1.0)";
-            }, 200);
             setTimeout(() => {
                 document.getElementById("menuWindow").style.display = "none";
-            }, 700);
-            setTimeout(() => {
+            }, 300);
                 document.getElementById("menuWindow").style.bottom = "-550px";
-            }, 500);
+            setTimeout(() => {
+                document.getElementById("background").style.display = "none";
+            }, 300);
+                document.getElementById("background").style.opacity = "0";
         }
         function logOutOpen() {
             document.getElementById("logOut").style.transform = "scale(0.8)";
@@ -310,7 +339,13 @@
                 document.getElementById("logOut").style.transform = "scale(1.0)";
             }, 200);
             setTimeout(() => {
+                document.getElementById("logOutWindow").style.display = "block";
+            }, 400);
+            setTimeout(() => {
                 document.getElementById("logOutWindow").style.opacity = "1";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.transform = "scale(1.0)";
             }, 500);
         }
         function logOutClose() {
@@ -321,6 +356,12 @@
             setTimeout(() => {
                 document.getElementById("logOutWindow").style.opacity = "0";
             }, 500);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.transform = "scale(0)";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.display = "none";
+            }, 800);
         }
         function logOutOk() {
             document.getElementById("taip").style.transform = "scale(0.8)";
@@ -330,108 +371,6 @@
             setTimeout(() => {
                 location.replace("index.html")
             }, 500);
-        }
-        function uzduotis1() {
-            document.getElementById("uzd1").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("uzd1").style.transform = "scale(1.0)";
-            }, 200);
-            setTimeout(() => {
-                document.getElementById("atl1").style.right = "0";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("uzd1atli").style.display = "block";
-            }, 500);
-        }
-        function uzduotis1dabar() {
-            document.getElementById("uzd1Dabar").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("uzd1Dabar").style.transform = "scale(1.0)";
-            }, 200);
-            setTimeout(() => {
-                document.getElementById("atl1").style.right = "-100%";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("uzd1").style.display = "none";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("dabarAtlikti").style.top = "10px";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("dabarAtlikti").style.top = "-100px";
-            }, 5500);
-            setTimeout(() => {
-                document.getElementById("uzd1atli").style.display = "none";
-            }, 800);
-        }
-        function uzduotis1veliau() {
-            document.getElementById("uzd1Veliau").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("uzd1Veliau").style.transform = "scale(1.0)";
-            }, 200);
-            setTimeout(() => {
-                document.getElementById("atl1").style.right = "-100%";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("veliauAtlikti").style.top = "10px";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("veliauAtlikti").style.top = "-100px";
-            }, 5500);
-            setTimeout(() => {
-                document.getElementById("uzd1atli").style.display = "none";
-            }, 800);
-        }
-        function uzduotis2() {
-            document.getElementById("uzd2").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("uzd2").style.transform = "scale(1.0)";
-            }, 200);
-            setTimeout(() => {
-                document.getElementById("atl1").style.right = "0";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("uzd2atli").style.display = "block";
-            }, 500);
-        }
-        function uzduotis2dabar() {
-            document.getElementById("uzd2Dabar").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("uzd2Dabar").style.transform = "scale(1.0)";
-            }, 200);
-            setTimeout(() => {
-                document.getElementById("atl1").style.right = "-100%";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("uzd2").style.display = "none";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("dabarAtlikti").style.top = "10px";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("dabarAtlikti").style.top = "-100px";
-            }, 5500);
-            setTimeout(() => {
-                document.getElementById("uzd2atli").style.display = "none";
-            }, 800);
-        }
-        function uzduotis2veliau() {
-            document.getElementById("uzd2Veliau").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("uzd2Veliau").style.transform = "scale(1.0)";
-            }, 200);
-            setTimeout(() => {
-                document.getElementById("atl1").style.right = "-100%";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("veliauAtlikti").style.top = "10px";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("veliauAtlikti").style.top = "-100px";
-            }, 5500);
-            setTimeout(() => {
-                document.getElementById("uzd2atli").style.display = "none";
-            }, 800);
         }
     </script>
 </body>

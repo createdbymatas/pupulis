@@ -9,12 +9,12 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="loadFunction()">
     <style>
         *{
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
-        color: purple;
+        color: cornflowerblue;
     }
     body{
         background-color: snow;
@@ -36,8 +36,8 @@
         justify-content: space-around;
         align-items: center;
         border-radius: 25px 25px 0 0;
-        box-shadow: 0 0 15px purple;
-        z-index: 10;
+        box-shadow: 0 0 15px cornflowerblue;
+        z-index: 4;
     }
     nav button{
         width: 60px;
@@ -53,56 +53,45 @@
     #menuWindow{
         width: 100%;
         height: 495px;
-        background-color: snow;
+        background-color: white;
         position: fixed;
         z-index: 6;
         bottom: -550px;
         left: 0;
-        border-radius: 15px 15px 0 0;
+        border-radius: 25px 25px 0 0;
         display: block;
         transform: scale(1.0);
         transition: 0.2s;
         text-align: left;
         padding-left: 15px;
-        box-shadow: 0 0 15px purple;
+        box-shadow: 0 0 15px cornflowerblue;
     }
-        #loader2 {
-  width: 48px;
-  height: 48px;
-  border: 3px solid purple;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotation2 1s linear infinite;
-  position: absolute;
-  transition: 0.2s;
-}
-#loader2::after {
-  content: '';  
-  position: absolute;
-  box-sizing: border-box;
-  left: 20px;
-  top: 31px;
-  border: 10px solid transparent;
-  border-right-color: purple;
-  transform: rotate(-40deg);
+    #loader2{
+  width: 50px;
+  height: 50px;
+  background-color: snow;
+  border-radius: 100%;
+  border: 5px solid cornflowerblue;
+  animation: blink 1s ease-in-out infinite;
 }
 
-@keyframes rotation2 {
+@keyframes blink {
   0% {
-    transform: rotate(0deg);
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
   }
   100% {
-    transform: rotate(360deg);
+    opacity: 1;
   }
-}
+} 
 .pamoka{
     width: 100%; 
     height: auto;
-    min-height: 100px;
-    box-shadow: 0 0 15px purple;
-    border-radius: 15px;
+    min-height: 125px;
+    border: 2px solid cornflowerblue;
+    border-radius: 25px;
     position: relative;
     margin-top: 10px;
     margin-bottom: 10px;
@@ -113,16 +102,17 @@
     padding-left: 110px;
     padding-top: 5px;
     padding-bottom: 5px;
+    background-color: white;
 }
 .pamokaInfo{
     width: 100px;
     height: 100px;
-    background-color: purple;
+    background-color: cornflowerblue;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border-radius: 15px;
+    border-radius: 20px 0 25px 0;
     position: absolute;
     left: 0;
     top: 0;
@@ -134,48 +124,49 @@
     <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.9; display: flex; justify-content: center; align-items: center;"><span id="loader2"></span></div>
     <img src="logo.jpg" alt="Pupulis" style="width: 50px; border-radius: 100%; text-align: left; left: 20px; top: 70px; position: absolute;">
     <nav>
-        <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
         <button id="pap" onclick="pagrindinis()"><i class="fa-solid fa-house"></i></button>
-        <button id="logOut" onclick="logOutOpen()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         <button id="tasks" onclick="tasksOpen()"><i class="fa-solid fa-list-check"></i></button>
+        <button id="logOut" onclick="logOutOpen()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+        <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
     </nav>
-    <div style="position: fixed; bottom: 80px; background-color: white; z-index: 5; width: 90%; left: 5%; height: 125px; border-radius: 25px; box-shadow: 0 0 15px purple; opacity: 0; transition: 0.2s;" id="logOutWindow">
+    <div style="position: fixed; bottom: 80px; background-color: white; z-index: 5; width: 90%; transform: scale(0); left: 5%; height: 125px; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; opacity: 0; transition: 0.2s; display: none;" id="logOutWindow">
         <p style="margin: 10px auto;">Ar tikrai norite atsijungti?</p>
-        <p style="box-shadow: 0 0 15px purple; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="taip" onclick="logOutOk()">Taip</p>
-        <p style="box-shadow: 0 0 15px purple; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="ne" onclick="logOutClose()">Ne</p>
+        <p style="border: 1px solid cornflowerblue; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="taip" onclick="logOutOk()">Taip</p>
+        <p style="border: 1px solid cornflowerblue; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s;" id="ne" onclick="logOutClose()">Ne</p>
     </div>
+    <div style="width: 100%; height: 100%; position: fixed; transition: 0.3s; top: 0; left: 0; right: 0; bottom: 0; z-index: 5; background-color: snow; opacity: 0; display: none;" id="background" onclick="menuClose()"></div>
     <div id="menuWindow">
-        <p style="font-size: 30px; position: absolute; bottom: -10px; left: 25px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
+        <p style="font-size: 30px; position: absolute; bottom: -15px; right: 25px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
         <h1>Meniu</h1>
-        <p style="font-size: 20px; width: 150px;" onclick="tvarkarastis()" id="tvp">Tvarkaraštis</p>
-        <p style="font-size: 20px; width: 150px; color: lightgrey;">Pamokos</p>
-        <p style="font-size: 20px; width: 150px;" onclick="namudarbai()" id="nap">Namų darbai</p>
-        <p style="font-size: 20px; width: 150px;" onclick="pazymiai()" id="pazp">Pažymiai</p>
-        <p style="font-size: 20px; width: 150px;" onclick="komentarai()" id="kop">Komentarai</p>
-        <p style="font-size: 20px; width: 150px;" onclick="lankomumas()" id="lap">Lankomumas</p>
-        <p style="font-size: 20px; width: 150px;" onclick="pranesimai()" id="prp">Pranešimai</p>
+        <p style="font-size: 20px; width: 180px;" onclick="tvarkarastis()" id="tvp"><i class="fa-solid fa-calendar-days"></i> Tvarkaraštis</p>
+        <p style="font-size: 20px; width: 180px; opacity: 0.2;" id="pamp"><i class="fa-solid fa-list-check"></i> Pamokos</p>
+        <p style="font-size: 20px; width: 180px;" onclick="namudarbai()" id="nap"><i class="fa-solid fa-pen-nib"></i> Namų darbai</p>
+        <p style="font-size: 20px; width: 180px;" onclick="pazymiai()" id="pazp"><i class="fa-sharp fa-solid fa-graduation-cap"></i> Pažymiai</p>
+        <p style="font-size: 20px; width: 180px;" onclick="komentarai()" id="kop"><i class="fa-solid fa-comment"></i> Komentarai</p>
+        <p style="font-size: 20px; width: 180px;" onclick="lankomumas()" id="lap"><i class="fa-solid fa-clipboard-user"></i> Lankomumas</p>
+        <p style="font-size: 20px; width: 180px;" onclick="pranesimai()" id="prp"><i class="fa-solid fa-envelope"></i> Pranešimai (0)</p>
     </div>
     <p style="position: absolute; top: 67px; left: 85px;">Ieva Kasparavičiūtė</p>
-    <h1 style="margin-top: 150px;">Pamokos</h1>
-    <!-- <p style="width: 100%; border-top: 1px solid lightgrey; border-bottom: 1px solid lightgrey; padding: 15px;">Nėra įvestų pamokų.</p> -->
-    <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">10 16</p><p style="margin-top: -27px;">Matematika</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Tema:</i></b> Matematikos namų darbai</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Klasės darbas:</i></b> Matematika TAU: 56 psl.: 136. - 149., 57 psl.: 150. - 161.</p></div>
-    <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">09 17</p><p style="margin-top: -27px;">Matematika</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Tema:</i></b> Matematikos namų darbai</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Klasės darbas:</i></b> Matematika TAU: 19 psl.: 17., 18., 19., 20., 21. Atrask: 59 psl.: 6., 7., 8.</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Namų darbas: </i></b>Atlikti užduotį "Matematika - apskritimo ilgis".</p></div>
-    <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">09 17</p><p style="margin-top: -27px;">Matematika</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Tema:</i></b> Matematikos namų darbai</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Klasės darbas:</i></b> Matematika TAU: 22 psl.: 22., 23. Atrask: 59 psl.: 1., 2., 3.</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Namų darbas: </i></b>Atlikti užduotį "Matematika - perimetrai".</p></div>
+    <h1 style="margin-top: 150px;"><i class="fa-solid fa-list-check"></i> Pamokos</h1>
+    <!-- <p style="width: 100%; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open"></i> Nieko nėra... pabandykite vėliau.</p> -->
+    <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">10 16</p><p style="margin-top: -27px;">Matematika</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-quote-right"></i> Tema:</i></b> Matematikos namų darbai</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-clipboard-list"></i> Klasės darbas:</i></b> Matematika TAU: 56 psl.: 136. - 149., 57 psl.: 150. - 161.</p></div>
+    <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">09 17</p><p style="margin-top: -27px;">Matematika</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-quote-right"></i> Tema:</i></b> Matematikos namų darbai</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-clipboard-list"></i> Klasės darbas:</i></b> Matematika TAU: 19 psl.: 17., 18., 19., 20., 21. Atrask: 59 psl.: 6., 7., 8.</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-pen-nib"></i> Namų darbas: </i></b>Atlikti užduotį "Matematika - apskritimo ilgis".</p></div>
+    <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">09 17</p><p style="margin-top: -27px;">Matematika</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-quote-right"></i> Tema:</i></b> Matematikos namų darbai</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-clipboard-list"></i> Klasės darbas:</i></b> Matematika TAU: 22 psl.: 22., 23. Atrask: 59 psl.: 1., 2., 3.</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-pen-nib"></i> Namų darbas: </i></b>Atlikti užduotį "Matematika - perimetrai".</p></div>
     <p style="position: fixed; right: 5px; top: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
-        setTimeout(() => {
-                document.getElementById("loading").style.opacity = "1";
-        }, 5000);
+        function loadFunction() {
+        document.getElementById("loading").style.opacity = "1";
         setTimeout(() => {
                 document.getElementById("loading").style.opacity = "0";
-        }, 6000);
+        }, 1000);
         setTimeout(() => {
-                document.getElementById("loading").style.transform = "scale(0.8)";
-        }, 6000);
+                document.getElementById("loading").style.transform = "scale(0)";
+        }, 1000);
         setTimeout(() => {
                 document.getElementById("loading").style.display = "none";
-        }, 6200);
+        }, 1200);
+        }
         function tasksOpen() {
             document.getElementById("tasks").style.transform = "scale(0.8)";
             setTimeout(() => {
@@ -268,18 +259,22 @@
             setTimeout(() => {
                 document.getElementById("menuWindow").style.bottom = "-1px";
             }, 500);
+            setTimeout(() => {
+                document.getElementById("background").style.display = "block";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("background").style.opacity = "0.9";
+            }, 500);
         }
         function menuClose() {
-            document.getElementById("x").style.transform = "scale(0.8)";
-            setTimeout(() => {
-                document.getElementById("x").style.transform = "scale(1.0)";
-            }, 200);
             setTimeout(() => {
                 document.getElementById("menuWindow").style.display = "none";
-            }, 700);
-            setTimeout(() => {
+            }, 300);
                 document.getElementById("menuWindow").style.bottom = "-550px";
-            }, 500);
+            setTimeout(() => {
+                document.getElementById("background").style.display = "none";
+            }, 300);
+                document.getElementById("background").style.opacity = "0";
         }
         function logOutOpen() {
             document.getElementById("logOut").style.transform = "scale(0.8)";
@@ -287,7 +282,13 @@
                 document.getElementById("logOut").style.transform = "scale(1.0)";
             }, 200);
             setTimeout(() => {
+                document.getElementById("logOutWindow").style.display = "block";
+            }, 400);
+            setTimeout(() => {
                 document.getElementById("logOutWindow").style.opacity = "1";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.transform = "scale(1.0)";
             }, 500);
         }
         function logOutClose() {
@@ -298,6 +299,12 @@
             setTimeout(() => {
                 document.getElementById("logOutWindow").style.opacity = "0";
             }, 500);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.transform = "scale(0)";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.display = "none";
+            }, 800);
         }
         function logOutOk() {
             document.getElementById("taip").style.transform = "scale(0.8)";

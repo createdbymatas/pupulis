@@ -13,7 +13,7 @@
     *{
         box-sizing: border-box;
         font-family: 'Poppins', sans-serif;
-        color: purple;
+        color: cornflowerblue;
     }
     body{
         background-color: snow;
@@ -24,7 +24,7 @@
         width: 100px;
         height: 100px;
         border-radius: 100%;
-        box-shadow: 0 0 15px purple;
+        box-shadow: 0 0 15px cornflowerblue;
         background-color: white;
         font-size: 50px;
         transition: 0.2s;
@@ -61,7 +61,7 @@
         width: 90%;
         border-radius: 25px;
         border: none;
-        box-shadow: 0 0 15px purple;
+        border: 1px solid cornflowerblue;
         text-align: center;
         height: 30px;
         transition: 0.3s;
@@ -70,60 +70,36 @@
         outline: none;
     }
     #loader {
-  width: 48px;
-  height: 48px;
-  border: 3px solid purple;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-  position: absolute;
-  margin-top: 16.5px;
-  margin-left: -48.5px;
-  opacity: 0;
-  display: none;
-  transition: 0.2s;
+      width: 50px;
+      height: 50px;
+      background-color: snow;
+      border-radius: 100%;
+      border: 5px solid cornflowerblue;
+      animation: none;
+      position: absolute;
+      margin-left: -50px;
+      margin-top: 15px;
+      opacity: 0;
+      display: none;
 }
-#loader::after {
-  content: '';  
-  position: absolute;
-  box-sizing: border-box;
-  left: 20px;
-  top: 31px;
-  border: 10px solid transparent;
-  border-right-color: purple;
-  transform: rotate(-40deg) scale(0.8);
-}
-#loader2 {
-  width: 48px;
-  height: 48px;
-  border: 3px solid purple;
-  border-bottom-color: transparent;
-  border-radius: 50%;
-  position: relative;
-  box-sizing: border-box;
-  animation: rotation2 1s linear infinite;
-  position: absolute;
-  transition: 0.2s;
-}
-#loader2::after {
-  content: '';  
-  position: absolute;
-  box-sizing: border-box;
-  left: 20px;
-  top: 31px;
-  border: 10px solid transparent;
-  border-right-color: purple;
-  transform: rotate(-40deg);
+#loader2{
+  width: 50px;
+  height: 50px;
+  background-color: snow;
+  border-radius: 100%;
+  border: 5px solid cornflowerblue;
+  animation: blink 1s ease-in-out infinite;
 }
 
-@keyframes rotation2 {
+@keyframes blink {
   0% {
-    transform: rotate(0deg);
+    opacity: 1;
+  }
+  50%{
+    opacity: 0;
   }
   100% {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 } 
 @keyframes rotation {
@@ -135,7 +111,7 @@
   }
 } 
 </style>
-<body>
+<body onload="loadFunction()">
     <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.9; display: flex; justify-content: center; align-items: center;"><span id="loader2"></span></div>
     <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
     <h1 style="margin-bottom: 50px;">Pupulio pamokos</h1>
@@ -144,7 +120,7 @@
         <div id="divLoginInfo">
             <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
             <h1 style="margin-bottom: 50px;">Pupulio pamokos</h1>
-            <div style="width: 90%; height: auto; margin-left: 5%; padding: 15px; border-radius: 25px; background-color: white; box-shadow: 0 0 15px purple;">
+            <div style="width: 90%; height: auto; margin-left: 5%; padding: 15px; border-radius: 25px; background-color: white; box-shadow: 0 0 15px cornflowerblue;">
             <form>
             <p id="el">El. paštas</p>
             <input name="elpastas" id="myInput" type="email" placeholder="El. paštas">
@@ -159,30 +135,30 @@
     <p style="position: fixed; right: 5px; top: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
-        setTimeout(() => {
-                document.getElementById("loading").style.opacity = "1";
-        }, 5000);
+      function loadFunction() {
+        document.getElementById("loading").style.opacity = "1";
         setTimeout(() => {
                 document.getElementById("loading").style.opacity = "0";
-        }, 6000);
+        }, 1000);
         setTimeout(() => {
-                document.getElementById("loading").style.transform = "scale(0.8)";
-        }, 6000);
+                document.getElementById("loading").style.transform = "scale(0)";
+        }, 1000);
         setTimeout(() => {
                 document.getElementById("loading").style.display = "none";
-        }, 6200);
+        }, 1200);
+        }
         function check(form)
         {
             if(form.elpastas.value == "ievakasparav@gmail.com" && form.slaptazodis.value == "Ievute123")
                 {
-                    document.getElementById("myInput").style.boxShadow = "0 0 15px purple";
-                document.getElementById("myInput2").style.boxShadow = "0 0 15px purple";
-                document.getElementById("el").style.color = "purple";
-                document.getElementById("sl").style.color = "purple";
+                    document.getElementById("myInput").style.borderColor = "cornflowerblue";
+                document.getElementById("myInput2").style.borderColor = "cornflowerblue";
+                document.getElementById("el").style.color = "cornflowerblue";
+                document.getElementById("sl").style.color = "cornflowerblue";
                 document.getElementById("loginNow").style.boxShadow = "none";
                 document.getElementById("loginNow").style.pointerEvents = "none";
                 setTimeout(() => {
-                document.getElementById("loginNow").style.boxShadow = "0 0 15px purple";
+                document.getElementById("loginNow").style.boxShadow = "0 0 15px cornflowerblue";
                 }, 200);
                 setTimeout(() => {
                 document.getElementById("loader").style.display = "inline-block";
@@ -192,32 +168,35 @@
                 }, 500);
                 setTimeout(() => {
                 document.getElementById("loader").style.opacity = "1";
-                }, 500);
+                }, 800);
                 setTimeout(() => {
-                document.getElementById("myInput").style.boxShadow = "0 0 15px green";
-                }, 3500);
+                document.getElementById("loader").style.animation = "blink 1s ease-in-out infinite";
+                }, 1100);
                 setTimeout(() => {
-                document.getElementById("myInput2").style.boxShadow = "0 0 15px green";
-                }, 3500);
+                document.getElementById("myInput").style.borderColor = "green";
+                }, 3800);
+                setTimeout(() => {
+                document.getElementById("myInput2").style.borderColor = "green";
+                }, 3800);
                 setTimeout(() => {
                 document.getElementById("el").style.color = "green";
-                }, 3500);
+                }, 3800);
                 setTimeout(() => {
                 document.getElementById("sl").style.color = "green";
-                }, 3500);
+                }, 3800);
                 setTimeout(() => {
                 location.replace("pagrindinis.html")
-                }, 5500);
+                }, 5800);
                 }
             else{
-                document.getElementById("myInput").style.boxShadow = "0 0 15px purple";
-                document.getElementById("myInput2").style.boxShadow = "0 0 15px purple";
-                document.getElementById("el").style.color = "purple";
-                document.getElementById("sl").style.color = "purple";
+                document.getElementById("myInput").style.borderColor = "cornflowerblue";
+                document.getElementById("myInput2").style.borderColor = "cornflowerblue";
+                document.getElementById("el").style.color = "cornflowerblue";
+                document.getElementById("sl").style.color = "cornflowerblue";
                 document.getElementById("loginNow").style.boxShadow = "none";
                 document.getElementById("loginNow").style.pointerEvents = "none";
                 setTimeout(() => {
-                document.getElementById("loginNow").style.boxShadow = "0 0 15px purple";
+                document.getElementById("loginNow").style.boxShadow = "0 0 15px cornflowerblue";
                 }, 200);
                 setTimeout(() => {
                 document.getElementById("loader").style.display = "inline-block";
@@ -227,37 +206,43 @@
                 }, 500);
                 setTimeout(() => {
                 document.getElementById("loader").style.opacity = "1";
-                }, 500);
+                }, 800);
+                setTimeout(() => {
+                document.getElementById("loader").style.animation = "blink 1s ease-in-out infinite";
+                }, 1100);
+                setTimeout(() => {
+                document.getElementById("loader").style.animation = "none";
+                }, 4100);
                 setTimeout(() => {
                 document.getElementById("loader").style.opacity = "0";
-                }, 3500);
+                }, 4100);
                 setTimeout(() => {
                 document.getElementById("loginNow").style.opacity = "1";
-                }, 3500);
+                }, 4100);
                 setTimeout(() => {
-                document.getElementById("myInput").style.boxShadow = "0 0 15px red";
-                }, 3500);
+                document.getElementById("myInput").style.borderColor = "red";
+                }, 4100);
                 setTimeout(() => {
-                document.getElementById("myInput2").style.boxShadow = "0 0 15px red";
-                }, 3500);
+                document.getElementById("myInput2").style.borderColor = "red";
+                }, 4100);
                 setTimeout(() => {
                 document.getElementById("el").style.color = "red";
-                }, 3500);
+                }, 4100);
                 setTimeout(() => {
                 document.getElementById("sl").style.color = "red";
-                }, 3500);
+                }, 4100);
                 setTimeout(() => {
                 document.getElementById("loader").style.display = "none";
-                }, 3700);
+                }, 4300);
                 setTimeout(() => {
                 document.getElementById("loginNow").style.pointerEvents = "all";
-                }, 3700);
+                }, 4300);
             }
         }
         function login() {
             document.getElementById("loginBtn").style.boxShadow = "none";
             setTimeout(() => {
-                document.getElementById("loginBtn").style.boxShadow = "0 0 15px purple";
+                document.getElementById("loginBtn").style.boxShadow = "0 0 15px cornflowerblue";
                 }, 200);
                 setTimeout(() => {
                 document.getElementById("loginDiv").style.display = "flex";
