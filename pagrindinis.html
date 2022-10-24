@@ -141,9 +141,13 @@
             setTimeout(() => {
                 document.getElementById("vadoveliai").style.opacity = "1";
             }, 50);
+            setTimeout(() => {
+                document.getElementById("vadovas").style.display = "none";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("vadovas2").style.display = "inline-block";
+            }, 300);
             document.getElementById("vadoveliai").style.display = "flex";
-            document.getElementById("vadovas").style.display = "none";
-            document.getElementById("vadovas2").style.display = "inline-block";
         }
         function vadoveliaiClose() {
             document.getElementById("vadoveliai").style.transform = "scale(0)";
@@ -151,8 +155,12 @@
             setTimeout(() => {
                 document.getElementById("vadoveliai").style.display = "none";
             }, 300);
-            document.getElementById("vadovas").style.display = "inline-block";
-            document.getElementById("vadovas2").style.display = "none";
+            setTimeout(() => {
+                document.getElementById("vadovas").style.display = "inline-block";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("vadovas2").style.display = "none";
+            }, 300);
         }
         function tasksOpen() {
             document.getElementById("tasks").style.transform = "scale(0.8)";
