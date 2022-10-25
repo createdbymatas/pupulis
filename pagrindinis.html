@@ -189,9 +189,9 @@
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-clipboard-user"></i> Lankomumas:</p>
     <!-- <p style="width: 100%; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open"></i> Nieko nėra... pabandykite vėliau.</p> -->
     <div class="lankymas"><p><i class="fa-solid fa-circle" style="color: green;"></i> 10 16 Matematika</p></div>
-    <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 90px;" id="vadovas" onclick="vadoveliaiOpen()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
+    <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; transition: 0.2s; left: 25%; right: 25%; bottom: 90px;" id="vadovas" onclick="vadoveliaiOpen()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
     <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 90px; display: none;" id="vadovas2" onclick="vadoveliaiClose()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
-    <div style="width: 90%; height: 45px; background-color: white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; display: none; opacity: 0; transform: scale(0); transition: 0.3s; position: fixed; left: 5%; right: 5%; bottom: 120px; text-align: left; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px;" id="vadoveliai"><a href="vadovelis-1pamoka.pdf" target="_blank" onclick="siuncia()" download>1 pamoka: vadovelis-1pamoka.pdf</p></a></div>
+    <div style="width: 90%; height: 70px; background-color: white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; display: none; opacity: 0; transform: scale(0); transition: 0.3s; position: fixed; left: 5%; right: 5%; bottom: 120px; text-align: left; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px;" id="vadoveliai"><p style="margin-top: 0; margin-bottom: 0;"><i class="fa-solid fa-file-arrow-down"></i> Parsisiųsti vadovėlius:</p><a href="vadovelis-1pamoka.pdf" style="margin-top: 0;" target="_blank" onclick="siuncia()" download><p style="margin-top: 0;">1 pamoka: vadovelis-1pamoka.pdf</p></a></div>
     <div id="complete"><p><i class="fa-regular fa-circle-check"></i> Failas atsisiunčiamas...</p></div>
     <p style="position: fixed; right: 5px; top: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
@@ -215,18 +215,22 @@
             }, 5000);
         }
         function vadoveliaiOpen() {
+            document.getElementById("vadovas").style.boxShadow = "none";
+            setTimeout(() => {
+                document.getElementById("vadovas").style.boxShadow = "0 0 15px cornflowerblue";
+            }, 200);
             setTimeout(() => {
                 document.getElementById("vadoveliai").style.transform = "scale(1.0)";
-            }, 50);
+            }, 500);
             setTimeout(() => {
                 document.getElementById("vadoveliai").style.opacity = "1";
-            }, 50);
+            }, 500);
             setTimeout(() => {
                 document.getElementById("vadovas").style.display = "none";
-            }, 400);
+            }, 800);
             setTimeout(() => {
                 document.getElementById("vadovas2").style.display = "inline-block";
-            }, 400);
+            }, 800);
             document.getElementById("vadoveliai").style.display = "block";
         }
         function vadoveliaiClose() {
