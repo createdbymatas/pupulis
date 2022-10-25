@@ -134,6 +134,21 @@
     margin-bottom: 10px;
     background-color: white;
 }
+#complete{
+    width: 90%;
+    height: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 25px;
+    background-color: white;
+    position: fixed;
+    bottom: -100px;
+    left: 5%;
+    right: 5%;
+    z-index: 2;
+    border: 1px solid cornflowerblue;
+    transition: 0.3s;
+}
     </style>
     <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.9; display: flex; justify-content: center; align-items: center;"><span id="loader2"></span></div>
     <img src="logo.jpg" alt="Pupulis" style="width: 50px; border-radius: 100%; text-align: left; left: 20px; top: 70px; position: absolute;">
@@ -176,7 +191,8 @@
     <div class="lankymas"><p><i class="fa-solid fa-circle" style="color: green;"></i> 10 16 Matematika</p></div>
     <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 90px;" id="vadovas" onclick="vadoveliaiOpen()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
     <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 90px; display: none;" id="vadovas2" onclick="vadoveliaiClose()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
-    <div style="width: 90%; height: 100px; background-color: white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; display: flex; justify-content: center; align-items: center; display: none; opacity: 0; transform: scale(0); transition: 0.3s; position: fixed; left: 5%; right: 5%; bottom: 120px;" id="vadoveliai"><p><i class="fa-solid fa-hourglass-half"></i> Informacija ruošiama...</p></div>
+    <div style="width: 90%; height: 45px; background-color: white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; display: none; opacity: 0; transform: scale(0); transition: 0.3s; position: fixed; left: 5%; right: 5%; bottom: 120px; text-align: left; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px;" id="vadoveliai"><a href="vadovelis-1pamoka.pdf" target="_blank" onclick="siuncia()" download>1 pamoka: vadovelis-1pamoka.pdf</p></a></div>
+    <div id="complete"><p><i class="fa-regular fa-circle-check"></i> Failas atsisiunčiamas...</p></div>
     <p style="position: fixed; right: 5px; top: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
@@ -192,6 +208,12 @@
                 document.getElementById("loading").style.display = "none";
         }, 1200);
         }
+        function siuncia() {
+            document.getElementById("complete").style.bottom = "90px";
+            setTimeout(() => {
+                document.getElementById("complete").style.bottom = "-100px";
+            }, 5000);
+        }
         function vadoveliaiOpen() {
             setTimeout(() => {
                 document.getElementById("vadoveliai").style.transform = "scale(1.0)";
@@ -205,7 +227,7 @@
             setTimeout(() => {
                 document.getElementById("vadovas2").style.display = "inline-block";
             }, 400);
-            document.getElementById("vadoveliai").style.display = "flex";
+            document.getElementById("vadoveliai").style.display = "block";
         }
         function vadoveliaiClose() {
             document.getElementById("vadoveliai").style.transform = "scale(0)";
