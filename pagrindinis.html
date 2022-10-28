@@ -178,17 +178,18 @@
     </div>
     <p style="position: absolute; top: 67px; left: 85px;">Ieva Kasparavičiūtė</p>
     <p style="position: fixed; left: 5px; top: -15px; z-index: 4;">2022 - 2023 m.m.</p>
-    <i class="fa-solid fa-circle-info" style="position: absolute; margin-left: 75px; top: 167px;" id="i" onclick="showEvents()"></i>
-    <div style="position: absolute; width: 250px; height: 50px; border: 2px solid cornflowerblue; background-color: white; border-radius: 25px; justify-content: center; align-items: center; right: 5px; top: 105px; opacity: 0; display: none; transition: 0.3s;" id="event"><p>Rodomi šio mėnesio įvykiai.</p></div>
     <h1 style="margin-top: 150px;"><i class="fa-solid fa-calendar-check"></i> Įvykiai</h1>
+    <div style="width: 240px; height: 25px; margin: 0 auto; border: 1px solid lightgrey; background-color: white; border-radius: 25px; justify-content: center; align-items: center; opacity: 1; display: flex; transition: 0.3s;" id="event"><p>Rodomi šio mėnesio įvykiai.</p></div>
     
     
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-pen-nib"></i> Namų darbai:</p>
-    <p style="width: 100%; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open"></i> Nieko nėra... pabandykite vėliau.</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
+    <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-list-check"></i> Užduotys:</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-comment"></i> Komentarai:</p>
-    <p style="width: 100%; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open"></i> Nieko nėra... pabandykite vėliau.</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-clipboard-user"></i> Lankomumas:</p>
-    <!-- <p style="width: 100%; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open"></i> Nieko nėra... pabandykite vėliau.</p> -->
+    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p> -->
     <div class="lankymas"><p><i class="fa-solid fa-circle" style="color: green;"></i> 10 16 Matematika</p></div>
     <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; transition: 0.2s; left: 25%; right: 25%; bottom: 90px;" id="vadovas" onclick="vadoveliaiOpen()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
     <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 90px; display: none;" id="vadovas2" onclick="vadoveliaiClose()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
@@ -246,22 +247,6 @@
             setTimeout(() => {
                 document.getElementById("vadovas2").style.display = "none";
             }, 400);
-        }
-        function showEvents() {
-            document.getElementById("event").style.display = "flex";
-            document.getElementById("i").style.pointerEvents = "none";
-            setTimeout(() => {
-                document.getElementById("event").style.opacity = "1";
-            }, 50);
-            setTimeout(() => {
-                document.getElementById("event").style.opacity = "0";
-            }, 3050);
-            setTimeout(() => {
-                document.getElementById("event").style.display = "none";
-            }, 3350);
-            setTimeout(() => {
-                document.getElementById("i").style.pointerEvents = "all";
-            }, 3350);
         }
         function tasksOpen() {
             document.getElementById("tasks").style.transform = "scale(0.8)";
