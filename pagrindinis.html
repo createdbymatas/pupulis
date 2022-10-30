@@ -147,8 +147,19 @@
     left: 5%;
     right: 5%;
     z-index: 2;
-    border: 1px solid cornflowerblue;
+    box-shadow: 0 0 15px cornflowerblue;
     transition: 0.3s;
+}
+.uzduotis{
+    width: 100%;
+    height: 60px;
+    border-radius: 25px;
+    border: 2px solid cornflowerblue;
+    text-align: left;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: white;
 }
     </style>
     <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.9; display: flex; justify-content: center; align-items: center;"><span id="loader2"></span></div>
@@ -177,15 +188,19 @@
         <p style="font-size: 20px; width: 180px;" onclick="pranesimai()" id="prp"><i class="fa-solid fa-envelope"></i> Pranešimai (0)</p>
     </div>
     <p style="position: absolute; top: 67px; left: 85px;">Ieva Kasparavičiūtė</p>
-    <p style="position: fixed; left: 5px; top: -15px; z-index: 4;">2022 - 2023 m.m.</p>
+    <p style="position: fixed; left: 5px; top: -16px; z-index: 4; background-color: snow; border-radius: 0 0 5px 0;">2022 - 2023 m.m.</p>
     <h1 style="margin-top: 150px;"><i class="fa-solid fa-calendar-check"></i> Įvykiai</h1>
     <div style="width: 240px; height: 25px; margin: 0 auto; border: 1px solid lightgrey; background-color: white; border-radius: 25px; justify-content: center; align-items: center; opacity: 1; display: flex; transition: 0.3s;" id="event"><p>Rodomi šio mėnesio įvykiai.</p></div>
     
     
+    <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-envelope"></i> Pranešimai:</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-pen-nib"></i> Namų darbai:</p>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
+    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p> -->
+    <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">11 04</p><p style="margin-top: -27px;">Atlikti iki</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-chalkboard-user"></i> Dalykas: </i></b>Rusų k.</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-clock"></i> Pamokos data:</i></b> 10 30</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-pen-nib"></i> Namų darbas: </i></b>Atlikti užduotį "Rusų k. pradmenys 1 dalis".</p></div>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-list-check"></i> Užduotys:</p>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
+    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p> -->
+    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Rusų k. pradmenys 1 dalis"</p><p style="position: absolute; top: -18px; right: -1px; padding-left: 4px; background-color: cornflowerblue; color: white; border-radius: 0 25px 25px 0; width: 80px; height: 60px; display: flex; justify-content: center; align-items: center; transition: 0.2s;" onclick="tasksOpen()" id="uzd">Atidaryti užduotis</p></div>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-comment"></i> Komentarai:</p>
     <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-clipboard-user"></i> Lankomumas:</p>
@@ -193,9 +208,9 @@
     <div class="lankymas"><p><i class="fa-solid fa-circle" style="color: green;"></i> 10 16 Matematika</p></div>
     <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; transition: 0.2s; left: 25%; right: 25%; bottom: 90px;" id="vadovas" onclick="vadoveliaiOpen()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
     <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 90px; display: none;" id="vadovas2" onclick="vadoveliaiClose()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
-    <div style="width: 90%; height: 70px; background-color: white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; display: none; opacity: 0; transform: scale(0); transition: 0.3s; position: fixed; left: 5%; right: 5%; bottom: 120px; text-align: left; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px;" id="vadoveliai"><p style="margin-top: 0; margin-bottom: 0;"><i class="fa-solid fa-file-arrow-down"></i> Parsisiųsti vadovėlius:</p><a href="vadovelis-1pamoka.pdf" style="margin-top: 0;" target="_blank" onclick="siuncia()" download><p style="margin-top: 0;">1 pamoka: vadovelis-1pamoka.pdf</p></a></div>
+    <div style="width: 90%; height: 70px; background-color: white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; display: none; opacity: 0; transform: scale(0); transition: 0.3s; position: fixed; left: 5%; right: 5%; bottom: 120px; text-align: left; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px;" id="vadoveliai"><p style="margin-top: 0; margin-bottom: 0;"><i class="fa-solid fa-file-arrow-down"></i> Parsisiųsti vadovėlius:</p><a href="vadovelis-1pamoka.pdf" style="margin-top: 0;" target="_blank" onclick="siuncia()"><p style="margin-top: 0;">1 pamoka: vadovelis-1pamoka.pdf</p></a></div>
     <div id="complete"><p><i class="fa-regular fa-circle-check"></i> Failas atsisiunčiamas...</p></div>
-    <p style="position: fixed; right: 5px; top: -15px; z-index: 10;">Pupulio pamokos &copy;</p>
+    <p style="position: fixed; right: 5px; top: -16px; z-index: 10; background-color: snow; border-radius: 0 0 0 5px;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
         function loadFunction() {
