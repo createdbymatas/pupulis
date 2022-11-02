@@ -114,7 +114,13 @@
 } 
 </style>
 <body onload="loadFunction()">
-    <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.9; display: flex; justify-content: center; align-items: center;"><span id="loader2"></span></div>
+    <div id="loading" style="width: 100%; z-index: 20; transition: 0.3s; overflow: hidden; height: 100%; background-color: white; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
+      <img src="logo.jpg" style="width: 70%;" alt="Pupulio pamokos">
+    </div>
+    <div id="loading2" style="width: 100%; z-index: 19; transition: 0.3s; overflow: hidden; flex-direction: column; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
+      <img src="logo.jpg" style="width: 70%; border-radius: 100%;" alt="Pupulio pamokos">
+      <h1>Pupulio pamokos</h1>
+    </div>
     <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
     <h1 style="margin-bottom: 50px;">Pupulio pamokos</h1>
     <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
@@ -138,17 +144,19 @@
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
       function loadFunction() {
-        document.getElementById("loading").style.opacity = "1";
         setTimeout(() => {
                 document.getElementById("loading").style.opacity = "0";
-        }, 1000);
-        setTimeout(() => {
-                document.getElementById("loading").style.transform = "scale(0)";
-        }, 1000);
+        }, 1500);
         setTimeout(() => {
                 document.getElementById("loading").style.display = "none";
-        }, 1200);
-        }
+        }, 1800);
+        setTimeout(() => {
+                document.getElementById("loading2").style.opacity = "0";
+        }, 5000);
+        setTimeout(() => {
+                document.getElementById("loading2").style.display = "none";
+        }, 5300);
+      }
         function check(form)
         {
             if(form.elpastas.value == "ievakasparav@gmail.com" && form.slaptazodis.value == "Ievute123")
