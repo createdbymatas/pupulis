@@ -22,7 +22,7 @@
         background-color: snow;
         font-family: 'Poppins', sans-serif;
         text-align: center;
-        padding-bottom: 120px;
+        padding-bottom: 85px;
     }
     p{
         transition: 0.2s;
@@ -38,7 +38,7 @@
         display: flex;
         justify-content: space-around;
         align-items: center;
-        border-radius: 25px 25px 0 0;
+        border-radius: none;
         box-shadow: 0 0 15px cornflowerblue;
         z-index: 4;
     }
@@ -61,34 +61,90 @@
         z-index: 6;
         bottom: -550px;
         left: 0;
-        border-radius: 25px 25px 0 0;
+        border-radius: none;
         display: block;
         transform: scale(1.0);
-        transition: 0.2s;
+        transition: 0.2s ease-out;
         text-align: left;
         padding-left: 15px;
         box-shadow: 0 0 15px cornflowerblue;
     }
-#loader2{
-  width: 50px;
-  height: 50px;
-  background-color: snow;
-  border-radius: 100%;
-  border: 5px solid cornflowerblue;
-  animation: blink 1s ease-in-out infinite;
+    .loader,
+.loader:before,
+.loader:after {
+  border-radius: 50%;
 }
-
-@keyframes blink {
+.loader {
+  color: #ffffff;
+  font-size: 11px;
+  text-indent: -99999em;
+  margin: 55px auto;
+  position: relative;
+  width: 10em;
+  height: 10em;
+  box-shadow: inset 0 0 0 1em;
+  -webkit-transform: translateZ(0) scale(0.5);
+  -ms-transform: translateZ(0) scale(0.5);
+  transform: translateZ(0) scale(0.5);
+}
+.loader:before,
+.loader:after {
+  position: absolute;
+  content: '';
+}
+.loader:before {
+  width: 5.2em;
+  height: 10.2em;
+  background: cornflowerblue;
+  border-radius: 10.2em 0 0 10.2em;
+  top: -0.1em;
+  left: -0.1em;
+  -webkit-transform-origin: 5.1em 5.1em;
+  transform-origin: 5.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease 1.5s;
+  animation: load2 2s infinite ease 1.5s;
+}
+.loader:after {
+  width: 5.2em;
+  height: 10.2em;
+  background: cornflowerblue;
+  border-radius: 0 10.2em 10.2em 0;
+  top: -0.1em;
+  left: 4.9em;
+  -webkit-transform-origin: 0.1em 5.1em;
+  transform-origin: 0.1em 5.1em;
+  -webkit-animation: load2 2s infinite ease;
+  animation: load2 2s infinite ease;
+}
+@-webkit-keyframes load2 {
   0% {
-    opacity: 1;
-  }
-  50%{
-    opacity: 0;
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   100% {
-    opacity: 1;
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-} 
+}
+@keyframes load2 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes movina{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
 .pamoka{
     width: 100%; 
     height: auto;
@@ -126,33 +182,75 @@
 .lankymas{
     width: auto;
     height: 50px;
-    border: 2px solid cornflowerblue;
+    border: 2px solid white;
     border-radius: 25px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
-    background-color: white;
+    background-color: cornflowerblue;
+    color: white;
+}
+.lankymas p {
+    color: white;
 }
 #complete{
-    width: 90%;
+    width: 95%;
     height: auto;
     padding-left: 5px;
     padding-right: 5px;
     border-radius: 25px;
-    background-color: white;
+    background-color: cornflowerblue;
     position: fixed;
-    bottom: -100px;
-    left: 5%;
-    right: 5%;
-    z-index: 2;
+    top: -150px;
+    left: 2.5%;
+    right: 2.5%;
+    z-index: 11;
     box-shadow: 0 0 15px cornflowerblue;
-    transition: 0.3s;
+    transition: 0.3s ease-out;
+    color: white;
+}
+#complete p{
+    color: white;
+}
+#complete i{
+    color: white;
+}
+#logouted{
+    width: 95%;
+    height: auto;
+    padding-left: 5px;
+    padding-right: 5px;
+    border-radius: 25px;
+    background-color: cornflowerblue;
+    position: fixed;
+    top: -150px;
+    left: 2.5%;
+    right: 2.5%;
+    z-index: 11;
+    box-shadow: 0 0 15px cornflowerblue;
+    transition: 0.3s ease-out;
+    color: white;
+}
+#logouted p{
+    color: white;
+}
+#logouted i{
+    color: white;
 }
 .uzduotis{
     width: 100%;
-    height: 60px;
+    height: auto;
+    min-height: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    padding-right: 100px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    flex-direction: column;
     border-radius: 25px;
     border: 2px solid cornflowerblue;
     text-align: left;
@@ -161,8 +259,88 @@
     margin-bottom: 10px;
     background-color: white;
 }
+#christmas{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 30px;
+    transition: 0.3s ease-out;
+}
+#christmas div{
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+}
+@keyframes chOne{
+    0%{
+        background-color: red;
+        box-shadow: 0 0 10px red;
+    }
+    32%{
+        background-color: red;
+        box-shadow: 0 0 10px red;
+    }
+    33%{
+        background-color: lightgrey;
+        box-shadow: none;
+    }
+    100%{
+        background-color: lightgrey;
+        box-shadow: none;
+    }
+}
+@keyframes chTwo{
+    0%{
+        background-color: lightgrey;
+        box-shadow: none;
+    }
+    32%{
+        background-color: lightgrey;
+        box-shadow: none;
+    }
+    33%{
+        background-color: green;
+        box-shadow: 0 0 10px green;
+    }
+    65%{
+        background-color: green;
+        box-shadow: 0 0 10px green;
+    }
+    66%{
+        background-color: lightgrey;
+        box-shadow: none;
+    }
+    100%{
+        background-color: lightgrey;
+        box-shadow: none;
+    }
+}
+@keyframes chThree{
+    0%{
+        background-color: lightgrey;
+        box-shadow: none;
+    }
+    65%{
+        background-color: lightgrey;
+        box-shadow: none;
+    }
+    66%{
+        background-color: blue;
+        box-shadow: 0 0 10px blue;
+    }
+    99%{
+        background-color: blue;
+        box-shadow: 0 0 10px blue;
+    }
+    100%{
+        background-color: lightgrey;
+        box-shadow: none;
+    }
+}
     </style>
-    <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 0.9; display: flex; justify-content: center; align-items: center;"><span id="loader2"></span></div>
+    <div id="loading" style="width: 100%; z-index: 20; transition: 0.2s ease-out; height: 100%; background-color: cornflowerblue; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 1; display: flex; justify-content: center; align-items: center;"><div style="animation: movina 2s linear infinite;"><div class="loader">Loading...</div></div></div>
     <img src="logo.jpg" alt="Pupulis" style="width: 50px; border-radius: 100%; text-align: left; left: 20px; top: 70px; position: absolute;">
     <nav>
         <button id="pap" style="opacity: 0.2;"><i class="fa-solid fa-house"></i></button>
@@ -170,10 +348,10 @@
         <button id="logOut" onclick="logOutOpen()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
     </nav>
-    <div style="position: fixed; bottom: 80px; background-color: white; z-index: 5; width: 90%; transform: scale(0); left: 5%; height: 90px; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; opacity: 0; transition: 0.2s; display: none;" id="logOutWindow">
-        <p style="margin: 10px auto;">Ar tikrai norite atsijungti?</p>
-        <p style="border: 1px solid cornflowerblue; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s; display: inline-block; margin: 15px; padding: 2px; margin-top: 0;" id="taip" onclick="logOutOk()">Taip</p>
-        <p style="border: 1px solid cornflowerblue; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s; display: inline-block; margin: 15px; padding: 2px; margin-top: 0;" id="ne" onclick="logOutClose()">Ne</p>
+    <div style="position: fixed; bottom: 80px; background-color: cornflowerblue; z-index: 5; width: 95%; transform: scale(0); left: 2.5%; height: 87px; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; color: white; opacity: 0; transition: 0.2s; display: none;" id="logOutWindow">
+        <p style="margin: 10px auto; color: white;">Baigti sesiją?</p>
+        <p style="border: 1px solid white; color: white; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s; display: inline-block; margin: 15px; padding: 2px; margin-top: 0;" id="taip" onclick="logOutOk()">Taip</p>
+        <p style="border: 1px solid white; color: white; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s; display: inline-block; margin: 15px; padding: 2px; margin-top: 0;" id="ne" onclick="logOutClose()">Ne</p>
     </div>
     <div style="width: 100%; height: 100%; position: fixed; transition: 0.3s; top: 0; left: 0; right: 0; bottom: 0; z-index: 5; background-color: snow; opacity: 0; display: none;" id="background" onclick="menuClose()"></div>
     <div id="menuWindow">
@@ -187,35 +365,47 @@
         <p style="font-size: 20px; width: 180px;" onclick="lankomumas()" id="lap"><i class="fa-solid fa-clipboard-user"></i> Lankomumas</p>
         <p style="font-size: 20px; width: 180px;" onclick="pranesimai()" id="prp"><i class="fa-solid fa-envelope"></i> Pranešimai (0)</p>
     </div>
+    <div id="christmas">
+        <div style="background-color: red; box-shadow: 0 0 10px red; animation: chOne 1s linear infinite;"></div>
+        <div style="background-color: green; box-shadow: 0 0 10px green; animation: chTwo 1s linear infinite;"></div>
+        <div style="background-color: blue; box-shadow: 0 0 10px blue; animation: chThree 1s linear infinite;"></div>
+        <div style="background-color: red; box-shadow: 0 0 10px red; animation: chOne 1s linear infinite;"></div>
+        <div style="background-color: green; box-shadow: 0 0 10px green; animation: chTwo 1s linear infinite;"></div>
+        <div style="background-color: blue; box-shadow: 0 0 10px blue; animation: chThree 1s linear infinite;"></div>
+        <div style="background-color: red; box-shadow: 0 0 10px red; animation: chOne 1s linear infinite;"></div>
+        <div style="background-color: green; box-shadow: 0 0 10px green; animation: chTwo 1s linear infinite;"></div>
+        <div style="background-color: blue; box-shadow: 0 0 10px blue; animation: chThree 1s linear infinite;"></div>
+    </div>
     <p style="position: absolute; top: 67px; left: 85px;">Ieva Kasparavičiūtė</p>
-    <p style="position: fixed; left: 5px; top: -16px; z-index: 4; background-color: snow; border-radius: 0 0 5px 0;">2022 - 2023 m.m.</p>
-    <h1 style="margin-top: 150px;"><i class="fa-solid fa-calendar-check"></i> Įvykiai</h1>
-    <div style="width: 250px; height: 25px; margin: 0 auto; border: 1px solid lightgrey; background-color: white; border-radius: 25px; justify-content: center; align-items: center; opacity: 1; display: flex; transition: 0.3s;" id="event"><p>Rodomi šio mėnesio įvykiai.</p></div>
+    <p style="position: absolute; left: 5px; top: -16px; z-index: 4; background-color: snow; border-radius: 0 0 5px 0; transition: 0.2s ease-out;" id="metai">2022 - 2023 m.m.</p>
+    <h1 style="margin-top: 80px;"><i class="fa-solid fa-calendar-check"></i> Įvykiai</h1>
+    <div style="width: 270px; height: 25px; margin: 0 auto; border: 1px solid white; background-color: cornflowerblue; color: white; border-radius: 25px; justify-content: center; align-items: center; opacity: 1; display: flex; transition: 0.3s;" id="event"><p style="color: white;"><i class="fa-solid fa-circle-info" style="color: white;"></i> Rodomi šio mėnesio įvykiai.</p></div>
     
     
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-envelope"></i> Pranešimai:</p>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-sharp fa-solid fa-graduation-cap"></i> Pažymiai:</p>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-pen-nib"></i> Namų darbai:</p>
-    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p> -->
+    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra.</p> -->
     <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">11 04</p><p style="margin-top: -27px;">Atlikti iki</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-chalkboard-user"></i> Dalykas: </i></b>Rusų k.</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-clock"></i> Pamokos data:</i></b> 10 30</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-pen-nib"></i> Namų darbas: </i></b>Atlikti užduotį "Rusų k. pradmenys 1 dalis".</p></div>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-list-check"></i> Užduotys:</p>
-    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p> -->
-    <div class="uzduotis"><p style="position: absolute; left: 10px; top: -10px;">Užduotis</p><p style="position: absolute; top: 10px; left: 10px;">"Rusų k. pradmenys 1 dalis"</p><p style="position: absolute; top: -18px; right: -1px; background-color: cornflowerblue; color: white; border-radius: 0 25px 25px 0; width: 80px; height: 60px; display: flex; justify-content: center; align-items: center; transition: 0.2s;" onclick="tasksOpen()" id="uzd">Atidaryti užduotis</p></div>
+    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra.</p> -->
+    <div class="uzduotis"><p style="margin: 0;"><i><b><i class="fa-solid fa-list-check"></i> Užduotis</b></i></p><p style="margin: 0;"><i><b><i class="fa-solid fa-clock"></i> Atlikti iki: </b></i>11-04</p><p style="margin: 0;">"Rusų k. pradmenys 1 dalis"</p><p style="position: absolute; top: -26px; right: -1px; background-color: cornflowerblue; color: white; border-radius: 0 25px 0 25px; width: 80px; height: 60px; display: flex; justify-content: center; align-items: center; transition: 0.2s; font-size: 25px;" onclick="tasksOpen()" id="uzd"><i class="fa-solid fa-eye" style="color: white;"></i></p></div>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-comment"></i> Komentarai:</p>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 30px;"><i class="fa-solid fa-clipboard-user"></i> Lankomumas:</p>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra... pabandykite vėliau.</p>
-    <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; transition: 0.2s; left: 25%; right: 25%; bottom: 90px;" id="vadovas" onclick="vadoveliaiOpen()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
-    <button style="width: 50%; height: 30px; background-color: white; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 90px; display: none;" id="vadovas2" onclick="vadoveliaiClose()"><i class="fa-solid fa-book"></i> Vadovėliai</button>
-    <div style="width: 90%; height: 70px; background-color: white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; display: none; opacity: 0; transform: scale(0); transition: 0.3s; position: fixed; left: 5%; right: 5%; bottom: 120px; text-align: left; padding-top: 10px; padding-left: 10px; padding-right: 10px; padding-bottom: 10px;" id="vadoveliai"><p style="margin-top: 0; margin-bottom: 0;"><i class="fa-solid fa-file-arrow-down"></i> Parsisiųsti vadovėlius:</p><a href="vadovelis-1pamoka.pdf" style="margin-top: 0;" target="_blank" onclick="siuncia()"><p style="margin-top: 0;">1 pamoka: vadovelis-1pamoka.pdf</p></a></div>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Nieko nėra.</p>
+    <button style="width: 50%; height: 30px; background-color: cornflowerblue; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px 25px 0 0; font-size: 17px; position: fixed; transition: 0.2s; left: 25%; right: 25%; bottom: 69px; color: white;" id="vadovas" onclick="vadoveliaiOpen()"><i class="fa-solid fa-book" style="color: white;"></i> Vadovėliai</button>
+    <button style="width: 50%; height: 30px; background-color: cornflowerblue; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px 25px 0 0; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 69px; display: none; color: white;" id="vadovas2" onclick="vadoveliaiClose()"><i class="fa-solid fa-book" style="color: white;"></i> Vadovėliai</button>
+    <div style="width: 95%; height: auto; background-color: cornflowerblue; color: white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; display: none; opacity: 0; transform: scale(0); transition: 0.3s; position: fixed; left: 2.5%; right: 2.5%; bottom: 90px; text-align: left; padding-top: 15px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px;" id="vadoveliai"><p style="margin-top: 0; margin-bottom: 0; color: white;"><i class="fa-solid fa-file-arrow-down" style=" color: white;"></i> Parsisiųsti vadovėlius:</p><a href="vadovelis-1pamoka.pdf" style="margin-top: 0; margin-bottom: 0; color: white;" target="_blank" onclick="siuncia()"><p style="margin-top: 0; margin-bottom: 0; color: white;">1 pamoka: vadovelis-1pamoka.pdf</p></a>
+        <a href="vadovelis-2pamoka.pdf" style="margin-top: 0; margin-bottom: 0; color: white;" target="_blank" onclick="siuncia()"><p style="margin-top: 0; margin-bottom: 0; color: white;">2 pamoka: vadovelis-2pamoka.pdf</p></a></div>
     <div id="complete"><p><i class="fa-regular fa-circle-check"></i> Failas atsisiunčiamas...</p></div>
-    <p style="position: fixed; right: 5px; top: -16px; z-index: 10; background-color: snow; border-radius: 0 0 0 5px;">Pupulio pamokos &copy;</p>
+    <div id="logouted"><p><i class="fa-regular fa-circle-check"></i> Sesija baigta.</p></div>
+    <p style="position: absolute; right: 5px; top: -16px; z-index: 4; background-color: snow; border-radius: 0 0 0 5px; transition: 0.2s ease-out;" id="copyPupulis">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
         function loadFunction() {
-        document.getElementById("loading").style.opacity = "1";
         setTimeout(() => {
                 document.getElementById("loading").style.opacity = "0";
         }, 1000);
@@ -223,13 +413,33 @@
                 document.getElementById("loading").style.transform = "scale(0)";
         }, 1000);
         setTimeout(() => {
+                document.getElementById("loading").style.borderRadius = "100px";
+        }, 1000);
+        setTimeout(() => {
                 document.getElementById("loading").style.display = "none";
         }, 1200);
         }
         function siuncia() {
-            document.getElementById("complete").style.bottom = "90px";
+            document.getElementById("complete").style.top = "10px";
+            document.getElementById("copyPupulis").style.opacity = "0";
+            document.getElementById("metai").style.opacity = "0";
+            document.getElementById("christmas").style.opacity = "0";
+            document.getElementById("vadoveliai").style.transform = "scale(0)";
+            document.getElementById("vadoveliai").style.opacity = "0";
             setTimeout(() => {
-                document.getElementById("complete").style.bottom = "-100px";
+                document.getElementById("vadoveliai").style.display = "none";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("vadovas").style.display = "inline-block";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("vadovas2").style.display = "none";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("complete").style.top = "-150px";
+                document.getElementById("copyPupulis").style.opacity = "1";
+                document.getElementById("metai").style.opacity = "1";
+                document.getElementById("christmas").style.opacity = "1";
             }, 5000);
         }
         function vadoveliaiOpen() {
@@ -362,6 +572,17 @@
             setTimeout(() => {
                 document.getElementById("background").style.opacity = "0.9";
             }, 500);
+            document.getElementById("vadoveliai").style.transform = "scale(0)";
+            document.getElementById("vadoveliai").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("vadoveliai").style.display = "none";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("vadovas").style.display = "inline-block";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("vadovas2").style.display = "none";
+            }, 400);
         }
         function menuClose() {
             setTimeout(() => {
@@ -386,7 +607,19 @@
             }, 500);
             setTimeout(() => {
                 document.getElementById("logOutWindow").style.transform = "scale(1.0)";
+                document.getElementById("vadovas").style.opacity = "0";
             }, 500);
+            document.getElementById("vadoveliai").style.transform = "scale(0)";
+            document.getElementById("vadoveliai").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("vadoveliai").style.display = "none";
+            }, 300);
+            setTimeout(() => {
+                document.getElementById("vadovas").style.display = "inline-block";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("vadovas2").style.display = "none";
+            }, 400);
         }
         function logOutClose() {
             document.getElementById("ne").style.transform = "scale(0.8)";
@@ -398,19 +631,35 @@
             }, 500);
             setTimeout(() => {
                 document.getElementById("logOutWindow").style.transform = "scale(0)";
+                document.getElementById("vadovas").style.opacity = "1";
             }, 500);
             setTimeout(() => {
                 document.getElementById("logOutWindow").style.display = "none";
             }, 800);
         }
         function logOutOk() {
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.opacity = "0";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.transform = "scale(0)";
+            }, 500);
+            setTimeout(() => {
+                document.getElementById("logOutWindow").style.display = "none";
+            }, 800);
             document.getElementById("taip").style.transform = "scale(0.8)";
             setTimeout(() => {
                 document.getElementById("taip").style.transform = "scale(1.0)";
             }, 200);
             setTimeout(() => {
-                location.replace("index.html")
+                document.getElementById("logouted").style.top = "10px";
+                document.getElementById("copyPupulis").style.opacity = "0";
+                document.getElementById("metai").style.opacity = "0";
+                document.getElementById("christmas").style.opacity = "0";
             }, 500);
+            setTimeout(() => {
+                location.replace("index.html")
+            }, 1500);
         }
     </script>
 </body>

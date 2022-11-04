@@ -27,10 +27,11 @@
         height: 100px;
         border-radius: 100%;
         box-shadow: 0 0 15px cornflowerblue;
-        background-color: white;
+        background-color: cornflowerblue;
         font-size: 50px;
         transition: 0.2s;
         border: none;
+        color: white;
     }
     p{
         transition: 0.2s;
@@ -72,75 +73,58 @@
         outline: none;
     }
     #loader {
-      width: 50px;
-      height: 50px;
-      background-color: snow;
-      border-radius: 100%;
-      border: 5px solid cornflowerblue;
-      animation: none;
-      position: absolute;
-      margin-left: -50px;
-      margin-top: 15px;
+    width: 50px;
+    height: 50px;
+    border: 5px solid cornflowerblue;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+    position: absolute;
+    margin-top: 15px;
+    margin-left: -50px;
       opacity: 0;
       display: none;
-}
-#loader2{
-  width: 50px;
-  height: 50px;
-  background-color: snow;
-  border-radius: 100%;
-  border: 5px solid cornflowerblue;
-  animation: blink 1s ease-in-out infinite;
-}
+      transition: 0.3s;
+    }
 
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50%{
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-} 
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg) scale(0.8);
-  }
-  100% {
-    transform: rotate(360deg) scale(0.8);
-  }
-} 
+    @keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+    } 
 </style>
 <body onload="loadFunction()">
-    <div id="loading" style="width: 100%; z-index: 20; transition: 0.3s; overflow: hidden; height: 100%; background-color: white; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
-      <img src="logo.jpg" style="width: 70%;" alt="Pupulio pamokos">
-    </div>
-    <div id="loading2" style="width: 100%; z-index: 19; transition: 0.3s; overflow: hidden; flex-direction: column; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
+    <!-- <div id="loading" style="width: 100%; z-index: 20; transition: 0.3s; overflow: hidden; height: 100%; background-color: white; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
+      <img src="logo.jpg" style="width: 70%; opacity: 0; transition: 0.2s;" alt="Pupulio pamokos" onload="loadImage()" id="nuotrauka">
+    </div> -->
+    <!-- <div id="loading2" style="width: 100%; z-index: 19; transition: 0.3s; overflow: hidden; flex-direction: column; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
       <img src="logo.jpg" style="width: 70%; border-radius: 100%;" alt="Pupulio pamokos">
       <h1>Pupulio pamokos</h1>
-    </div>
+    </div> -->
     <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
     <h1 style="margin-bottom: 50px;">Pupulio pamokos</h1>
-    <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+    <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket" style="color: white;"></i></button>
     <div id="loginDiv">
         <div id="divLoginInfo">
             <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
-            <h1 style="margin-bottom: 50px;">Pupulio pamokos</h1>
-            <div style="width: 90%; height: auto; margin-left: 5%; padding: 15px; border-radius: 25px; background-color: white; box-shadow: 0 0 15px cornflowerblue;">
+            <h1 style="margin-bottom: 50px;">Prisijungimas</h1>
+            <div style="width: 100%; height: auto; margin-left: 0; padding: 15px; border-radius: none; background-color: white; box-shadow: 0 0 15px cornflowerblue;">
             <form>
             <p id="el">El. paštas</p>
             <input name="elpastas" id="myInput" type="email" placeholder="El. paštas">
             <p id="sl">Slaptažodis</p>
             <input name="slaptazodis" id="myInput2" type="password" placeholder="Slaptažodis">
-            <button style="width: 50px; height: 50px; font-size: 25px; margin-top: 15px;" type="button" onclick="check(this.form)" id="loginNow"><i class="fa-solid fa-arrow-right-to-bracket"></i></button>
+            <button style="width: 50px; height: 50px; font-size: 25px; margin-top: 15px;" type="button" onclick="check(this.form)" id="loginNow"><i class="fa-solid fa-arrow-right-to-bracket" style="color: white;"></i></button>
             <span id="loader"></span>
             </form>
             </div>
         </div>
     </div>
-    <p style="position: fixed; right: 5px; top: -16px; z-index: 10; background-color: snow; border-radius: 0 0 0 5px;">Pupulio pamokos &copy;</p>
+    <p style="position: absolute; right: 5px; top: -16px; z-index: 10; background-color: snow; border-radius: 0 0 0 5px;">Pupulio pamokos &copy;</p>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
       function loadFunction() {
@@ -154,8 +138,14 @@
                 document.getElementById("loading2").style.opacity = "0";
         }, 5000);
         setTimeout(() => {
+                document.getElementById("loading2").style.top = "-100%";
+        }, 5100);
+        setTimeout(() => {
                 document.getElementById("loading2").style.display = "none";
         }, 5300);
+      }
+      function loadImage() {
+                document.getElementById("nuotrauka").style.opacity = "1";
       }
         function check(form)
         {
@@ -179,9 +169,6 @@
                 setTimeout(() => {
                 document.getElementById("loader").style.opacity = "1";
                 }, 800);
-                setTimeout(() => {
-                document.getElementById("loader").style.animation = "blink 1s ease-in-out infinite";
-                }, 1100);
                 setTimeout(() => {
                 document.getElementById("myInput").style.borderColor = "green";
                 }, 3800);
@@ -217,12 +204,6 @@
                 setTimeout(() => {
                 document.getElementById("loader").style.opacity = "1";
                 }, 800);
-                setTimeout(() => {
-                document.getElementById("loader").style.animation = "blink 1s ease-in-out infinite";
-                }, 1100);
-                setTimeout(() => {
-                document.getElementById("loader").style.animation = "none";
-                }, 4100);
                 setTimeout(() => {
                 document.getElementById("loader").style.opacity = "0";
                 }, 4100);
