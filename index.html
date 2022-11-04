@@ -138,14 +138,13 @@
                 document.getElementById("loading2").style.opacity = "0";
         }, 5000);
         setTimeout(() => {
-                document.getElementById("loading2").style.top = "-100%";
-        }, 5100);
-        setTimeout(() => {
                 document.getElementById("loading2").style.display = "none";
         }, 5300);
       }
       function loadImage() {
-                document.getElementById("nuotrauka").style.opacity = "1";
+        setTimeout(() => {
+            document.getElementById("nuotrauka").style.opacity = "1";
+        }, 300);
       }
         function check(form)
         {
