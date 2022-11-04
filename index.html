@@ -99,7 +99,7 @@
 </style>
 <body onload="loadFunction()">
     <div id="loading" style="width: 100%; z-index: 20; transition: 0.3s; overflow: hidden; height: 100%; background-color: white; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
-      <img src="logo.jpg" style="width: 70%; opacity: 0; transition: 0.2s;" alt="Pupulio pamokos" onload="loadImage()" id="nuotrauka">
+      <img src="logo.jpg" style="width: 70%; opacity: 0; transition: 0.2s;" alt="Pupulio pamokos" id="nuotrauka">
     </div>
     <div id="loading2" style="width: 100%; z-index: 19; transition: 0.3s; overflow: hidden; flex-direction: column; height: 100%; background-color: snow; position: fixed; top: 0; left: 0; right: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
       <img src="logo.jpg" style="width: 70%; border-radius: 100%;" alt="Pupulio pamokos">
@@ -128,6 +128,7 @@
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
       function loadFunction() {
+        document.getElementById("nuotrauka").style.opacity = "1";
         setTimeout(() => {
                 document.getElementById("loading").style.opacity = "0";
         }, 1500);
@@ -140,11 +141,6 @@
         setTimeout(() => {
                 document.getElementById("loading2").style.display = "none";
         }, 5300);
-      }
-      function loadImage() {
-        setTimeout(() => {
-            document.getElementById("nuotrauka").style.opacity = "1";
-        }, 300);
       }
         function check(form)
         {
