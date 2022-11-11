@@ -397,6 +397,20 @@
             opacity: 1;
         }
     }
+    @keyframes empty{
+        0%{
+            opacity: 1;
+        }
+        5%{
+            opacity: 0;
+        }
+        10%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
     </style>
     <div class="screen">
         <i style="color: white; font-size: 200px; animation: phone 2s linear infinite;" class="fa-solid fa-mobile-screen-button"></i>
@@ -409,7 +423,7 @@
         <button id="logOut" onclick="logOutOpen()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
     </nav>
-    <div style="position: fixed; bottom: 80px; border: 2px solid white; background-color: cornflowerblue; z-index: 5; width: 95%; transform: scale(0); left: 2.5%; height: 87px; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; color: white; opacity: 0; transition: 0.2s; display: none;" id="logOutWindow">
+    <div style="position: fixed; bottom: -100px; border: 2px solid white; background-color: cornflowerblue; z-index: 2; width: 95%; left: 2.5%; height: 87px; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; color: white; transition: 0.3s ease-out;" id="logOutWindow">
         <p style="margin: 10px auto; color: white;"><i class="fa-solid fa-arrow-right-from-bracket" style="color: white;"></i> Baigti sesiją?</p>
         <p style="border: 2px solid white; color: white; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s; display: inline-block; margin: 15px; padding: 2px; margin-top: 0;" id="taip" onclick="logOutOk()">Taip</p>
         <p style="border: 2px solid white; color: white; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s; display: inline-block; margin: 15px; padding: 2px; margin-top: 0;" id="ne" onclick="logOutClose()">Ne</p>
@@ -417,7 +431,7 @@
     <div style="width: 100%; height: 100%; position: fixed; transition: 0.3s; top: 0; left: 0; right: 0; bottom: 0; z-index: 5; background-color: snow; opacity: 0; display: none;" id="background" onclick="menuClose()"></div>
     <div id="menuWindow">
         <p style="font-size: 30px; position: absolute; bottom: -15px; right: 25px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
-        <h1>Meniu</h1>
+        <h1><i class="fa-solid fa-bars"></i> Meniu</h1>
         <p style="font-size: 20px; width: 180px;" onclick="tvarkarastis()" id="tvp"><i class="fa-solid fa-calendar-days"></i> Tvarkaraštis</p>
         <p style="font-size: 20px; width: 180px;" onclick="pamokos()" id="pamp"><i class="fa-solid fa-list-check"></i> Pamokos</p>
         <p style="font-size: 20px; width: 180px;" onclick="namudarbai()" id="nap"><i class="fa-solid fa-pen-nib"></i> Namų darbai</p>
@@ -444,25 +458,25 @@
     
     
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 10px;"><i class="fa-solid fa-envelope"></i> Pranešimai:</p>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Pranešimų nėra.</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px; animation: empty 5s linear infinite;"></i> Pranešimų nėra.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 10px;"><i class="fa-sharp fa-solid fa-graduation-cap"></i> Pažymiai:</p>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Pažymių nėra.</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px; animation: empty 5s linear infinite;"></i> Pažymių nėra.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 10px;"><i class="fa-solid fa-pen-nib"></i> Namų darbai:</p>
-    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Namų darbų nėra.</p> -->
+    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px; animation: empty 5s linear infinite;"></i> Namų darbų nėra.</p> -->
     <div class="pamoka" style="border-color: red;"><div class="pamokaInfo" style="background-color: red;"><p style="font-size: 30px; margin-top: 10px;">11 04</p><p style="margin-top: -27px;">Atlikti iki</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0; color: red;"><b><i style="color: red;"><i class="fa-solid fa-chalkboard-user" style="color: red;"></i> Dalykas: </i></b>Rusų k.</p><p style="text-align: left; margin-top: 0; margin-bottom: 0; color: red;"><b><i style="color: red;"><i class="fa-solid fa-clock" style="color: red;"></i> Pamokos data:</i></b> 10 30</p><p style="text-align: left; margin-top: 0; margin-bottom: 0; color: red;"><b><i style="color: red;"><i class="fa-solid fa-pen-nib" style="color: red;"></i> Namų darbas: </i></b>Atlikti užduotį "Rusų k. pradmenys 1 dalis".</p></div>
     <p style="color: red; margin-top: -10px; text-align: left; padding-left: 10px; animation: veluoja 2s linear infinite;"><i class="fa-solid fa-circle-exclamation" style="color: red;"></i> Vėluojama atlikti.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 10px;"><i class="fa-solid fa-list-check"></i> Užduotys:</p>
-    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Užduočių nėra.</p> -->
+    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px; animation: empty 5s linear infinite;"></i> Užduočių nėra.</p> -->
     <div class="uzduotis" style="border-color: red;"><p style="margin: 0; color: red;"><i><b style="color: red;"><i class="fa-solid fa-list-check" style="color: red;"></i> Užduotis</b></i></p><p style="margin: 0; color: red;"><i><b style="color: red;"><i style="color: red;" class="fa-solid fa-clock"></i> Atlikti iki: </b></i>11-04</p><p style="margin: 0; color: red;">"Rusų k. pradmenys 1 dalis"</p><p style="position: absolute; top: -26px; right: -1px; background-color: red; color: white; border-radius: 0 25px 0 25px; width: 80px; height: 60px; display: flex; justify-content: center; align-items: center; transition: 0.2s; font-size: 25px;" onclick="tasksOpen()" id="uzd"><i class="fa-solid fa-eye" style="color: white;"></i></p></div>
     <p style="color: red; margin-top: -10px; text-align: left; padding-left: 10px; animation: veluoja 2s linear infinite;"><i class="fa-solid fa-circle-exclamation" style="color: red;"></i> Vėluojama atlikti.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 10px;"><i class="fa-solid fa-comment"></i> Komentarai:</p>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Komentarų nėra.</p>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px; animation: empty 5s linear infinite;"></i> Komentarų nėra.</p>
     <p style="text-align: left; padding-left: 15px; margin-bottom: 0; margin-top: 10px;"><i class="fa-solid fa-clipboard-user"></i> Lankomumas:</p>
-    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Praėjusių pamokų nėra.</p> -->
+    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px; animation: empty 5s linear infinite;"></i> Praėjusių pamokų nėra.</p> -->
     <div class="lankymas"><p><i class="fa-solid fa-circle" style="color: red;"></i> 11 04 Rusų k.</p></div>
-    <button style="width: 50%; height: 30px; background-color: cornflowerblue; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px 25px 0 0; font-size: 17px; position: fixed; transition: 0.2s; left: 25%; right: 25%; bottom: 69px; color: white; border: 2px solid white; border-bottom-color: cornflowerblue;" id="vadovas" onclick="vadoveliaiOpen()"><i class="fa-solid fa-book" style="color: white;"></i> Vadovėliai</button>
-    <button style="width: 50%; height: 30px; background-color: cornflowerblue; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px 25px 0 0; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 69px; display: none; color: white; border: 2px solid white; border-bottom-color: cornflowerblue;" id="vadovas2" onclick="vadoveliaiClose()"><i class="fa-solid fa-book" style="color: white;"></i> Vadovėliai</button>
-    <div style="width: 95%; height: auto; background-color: cornflowerblue; color: white; border: 2px solid white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; display: none; opacity: 0; transform: scale(0); transition: 0.3s; position: fixed; left: 2.5%; right: 2.5%; bottom: 90px; text-align: left; padding-top: 15px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px;" id="vadoveliai"><p style="margin-top: 0; margin-bottom: 0; color: white;"><i class="fa-solid fa-file-arrow-down" style=" color: white;"></i> Parsisiųsti vadovėlius:</p><a href="vadovelis-1pamoka.pdf" style="margin-top: 0; margin-bottom: 0; color: white;" target="_blank" download onclick="siuncia()"><p style="margin-top: 0; margin-bottom: 0; color: white;">1 pamoka: vadovelis-1pamoka.pdf</p></a>
+    <button style="width: 50%; height: 30px; background-color: cornflowerblue; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px 25px 0 0; font-size: 17px; position: fixed; transition: 0.2s; left: 25%; right: 25%; bottom: 69px; color: white; z-index: 1; border: 2px solid white; border-bottom-color: cornflowerblue;" id="vadovas" onclick="vadoveliaiOpen()"><i class="fa-solid fa-book" style="color: white;"></i> Vadovėliai</button>
+    <button style="width: 50%; height: 30px; background-color: cornflowerblue; box-shadow: 0 0 15px cornflowerblue; border: none; border-radius: 25px 25px 0 0; font-size: 17px; position: fixed; left: 25%; right: 25%; bottom: 69px; display: none; color: white; z-index: 1; border: 2px solid white; border-bottom-color: cornflowerblue;" id="vadovas2" onclick="vadoveliaiClose()"><i class="fa-solid fa-book" style="color: white;"></i> Vadovėliai</button>
+    <div style="width: 95%; height: auto; background-color: cornflowerblue; color: white; border: 2px solid white; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; margin: 20px auto; transition: 0.3s ease-out; position: fixed; left: 2.5%; right: 2.5%; bottom: -150px; text-align: left; padding-top: 15px; padding-left: 15px; padding-right: 15px; padding-bottom: 15px;" id="vadoveliai"><p style="margin-top: 0; margin-bottom: 0; color: white;"><i class="fa-solid fa-file-arrow-down" style=" color: white;"></i> Parsisiųsti vadovėlius:</p><a href="vadovelis-1pamoka.pdf" style="margin-top: 0; margin-bottom: 0; color: white;" target="_blank" download onclick="siuncia()"><p style="margin-top: 0; margin-bottom: 0; color: white;">1 pamoka: vadovelis-1pamoka.pdf</p></a>
         <a href="vadovelis-2pamoka.pdf" style="margin-top: 0; margin-bottom: 0; color: white;" target="_blank" onclick="siuncia()" download><p style="margin-top: 0; margin-bottom: 0; color: white;">2 pamoka: vadovelis-2pamoka.pdf</p></a></div>
     <div id="complete"><p><i class="fa-regular fa-circle-check"></i> Failas atsisiunčiamas...</p></div>
     <div id="logouted"><p><i class="fa-regular fa-circle-check"></i> Sesija baigta.</p></div>
@@ -477,7 +491,7 @@
                 document.getElementById("loading").style.transform = "scale(0)";
         }, 1000);
         setTimeout(() => {
-                document.getElementById("loading").style.borderRadius = "100px";
+                document.getElementById("loading").style.borderRadius = "300px";
         }, 1000);
         setTimeout(() => {
                 document.getElementById("loading").style.display = "none";
@@ -517,10 +531,7 @@
                 document.getElementById("vadovas").style.boxShadow = "0 0 15px cornflowerblue";
             }, 200);
             setTimeout(() => {
-                document.getElementById("vadoveliai").style.transform = "scale(1.0)";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("vadoveliai").style.opacity = "1";
+                document.getElementById("vadoveliai").style.bottom = "90px";
             }, 500);
             setTimeout(() => {
                 document.getElementById("vadovas").style.display = "none";
@@ -528,14 +539,9 @@
             setTimeout(() => {
                 document.getElementById("vadovas2").style.display = "inline-block";
             }, 800);
-            document.getElementById("vadoveliai").style.display = "block";
         }
         function vadoveliaiClose() {
-            document.getElementById("vadoveliai").style.transform = "scale(0)";
-            document.getElementById("vadoveliai").style.opacity = "0";
-            setTimeout(() => {
-                document.getElementById("vadoveliai").style.display = "none";
-            }, 300);
+            document.getElementById("vadoveliai").style.bottom = "-150px";
             setTimeout(() => {
                 document.getElementById("vadovas").style.display = "inline-block";
             }, 400);
@@ -669,20 +675,10 @@
                 document.getElementById("logOut").style.transform = "scale(1.0)";
             }, 200);
             setTimeout(() => {
-                document.getElementById("logOutWindow").style.display = "block";
-            }, 400);
-            setTimeout(() => {
-                document.getElementById("logOutWindow").style.opacity = "1";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("logOutWindow").style.transform = "scale(1.0)";
+                document.getElementById("logOutWindow").style.bottom = "80px";
                 document.getElementById("vadovas").style.opacity = "0";
             }, 500);
-            document.getElementById("vadoveliai").style.transform = "scale(0)";
-            document.getElementById("vadoveliai").style.opacity = "0";
-            setTimeout(() => {
-                document.getElementById("vadoveliai").style.display = "none";
-            }, 300);
+            document.getElementById("vadoveliai").style.bottom = "-150px";
             setTimeout(() => {
                 document.getElementById("vadovas").style.display = "inline-block";
             }, 400);
@@ -696,15 +692,9 @@
                 document.getElementById("ne").style.transform = "scale(1.0)";
             }, 200);
             setTimeout(() => {
-                document.getElementById("logOutWindow").style.opacity = "0";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("logOutWindow").style.transform = "scale(0)";
+                document.getElementById("logOutWindow").style.bottom = "-100px";
                 document.getElementById("vadovas").style.opacity = "1";
             }, 500);
-            setTimeout(() => {
-                document.getElementById("logOutWindow").style.display = "none";
-            }, 800);
         }
         function logOutOk() {
             setTimeout(() => {

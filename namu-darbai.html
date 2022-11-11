@@ -318,6 +318,20 @@
             z-index: -1;
         }
     }
+    @keyframes empty{
+        0%{
+            opacity: 1;
+        }
+        5%{
+            opacity: 0;
+        }
+        10%{
+            opacity: 1;
+        }
+        100%{
+            opacity: 1;
+        }
+    }
     </style>
     <div class="screen">
         <i style="color: white; font-size: 200px; animation: phone 2s linear infinite;" class="fa-solid fa-mobile-screen-button"></i>
@@ -341,7 +355,7 @@
         <button id="logOut" onclick="logOutOpen()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
     </nav>
-    <div style="position: fixed; bottom: 80px; border: 2px solid white; background-color: cornflowerblue; z-index: 5; width: 95%; transform: scale(0); left: 2.5%; height: 87px; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; color: white; opacity: 0; transition: 0.2s; display: none;" id="logOutWindow">
+    <div style="position: fixed; bottom: -100px; border: 2px solid white; background-color: cornflowerblue; z-index: 2; width: 95%; left: 2.5%; height: 87px; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; color: white; transition: 0.3s ease-out;" id="logOutWindow">
         <p style="margin: 10px auto; color: white;"><i class="fa-solid fa-arrow-right-from-bracket" style="color: white;"></i> Baigti sesiją?</p>
         <p style="border: 2px solid white; color: white; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s; display: inline-block; margin: 15px; padding: 2px; margin-top: 0;" id="taip" onclick="logOutOk()">Taip</p>
         <p style="border: 2px solid white; color: white; width: 70px; height: 30px; display: flex; justify-content: center; align-items: center; border-radius: 25px; margin: 10px auto; transition: 0.2s; display: inline-block; margin: 15px; padding: 2px; margin-top: 0;" id="ne" onclick="logOutClose()">Ne</p>
@@ -349,7 +363,7 @@
     <div style="width: 100%; height: 100%; position: fixed; transition: 0.3s; top: 0; left: 0; right: 0; bottom: 0; z-index: 5; background-color: snow; opacity: 0; display: none;" id="background" onclick="menuClose()"></div>
     <div id="menuWindow">
         <p style="font-size: 30px; position: absolute; bottom: -15px; right: 25px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
-        <h1>Meniu</h1>
+        <h1><i class="fa-solid fa-bars"></i> Meniu</h1>
         <p style="font-size: 20px; width: 180px;" onclick="tvarkarastis()" id="tvp"><i class="fa-solid fa-calendar-days"></i> Tvarkaraštis</p>
         <p style="font-size: 20px; width: 180px;" onclick="pamokos()" id="pamp"><i class="fa-solid fa-list-check"></i> Pamokos</p>
         <p style="font-size: 20px; width: 180px; opacity: 0.2;" id="nap"><i class="fa-solid fa-pen-nib"></i> Namų darbai</p>
@@ -360,7 +374,7 @@
     </div>
     <p style="position: absolute; top: 67px; left: 65px; opacity: 0; transition: 1s;" id="vardas">Ieva Kasparavičiūtė</p>
     <h1 style="margin-top: 80px;"><i class="fa-solid fa-pen-nib"></i> Namų darbai</h1>
-    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px;"></i> Namų darbų nėra.</p> -->
+    <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px; animation: empty 5s linear infinite;"></i> Namų darbų nėra.</p> -->
     <!-- <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-circle-check" style="margin-right: 5px;"></i> Visi namų darbai atlikti.</p> -->
     <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">11 04</p><p style="margin-top: -27px;">Atlikti iki</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-chalkboard-user"></i> Dalykas: </i></b>Rusų k.</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-clock"></i> Pamokos data:</i></b> 10 30</p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i><i class="fa-solid fa-pen-nib"></i> Namų darbas: </i></b>Atlikti užduotį "Rusų k. pradmenys 1 dalis".</p></div>
     <p style="text-align: left; display: inline;" id="pad" onclick="padaryta()"><i class="fa-solid fa-user-check"></i> Atlikti namų darbai</p>
@@ -383,7 +397,7 @@
                 document.getElementById("loading").style.transform = "scale(0)";
         }, 1000);
         setTimeout(() => {
-                document.getElementById("loading").style.borderRadius = "100px";
+                document.getElementById("loading").style.borderRadius = "300px";
         }, 1000);
         setTimeout(() => {
                 document.getElementById("loading").style.display = "none";
@@ -537,13 +551,7 @@
                 document.getElementById("logOut").style.transform = "scale(1.0)";
             }, 200);
             setTimeout(() => {
-                document.getElementById("logOutWindow").style.display = "block";
-            }, 400);
-            setTimeout(() => {
-                document.getElementById("logOutWindow").style.opacity = "1";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("logOutWindow").style.transform = "scale(1.0)";
+                document.getElementById("logOutWindow").style.bottom = "80px";
             }, 500);
         }
         function logOutClose() {
@@ -552,14 +560,8 @@
                 document.getElementById("ne").style.transform = "scale(1.0)";
             }, 200);
             setTimeout(() => {
-                document.getElementById("logOutWindow").style.opacity = "0";
+                document.getElementById("logOutWindow").style.bottom = "-100px";
             }, 500);
-            setTimeout(() => {
-                document.getElementById("logOutWindow").style.transform = "scale(0)";
-            }, 500);
-            setTimeout(() => {
-                document.getElementById("logOutWindow").style.display = "none";
-            }, 800);
         }
         function logOutOk() {
             setTimeout(() => {
