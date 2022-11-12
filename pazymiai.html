@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
-<body onload="loadFunction()">
+<body onload="loadFunction()" id="body">
     <style>
         *{
         box-sizing: border-box;
@@ -22,7 +22,10 @@
         background-color: snow;
         font-family: 'Poppins', sans-serif;
         text-align: center;
-        padding-bottom: 65px;
+        padding-bottom: 90px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        height: auto;
     }
     p{
         transition: 0.2s;
@@ -40,7 +43,8 @@
         align-items: center;
         border-radius: none;
         box-shadow: 0 0 15px cornflowerblue;
-        z-index: 4;
+        z-index: 6;
+        transition: 0.3s ease-out;
     }
     nav button{
         width: 60px;
@@ -55,19 +59,19 @@
     }
     #menuWindow{
         width: 100%;
-        height: 495px;
+        height: 440px;
         background-color: white;
         position: fixed;
         z-index: 6;
-        bottom: -550px;
+        bottom: -440px;
         left: 0;
         border-radius: none;
         display: block;
         transform: scale(1.0);
-        transition: 0.2s ease-out;
-        text-align: left;
+        transition: 0.3s ease-out;
+        text-align: right;
         padding-left: 15px;
-        box-shadow: 0 0 15px cornflowerblue;
+        padding-right: 15px;
     }
     .loader,
 .loader:before,
@@ -348,11 +352,12 @@
         <div style="background-color: green; box-shadow: 0 0 10px green; animation: chTwo 1s linear infinite;"></div>
         <div style="background-color: blue; box-shadow: 0 0 10px blue; animation: chThree 1s linear infinite;"></div>
     </div>
-    <nav>
+    <nav id="navigation">
         <button id="pap" onclick="pagrindinis()"><i class="fa-solid fa-house"></i></button>
         <button id="tasks" onclick="tasksOpen()"><i class="fa-solid fa-list-check"></i></button>
         <button id="logOut" onclick="logOutOpen()"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
         <button id="menu" onclick="menuOpen()"><i class="fa-solid fa-bars"></i></button>
+        <button id="x" onclick="menuClose()" style="display: none;"><i class="fa-regular fa-circle-xmark"></i></button>
     </nav>
     <div style="position: fixed; bottom: -100px; border: 2px solid white; background-color: cornflowerblue; z-index: 2; width: 95%; left: 2.5%; height: 87px; border-radius: 25px; box-shadow: 0 0 15px cornflowerblue; color: white; transition: 0.3s ease-out;" id="logOutWindow">
         <p style="margin: 10px auto; color: white;"><i class="fa-solid fa-arrow-right-from-bracket" style="color: white;"></i> Baigti sesiją?</p>
@@ -361,19 +366,18 @@
     </div>
     <div style="width: 100%; height: 100%; position: fixed; transition: 0.3s; top: 0; left: 0; right: 0; bottom: 0; z-index: 5; background-color: snow; opacity: 0; display: none;" id="background" onclick="menuClose()"></div>
     <div id="menuWindow">
-        <p style="font-size: 30px; position: absolute; bottom: -15px; right: 25px; transition: 0.2s;" id="x" onclick="menuClose()"><i class="fa-regular fa-circle-xmark"></i></p>
         <h1><i class="fa-solid fa-bars"></i> Meniu</h1>
-        <p style="font-size: 20px; width: 180px;" onclick="tvarkarastis()" id="tvp"><i class="fa-solid fa-calendar-days"></i> Tvarkaraštis</p>
-        <p style="font-size: 20px; width: 180px;" onclick="pamokos()" id="pamp"><i class="fa-solid fa-list-check"></i> Pamokos</p>
-        <p style="font-size: 20px; width: 180px;" onclick="namudarbai()" id="nap"><i class="fa-solid fa-pen-nib"></i> Namų darbai</p>
-        <p style="font-size: 20px; width: 180px; opacity: 0.2;" id="pazp"><i class="fa-sharp fa-solid fa-graduation-cap"></i> Pažymiai</p>
-        <p style="font-size: 20px; width: 180px;" onclick="komentarai()" id="kop"><i class="fa-solid fa-comment"></i> Komentarai</p>
-        <p style="font-size: 20px; width: 180px;" onclick="lankomumas()" id="lap"><i class="fa-solid fa-clipboard-user"></i> Lankomumas</p>
-        <p style="font-size: 20px; width: 180px;" onclick="pranesimai()" id="prp"><i class="fa-solid fa-envelope"></i> Pranešimai (0)</p>
+        <p style="font-size: 20px;" onclick="tvarkarastis()" id="tvp"><i class="fa-solid fa-calendar-days"></i> Tvarkaraštis</p>
+        <p style="font-size: 20px;" onclick="pamokos()" id="pamp"><i class="fa-solid fa-list-check"></i> Pamokos</p>
+        <p style="font-size: 20px;" onclick="namudarbai()" id="nap"><i class="fa-solid fa-pen-nib"></i> Namų darbai</p>
+        <p style="font-size: 20px; opacity: 0.2;" id="pazp"><i class="fa-sharp fa-solid fa-graduation-cap"></i> Pažymiai</p>
+        <p style="font-size: 20px;" onclick="komentarai()" id="kop"><i class="fa-solid fa-comment"></i> Komentarai</p>
+        <p style="font-size: 20px;" onclick="lankomumas()" id="lap"><i class="fa-solid fa-clipboard-user"></i> Lankomumas</p>
+        <p style="font-size: 20px;" onclick="pranesimai()" id="prp"><i class="fa-solid fa-envelope"></i> Pranešimai (0)</p>
     </div>
     <p style="position: absolute; top: 67px; left: 65px; opacity: 0; transition: 1s;" id="vardas">Ieva Kasparavičiūtė</p>
-    <h1 style="margin-top: 80px;"><i class="fa-sharp fa-solid fa-graduation-cap"></i> Pažymiai</h1>
-    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px; animation: empty 5s linear infinite;"></i> Pažymių nėra.</p>
+    <h1 style="margin-top: 80px; position: sticky; top: 0; background-color: snow; z-index: 2; width: 104%; margin-left: -2%; padding-top: 5px; padding-bottom: 5px;"><i class="fa-sharp fa-solid fa-graduation-cap"></i> Pažymiai</h1>
+    <p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; margin-top: 10px; margin-bottom: 10px; border: 1px solid lightgrey; padding: 15px; border-radius: 25px;"><i class="fa-regular fa-folder-open" style="margin-right: 5px; animation: empty 5s linear infinite;"></i> Pažymių nėra.</p>
     <!-- <div class="pamoka"><div class="pamokaInfo"><p style="font-size: 30px; margin-top: 10px;">09 22</p><p style="margin-top: -27px;">Matematika</p></div><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Tipas:</i></b> <span style="color: green;">Pagyrimas</span></p><p style="text-align: left; margin-top: 0; margin-bottom: 0;"><b><i>Komentaras: </i></b>Gerai atliko užduotis &#128522;</p></div> -->
     <div id="logouted"><p><i class="fa-regular fa-circle-check"></i> Sesija baigta.</p></div>
     <p style="position: absolute; right: 5px; top: -16px; z-index: 4; background-color: snow; border-radius: 0 0 0 5px; transition: 0.2s ease-out;" id="copyPupulis">Pupulio pamokos &copy;</p>
@@ -403,6 +407,13 @@
             setTimeout(() => {
                 document.getElementById("tasks").style.transform = "scale(1.0)";
                 }, 200);
+                document.getElementById("menuWindow").style.bottom = "-440px";
+                document.getElementById("navigation").style.bottom = "-1px";
+                document.getElementById("background").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("menu").style.display = "block";
+                document.getElementById("x").style.display = "none";
+            }, 100);
                 setTimeout(() => {
                 location.replace("uzduotys.html")
                 }, 500);
@@ -412,6 +423,13 @@
             setTimeout(() => {
                 document.getElementById("pap").style.transform = "scale(1.0)";
                 }, 200);
+                document.getElementById("menuWindow").style.bottom = "-440px";
+                document.getElementById("navigation").style.bottom = "-1px";
+                document.getElementById("background").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("menu").style.display = "block";
+                document.getElementById("x").style.display = "none";
+            }, 100);
                 setTimeout(() => {
                 location.replace("pagrindinis.html")
                 }, 500);
@@ -489,7 +507,13 @@
             }, 400);
             setTimeout(() => {
                 document.getElementById("menuWindow").style.bottom = "-1px";
+                document.getElementById("navigation").style.bottom = "438px";
+                document.getElementById("body").style.overflowY = "hidden";
             }, 500);
+            setTimeout(() => {
+                document.getElementById("menu").style.display = "none";
+                document.getElementById("x").style.display = "block";
+            }, 600);
             setTimeout(() => {
                 document.getElementById("background").style.display = "block";
             }, 400);
@@ -501,10 +525,16 @@
             setTimeout(() => {
                 document.getElementById("menuWindow").style.display = "none";
             }, 300);
-                document.getElementById("menuWindow").style.bottom = "-550px";
+                document.getElementById("menuWindow").style.bottom = "-440px";
+                document.getElementById("navigation").style.bottom = "-1px";
+                document.getElementById("body").style.overflowY = "scroll";
             setTimeout(() => {
                 document.getElementById("background").style.display = "none";
             }, 300);
+            setTimeout(() => {
+                document.getElementById("menu").style.display = "block";
+                document.getElementById("x").style.display = "none";
+            }, 100);
                 document.getElementById("background").style.opacity = "0";
         }
         function logOutOpen() {
@@ -515,6 +545,13 @@
             setTimeout(() => {
                 document.getElementById("logOutWindow").style.bottom = "80px";
             }, 500);
+            document.getElementById("menuWindow").style.bottom = "-440px";
+                document.getElementById("navigation").style.bottom = "-1px";
+                document.getElementById("background").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("menu").style.display = "block";
+                document.getElementById("x").style.display = "none";
+            }, 100);
         }
         function logOutClose() {
             document.getElementById("ne").style.transform = "scale(0.8)";
