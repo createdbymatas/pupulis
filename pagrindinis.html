@@ -23,8 +23,7 @@
         font-family: 'Poppins', sans-serif;
         text-align: center;
         padding-bottom: 90px;
-        overflow-x: hidden;
-        overflow-y: scroll;
+        overflow: hidden;
         height: auto;
     }
     p{
@@ -415,7 +414,29 @@
             opacity: 1;
         }
     }
+    @keyframes blink5{
+        0%{
+            opacity: 1;
+        }
+        49.99%{
+            opacity: 1;
+        }
+        50%{
+            opacity: 0;
+        }
+        100%{
+            opacity: 0;
+        }
+    }
     </style>
+    <div style="width: 100%; height: 100%; position: fixed; left: 0; right: 0; bottom: 0; top: 0; background-color: white; z-index: 100; color: black; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <p style="color: black; font-size: 25px; margin: 0;"><i class="fa-solid fa-circle-exclamation" style="color: black;"></i> An error has occured.</p>
+        <p style="color: black; font-size: 20px; margin: 0; margin-top: 15px;">We're looking into the issue.</p>
+        <div style="width: 90px; height: 90px; display: flex; justify-content: center; align-items: center; position: relative; margin: 0; margin-top: 5px;">
+            <i class="fa-solid fa-hammer" style="color: black; position: absolute; font-size: 30px; top: 15px; left: 5px; transform: rotate(-10deg);"></i>
+            <i class="fa-solid fa-triangle-exclamation" style="color: orange; font-size: 50px; animation: blink5 1.5s linear infinite;"></i>
+        </div>
+    </div>
     <div class="screen">
         <i style="color: white; font-size: 200px; animation: phone 2s linear infinite;" class="fa-solid fa-mobile-screen-button"></i>
     </div>
