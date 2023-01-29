@@ -275,8 +275,8 @@
 }
 </style>
     <div id="loading" style="width: 100%; z-index: 100; transition: 0.4s; overflow: hidden; height: 100%; background-color: rgba(242,241,246,255); position: fixed; top: 0; left: 0; bottom: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
-        <img src="logo.jpg" alt="Pupulio pamokos" style="width: 200px;">
-      <div style="width: 40px; height: 40px; border-radius: 100%; display: flex; justify-content: center; align-items: center; transform: scale(1);">
+        <img src="logo.jpg" alt="Pupulio pamokos" style="width: 200px; opacity: 0; position: absolute; margin-top: -100px;" id="image">
+      <div style="width: 40px; height: 40px; border-radius: 100%; display: flex; justify-content: center; align-items: center; transform: scale(1.5);" id="loadStart">
         <div class="ispinner ispinner-large">
             <div class="ispinner-blade"></div>
             <div class="ispinner-blade"></div>
@@ -388,12 +388,19 @@
     <script>
         function loadFunction(){
             setTimeout(() => {
-                document.getElementById("loading").style.left = "-100%";
-                document.getElementById("animationScreen").style.left = "0";
+                document.getElementById("loadStart").style.marginTop = "150px";
+                document.getElementById("loadStart").style.transform = "scale(1)";
             }, 1000);
             setTimeout(() => {
+                document.getElementById("image").style.opacity = "1";
+            }, 1300);
+            setTimeout(() => {
+                document.getElementById("loading").style.left = "-100%";
+                document.getElementById("animationScreen").style.left = "0";
+            }, 3000);
+            setTimeout(() => {
                 document.getElementById("animationScreen").style.border = "none";
-            }, 1400);
+            }, 3400);
         }
         var prevScrollpos = window.pageYOffset;
         window.onscroll = function() {
@@ -604,33 +611,6 @@
                 location.replace('pagrindinis.html');
             }, 3300);
         }
-        // Get the input field
-var input = document.getElementById("myInput2");
-
-// Execute a function when the user presses a key on the keyboard
-input.addEventListener("keypress", function(event) {
-  // If the user presses the "Enter" key on the keyboard
-  if (event.key === "Enter") {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    document.getElementById("loginNow").click();
-  }
-});
-
-// Get the input field
-var input = document.getElementById("myInput");
-
-// Execute a function when the user presses a key on the keyboard
-input.addEventListener("keypress", function(event) {
-  // If the user presses the "Enter" key on the keyboard
-  if (event.key === "Enter") {
-    // Cancel the default action, if needed
-    event.preventDefault();
-    // Trigger the button element with a click
-    document.getElementById("loginNow").click();
-  }
-});
     </script>
 </body>
 </html>
