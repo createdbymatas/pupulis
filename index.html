@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pupulio pamokos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Poppins:wght@500&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
 </head>
 <body onload="loadFunction()" id="body">
 <style>
@@ -16,10 +14,10 @@
         box-sizing: border-box;
         margin: 0;
         padding: 0;
-        font-family: 'Roboto', sans-serif;
+        font-family: 'SF Pro Display', sans-serif;
         user-select: none;
         transition: 0.3s;
-        font-weight: 800;
+        font-weight: 400;
         -webkit-tap-highlight-color: transparent;
     }
     body{
@@ -28,33 +26,34 @@
         transition: 0.3s;
     }
     h1{
-        font-family: 'Poppins', sans-serif;
         text-align: left;
         width: 90%;
-        margin-left: 3.5%;
+        margin-left: 6%;
         margin-top: 0;
-        font-size: 27px;
+        font-size: 35px;
         margin-bottom: 10px;
+        font-weight: 600;
     }
     h2{
-        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 18px;
     }
     button{
-        width: 95%;
-        height: 45px;
+        width: 90%;
+        height: 50px;
         border-radius: 10px;
         border: none;
         background-color: white;
         position: relative;
     }
     input{
-        width: 95%;
-        height: 45px;
+        width: 90%;
+        height: 50px;
         border-radius: 10px;
         border: none;
         background-color: white;
         position: relative;
-        font-size: 15px;
+        font-size: 18px;
         padding-right: 15px;
     }
     input:focus{
@@ -293,18 +292,18 @@
     <div id="animationScreen">
         <img src="logo.jpg" alt="Pupulio pamokos" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 50px; display: block;">
         <h1>Pupulio pamokos</h1>
-        <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; justify-content: center; align-items: center; position: absolute; top: 6.5px; left: 15px; font-size: 15px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Prisijungimas</p> <i class="fa-solid fa-chevron-right" style="color: rgba(201,201,201,255); position: absolute; top: 16.5px; right: 15px; font-size: 13px;"></i></button>
-        <button style="position: absolute; bottom: 60px; left: 2.5%; border-radius: 10px 10px 0 0;"><i class="fa-regular fa-copyright" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; justify-content: center; align-items: center; position: absolute; top: 6.5px; left: 15px; font-size: 15px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Visos teisės saugomos.</p></button>
-        <div style="width: 95%; height: 1px; position: absolute; bottom: 59px; left: 2.5%; padding-left: 62px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(213,213,214,255);"></div>
-        <button style="position: absolute; bottom: 15px; left: 2.5%; border-radius: 0 0 10px 10px;"><i class="fa-solid fa-hammer" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; justify-content: center; align-items: center; position: absolute; top: 6.5px; left: 15px; font-size: 15px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Created by Matas</p></button>
+        <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 9px; left: 15px; font-size: 20px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px;">Prisijungimas</p> <i class="fa-solid fa-chevron-right" style="color: rgba(201,201,201,255); position: absolute; top: 18px; right: 14.3px; font-size: 15px;"></i></button>
+        <button style="position: absolute; bottom: 65px; left: 5%; border-radius: 10px 10px 0 0;"><i class="fa-regular fa-copyright" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 9px; left: 15px; font-size: 20px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px;">Visos teisės saugomos</p></button>
+        <div style="width: 90%; height: 1px; position: absolute; bottom: 64px; left: 5%; padding-left: 62px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(213,213,214,255);"></div>
+        <button style="position: absolute; bottom: 15px; left: 5%; border-radius: 0 0 10px 10px;"><i class="fa-solid fa-hammer" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 9px; left: 15px; font-size: 20px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px;">Created by Matas</p></button>
     </div>
     <div id="loginScreen">
-        <div id="information"><p style="font-size: 16px; position: absolute; left: 7px; bottom: 12.5px; color: rgba(23,120,219,255); display: flex; justify-content: center; align-items: center; font-weight: 300; font-family: 'Inter', sans-serif; transition: 0.15s;" id="back" onclick="closeLogin()"><i class="fa-solid fa-chevron-left" style="font-size: 21px; transition: 0.01s; margin-right: 3px;"></i> Pagrindinis</p><h2>Prisijungimas</h2></div>
+        <div id="information"><p style="font-size: 18px; position: absolute; left: 10px; bottom: 9px; color: rgba(23,120,219,255); display: flex; justify-content: center; align-items: center; font-weight: 100; transition: 0.15s;" id="back" onclick="closeLogin()"><i class="fa-solid fa-chevron-left" style="font-size: 24px; transition: 0.01s; margin-right: 5px;"></i> Pagrindinis</p><h2>Prisijungimas</h2></div>
         <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 110px; display: block;">
-        <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-weight: 300; font-family: 'Inter', sans-serif; font-size: 13px; width: 90%; margin-left: 7.5%; text-align: left; margin-bottom: 7px;">Ankstesni naudotojai</p>
-        <button id="confirm" onclick="confirmLogIn()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; justify-content: center; align-items: center; position: absolute; top: 6.5px; left: 15px; font-size: 15px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Ieva</p> <i class="fa-solid fa-chevron-right" style="color: rgba(201,201,201,255); position: absolute; top: 16.5px; right: 15px; font-size: 13px;"></i></button>
-        <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 10px; margin-bottom: 10px; transition: 0.15s;" id="other" onclick="otherUser()">Kitas naudotojas?</p>
-        <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 355.7px; right: 3%; opacity: 0; display: none; background-color: white;" id="logInLoad">
+        <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 15px; width: 85%; margin-left: 7.5%; text-align: left; margin-bottom: 10px;">Ankstesni naudotojai</p>
+        <button id="confirm" onclick="confirmLogIn()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 9px; left: 15px; font-size: 20px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px;">Ieva</p> <i class="fa-solid fa-chevron-right" style="color: rgba(201,201,201,255); position: absolute; top: 18px; right: 14.3px; font-size: 15px;"></i></button>
+        <p style="color: rgba(23,120,219,255); font-size: 15px; margin-top: 10px; margin-bottom: 10px; transition: 0.15s; font-weight: 500;" id="other" onclick="otherUser()">Kitas naudotojas?</p>
+        <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.65); position: absolute; top: 363px; right: 6%; opacity: 0; display: none; background-color: white;" id="logInLoad">
         <div class="ispinner ispinner-large">
             <div class="ispinner-blade"></div>
             <div class="ispinner-blade"></div>
@@ -317,18 +316,18 @@
           </div>
         </div>
         <div id="logInOther">
-            <h2 style="font-size: 16px; margin-top: 15px; margin-bottom: 15px;">Kitas naudotojas</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 16px; position: absolute; top: 15px; right: 13px; transition: 0.15s;" id="baigta" onclick="finishedOther()">Baigta</h2>
-            <p style="position: absolute; z-index: 1; top: 96.3px; left: 2.5%; width: 90px; padding-left: 15px; text-align: left;">El. paštas</p>
-            <input type="email" style="border-radius: 10px 10px 0 0; padding-left: 100px; margin-top: 30px;" placeholder="El. paštas" id="emailInput">
-            <div style="width: 95%; height: 1px; position: absolute; top: 128.7px; left: 2.5%; padding-left: 15px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(213,213,214,255);"></div>
-            <p style="position: absolute; z-index: 1; top: 141.6px; left: 2.5%; width: 105px; padding-left: 15px; text-align: left;">Slaptažodis</p>
-            <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 115px;" placeholder="Privaloma" id="passwordInput">
-            <button style="margin-top: 30px; color: rgba(23,120,219,255);" id="createNow2" onclick="createError2()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px; transition: 0.01s;">Prisijungti</p></button>
-            <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 10px; margin-bottom: 10px; transition: 0.15s;" id="forgot" onclick="remind()">Pamiršai slaptažodį?</p>
-            <button style="margin-top: 15px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Kurti naują paskyrą</p></button>
-            <p style="color: rgba(130,129,134,255); font-weight: 300; font-family: 'Inter', sans-serif; font-size: 13px; text-align: left; width: 90%; margin-left: 5%; margin-top: 5px;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
-            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 206.8px; right: 3%; opacity: 0; display: none; background-color: white;" id="createLoad2">
+            <h2 style="font-size: 18px; margin-top: 15px; margin-bottom: 15px;">Kitas naudotojas</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 18px; position: absolute; top: 15px; right: 13px; transition: 0.15s;" id="baigta" onclick="finishedOther()">Baigti</h2>
+            <p style="position: absolute; z-index: 1; top: 95.8px; left: 5%; width: 90px; padding-left: 15px; text-align: left; font-size: 18px;">El. paštas</p>
+            <input type="email" style="border-radius: 10px 10px 0 0; padding-left: 95px; margin-top: 30px;" placeholder="El. paštas" id="emailInput">
+            <div style="width: 90%; height: 1px; position: absolute; top: 131.3px; left: 5%; padding-left: 15px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(213,213,214,255);"></div>
+            <p style="position: absolute; z-index: 1; top: 145.8px; left: 5%; width: 105px; padding-left: 15px; text-align: left; font-size: 18px;">Slaptažodis</p>
+            <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 112px;" placeholder="Privaloma" id="passwordInput">
+            <button style="margin-top: 30px; color: rgba(23,120,219,255);" id="createNow2" onclick="createError2()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px; transition: 0.01s;">Prisijungti</p></button>
+            <p style="color: rgba(23,120,219,255); font-size: 15px; margin-top: 10px; margin-bottom: 10px; transition: 0.15s; font-weight: 500;" id="forgot" onclick="remind()">Pamiršai slaptažodį?</p>
+            <button style="margin-top: 15px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px;">Kurti naują paskyrą</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 15px; text-align: left; width: 85%; margin-left: 7.5%; margin-top: 10px;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.65); position: absolute; top: 216.6px; right: 6%; opacity: 0; display: none; background-color: white;" id="createLoad2">
                 <div class="ispinner ispinner-large">
                     <div class="ispinner-blade"></div>
                     <div class="ispinner-blade"></div>
@@ -343,28 +342,28 @@
             <div id="warning2">
                 <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
                 <div id="warningDiv2" style="transform: scale(1.3);">
-                    <h2 style="font-size: 18px; margin-top: 25px; margin-bottom: 10px;">Klaida</h2>
-                    <p style="font-weight: 300; font-family: 'Inter', sans-serif; font-size: 15px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Įvestas el. paštas negalioja.</p>
-                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 17px; color: rgba(23,120,219,255);" onclick="dismissError2()" id="gerai2">Gerai</button>
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px;">Klaida</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Įvestas el. paštas negalioja.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError2()" id="gerai2">Gerai</button>
                 </div>
             </div>
             <div id="warning3">
                 <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
                 <div id="warningDiv3" style="transform: scale(1.3);">
-                    <h2 style="font-size: 18px; margin-top: 25px; margin-bottom: 10px;">Slaptažodžio priminimas</h2>
-                    <p style="font-weight: 300; font-family: 'Inter', sans-serif; font-size: 15px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Dėl slaptažodžio priminimo rašyk savo mokytojui.</p>
-                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 17px; color: rgba(23,120,219,255);" onclick="dismissError3()" id="gerai3">Gerai</button>
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px;">Slaptažodžio priminimas</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Dėl slaptažodžio priminimo rašyk savo mokytojui.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError3()" id="gerai3">Gerai</button>
                 </div>
             </div>
         </div>
         <div id="create">
-            <h2 style="font-size: 16px; margin-top: 15px; margin-bottom: 15px;">Nauja paskyra</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 16px; position: absolute; top: 15px; right: 13px; transition: 0.15s;" id="baigta2" onclick="finishedCreate()">Baigta</h2>
-            <p style="position: absolute; z-index: 1; top: 96.3px; left: 2.5%; width: 160px; padding-left: 15px; text-align: left;">Aktyvavimo kodas</p>
-            <input type="text" style="padding-left: 165px; margin-top: 30px;" placeholder="Privaloma" id="activateInput" maxlength="10">
-            <p style="color: rgba(130,129,134,255); font-weight: 300; font-family: 'Inter', sans-serif; font-size: 13px; text-align: left; width: 90%; margin-left: 5%; margin-top: 5px;">Aktyvavimo kodą tau suteikė tavo mokytojas.</p>
-            <button style="margin-top: 30px; color: rgba(23,120,219,255);" id="createNow" onclick="createError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px; transition: 0.01s;">Kurti paskyrą</p></button>
-            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 182.5px; right: 3%; opacity: 0; display: none; background-color: white;" id="createLoad">
+            <h2 style="font-size: 18px; margin-top: 15px; margin-bottom: 15px;">Nauja paskyra</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 18px; position: absolute; top: 15px; right: 13px; transition: 0.15s;" id="baigta2" onclick="finishedCreate()">Baigti</h2>
+            <p style="position: absolute; z-index: 1; top: 95.9px; left: 5%; width: 160px; padding-left: 15px; text-align: left; font-size: 18px;">Aktyvavimo kodas</p>
+            <input type="number" style="padding-left: 165px; margin-top: 30px;" placeholder="Privaloma" id="activateInput" maxlength="10">
+            <p style="color: rgba(130,129,134,255); font-size: 15px; text-align: left; width: 85%; margin-left: 7.5%; margin-top: 10px;">Aktyvavimo kodą tau suteikė tavo mokytojas.</p>
+            <button style="margin-top: 30px; color: rgba(23,120,219,255);" id="createNow" onclick="createError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px; transition: 0.01s;">Kurti paskyrą</p></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.65); position: absolute; top: 189.3px; right: 6%; opacity: 0; display: none; background-color: white;" id="createLoad">
                 <div class="ispinner ispinner-large">
                     <div class="ispinner-blade"></div>
                     <div class="ispinner-blade"></div>
@@ -379,9 +378,9 @@
             <div id="warning">
                 <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
                 <div id="warningDiv" style="transform: scale(1.3);">
-                    <h2 style="font-size: 18px; margin-top: 25px; margin-bottom: 10px;">Klaida</h2>
-                    <p style="font-weight: 300; font-family: 'Inter', sans-serif; font-size: 15px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Įvestas aktyvavimo kodas negalioja.</p>
-                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 17px; color: rgba(23,120,219,255);" onclick="dismissError()" id="gerai">Gerai</button>
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px;">Klaida</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Įvestas aktyvavimo kodas negalioja.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError()" id="gerai">Gerai</button>
                 </div>
             </div>
         </div>
@@ -454,6 +453,8 @@
             }, 150);
             setTimeout(() => {
                 document.getElementById("logInOther").style.bottom = "-95%";
+                document.getElementById("emailInput").value = '';
+                document.getElementById("passwordInput").value = '';
             }, 350);
         }
         function createAnAccount(){
@@ -485,6 +486,7 @@
             }, 150);
             setTimeout(() => {
                 document.getElementById("create").style.bottom = "-95%";
+                document.getElementById("activateInput").value = '';
             }, 350);
         }
         function createError(){
@@ -510,6 +512,7 @@
                 document.getElementById("createNow").style.color = "rgba(23,120,219,255)";
                 document.getElementById("activateInput").style.pointerEvents = "all";
                 document.getElementById("baigta2").style.pointerEvents = "all";
+                document.getElementById("activateInput").value = '';
             }, 3300);
         }
         function dismissError(){
@@ -549,6 +552,8 @@
                 document.getElementById("createNow2").style.color = "rgba(23,120,219,255)";
                 document.getElementById("passwordInput").style.pointerEvents = "all";
                 document.getElementById("emailInput").style.pointerEvents = "all";
+                document.getElementById("emailInput").value = '';
+                document.getElementById("passwordInput").value = '';
                 document.getElementById("baigta").style.pointerEvents = "all";
                 document.getElementById("createAccount").style.pointerEvents = "all";
                 document.getElementById("forgot").style.pointerEvents = "all";
