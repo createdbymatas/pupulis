@@ -8,322 +8,592 @@
     <title>Pupulio pamokos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Poppins:wght@500&display=swap" rel="stylesheet">
 </head>
+<body onload="loadFunction()" id="body">
 <style>
     *{
         box-sizing: border-box;
-        font-family: 'Poppins', sans-serif;
-        color: cornflowerblue;
+        margin: 0;
+        padding: 0;
+        font-family: 'Inter', sans-serif;
         user-select: none;
+        transition: 0.3s;
+        font-weight: 800;
     }
     body{
-        background-color: snow;
-        font-family: 'Poppins', sans-serif;
+        background-color: rgba(242,241,246,255);
         text-align: center;
+        transition: 0.3s;
+    }
+    h1{
+        font-family: 'Poppins', sans-serif;
+        text-align: left;
+        width: 90%;
+        margin-left: 3.5%;
+        margin-top: 0;
+        font-size: 27px;
+        margin-bottom: 10px;
+    }
+    h2{
+        font-family: 'Poppins', sans-serif;
     }
     button{
-        width: 100px;
-        height: 100px;
-        border-radius: 100%;
-        box-shadow: 0 0 15px cornflowerblue;
-        background-color: cornflowerblue;
-        font-size: 50px;
-        transition: 0.2s;
+        width: 95%;
+        height: 45px;
+        border-radius: 10px;
         border: none;
-        color: white;
-    }
-    p{
-        transition: 0.2s;
-    }
-    #loginDiv{
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 1;
-    }
-    #divLoginInfo{
-        width: 100px;
-        height: 100px;
-        border-radius: 100%;
-        border: none;
-        background-color: snow;
-        transition: 0.2s;
-        position: absolute;
-        margin-bottom: -44px;
-        transform: scale(0.0);
-        overflow: hidden;
+        background-color: white;
+        position: relative;
     }
     input{
-        width: 90%;
-        border-radius: 25px;
+        width: 95%;
+        height: 45px;
+        border-radius: 10px;
         border: none;
-        border: 1px solid cornflowerblue;
-        text-align: center;
-        height: 30px;
-        transition: 0.3s;
+        background-color: white;
+        position: relative;
+        font-size: 15px;
+        padding-right: 15px;
     }
     input:focus{
         outline: none;
     }
-    #loader {
-    width: 50px;
-    height: 50px;
-    border: 5px solid cornflowerblue;
-    border-bottom-color: transparent;
-    border-radius: 50%;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
-    position: absolute;
-    margin-top: 15px;
-    margin-left: -50px;
-      opacity: 0;
-      display: none;
-      transition: 0.3s;
-    }
-
-    @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-    } 
-    .screen{
+    #animationScreen{
         width: 100%;
         height: 100%;
         position: fixed;
         top: 0;
-        left: 0;
-        right: 0;
+        left: 100%;
         bottom: 0;
+        transition: 0.4s;
+        border-left: 1px solid rgba(213,213,214,255);
+    }
+    #loginScreen{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 100%;
+        bottom: 0;
+        transition: 0.4s;
+        border-left: 1px solid rgba(213,213,214,255);
+        z-index: 1;
+    }
+    #information{
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        top: 0;
+        left: 100%;
+        background-color: rgba(242,241,246,255);
+        font-size: 11px;
         display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: cornflowerblue;
-        color: white;
-        z-index: 25;
-        transition: 0.3s;
+        transition: 0.4s;
+        justify-content: space-around;
+        align-items: flex-end;
+        padding-bottom: 10px;
     }
-    @keyframes phone{
-        0%{
-            transform: rotate(-90deg);
-        }
-        20%{
-            transform: rotate(-90deg);
-        }
-        40%{
-            transform: rotate(0);
-        }
-        100%{
-            transform: rotate(0);
-        }
-    }
-    @media only screen and (max-width: 750px){
-        .screen{
-            opacity: 0;
-            z-index: -1;
-        }
-    }
+    .ispinner {
+  position: relative;
+  width: 20px;
+  height: 20px; }
+  .ispinner .ispinner-blade {
+    position: absolute;
+    top: 6.5px;
+    left: 8.5px;
+    width: 2.5px;
+    height: 6.5px;
+    background-color: #8e8e93;
+    border-radius: 1.25px;
+    animation: iSpinnerBlade 1s linear infinite;
+    will-change: opacity; }
+    .ispinner .ispinner-blade:nth-child(1) {
+      transform: rotate(45deg) translateY(-6.5px);
+      animation-delay: -1.625s; }
+    .ispinner .ispinner-blade:nth-child(2) {
+      transform: rotate(90deg) translateY(-6.5px);
+      animation-delay: -1.5s; }
+    .ispinner .ispinner-blade:nth-child(3) {
+      transform: rotate(135deg) translateY(-6.5px);
+      animation-delay: -1.375s; }
+    .ispinner .ispinner-blade:nth-child(4) {
+      transform: rotate(180deg) translateY(-6.5px);
+      animation-delay: -1.25s; }
+    .ispinner .ispinner-blade:nth-child(5) {
+      transform: rotate(225deg) translateY(-6.5px);
+      animation-delay: -1.125s; }
+    .ispinner .ispinner-blade:nth-child(6) {
+      transform: rotate(270deg) translateY(-6.5px);
+      animation-delay: -1s; }
+    .ispinner .ispinner-blade:nth-child(7) {
+      transform: rotate(315deg) translateY(-6.5px);
+      animation-delay: -0.875s; }
+    .ispinner .ispinner-blade:nth-child(8) {
+      transform: rotate(360deg) translateY(-6.5px);
+      animation-delay: -0.75s; }
+  .ispinner.ispinner-large {
+    width: 35px;
+    height: 35px; }
+    .ispinner.ispinner-large .ispinner-blade {
+      top: 11.5px;
+      left: 15px;
+      width: 5px;
+      height: 12px;
+      border-radius: 2.5px; }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(1) {
+        transform: rotate(45deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(2) {
+        transform: rotate(90deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(3) {
+        transform: rotate(135deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(4) {
+        transform: rotate(180deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(5) {
+        transform: rotate(225deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(6) {
+        transform: rotate(270deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(7) {
+        transform: rotate(315deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(8) {
+        transform: rotate(360deg) translateY(-11.5px); }
+
+@keyframes iSpinnerBlade {
+  0% {
+    opacity: 0.85; }
+  50% {
+    opacity: 0.25; }
+  100% {
+    opacity: 0.25; } }
+
+::placeholder {
+  color: rgba(201,201,201,255);
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: rgba(201,201,201,255);
+}
+
+::-ms-input-placeholder {
+  color: rgba(201,201,201,255);
+}
+#logInOther{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    position: fixed;
+    bottom: -95%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#create{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    position: fixed;
+    bottom: -95%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#warning{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+}
+#warning div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
+#warning2{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+}
+#warning2 div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
+#warning3{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+}
+#warning3 div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
 </style>
-<body onload="loadFunction()">
-    <div class="screen">
-        <i style="color: white; font-size: 200px; animation: phone 2s linear infinite;" class="fa-solid fa-mobile-screen-button"></i>
-    </div>
-    <div id="loading" style="width: 100%; z-index: 20; transition: 0.3s; overflow: hidden; height: 100%; background-color: white; position: fixed; top: 0; left: 0; right: 0; bottom: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
-      <img src="logo.jpg" style="width: 70%; opacity: 0; transition: 0.2s;" alt="Pupulio pamokos" id="nuotrauka">
-    </div>
-    <div id="loading2" style="width: 100%; z-index: 19; transition: 0.2s; overflow: hidden; flex-direction: column; height: 100%; background-color: white; position: fixed; top: 0; left: 0; right: 0; opacity: 1; display: flex; justify-content: center; align-items: center;">
-      <img src="logo.jpg" style="width: 70%; border-radius: 100%; transition: 1s;" alt="Pupulio pamokos" id="pupuliukas">
-      <h1 style="display: none; height: 0; margin: 0; padding: 0; overflow: hidden; transition: 1s;" id="pamokos">Pupulio pamokos</h1>
-    </div>
-    <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
-    <h1 style="margin-bottom: 50px;">Pupulio pamokos</h1>
-    <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket" style="color: white;"></i></button>
-    <div id="loginDiv">
-        <div id="divLoginInfo">
-            <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 50px auto; display: block;">
-            <h1 style="margin-bottom: 50px;">Prisijungimas</h1>
-            <div style="width: 100%; height: auto; margin-left: 0; padding: 15px; border-radius: none; background-color: white; box-shadow: 0 0 15px cornflowerblue;">
-            <form>
-            <p id="el">El. paštas</p>
-            <input name="elpastas" id="myInput" type="email" placeholder="El. paštas">
-            <p id="sl">Slaptažodis</p>
-            <input name="slaptazodis" id="myInput2" type="password" placeholder="Slaptažodis">
-            <button style="width: 50px; height: 50px; font-size: 25px; margin-top: 15px;" type="button" onclick="check(this.form)" id="loginNow"><i class="fa-solid fa-arrow-right-to-bracket" style="color: white;"></i></button>
-            <span id="loader"></span>
-            </form>
-            </div>
+    <div id="loading" style="width: 100%; z-index: 100; transition: 0.4s; overflow: hidden; height: 100%; background-color: rgba(242,241,246,255); position: fixed; top: 0; left: 0; bottom: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <img src="logo.jpg" alt="Pupulio pamokos" style="width: 200px;">
+      <div style="width: 40px; height: 40px; border-radius: 100%; display: flex; justify-content: center; align-items: center; transform: scale(1);">
+        <div class="ispinner ispinner-large">
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+          </div>
         </div>
     </div>
-    <div style="width: 100%; height: 130px; display: flex; justify-content: space-around; align-items: center; flex-direction: column; position: fixed; bottom: 0; left: 0; right: 0; z-index: 0;">
-    <div style="width: 100%; height: 70px; display: flex; justify-content: space-around; align-items: center; flex-direction: column;">
-    <p style="margin: 0;">Visos teisės saugomos.</p>
-    <p style="margin: 0;">Be leidimo kopijuoti draudžiama.</p>
+    <div id="animationScreen">
+        <img src="logo.jpg" alt="Pupulio pamokos" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 50px; display: block;">
+        <h1>Pupulio pamokos</h1>
+        <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; justify-content: center; align-items: center; position: absolute; top: 6.5px; left: 15px; font-size: 15px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Prisijungimas</p> <i class="fa-solid fa-chevron-right" style="color: rgba(201,201,201,255); position: absolute; top: 16.5px; right: 15px; font-size: 13px;"></i></button>
+        <button style="position: absolute; bottom: 60px; left: 2.5%; border-radius: 10px 10px 0 0;"><i class="fa-regular fa-copyright" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; justify-content: center; align-items: center; position: absolute; top: 6.5px; left: 15px; font-size: 15px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Visos teisės saugomos.</p></button>
+        <div style="width: 95%; height: 1px; position: absolute; bottom: 59px; left: 2.5%; padding-left: 62px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(213,213,214,255);"></div>
+        <button style="position: absolute; bottom: 15px; left: 2.5%; border-radius: 0 0 10px 10px;"><i class="fa-solid fa-hammer" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; justify-content: center; align-items: center; position: absolute; top: 6.5px; left: 15px; font-size: 15px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Created by Matas</p></button>
     </div>
-    <p style="margin: 0;">Created by Matas</p>
-    </div>
-    <p style="position: absolute; right: 5px; top: -16px; z-index: 10; background-color: snow; border-radius: 0 0 0 5px;">Pupulio pamokos &copy;</p>
+    <div id="loginScreen">
+        <div id="information"><p style="font-size: 16px; position: absolute; left: 7px; bottom: 12.5px; color: rgba(23,120,219,255); display: flex; justify-content: center; align-items: center; font-weight: 300; transition: 0.15s;" id="back" onclick="closeLogin()"><i class="fa-solid fa-chevron-left" style="font-size: 21px; transition: 0.01s; margin-right: 3px;"></i> Pagrindinis</p><h2>Prisijungimas</h2></div>
+        <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 110px; display: block;">
+        <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-weight: 300; font-size: 13px; width: 90%; margin-left: 7.5%; text-align: left; margin-bottom: 7px;">Ankstesni naudotojai</p>
+        <button id="confirm" onclick="confirmLogIn()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 32px; height: 32px; border-radius: 10px; display: flex; justify-content: center; align-items: center; position: absolute; top: 6.5px; left: 15px; font-size: 15px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 62px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Ieva</p> <i class="fa-solid fa-chevron-right" style="color: rgba(201,201,201,255); position: absolute; top: 16.5px; right: 15px; font-size: 13px;"></i></button>
+        <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 10px; margin-bottom: 10px; transition: 0.15s;" id="other" onclick="otherUser()">Kitas naudotojas?</p>
+        <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 355.7px; right: 3%; opacity: 0; display: none; background-color: white;" id="logInLoad">
+        <div class="ispinner ispinner-large">
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+            <div class="ispinner-blade"></div>
+          </div>
+        </div>
+        <div id="logInOther">
+            <h2 style="font-size: 16px; margin-top: 15px; margin-bottom: 15px;">Kitas naudotojas</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 16px; position: absolute; top: 15px; right: 13px; transition: 0.15s;" id="baigta" onclick="finishedOther()">Baigta</h2>
+            <p style="position: absolute; z-index: 1; top: 96.3px; left: 2.5%; width: 90px; padding-left: 15px; text-align: left;">El. paštas</p>
+            <input type="email" style="border-radius: 10px 10px 0 0; padding-left: 100px; margin-top: 30px;" placeholder="El. paštas" id="emailInput">
+            <div style="width: 95%; height: 1px; position: absolute; top: 128.7px; left: 2.5%; padding-left: 15px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(213,213,214,255);"></div>
+            <p style="position: absolute; z-index: 1; top: 141.6px; left: 2.5%; width: 105px; padding-left: 15px; text-align: left;">Slaptažodis</p>
+            <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 115px;" placeholder="Privaloma" id="passwordInput">
+            <button style="margin-top: 30px; color: rgba(23,120,219,255);" id="createNow2" onclick="createError2()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px; transition: 0.01s;">Prisijungti</p></button>
+            <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 10px; margin-bottom: 10px; transition: 0.15s;" id="forgot" onclick="remind()">Pamiršai slaptažodį?</p>
+            <button style="margin-top: 15px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px;">Kurti naują paskyrą</p></button>
+            <p style="color: rgba(130,129,134,255); font-weight: 300; font-size: 13px; text-align: left; width: 90%; margin-left: 5%; margin-top: 5px;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 206.8px; right: 3%; opacity: 0; display: none; background-color: white;" id="createLoad2">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <div id="warning2">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningDiv2" style="transform: scale(1.3);">
+                    <h2 style="font-size: 18px; margin-top: 25px; margin-bottom: 10px;">Klaida</h2>
+                    <p style="font-weight: 300; font-size: 15px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Įvestas el. paštas negalioja.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 17px; color: rgba(23,120,219,255);" onclick="dismissError2()" id="gerai2">Gerai</button>
+                </div>
+            </div>
+            <div id="warning3">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningDiv3" style="transform: scale(1.3);">
+                    <h2 style="font-size: 18px; margin-top: 25px; margin-bottom: 10px;">Slaptažodžio priminimas</h2>
+                    <p style="font-weight: 300; font-size: 15px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Dėl slaptažodžio priminimo rašyk savo mokytojui.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 17px; color: rgba(23,120,219,255);" onclick="dismissError3()" id="gerai3">Gerai</button>
+                </div>
+            </div>
+        </div>
+        <div id="create">
+            <h2 style="font-size: 16px; margin-top: 15px; margin-bottom: 15px;">Nauja paskyra</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 16px; position: absolute; top: 15px; right: 13px; transition: 0.15s;" id="baigta2" onclick="finishedCreate()">Baigta</h2>
+            <p style="position: absolute; z-index: 1; top: 96.3px; left: 2.5%; width: 160px; padding-left: 15px; text-align: left;">Aktyvavimo kodas</p>
+            <input type="text" style="padding-left: 165px; margin-top: 30px;" placeholder="Privaloma" id="activateInput" maxlength="10">
+            <p style="color: rgba(130,129,134,255); font-weight: 300; font-size: 13px; text-align: left; width: 90%; margin-left: 5%; margin-top: 5px;">Aktyvavimo kodą tau suteikė tavo mokytojas.</p>
+            <button style="margin-top: 30px; color: rgba(23,120,219,255);" id="createNow" onclick="createError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 15px; transition: 0.01s;">Kurti paskyrą</p></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 182.5px; right: 3%; opacity: 0; display: none; background-color: white;" id="createLoad">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <div id="warning">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningDiv" style="transform: scale(1.3);">
+                    <h2 style="font-size: 18px; margin-top: 25px; margin-bottom: 10px;">Klaida</h2>
+                    <p style="font-weight: 300; font-size: 15px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Įvestas aktyvavimo kodas negalioja.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 17px; color: rgba(23,120,219,255);" onclick="dismissError()" id="gerai">Gerai</button>
+                </div>
+            </div>
+        </div>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
-      function loadFunction() {
-        document.getElementById("nuotrauka").style.opacity = "1";
-        setTimeout(() => {
-                document.getElementById("loading").style.opacity = "0";
-        }, 1500);
-        setTimeout(() => {
-                document.getElementById("pupuliukas").style.transform = "perspective(500px) rotateY(-180deg)";
-        }, 2000);
-        setTimeout(() => {
-                document.getElementById("loading").style.display = "none";
-        }, 1800);
-        setTimeout(() => {
-                document.getElementById("pupuliukas").style.transform = "perspective(500px) rotateY(-180deg)";
-        }, 2000);
-        setTimeout(() => {
-                document.getElementById("pamokos").style.display = "block";
-        }, 2950);
-        setTimeout(() => {
-                document.getElementById("pamokos").style.height = "50px";
-                document.getElementById("pamokos").style.marginTop = "10px";
-        }, 3000);
-        setTimeout(() => {
-                document.getElementById("pamokos").style.height = "0";
-                document.getElementById("pamokos").style.marginTop = "0";
-        }, 4900);
-        setTimeout(() => {
-                document.getElementById("loading2").style.opacity = "0";
-        }, 5000);
-        setTimeout(() => {
-                document.getElementById("loading2").style.display = "none";
-        }, 5300);
-      }
-        function check(form)
-        {
-            if(form.elpastas.value == "ievakasparav@gmail.com" && form.slaptazodis.value == "Ievute123")
-                {
-                    document.getElementById("myInput").style.borderColor = "cornflowerblue";
-                document.getElementById("myInput2").style.borderColor = "cornflowerblue";
-                document.getElementById("el").style.color = "cornflowerblue";
-                document.getElementById("sl").style.color = "cornflowerblue";
-                document.getElementById("loginNow").style.boxShadow = "none";
-                document.getElementById("loginNow").style.pointerEvents = "none";
-                setTimeout(() => {
-                document.getElementById("loginNow").style.boxShadow = "0 0 15px cornflowerblue";
-                }, 200);
-                setTimeout(() => {
-                document.getElementById("loader").style.display = "inline-block";
-                }, 200);
-                setTimeout(() => {
-                document.getElementById("loginNow").style.opacity = "0";
-                }, 500);
-                setTimeout(() => {
-                document.getElementById("loader").style.opacity = "1";
-                }, 800);
-                setTimeout(() => {
-                document.getElementById("myInput").style.borderColor = "green";
-                }, 3800);
-                setTimeout(() => {
-                document.getElementById("myInput2").style.borderColor = "green";
-                }, 3800);
-                setTimeout(() => {
-                document.getElementById("el").style.color = "green";
-                }, 3800);
-                setTimeout(() => {
-                document.getElementById("sl").style.color = "green";
-                }, 3800);
-                setTimeout(() => {
-                location.replace("pagrindinis.html")
-                }, 5800);
-                }
-            else{
-                document.getElementById("myInput").style.borderColor = "cornflowerblue";
-                document.getElementById("myInput2").style.borderColor = "cornflowerblue";
-                document.getElementById("el").style.color = "cornflowerblue";
-                document.getElementById("sl").style.color = "cornflowerblue";
-                document.getElementById("loginNow").style.boxShadow = "none";
-                document.getElementById("loginNow").style.pointerEvents = "none";
-                setTimeout(() => {
-                document.getElementById("loginNow").style.boxShadow = "0 0 15px cornflowerblue";
-                }, 200);
-                setTimeout(() => {
-                document.getElementById("loader").style.display = "inline-block";
-                }, 200);
-                setTimeout(() => {
-                document.getElementById("loginNow").style.opacity = "0";
-                }, 500);
-                setTimeout(() => {
-                document.getElementById("loader").style.opacity = "1";
-                }, 800);
-                setTimeout(() => {
-                document.getElementById("loader").style.opacity = "0";
-                }, 4100);
-                setTimeout(() => {
-                document.getElementById("loginNow").style.opacity = "1";
-                }, 4100);
-                setTimeout(() => {
-                document.getElementById("myInput").style.borderColor = "red";
-                }, 4100);
-                setTimeout(() => {
-                document.getElementById("myInput2").style.borderColor = "red";
-                }, 4100);
-                setTimeout(() => {
-                document.getElementById("el").style.color = "red";
-                }, 4100);
-                setTimeout(() => {
-                document.getElementById("sl").style.color = "red";
-                }, 4100);
-                setTimeout(() => {
-                document.getElementById("loader").style.display = "none";
-                }, 4300);
-                setTimeout(() => {
-                document.getElementById("loginNow").style.pointerEvents = "all";
-                }, 4300);
-            }
-        }
-        function login() {
-            document.getElementById("loginBtn").style.boxShadow = "none";
+        function loadFunction(){
             setTimeout(() => {
-                document.getElementById("loginBtn").style.boxShadow = "0 0 15px cornflowerblue";
-                }, 200);
-                setTimeout(() => {
-                document.getElementById("loginDiv").style.display = "flex";
-                }, 400);
-                setTimeout(() => {
-                document.getElementById("divLoginInfo").style.transform = "scale(1.0)";
-                }, 500);
-                setTimeout(() => {
-                document.getElementById("divLoginInfo").style.width = "100%";
-                }, 500);
-                setTimeout(() => {
-                document.getElementById("divLoginInfo").style.height = "100%";
-                }, 500);
-                setTimeout(() => {
-                document.getElementById("divLoginInfo").style.top = "0";
-                }, 700);
-                setTimeout(() => {
-                document.getElementById("divLoginInfo").style.left = "0";
-                }, 700);
-                setTimeout(() => {
-                document.getElementById("divLoginInfo").style.right = "0";
-                }, 700);
-                setTimeout(() => {
-                document.getElementById("divLoginInfo").style.bottom = "0";
-                }, 700);
-                setTimeout(() => {
-                document.getElementById("divLoginInfo").style.marginBottom = "0";
-                }, 500);
-                setTimeout(() => {
-                document.getElementById("divLoginInfo").style.borderRadius = "0";
-                }, 500);
+                document.getElementById("loading").style.left = "-100%";
+                document.getElementById("animationScreen").style.left = "0";
+            }, 1000);
+            setTimeout(() => {
+                document.getElementById("animationScreen").style.border = "none";
+            }, 1400);
+        }
+        var prevScrollpos = window.pageYOffset;
+        window.onscroll = function() {
+        var currentScrollPos = window.pageYOffset;
+        if (prevScrollpos > currentScrollPos) {
+            document.getElementById("information").style.backgroundColor = "rgba(242,241,246,255)";
+        } else {
+            document.getElementById("information").style.backgroundColor = "white";
+        }
+        prevScrollpos = currentScrollPos;
+        }
+        function login(){
+                document.getElementById("loginBtn").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("loginBtn").style.backgroundColor = "white";
+                document.getElementById("animationScreen").style.left = "-100%";
+                document.getElementById("loginScreen").style.left = "0";
+                document.getElementById("information").style.left = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("loginScreen").style.border = "none";
+            }, 550);
+        }
+        function closeLogin(){
+                document.getElementById("back").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("back").style.color = "rgba(23,120,219,255)";
+                document.getElementById("animationScreen").style.left = "0";
+                document.getElementById("loginScreen").style.left = "100%";
+                document.getElementById("information").style.left = "100%";
+                document.getElementById("loginScreen").style.borderLeft = "1px solid rgba(213,213,214,255)";
+            }, 150);
+        }
+        function otherUser(){
+            document.getElementById("other").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("other").style.color = "rgba(23,120,219,255)";
+                document.getElementById("logInOther").style.bottom = "-1px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("information").style.top = "4.2%";
+                document.getElementById("information").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information").style.width = "95%";
+                document.getElementById("information").style.left = "2.5%";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
+        }
+        function finishedOther(){
+            document.getElementById("baigta").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigta").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information").style.top = "0";
+                document.getElementById("information").style.borderRadius = "0";
+                document.getElementById("information").style.width = "100%";
+                document.getElementById("information").style.left = "0";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("logInOther").style.bottom = "-95%";
+            }, 350);
+        }
+        function createAnAccount(){
+            document.getElementById("createAccount").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("createAccount").style.backgroundColor = "white";
+                document.getElementById("create").style.bottom = "-1px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("information").style.top = "3.4%";
+                document.getElementById("information").style.width = "90%";
+                document.getElementById("information").style.left = "5%";
+                document.getElementById("logInOther").style.bottom = "0.8%";
+                document.getElementById("logInOther").style.width = "95%";
+                document.getElementById("logInOther").style.left = "2.5%";
+            }, 350);
+        }
+        function finishedCreate(){
+            document.getElementById("baigta2").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigta2").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information").style.top = "4.2%";
+                document.getElementById("information").style.opacity = "0.9";
+                document.getElementById("information").style.width = "95%";
+                document.getElementById("information").style.left = "2.5%";
+                document.getElementById("logInOther").style.bottom = "-1px";
+                document.getElementById("logInOther").style.width = "100%";
+                document.getElementById("logInOther").style.left = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("create").style.bottom = "-95%";
+            }, 350);
+        }
+        function createError(){
+                document.getElementById("createNow").style.color = "rgba(201,201,201,255)";
+                document.getElementById("createNow").style.backgroundColor = "rgba(201,201,201,255)";
+                document.getElementById("createLoad").style.display = "flex";
+                document.getElementById("createNow").style.pointerEvents = "none";
+                document.getElementById("activateInput").style.pointerEvents = "none";
+                document.getElementById("baigta2").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("createLoad").style.opacity = "1";
+                document.getElementById("createNow").style.backgroundColor = "white";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning").style.display = "flex";
+            }, 3250);
+            setTimeout(() => {
+                document.getElementById("createLoad").style.opacity = "1";
+                document.getElementById("warning").style.opacity = "1";
+                document.getElementById("warningDiv").style.transform = "scale(1)";
+                document.getElementById("createLoad").style.opacity = "0";
+                document.getElementById("createNow").style.pointerEvents = "all";
+                document.getElementById("createNow").style.color = "rgba(23,120,219,255)";
+                document.getElementById("activateInput").style.pointerEvents = "all";
+                document.getElementById("baigta2").style.pointerEvents = "all";
+            }, 3300);
+        }
+        function dismissError(){
+                document.getElementById("gerai").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("gerai").style.backgroundColor = "white";
+                document.getElementById("warning").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning").style.display = "none";
+                document.getElementById("warningDiv").style.transform = "scale(1.3)";
+            }, 350);
+        }
+        function createError2(){
+                document.getElementById("createNow2").style.color = "rgba(201,201,201,255)";
+                document.getElementById("createNow2").style.backgroundColor = "rgba(201,201,201,255)";
+                document.getElementById("createLoad2").style.display = "flex";
+                document.getElementById("createNow2").style.pointerEvents = "none";
+                document.getElementById("passwordInput").style.pointerEvents = "none";
+                document.getElementById("emailInput").style.pointerEvents = "none";
+                document.getElementById("baigta").style.pointerEvents = "none";
+                document.getElementById("createAccount").style.pointerEvents = "none";
+                document.getElementById("forgot").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("createLoad2").style.opacity = "1";
+                document.getElementById("createNow2").style.backgroundColor = "white";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning2").style.display = "flex";
+            }, 3250);
+            setTimeout(() => {
+                document.getElementById("createLoad2").style.opacity = "1";
+                document.getElementById("warning2").style.opacity = "1";
+                document.getElementById("warningDiv2").style.transform = "scale(1)";
+                document.getElementById("createLoad2").style.opacity = "0";
+                document.getElementById("createNow2").style.pointerEvents = "all";
+                document.getElementById("createNow2").style.color = "rgba(23,120,219,255)";
+                document.getElementById("passwordInput").style.pointerEvents = "all";
+                document.getElementById("emailInput").style.pointerEvents = "all";
+                document.getElementById("baigta").style.pointerEvents = "all";
+                document.getElementById("createAccount").style.pointerEvents = "all";
+                document.getElementById("forgot").style.pointerEvents = "all";
+            }, 3300);
+        }
+        function dismissError2(){
+                document.getElementById("gerai2").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("gerai2").style.backgroundColor = "white";
+                document.getElementById("warning2").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning2").style.display = "none";
+                document.getElementById("warningDiv2").style.transform = "scale(1.3)";
+            }, 350);
+        }
+        function remind(){
+                document.getElementById("forgot").style.color = "rgba(201,201,201,255)";
+                document.getElementById("warning3").style.display = "flex";
+            setTimeout(() => {
+                document.getElementById("forgot").style.color = "rgba(23,120,219,255)";
+                document.getElementById("warning3").style.opacity = "1";
+                document.getElementById("warningDiv3").style.transform = "scale(1)";
+            }, 150);
+        }
+        function dismissError3(){
+                document.getElementById("gerai3").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("gerai3").style.backgroundColor = "white";
+                document.getElementById("warning3").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning3").style.display = "none";
+                document.getElementById("warningDiv3").style.transform = "scale(1.3)";
+            }, 350);
+        }
+        function confirmLogIn(){
+                document.getElementById("confirm").style.backgroundColor = "rgba(201,201,201,255)";
+                document.getElementById("back").style.pointerEvents = "none";
+                document.getElementById("other").style.pointerEvents = "none";
+                document.getElementById("confirm").style.pointerEvents = "none";
+                document.getElementById("logInLoad").style.display = "flex";
+            setTimeout(() => {
+                document.getElementById("confirm").style.backgroundColor = "white";
+                document.getElementById("logInLoad").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                location.replace('pagrindinis.html');
+            }, 3300);
         }
         // Get the input field
 var input = document.getElementById("myInput2");
