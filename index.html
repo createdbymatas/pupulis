@@ -273,7 +273,24 @@
     position: relative;
     transition: 0.2s;
 }
+#computer{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(242,241,246,255);
+    z-index: 50;
+}
+@media only screen and (max-width: 750px){
+    #computer{
+        display: none;
+    }
+}
 </style>
+    <div id="computer"></div>
     <div id="loading" style="width: 100%; z-index: 100; transition: 0.4s; overflow: hidden; height: 100%; background-color: rgba(242,241,246,255); position: fixed; top: 0; left: 0; bottom: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
         <img src="logo.jpg" alt="Pupulio pamokos" style="width: 200px; opacity: 0; position: absolute; margin-top: -100px;" id="image">
       <div style="width: 40px; height: 40px; border-radius: 100%; display: flex; justify-content: center; align-items: center; transform: scale(1.5);" id="loadStart">
