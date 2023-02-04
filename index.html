@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <link rel="shortcut icon" type="image/jpg" href="favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <title>Pupulio pamokos</title>
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
 </head>
@@ -348,7 +348,7 @@
     }
     #navigacija{
         width: 100%;
-        height: 50px;
+        height: 60px;
         position: fixed;
         bottom: -1px;
         left: 100%;
@@ -356,7 +356,7 @@
         font-size: 11px;
         display: flex;
         justify-content: space-around;
-        align-items: center;
+        align-items: flex-start;
         transition: 0.4s;
         border-top: 1px solid rgba(242,241,246,255);
         z-index: 1;
@@ -378,6 +378,21 @@
     width: 100%;
     height: 95%;
     border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#vadoveliai{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
     position: fixed;
     bottom: -100%;
     left: 0;
@@ -391,6 +406,7 @@
     width: 100%;
     height: 95%;
     border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
     position: fixed;
     bottom: -100%;
     left: 0;
@@ -404,6 +420,7 @@
     width: 100%;
     height: 95%;
     border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
     position: fixed;
     bottom: -100%;
     left: 0;
@@ -417,6 +434,7 @@
     width: 100%;
     height: 95%;
     border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
     position: fixed;
     bottom: -100%;
     left: 0;
@@ -430,6 +448,7 @@
     width: 100%;
     height: 95%;
     border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
     position: fixed;
     bottom: -100%;
     left: 0;
@@ -582,7 +601,7 @@
                     <div class="ispinner-blade"></div>
                   </div>
                 </div>
-            <button style="height: 90px;" id="accountBtn" onclick="accountOpen()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 60px; height: 60px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 34px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -14px;">Paskyros informacija, atsijungimas</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 39px; right: 14.3px; font-size: 14px;"></i></button>
+            <button style="height: 90px;" id="accountBtn" onclick="accountOpen()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 60px; height: 60px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 34px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -14px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 39px; right: 14.3px; font-size: 14px;"></i></button>
             <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 173px; right: 5.3%; opacity: 0; display: none; background-color: white;" id="accountLoad">
                 <div class="ispinner ispinner-large">
                     <div class="ispinner-blade"></div>
@@ -595,42 +614,94 @@
                     <div class="ispinner-blade"></div>
                   </div>
                 </div>
-            <!-- nepamirsk pakeist scripte kad kai pakeisti naujienu laika pasikeistu is "nera naujienu" i normalias naujienas !!!!! -->
+            <!-- nepamirsk pakeist scripte kad kai pakeiti naujienu laika pasikeistu is "nera naujienu" i normalias naujienas !!!!! -->
             <button style="margin-top: 35px;" id="neraNaujienu"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Naujienų nėra</p></button>
         </div>
         <div id="uzduotys">
             <div style="position: absolute; top: 0;" id="topUzduotys"></div>
             <h1 style="margin-top: 95px;">Užduotys</h1>
-            <button><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Ieva</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;">Reikia atlikti:</p>
+            <button style="height: 90px;" id="accountBtn2" onclick="accountOpen2()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 60px; height: 60px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 34px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -14px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 39px; right: 14.3px; font-size: 14px;"></i></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 173px; right: 5.3%; opacity: 0; display: none; background-color: white;" id="accountLoad2">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;">Reikia atlikti:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Užduočių nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Atlikta:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Atlikta:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Užduočių nėra</p></button>
         </div>
         <div id="pazymiai">
             <div style="position: absolute; top: 0;" id="topPazymiai"></div>
             <h1 style="margin-top: 95px;">Pažymiai</h1>
-            <button><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Ieva</p></button>
+            <button style="height: 90px;" id="accountBtn3" onclick="accountOpen3()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 60px; height: 60px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 34px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -14px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 39px; right: 14.3px; font-size: 14px;"></i></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 173px; right: 5.3%; opacity: 0; display: none; background-color: white;" id="accountLoad3">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
             <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pažymių nėra</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 81%; margin-left: 9.5%; margin-top: 7px; font-weight: 100;"><span style="color: red;">Raudona</span> spalva parašyti pažymiai yra kontroliniai darbai.</p>
         </div>
         <div id="pranesimai">
             <div style="position: absolute; top: 0;" id="topPranesimai"></div>
             <h1 style="margin-top: 95px;">Pranešimai</h1>
-            <button><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Ieva</p></button>
+            <button style="height: 90px;" id="accountBtn4" onclick="accountOpen4()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 60px; height: 60px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 34px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -14px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 39px; right: 14.3px; font-size: 14px;"></i></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 173px; right: 5.3%; opacity: 0; display: none; background-color: white;" id="accountLoad4">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
             <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pranešimų nėra</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 81%; margin-left: 9.5%; margin-top: 7px; font-weight: 100;"><span style="color: red; margin-right: 3px;"><i class="fa-solid fa-exclamation"></i></span> pažymėti pranešimai yra svarbūs.</p>
         </div>
         <div id="daugiau">
             <div style="position: absolute; top: 0;" id="topDaugiau"></div>
             <h1 style="margin-top: 95px;">Daugiau</h1>
-            <button><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Ieva</p></button>
+            <button style="height: 90px;" id="accountBtn5" onclick="accountOpen5()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 60px; height: 60px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 34px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -14px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 39px; right: 14.3px; font-size: 14px;"></i></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 173px; right: 5.3%; opacity: 0; display: none; background-color: white;" id="accountLoad5">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
             <button style="margin-top: 35px; border-radius: 10px 10px 0 0;" id="tvarkarastisBtn" onclick="scheduleOpen()"><i class="fa-regular fa-calendar-days" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Tvarkaraštis</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 15.75px; right: 14.3px; font-size: 14px;"></i></button>
-            <div style="width: 90%; height: 1px; position: absolute; top: 271.5px; left: 5%; padding-left: 58px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button style="border-radius: 0;" id="pamokosBtn" onclick="lessonsOpen()"><i class="fa-regular fa-clipboard" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokos</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 15.75px; right: 14.3px; font-size: 14px;"></i></button>
             <div style="width: 90%; height: 1px; position: absolute; top: 316.5px; left: 5%; padding-left: 58px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button style="border-radius: 0;" id="namuDarbaiBtn" onclick="homeworkOpen()"><i class="fa-regular fa-rectangle-list" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbai</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 15.75px; right: 14.3px; font-size: 14px;"></i></button>
+            <button style="border-radius: 0;" id="vadoveliaiBtn" onclick="booksOpen()"><i class="fa-solid fa-book" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Vadovėliai</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 15.75px; right: 14.3px; font-size: 14px;"></i></button>
             <div style="width: 90%; height: 1px; position: absolute; top: 361.5px; left: 5%; padding-left: 58px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button style="border-radius: 0;" id="komentaraiBtn" onclick="commentsOpen()"><i class="fa-regular fa-comments" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Komentarai</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 15.75px; right: 14.3px; font-size: 14px;"></i></button>
+            <button style="border-radius: 0;" id="pamokosBtn" onclick="lessonsOpen()"><i class="fa-regular fa-clipboard" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokos</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 15.75px; right: 14.3px; font-size: 14px;"></i></button>
             <div style="width: 90%; height: 1px; position: absolute; top: 406.5px; left: 5%; padding-left: 58px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0;" id="namuDarbaiBtn" onclick="homeworkOpen()"><i class="fa-regular fa-rectangle-list" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbai</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 15.75px; right: 14.3px; font-size: 14px;"></i></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 451.5px; left: 5%; padding-left: 58px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0;" id="komentaraiBtn" onclick="commentsOpen()"><i class="fa-regular fa-comments" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Komentarai</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 15.75px; right: 14.3px; font-size: 14px;"></i></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 496.5px; left: 5%; padding-left: 58px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
             <button style="border-radius: 0 0 10px 10px;" id="lankomumasBtn" onclick="attendanceOpen()"><i class="fa-regular fa-address-book" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Lankomumas</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 15.75px; right: 14.3px; font-size: 14px;"></i></button>
         </div>
         <div id="navigacija">
@@ -669,46 +740,60 @@
                 </div>
         </div>
         <div id="tvarkarastis">
-            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Tvarkaraštis</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigtaTvark" onclick="finishedSchedule()">Baigti</h2>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;">Pirmadienis:</p>
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Tvarkaraštis</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaTvark" onclick="finishedSchedule()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Pirmadienis:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Antradienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Antradienis:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Trečiadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Trečiadienis:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Ketvirtadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Ketvirtadienis:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Penktadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Penktadienis:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Šeštadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Šeštadienis:</p>
             <button><i class="fa-regular fa-calendar-check" style="background-color: rgba(23,120,219,255); color: white; width: 30px; height: 30px; border-radius: 7px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 17px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 58px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Rusų k. - 19:00</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Sekmadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Sekmadienis:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+        </div>
+        <div id="vadoveliai">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Vadovėliai</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaVadov" onclick="finishedBooks()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <button style="margin-top: 92px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Vadovėlių nėra</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 81%; margin-left: 9.5%; margin-top: 7px; font-weight: 100;">Įkeltos naujausios vadovėlių versijos, todėl kartais gali pasitaikyti netikslumų tarp įkeltų ir seniau peržiūrėtų vadovėlių.</p>
         </div>
         <div id="pamokos">
-            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Pamokos</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigtaPamok" onclick="finishedLessons()">Baigti</h2>
-            <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Pamokos</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaPamok" onclick="finishedLessons()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <button style="margin-top: 92px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
         </div>
         <div id="namuDarbai">
-            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Namų darbai</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigtaNamud" onclick="finishedHomework()">Baigti</h2>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;">Reikia atlikti:</p>
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Namų darbai</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaNamud" onclick="finishedHomework()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Reikia atlikti:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); margin-top: 35px; font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Atlikta:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Atlikta:</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbų nėra</p></button>
         </div>
         <div id="komentarai">
-            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Komentarai</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigtaKomen" onclick="finishedComments()">Baigti</h2>
-            <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Komentarų nėra</p></button>
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Komentarai</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaKomen" onclick="finishedComments()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <button style="margin-top: 92px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Komentarų nėra</p></button>
         </div>
         <div id="lankomumas">
-            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Lankomumas</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigtaLanko" onclick="finishedAttendance()">Baigti</h2>
-            <button style="margin-top: 35px;"><p style="width: 100%; color: rgba(130,129,134,255); height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px;">0%</p></button>
-            <button style="margin-top: 25px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Lankomumas</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaLanko" onclick="finishedAttendance()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Procentais:</p>
+            <button><p style="width: 100%; color: rgba(130,129,134,255); height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px;">0%</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 9.5%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Praėjusios pamokos:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
         </div>
     </body>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
@@ -1101,6 +1186,138 @@ function scrollFunction() {
                 document.getElementById("daugiauIcon").style.pointerEvents = "all";
             }, 3600);
         }
+        function accountOpen2(){
+            document.getElementById("accountBtn2").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("accountLoad2").style.display = "flex";
+            document.getElementById("naujienosIcon").style.pointerEvents = "none";
+            document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+            document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+            document.getElementById("pazymiaiIcon").style.pointerEvents = "none";
+            document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("accountBtn2").style.backgroundColor = "white";
+                document.getElementById("accountLoad2").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-1px";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+                document.getElementById("accountLoad2").style.opacity = "0";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("accountLoad2").style.display = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                document.getElementById("pazymiaiIcon").style.pointerEvents = "all";
+                document.getElementById("daugiauIcon").style.pointerEvents = "all";
+            }, 3600);
+        }
+        function accountOpen3(){
+            document.getElementById("accountBtn3").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("accountLoad3").style.display = "flex";
+            document.getElementById("naujienosIcon").style.pointerEvents = "none";
+            document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+            document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+            document.getElementById("pazymiaiIcon").style.pointerEvents = "none";
+            document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("accountBtn3").style.backgroundColor = "white";
+                document.getElementById("accountLoad3").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-1px";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+                document.getElementById("accountLoad3").style.opacity = "0";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("accountLoad3").style.display = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                document.getElementById("pazymiaiIcon").style.pointerEvents = "all";
+                document.getElementById("daugiauIcon").style.pointerEvents = "all";
+            }, 3600);
+        }
+        function accountOpen4(){
+            document.getElementById("accountBtn4").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("accountLoad4").style.display = "flex";
+            document.getElementById("naujienosIcon").style.pointerEvents = "none";
+            document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+            document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+            document.getElementById("pazymiaiIcon").style.pointerEvents = "none";
+            document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("accountBtn4").style.backgroundColor = "white";
+                document.getElementById("accountLoad4").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-1px";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+                document.getElementById("accountLoad4").style.opacity = "0";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("accountLoad4").style.display = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                document.getElementById("pazymiaiIcon").style.pointerEvents = "all";
+                document.getElementById("daugiauIcon").style.pointerEvents = "all";
+            }, 3600);
+        }
+        function accountOpen5(){
+            document.getElementById("accountBtn5").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("accountLoad5").style.display = "flex";
+            document.getElementById("naujienosIcon").style.pointerEvents = "none";
+            document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+            document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+            document.getElementById("pazymiaiIcon").style.pointerEvents = "none";
+            document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("accountBtn5").style.backgroundColor = "white";
+                document.getElementById("accountLoad5").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-1px";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+                document.getElementById("accountLoad5").style.opacity = "0";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("accountLoad5").style.display = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                document.getElementById("pazymiaiIcon").style.pointerEvents = "all";
+                document.getElementById("daugiauIcon").style.pointerEvents = "all";
+            }, 3600);
+        }
         function finishedAccount(){
             document.getElementById("baigtaAcc").style.color = "rgba(201,201,201,255)";
             setTimeout(() => {
@@ -1138,6 +1355,10 @@ function scrollFunction() {
                 document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
                 document.getElementById("signOutLoad").style.opacity = "0";
                 document.getElementById("pagrindinis").style.opacity = "0";
+                document.getElementById("uzduotys").style.opacity = "0";
+                document.getElementById("pazymiai").style.opacity = "0";
+                document.getElementById("pranesimai").style.opacity = "0";
+                document.getElementById("daugiau").style.opacity = "0";
                 document.getElementById("navigacija").style.opacity = "0";
             }, 3300);
             setTimeout(() => {
@@ -1292,6 +1513,36 @@ function scrollFunction() {
             }, 150);
             setTimeout(() => {
                 document.getElementById("tvarkarastis").style.bottom = "-100%";
+            }, 350);
+        }
+        function booksOpen(){
+            document.getElementById("vadoveliaiBtn").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("vadoveliaiBtn").style.backgroundColor = "white";
+                document.getElementById("vadoveliai").style.bottom = "-1px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
+        }
+        function finishedBooks(){
+            document.getElementById("baigtaVadov").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigtaVadov").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("vadoveliai").style.bottom = "-100%";
             }, 350);
         }
         function lessonsOpen(){
