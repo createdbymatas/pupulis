@@ -2,804 +2,1665 @@
 <html lang="lt">
 <head>
     <meta charset="UTF-8">
+    <link rel="shortcut icon" type="image/jpg" href="favicon.ico">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>iAssistant</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Pupulio pamokos</title>
+    <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
 </head>
-<body onload="loadFunction()">
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-            transition: 0.3s;
-        }
-        /* width */
-        ::-webkit-scrollbar {
-            width: 0;
-        }
-        body{
-            background-color: white;
-            padding-top: 70px;
-        }
-        #screen{
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            z-index: 50;
-        }
-        #locationAccess{
-            width: 100%;
-            height: auto;
-            padding-top: 30px;
-            padding-bottom: 25px;
-            background-color: white;
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: -400px;
-            border-radius: 25px 25px 0 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            padding-left: 25px;
-            padding-right: 25px;
-            transition: 0.25s;
-            z-index: 4;
-        }
-        #noWifi{
-            width: 100%;
-            height: auto;
-            padding-top: 30px;
-            padding-bottom: 25px;
-            background-color: white;
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: -400px;
-            border-radius: 25px 25px 0 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            padding-left: 25px;
-            padding-right: 25px;
-            transition: 0.25s;
-            z-index: 4;
-        }
-        #black{
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            bottom: 0;
-            background-color: black;
-            opacity: 0;
-            display: none;
-            pointer-events: none;
-            z-index: 3;
-        }
-        #devicesAdd{
-            width: 100%;
-            height: 100%;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: white;
-            z-index: 2;
-            transform: scale(0.7);
-            opacity: 0;
-            border-radius: 25px;
-            display: none;
-        }
-        #informationAdd{
-            width: 100%;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            font-size: 17px;
-            position: absolute;
-            top: 50px;
-            left: 0;
-            right: 0;
-        }
-        #searchAdd{
-            width: 100%;
-            height: 40px;
-            display: flex;
-            justify-content: left;
-            align-items: flex-end;
-            font-size: 17px;
-            position: absolute;
-            top: 150px;
-            left: 0;
-            right: 0;
-            padding-left: 10px;
-        }
-        @keyframes dot1Add{
-            0%{
-                width: 15px;
-                height: 15px;
-            }
-            50%{
-                width: 10px;
-                height: 10px;
-            }
-            100%{
-                width: 15px;
-                height: 15px;
-            }
-        }
-        @keyframes dot2Add{
-            0%{
-                width: 22px;
-                height: 22px;
-            }
-            50%{
-                width: 28px;
-                height: 28px;
-            }
-            100%{
-                width: 22px;
-                height: 22px;
-            }
-        }
-        @keyframes dotsOther{
-            0%{
-                width: 30px;
-                height: 30px;
-                opacity: 1;
-            }
-            50%{
-                width: 150px;
-                height: 150px;
-                opacity: 0;
-            }
-            100%{
-                width: 150px;
-                height: 150px;
-                opacity: 0;
-            }
-        }
-        #noInternet{
-            width: 90%;
-            height: 70px;
-            background-color: white;
-            border-radius: 25px;
-            margin-left: 5%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5px;
-        }
-        #connecting{
-            width: 90%;
-            height: 70px;
-            background-color: white;
-            border-radius: 25px;
-            margin-left: 5%;
-            opacity: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 5px;
-            position: absolute;
-            margin-top: -70px;
-        }
-        #refresh{
-            width: 90%;
-            height: 70px;
-            background-color: white;
-            border-radius: 25px;
-            margin-left: 5%;
-            opacity: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -70px;
-        }
-        #noDevices{
-            width: 90%;
-            height: 70px;
-            background-color: white;
-            border-radius: 25px;
-            margin-left: 5%;
-            opacity: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: -70px;
-        }
-        #cantFind{
-            width: 100%;
-            height: auto;
-            padding-top: 30px;
-            padding-bottom: 25px;
-            background-color: white;
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: -400px;
-            border-radius: 25px 25px 0 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            text-align: center;
-            padding-left: 25px;
-            padding-right: 25px;
-            transition: 0.25s;
-            z-index: 4;
-        }
-    </style>
-    <div id="screen"></div>
-    
-    <div style="width: 100%; height: 60%; position: fixed; z-index: -1; top: 0; left: 0; right: 0; background-image: linear-gradient(#D1C7F7, white);"></div>
-    <div id="time" style="position: fixed; top: 15px; left: 20px; font-size: 16px; z-index: 5;"></div>
-    <p style="position: fixed; top: 15px; right: 20px; font-size: 16px; text-align: right; z-index: 5;" id="iassistant">iAssistant</p>
-    <i class="fa-solid fa-wifi" style="position: fixed; top: 15.5px; right: 20px; font-size: 16px; opacity: 0; z-index: 5;" id="wifi"></i>
+<body onload="loadFunction()" id="body">
+<style>
+    *{
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'SF Pro Display', sans-serif;
+        user-select: none;
+        transition: 0.3s;
+        font-weight: 400;
+        -webkit-tap-highlight-color: transparent;
+    }
+    body{
+        background-color: rgba(242,241,246,255);
+        text-align: center;
+    }
+    h1{
+        text-align: left;
+        width: 90%;
+        margin-left: 6%;
+        margin-top: 0;
+        font-size: 35px;
+        margin-bottom: 10px;
+        font-weight: 600;
+    }
+    h2{
+        font-weight: 500;
+        font-size: 17.5px;
+    }
+    button{
+        width: 90%;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        background-color: white;
+        position: relative;
+    }
+    input{
+        width: 90%;
+        height: 50px;
+        border-radius: 10px;
+        border: none;
+        background-color: white;
+        position: relative;
+        font-size: 17.5px;
+        padding-right: 15px;
+    }
+    input:focus{
+        outline: none;
+    }
+    button:focus{
+        outline: none;
+    }
+    #animationScreen{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        transition: 0.4s;
+    }
+    #loginScreen{
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 100%;
+        bottom: 0;
+        transition: 0.4s;
+        border-left: 1px solid rgba(213,213,214,255);
+        z-index: 1;
+    }
+    #information{
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        top: -1px;
+        left: 100%;
+        background-color: rgba(242,241,246,255);
+        font-size: 11px;
+        display: flex;
+        transition: 0.4s;
+        justify-content: space-around;
+        align-items: flex-end;
+        padding-bottom: 10px;
+    }
+    .ispinner {
+  position: relative;
+  width: 20px;
+  height: 20px; }
+  .ispinner .ispinner-blade {
+    position: absolute;
+    top: 6.5px;
+    left: 8.5px;
+    width: 2.5px;
+    height: 6.5px;
+    background-color: #8e8e93;
+    border-radius: 1.25px;
+    animation: iSpinnerBlade 1s linear infinite;
+    will-change: opacity; }
+    .ispinner .ispinner-blade:nth-child(1) {
+      transform: rotate(45deg) translateY(-6.5px);
+      animation-delay: -1.625s; }
+    .ispinner .ispinner-blade:nth-child(2) {
+      transform: rotate(90deg) translateY(-6.5px);
+      animation-delay: -1.5s; }
+    .ispinner .ispinner-blade:nth-child(3) {
+      transform: rotate(135deg) translateY(-6.5px);
+      animation-delay: -1.375s; }
+    .ispinner .ispinner-blade:nth-child(4) {
+      transform: rotate(180deg) translateY(-6.5px);
+      animation-delay: -1.25s; }
+    .ispinner .ispinner-blade:nth-child(5) {
+      transform: rotate(225deg) translateY(-6.5px);
+      animation-delay: -1.125s; }
+    .ispinner .ispinner-blade:nth-child(6) {
+      transform: rotate(270deg) translateY(-6.5px);
+      animation-delay: -1s; }
+    .ispinner .ispinner-blade:nth-child(7) {
+      transform: rotate(315deg) translateY(-6.5px);
+      animation-delay: -0.875s; }
+    .ispinner .ispinner-blade:nth-child(8) {
+      transform: rotate(360deg) translateY(-6.5px);
+      animation-delay: -0.75s; }
+  .ispinner.ispinner-large {
+    width: 35px;
+    height: 35px; }
+    .ispinner.ispinner-large .ispinner-blade {
+      top: 11.5px;
+      left: 15px;
+      width: 5px;
+      height: 12px;
+      border-radius: 2.5px; }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(1) {
+        transform: rotate(45deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(2) {
+        transform: rotate(90deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(3) {
+        transform: rotate(135deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(4) {
+        transform: rotate(180deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(5) {
+        transform: rotate(225deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(6) {
+        transform: rotate(270deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(7) {
+        transform: rotate(315deg) translateY(-11.5px); }
+      .ispinner.ispinner-large .ispinner-blade:nth-child(8) {
+        transform: rotate(360deg) translateY(-11.5px); }
+
+@keyframes iSpinnerBlade {
+  0% {
+    opacity: 0.85; }
+  50% {
+    opacity: 0.25; }
+  100% {
+    opacity: 0.25; } }
+
+::placeholder {
+  color: rgba(181,181,180,255);
+  opacity: 1;
+}
+
+:-ms-input-placeholder {
+  color: rgba(181,181,180,255);
+}
+
+::-ms-input-placeholder {
+  color: rgba(181,181,180,255);
+}
+#logInOther{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#create{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#warning{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+}
+#warning div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
+#warning2{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+}
+#warning2 div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
+#warning3{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+}
+#warning3 div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
+#computer{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(242,241,246,255);
+    z-index: 50;
+}
 
 
 
-    <p style="font-size: 20px; margin-left: 20px; font-weight: 600;">Namai</p>
-    <div style="width: 225px; height: 20px; display: flex; justify-content: center; align-items: center; margin-left: 20px; margin-top: 3px; display: none;" id="aplinka">
-        <div style="width: 125px; height: 20px; display: flex; justify-content: center; align-items: center;">
-            <p style="font-size: 13px; width: 90px; height: 20px; text-align: center; display: flex; justify-content: center; align-items: center;">Temperatūra:</p>
-            <input type="text" id="temperatura" style="background-color: transparent; outline: none; border: none; width: 35px; height: 20px; text-align: center; font-size: 13px;">
+
+/* pradzia */
+    #pagrindinis{
+        padding-bottom: 85px;
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 100%;
+        border-left: 1px solid rgba(213,213,214,255);
+        transition: 0.4s;
+    }
+    #uzduotys{
+        padding-bottom: 85px;
+        width: 100%;
+        height: auto;
+        position: static;
+        transition: 0.4s;
+        display: none;
+    }
+    #vadoveliai{
+        padding-bottom: 85px;
+        width: 100%;
+        height: auto;
+        position: static;
+        transition: 0.4s;
+        display: none;
+    }
+    #pranesimai{
+        padding-bottom: 85px;
+        width: 100%;
+        height: auto;
+        position: static;
+        transition: 0.4s;
+        display: none;
+    }
+    #daugiau{
+        padding-bottom: 85px;
+        width: 100%;
+        height: auto;
+        position: static;
+        transition: 0.4s;
+        display: none;
+    }
+    #information2{
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        top: -1px;
+        left: 100%;
+        background-color: rgba(242,241,246,255);
+        font-size: 11px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-end;
+        transition: 0.4s;
+        padding-bottom: 10px;
+        border-bottom: 1px solid rgba(242,241,246,255);
+        z-index: 1;
+    }
+    #navigacija{
+        width: 100%;
+        height: 60px;
+        position: fixed;
+        bottom: -1px;
+        left: 100%;
+        background-color: rgba(242,241,246,255);
+        font-size: 11px;
+        display: flex;
+        justify-content: space-around;
+        align-items: flex-start;
+        transition: 0.4s;
+        border-top: 1px solid rgba(242,241,246,255);
+        z-index: 1;
+    }
+    #account{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#tvarkarastis{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#pazymiai{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#pamokos{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#namuDarbai{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#komentarai{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+#lankomumas{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
+@media only screen and (max-width: 750px){
+    #computer{
+        display: none;
+    }
+}
+</style>
+    <div id="computer"></div>
+    <div id="loading" style="width: 100%; z-index: 100; transition: 0.3s; overflow: hidden; height: 100%; background-color: rgba(242,241,246,255); position: fixed; top: 0; left: 0; bottom: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    </div>
+    <div id="animationScreen">
+        <img src="logo.jpg" alt="Pupulio pamokos" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 50px; display: block;">
+        <h1>Pupulio pamokos</h1>
+        <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Prisijungimas</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+        <button style="position: absolute; bottom: 73px; left: 5%; border-radius: 10px 10px 0 0;"><i class="fa-regular fa-copyright" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">All rights reserved</p></button>
+        <div style="width: 90%; height: 1px; position: absolute; bottom: 72.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+        <button style="position: absolute; bottom: 23px; left: 5%; border-radius: 0 0 10px 10px;"><i class="fa-solid fa-hammer" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Created by Matas</p></button>
+    </div>
+    <div id="loginScreen">
+        <div id="information"><p style="font-size: 17.5px; position: absolute; left: 10px; bottom: 8.5px; color: rgba(23,120,219,255); display: flex; justify-content: center; align-items: center; font-weight: 100; transition: 0.15s;" id="back" onclick="closeLogin()"><i class="fa-solid fa-chevron-left" style="font-size: 23px; transition: 0.01s; margin-right: 5px;"></i> Pagrindinis</p><h2>Prisijungimas</h2></div>
+        <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 110px; display: block;">
+        <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400;">Ankstesni naudotojai:</p>
+        <button id="confirm" onclick="confirmLogIn()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Ieva</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+        <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="other" onclick="otherUser()">Kitas naudotojas?</p>
+        <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 359.3px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="logInLoad">
+            <div class="ispinner ispinner-large">
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+              </div>
+            </div>
         </div>
-        <p style="margin-left: 2px; margin-right: 6px; font-size: 17px; margin-top: -2.5px;">|</p>
-        <div style="width: 90px; height: 20px; display: flex; justify-content: center; align-items: center;">
-            <p style="font-size: 13px; width: 60px; height: 20px; text-align: center; display: flex; justify-content: center; align-items: center;">Drėgmė:</p>
-            <input type="text" id="dregme" style="background-color: transparent; outline: none; border: none; width: 35px; height: 20px; text-align: center; font-size: 13px;">
+        <div id="logInOther">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Kitas naudotojas</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigta" onclick="finishedOther()">Baigti</h2>
+            <p style="position: absolute; z-index: 1; top: 104.5px; left: 5%; width: 90px; padding-left: 15px; text-align: left; font-size: 17.5px;">El. paštas</p>
+            <input type="email" style="border-radius: 10px 10px 0 0; padding-left: 95px; margin-top: 35px;" placeholder="El. paštas" id="emailInput">
+            <div style="width: 90%; height: 1px; position: absolute; top: 139.2px; left: 5%; padding-left: 15px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <p style="position: absolute; z-index: 1; top: 155px; left: 5%; width: 105px; padding-left: 15px; text-align: left; font-size: 17.5px;">Slaptažodis</p>
+            <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 112px;" placeholder="Privaloma" id="passwordInput">
+            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow2" onclick="createError2()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; transition: 0.01s;">Prisijungti</p></button>
+            <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="forgot" onclick="remind()">Pamiršai slaptažodį?</p>
+            <button style="margin-top: 20px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Kurti naują paskyrą</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir kita.</p>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.60); position: absolute; top: 228.5px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="createLoad2">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <div id="warning2">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningDiv2" style="transform: scale(1.3);">
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Klaida</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Įvestas el. paštas negalioja.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError2()" id="gerai2">Gerai</button>
+                </div>
+            </div>
+            <div id="warning3">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningDiv3" style="transform: scale(1.3);">
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Slaptažodžio priminimas</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Pranešk savo mokytojui.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError3()" id="gerai3">Gerai</button>
+                </div>
+            </div>
         </div>
-    </div>
-    <div style="width: 225px; height: 20px; display: flex; justify-content: left; align-items: center; margin-left: 20px; margin-top: 3px;" id="aplinkaNera">
-        <p style="font-size: 13px; color: darkgrey;"><i class="fa-regular fa-face-tired"></i> Nėra informacijos apie aplinką</p>
-    </div>
-    <i class="fa-solid fa-plus" style="width: 25px; height: 25px; padding-left: 0.7px; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 17px; border: 2px solid black; border-radius: 100%; position: absolute; right: 20px; top: 80px; display: none;" id="addBtn" onclick="add()"></i>
-    <i class="fa-solid fa-plus" style="width: 25px; height: 25px; padding-left: 0.7px; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 17px; border: 2px solid black; border-radius: 100%; position: absolute; right: 20px; top: 80px;" id="addNoWifiBtn" onclick="addNoWifi()"></i>
-    <div style="margin-top: 30px; width: 100%; height: 60px; display: flex; justify-content: center; align-items: center; flex-direction: column;"><i class="fa-regular fa-face-grin-squint" style="font-size: 30px; margin-bottom: 10px; display: none;" id="check1"></i><p style="font-size: 15px; display: none;" id="check2">Viskas gerai!</p><i class="fa-regular fa-face-dizzy" style="font-size: 30px; margin-bottom: 10px; color: darkgrey;" id="check3"></i><p style="font-size: 15px; color: darkgrey;" id="check4">Nėra informacijos</p></div>
-    <div style="width: 100%; height: 30px; overflow: auto; white-space: nowrap; padding-left: 20px; margin-top: 20px;"><p style="font-weight: 600; display: inline-block; font-size: 23px; margin-right: 15px;">Visi</p><p style="display: inline-block; font-size: 23px; opacity: 0;" id="butas">Butas</p></div>
-    <div id="noInternet"><p style="font-size: 20px;"><i class="fa-solid fa-wifi" style="color: red;"></i> Nėra interneto ryšio</p></div>
-    <div id="connecting"><p style="font-size: 20px;"><i class="fa-solid fa-wifi"></i> Jungiamasi<span id="taskelis1">.</span><span id="taskelis2">.</span><span id="taskelis3">.</span></p></div>
-    <div id="refresh"><p style="font-size: 20px;"><i class="fa-solid fa-arrows-rotate"></i> Atnaujinama<span id="taskelis4">.</span><span id="taskelis5">.</span><span id="taskelis6">.</span></p></div>
-    <div id="noDevices"><p style="font-size: 20px;"><i class="fa-regular fa-face-tired"></i> Nėra įrenginių</p></div>
+        <div id="create">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Nauja paskyra</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigta2" onclick="finishedCreate()">Baigti</h2>
+            <p style="position: absolute; z-index: 1; top: 104px; left: 5%; width: 160px; padding-left: 15px; text-align: left; font-size: 18px;">Aktyvavimo kodas</p>
+            <input type="number" style="padding-left: 165px; margin-top: 35px;" placeholder="Privaloma" id="activateInput" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Aktyvavimo kodą tau suteikė tavo mokytojas.</p>
+            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow" onclick="createError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px; transition: 0.01s;">Kurti paskyrą</p></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 203px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="createLoad">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <div id="warning">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningDiv" style="transform: scale(1.3);">
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Klaida</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;">Įvestas aktyvavimo kodas negalioja.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError()" id="gerai">Gerai</button>
+                </div>
+            </div>
+        </div>
 
-    <div id="black" onclick="closeLocation()"></div>
-    <div id="locationAccess">
-        <i class="fa-solid fa-location-arrow" style="color: #ADC0EF; font-size: 60px; margin-bottom: 10px;"></i>
-        <p style="font-size: 20px; margin-bottom: 30px;">Reikalinga vietovės prieeiga</p>
-        <p style="font-size: 15px; color: darkgrey; margin-bottom: 10px;">Norėdami pridėti naują įrenginį turite suteikti prieeigą prie vietovės.</p>
-        <p style="font-size: 15px; color: darkgrey; margin-bottom: 30px;">Nesuteikę prieeigos prie vietovės įrenginių pridėti negalėsite.</p>
-        <div style="width: 100%; height: 40px; display: flex; justify-content: space-around; align-items: center; position: relative;">
-            <button style="width: 45%; height: 40px; border-radius: 25px; border: none; background-color: lightgrey; color: white; pointer-events: none; transition: 0.3s transform; opacity: 0.4;" id="atsauktiLocation" onclick="cancelLocation()">Atšaukti</button>
-            <button style="width: 45%; height: 40px; border-radius: 25px; border: none; background-color: #ADC0EF; color: white; display: none;" id="leistiLocation" onclick="addDeviceConfirm()">Leisti</button>
-            <button style="width: 45%; height: 40px; border-radius: 25px; border: 2px solid #ADC0EF; background-color: white; color: black;" id="laikasLocation"><span id="trysS"><i class="fa-regular fa-clock"></i> 3s</span><span style="display: none;" id="dviS"><i class="fa-regular fa-clock"></i> 2s</span><span style="display: none;" id="vienaS"><i class="fa-regular fa-clock"></i> 1s</span></button>
+
+
+
+
+
+        <!-- pradzia -->
+        <div id="information2"><p style="font-size: 17.5px; position: absolute; left: 16px; transition: 0.15s; font-weight: 100; bottom: 10px; color: rgba(130,129,134,255);" id="editNews">Redaguoti</p><h2 id="naujienosh2" style="opacity: 0;">Naujienos</h2><h2 id="uzduotysh2" style="opacity: 0; display: none;">Užduotys</h2><h2 id="vadoveliaih2" style="opacity: 0; display: none;">Vadovėliai</h2><h2 id="pranesimaih2" style="opacity: 0; display: none;">Pranešimai</h2><h2 id="daugiauh2" style="opacity: 0; display: none;">Daugiau</h2><i class="fa-solid fa-ellipsis" style="font-size: 20px; color: rgba(23,120,219,255); position: absolute; right: 16px; transition: 0.15s;" id="dots" onclick="changeTime()"></i></div>
+        <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="newsTime"><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Naujienų laikotarpis:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fiveDays()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="check5"></i> 5 dienos</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="oneMonth()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="check1"></i> 1 mėnesis</p></div>
+        <div id="disableTime" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 2;" onclick="closeTime()"></div>
+        <div id="pagrindinis">
+            <div style="position: absolute; top: 0;" id="topPagrindinis"></div>
+            <h1 style="margin-top: 95px;">Naujienos</h1>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.7); position: absolute; top: 98.8px; left: 185px; opacity: 0; display: none; background-color: rgba(242,241,246,255);" id="naujienosLoad">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <button style="height: 100px;" id="accountBtn" onclick="accountOpen()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 70px; height: 70px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 38px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -17px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 178px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="accountLoad">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <!-- nepamirsk pakeist scripte kad kai pakeiti naujienu laika pasikeistu is "nera naujienu" i normalias naujienas !!!!! -->
+            <button style="margin-top: 35px;" id="neraNaujienu"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Naujienų nėra</p></button>
         </div>
-    </div>
-    <div id="noWifi">
-        <i class="fa-solid fa-wifi" style="color: red; font-size: 60px; margin-bottom: 10px;"></i>
-        <p style="font-size: 20px; margin-bottom: 30px;">Nėra interneto ryšio</p>
-        <p style="font-size: 15px; color: darkgrey; margin-bottom: 10px;">Norėdami pridėti naują įrenginį turite būti prisijungę.</p>
-        <p style="font-size: 15px; color: darkgrey; margin-bottom: 30px;">Jei interneto ryšys neatsiranda, o jūs esate prisijungę, praneškite pagalbos centrui.</p>
-        <button style="width: 100%; height: 40px; border-radius: 25px; border: none; background-color: #ADC0EF; color: white;" id="closeWifi" onclick="wifiClose()">Gerai</button>
-    </div>
-    <div id="cantFind">
-        <i class="fa-solid fa-question" style="color: black; font-size: 60px; margin-bottom: 10px;"></i>
-        <p style="font-size: 20px; margin-bottom: 30px;">Nematote įrenginio?</p>
-        <p style="font-size: 15px; color: darkgrey; margin-bottom: 10px;">Įsitikinkite, jog įrenginys yra įjungtas ir nustatytas iš naujo.</p>
-        <p style="font-size: 15px; color: darkgrey; margin-bottom: 30px;">Jei vistiek nematote įrenginio, praneškite pagalbos centrui.</p>
-        <button style="width: 100%; height: 40px; border-radius: 25px; border: none; background-color: #ADC0EF; color: white;" id="closeHelpAdd" onclick="helpAddClose()">Gerai</button>
-    </div>
-    <div id="devicesAdd">
-        <div id="informationAdd"><i class="fa-solid fa-chevron-left" style="position: absolute; font-size: 20px; left: 20px; height: 100%; display: flex; justify-content: center; align-items: center;" id="addChevron" onclick="closeAdd()"></i><i class="fa-solid fa-question" style="position: absolute; font-size: 20px; right: 20px; height: 100%; display: flex; justify-content: center; align-items: center;" id="addQuestion" onclick="questionAdd()"></i></div>
-        <h1 style="font-size: 25px; margin-top: 110px; margin-left: 20px;">Pridėti įrenginį</h1>
-        <div id="searchAdd"><div style="width: 40px; height: 40px; display: flex; justify-content: center; align-items: center; position: absolute; top: 0;"><div style="position: absolute; width: 15px; height: 15px; background-color: #ADC0EF; border-radius: 100%; animation: dot1Add 1.4s ease-in-out infinite;"></div><div style="position: absolute; box-shadow: 0 0 5px #ADC0EF; width: 15px; height: 15px; background-color: #ADC0EF; border-radius: 100%; opacity: 0.15; animation: dot2Add 1.4s ease-in-out infinite;"></div></div><p style="height: 100%; display: flex; justify-content: left; align-items: center; margin-left: 45px;">Ieškoma įrenginių netoliese...</p></div>
-        <div style="width: 100px; height: 200px; border-radius: 20px; border: 5px solid black; margin: 0 auto; margin-top: 130px; background-color: white; display: flex; justify-content: center; align-items: center;"><div style="width: 3px; height: 30px; background-color: slategrey; border-radius: 0 25px 25px 0; position: absolute; margin-left: 102px; margin-top: -100px;"></div><div style="width: 3px; height: 15px; background-color: slategrey; border-radius: 0 25px 25px 0; position: absolute; margin-left: 102px; margin-top: -35px;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #ADC0EF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; margin-top: -160px; z-index: -1;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #ADC0EF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; animation-delay: 0.2s; margin-top: -160px; z-index: -1;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #ADC0EF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; animation-delay: 0.4s; margin-top: -160px; z-index: -1;"></div><div style="position: absolute; width: 30px; height: 30px; background-color: #ADC0EF; border-radius: 100%; animation: dotsOther 2s ease-out infinite; animation-delay: 0.6s; margin-top: -160px; z-index: -1;"></div></div>
-        <p style="text-align: center; font-size: 14px; margin-top: 20px;">Laikykite telefoną netoliese įrenginio.</p>
-    </div>
+        <div id="uzduotys">
+            <div style="position: absolute; top: 0;" id="topUzduotys"></div>
+            <h1 style="margin-top: 95px;">Užduotys</h1>
+            <button style="height: 100px;" id="accountBtn2" onclick="accountOpen2()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 70px; height: 70px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 38px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -17px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 178px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="accountLoad2">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;">Reikia atlikti:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Užduočių nėra</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Atlikta:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Užduočių nėra</p></button>
+        </div>
+        <div id="vadoveliai">
+            <div style="position: absolute; top: 0;" id="topVadoveliai"></div>
+            <h1 style="margin-top: 95px;">Vadovėliai</h1>
+            <button style="height: 100px;" id="accountBtn3" onclick="accountOpen3()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 70px; height: 70px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 38px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -17px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 178px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="accountLoad3">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Vadovėlių nėra</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Įkeltos naujausios vadovėlių versijos, todėl kartais gali pasitaikyti netikslumų tarp įkeltų ir seniau peržiūrėtų vadovėlių.</p>
+        </div>
+        <div id="pranesimai">
+            <div style="position: absolute; top: 0;" id="topPranesimai"></div>
+            <h1 style="margin-top: 95px;">Pranešimai</h1>
+            <button style="height: 100px;" id="accountBtn4" onclick="accountOpen4()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 70px; height: 70px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 38px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -17px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 178px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="accountLoad4">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pranešimų nėra</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;"><span style="color: red; margin-right: 3px;"><i class="fa-solid fa-exclamation"></i></span> pažymėti pranešimai yra svarbūs.</p>
+            <button style="position: fixed; left: 5%; bottom: 70px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Rašyti pranešimą</p></button>
+        </div>
+        <div id="daugiau">
+            <div style="position: absolute; top: 0;" id="topDaugiau"></div>
+            <h1 style="margin-top: 95px;">Daugiau</h1>
+            <button style="height: 100px;" id="accountBtn5" onclick="accountOpen5()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 70px; height: 70px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 38px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 100px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -17px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 178px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="accountLoad5">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <button style="margin-top: 35px; border-radius: 10px 10px 0 0;" id="tvarkarastisBtn" onclick="scheduleOpen()"><i class="fa-regular fa-calendar-days" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Tvarkaraštis</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 331.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0;" id="pazymiaiBtn" onclick="pazymiaiOpen()"><i class="fa-solid fa-graduation-cap" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pažymiai</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 381.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0;" id="pamokosBtn" onclick="lessonsOpen()"><i class="fa-regular fa-clipboard" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokos</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 431.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0;" id="namuDarbaiBtn" onclick="homeworkOpen()"><i class="fa-regular fa-rectangle-list" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbai</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 481.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0;" id="komentaraiBtn" onclick="commentsOpen()"><i class="fa-regular fa-comments" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Komentarai</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 531.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0 0 10px 10px;" id="lankomumasBtn" onclick="attendanceOpen()"><i class="fa-regular fa-address-book" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Lankomumas</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+        </div>
+        <div id="navigacija">
+            <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(23,120,219,255); transition: 0s;" id="naujienosIcon" onclick="naujienosAtidaryti()"><i class="fa-regular fa-newspaper" style="transition:0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Naujienos</p></div>
+            <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(130,129,134,255); transition: 0s;" id="uzduotysIcon" onclick="uzduotysAtidaryti()"><i class="fa-solid fa-bars-progress" style="transition:0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Užduotys</p></div>
+            <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(130,129,134,255); transition: 0s;" id="vadoveliaiIcon" onclick="vadoveliaiAtidaryti()"><i class="fa-solid fa-book" style="transition: 0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Vadovėliai</p></div>
+            <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(130,129,134,255); transition: 0s;" id="pranesimaiIcon" onclick="pranesimaiAtidaryti()"><i class="fa-regular fa-envelope" style="transition: 0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Pranešimai</p></div>
+            <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(130,129,134,255); transition: 0s;" id="daugiauIcon" onclick="daugiauAtidaryti()"><i class="fa-solid fa-ellipsis" style="transition: none;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: none;">Daugiau</p></div>
+        </div>
+        <div id="account">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Paskyra</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigtaAcc" onclick="finishedAccount()">Baigti</h2>
+            <i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); margin: 0 auto; margin-top: 35px; color: white; width: 100px; height: 100px; border-radius: 100%; display: flex; justify-content: center; align-items: center; font-size: 56px;"></i>
+            <p style="font-size: 28px; margin-top: 10px;">Ieva</p>
+            <p style="color: rgba(130,129,134,255); font-size: 17.5px;">ievakasparav@gmail.com</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Paskyros informacija:</p>
+            <button style="border-radius: 10px 10px 0 0;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Naudotojas nuo</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: left; font-size: 17.5px; color: rgba(130,129,134,255);">2022-08-09</p></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 337.3px; left: 5%; padding-left: 15px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Mokymosi metai</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">1</p></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 387.3px; left: 5%; padding-left: 15px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Mokytojas</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">Pupulis</p></button>
+            <div style="width: 90%; height: 1px; position: absolute; top: 437.3px; left: 5%; padding-left: 15px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0 0 10px 10px;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Mokomieji dalykai</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">Rusų k., Anglų k. rašyba</p></button>
+            <button style="margin-top: 35px; color: red;" id="atsijungti" onclick="signOut()"><p style="width: 100%; height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 17.5px; font-weight: 100; transition: 0.01s;">Atsijungti</p></button>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 527.5px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="signOutLoad">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+        </div>
+        <div id="tvarkarastis">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Tvarkaraštis</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaTvark" onclick="finishedSchedule()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Pirmadienis:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Antradienis:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Trečiadienis:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Ketvirtadienis:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Penktadienis:</p>
+            <button><i class="fa-regular fa-calendar-check" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 85%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Anglų k. rašyba. 19:00 - 19:30</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Šeštadienis:</p>
+            <button><i class="fa-regular fa-calendar-check" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 85%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Rusų k. 19:00 - 19:45</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Sekmadienis:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+        </div>
+        <div id="pazymiai">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Pažymiai</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaPazym" onclick="finishedGrades()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <button style="margin-top: 92px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pažymių nėra</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;"><span style="color: red;">Raudona</span> spalva parašyti pažymiai yra kontroliniai darbai.</p>
+        </div>
+        <div id="pamokos">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Pamokos</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaPamok" onclick="finishedLessons()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <button style="margin-top: 92px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+        </div>
+        <div id="namuDarbai">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Namų darbai</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaNamud" onclick="finishedHomework()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Reikia atlikti:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbų nėra</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Atlikta:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbų nėra</p></button>
+        </div>
+        <div id="komentarai">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Komentarai</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaKomen" onclick="finishedComments()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <button style="margin-top: 92px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Komentarų nėra</p></button>
+        </div>
+        <div id="lankomumas">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Lankomumas</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaLanko" onclick="finishedAttendance()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Procentais:</p>
+            <button><p style="width: 100%; color: rgba(130,129,134,255); height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px;">0%</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Praėjusios pamokos:</p>
+            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+        </div>
+    </body>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
+        function changeTime(){
+                document.getElementById("dots").style.color = "rgba(201,201,201,255)";
+                document.getElementById("newsTime").style.width = "215px";
+                document.getElementById("newsTime").style.height = "155px";
+                document.getElementById("disableTime").style.display = "block";
+                setTimeout(() => {
+                    document.getElementById("newsTime").style.opacity = "1";
+                }, 40);
+                setTimeout(() => {
+                    document.getElementById("dots").style.color = "rgba(23,120,219,255)";
+                }, 150);
+                setTimeout(() => {
+                    document.getElementById("newsTime").style.height = "150px";
+                    document.getElementById("newsTime").style.width = "210px";
+                }, 200);
+        }
+        function closeTime(){
+                document.getElementById("newsTime").style.opacity = "0";
+                document.getElementById("disableTime").style.display = "none";
+                setTimeout(() => {
+                    document.getElementById("newsTime").style.height = "0";
+                    document.getElementById("newsTime").style.width = "0";
+                }, 200);
+        }
+        function fiveDays(){
+                document.getElementById("newsTime").style.opacity = "0";
+                document.getElementById("dots").style.pointerEvents = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "none";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+                document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
+                document.getElementById("daugiauIcon").style.pointerEvents = "none";
+                document.getElementById("accountBtn").style.pointerEvents = "none";
+                document.querySelector('#topPagrindinis').scrollIntoView({
+                behavior: 'smooth'
+                });
+                document.getElementById("disableTime").style.display = "none";
+                document.getElementById("naujienosLoad").style.display = "flex";
+                setTimeout(() => {
+                    document.getElementById("naujienosLoad").style.opacity = "1";
+                    document.getElementById("neraNaujienu").style.opacity = "0";
+                }, 10);
+                setTimeout(() => {
+                    document.getElementById("newsTime").style.height = "0";
+                    document.getElementById("newsTime").style.width = "0";
+                    document.getElementById("check5").style.opacity = "1";
+                    document.getElementById("check1").style.opacity = "0";
+                }, 200);
+                setTimeout(() => {
+                    document.getElementById("naujienosLoad").style.opacity = "0";
+                    document.getElementById("neraNaujienu").style.opacity = "1";
+                }, 3000);
+                setTimeout(() => {
+                    document.getElementById("naujienosLoad").style.display = "none";
+                    document.getElementById("dots").style.pointerEvents = "all";
+                    document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                    document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                    document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                    document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                    document.getElementById("daugiauIcon").style.pointerEvents = "all";
+                    document.getElementById("accountBtn").style.pointerEvents = "all";
+                }, 3300);
+        }
+        function oneMonth(){
+                document.getElementById("newsTime").style.opacity = "0";
+                document.getElementById("dots").style.pointerEvents = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "none";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+                document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
+                document.getElementById("daugiauIcon").style.pointerEvents = "none";
+                document.getElementById("accountBtn").style.pointerEvents = "none";
+                document.querySelector('#topPagrindinis').scrollIntoView({
+                behavior: 'smooth'
+                });
+                document.getElementById("disableTime").style.display = "none";
+                document.getElementById("naujienosLoad").style.display = "flex";
+                setTimeout(() => {
+                    document.getElementById("naujienosLoad").style.opacity = "1";
+                    document.getElementById("neraNaujienu").style.opacity = "0";
+                }, 10);
+                setTimeout(() => {
+                    document.getElementById("newsTime").style.height = "0";
+                    document.getElementById("newsTime").style.width = "0";
+                    document.getElementById("check5").style.opacity = "0";
+                    document.getElementById("check1").style.opacity = "1";
+                }, 200);
+                setTimeout(() => {
+                    document.getElementById("naujienosLoad").style.opacity = "0";
+                    document.getElementById("neraNaujienu").style.opacity = "1";
+                }, 3000);
+                setTimeout(() => {
+                    document.getElementById("naujienosLoad").style.display = "none";
+                    document.getElementById("dots").style.pointerEvents = "all";
+                    document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                    document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                    document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                    document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                    document.getElementById("daugiauIcon").style.pointerEvents = "all";
+                    document.getElementById("accountBtn").style.pointerEvents = "all";
+                }, 3300);
+        }
         function loadFunction(){
+                setTimeout(() => {
+                    document.getElementById("loading").style.opacity = "0";
+                }, 100);
+                setTimeout(() => {
+                    document.getElementById("loading").style.display = "none";
+                }, 400);
+        }
+
+window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 76 || document.documentElement.scrollTop > 76) {
+    document.getElementById("information2").style.backgroundColor = "white";
+    document.getElementById("naujienosh2").style.opacity = "1";
+    document.getElementById("uzduotysh2").style.opacity = "1";
+    document.getElementById("vadoveliaih2").style.opacity = "1";
+    document.getElementById("pranesimaih2").style.opacity = "1";
+    document.getElementById("daugiauh2").style.opacity = "1";
+    document.getElementById("information2").style.borderBottom = "1px solid rgba(220,220,220,255)";
+    document.getElementById("navigacija").style.borderTop = "1px solid rgba(220,220,220,255)";
+    document.getElementById("navigacija").style.backgroundColor = "white";
+  } else {
+    document.getElementById("information2").style.backgroundColor = "rgba(242,241,246,255)";
+    document.getElementById("naujienosh2").style.opacity = "0";
+    document.getElementById("uzduotysh2").style.opacity = "0";
+    document.getElementById("vadoveliaih2").style.opacity = "0";
+    document.getElementById("pranesimaih2").style.opacity = "0";
+    document.getElementById("daugiauh2").style.opacity = "0";
+    document.getElementById("information2").style.borderBottom = "1px solid rgba(242,241,246,255)";
+    document.getElementById("navigacija").style.borderTop = "1px solid rgba(242,241,246,255)";
+    document.getElementById("navigacija").style.backgroundColor = "rgba(242,241,246,255)";
+  }
+}
+        function login(){
+                document.getElementById("loginBtn").style.backgroundColor = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("screen").style.opacity = "0";
-            }, 100);
+                document.getElementById("loginBtn").style.backgroundColor = "white";
+                document.getElementById("animationScreen").style.left = "-100%";
+                document.getElementById("loginScreen").style.left = "0";
+                document.getElementById("information").style.left = "0";
+            }, 150);
             setTimeout(() => {
-                document.getElementById("screen").style.display = "none";
-            }, 1300);
+                document.getElementById("loginScreen").style.border = "none";
+            }, 550);
+        }
+        function closeLogin(){
+                document.getElementById("back").style.color = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("iassistant").style.right = "50px";
-            }, 2300);
+                document.getElementById("back").style.color = "rgba(23,120,219,255)";
+                document.getElementById("animationScreen").style.left = "0";
+                document.getElementById("loginScreen").style.left = "100%";
+                document.getElementById("information").style.left = "100%";
+                document.getElementById("loginScreen").style.borderLeft = "1px solid rgba(213,213,214,255)";
+            }, 150);
+        }
+        function otherUser(){
+            document.getElementById("other").style.color = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";;
-                document.getElementById("connecting").style.opacity = "1";
-            }, 2600);
+                document.getElementById("other").style.color = "rgba(23,120,219,255)";
+                document.getElementById("logInOther").style.bottom = "-1px";
+            }, 150);
             setTimeout(() => {
-                document.getElementById("noInternet").style.opacity = "0";
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "0";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 2900);
+                document.getElementById("information").style.top = "4%";
+                document.getElementById("information").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information").style.width = "91%";
+                document.getElementById("information").style.left = "4.5%";
+                document.getElementById("information").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
+        }
+        function finishedOther(){
+            document.getElementById("baigta").style.color = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 3200);
+                document.getElementById("baigta").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information").style.top = "0";
+                document.getElementById("information").style.borderRadius = "0";
+                document.getElementById("information").style.width = "100%";
+                document.getElementById("information").style.left = "0";
+                document.getElementById("information").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "2";
-                document.getElementById("taskelis3").style.opacity = "0";
+                document.getElementById("logInOther").style.bottom = "-100%";
+                document.getElementById("emailInput").value = '';
+                document.getElementById("passwordInput").value = '';
+            }, 350);
+        }
+        function createAnAccount(){
+            document.getElementById("createAccount").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("createAccount").style.backgroundColor = "white";
+                document.getElementById("create").style.bottom = "-1px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("information").style.top = "3%";
+                document.getElementById("information").style.width = "82%";
+                document.getElementById("information").style.left = "9%";
+                document.getElementById("information").style.opacity = "0.8";
+                document.getElementById("logInOther").style.bottom = "1%";
+                document.getElementById("logInOther").style.width = "91%";
+                document.getElementById("logInOther").style.left = "4.5%";
+                document.getElementById("logInOther").style.opacity = "0.9";
+            }, 350);
+        }
+        function finishedCreate(){
+            document.getElementById("baigta2").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigta2").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information").style.top = "4%";
+                document.getElementById("information").style.opacity = "0.9";
+                document.getElementById("information").style.width = "91%";
+                document.getElementById("information").style.left = "4.5%";
+                document.getElementById("logInOther").style.bottom = "-1px";
+                document.getElementById("logInOther").style.width = "100%";
+                document.getElementById("logInOther").style.left = "0";
+                document.getElementById("logInOther").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("create").style.bottom = "-100%";
+                document.getElementById("activateInput").value = '';
+            }, 350);
+        }
+        function createError(){
+                document.getElementById("createNow").style.color = "rgba(201,201,201,255)";
+                document.getElementById("createNow").style.backgroundColor = "rgba(201,201,201,255)";
+                document.getElementById("createLoad").style.display = "flex";
+                document.getElementById("createNow").style.pointerEvents = "none";
+                document.getElementById("activateInput").style.pointerEvents = "none";
+                document.getElementById("baigta2").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("createLoad").style.opacity = "1";
+                document.getElementById("createNow").style.backgroundColor = "white";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning").style.display = "flex";
+            }, 3250);
+            setTimeout(() => {
+                document.getElementById("createLoad").style.opacity = "1";
+                document.getElementById("warning").style.opacity = "1";
+                document.getElementById("warningDiv").style.transform = "scale(1)";
+                document.getElementById("createLoad").style.opacity = "0";
+                document.getElementById("createNow").style.pointerEvents = "all";
+                document.getElementById("createNow").style.color = "rgba(23,120,219,255)";
+                document.getElementById("activateInput").style.pointerEvents = "all";
+                document.getElementById("baigta2").style.pointerEvents = "all";
+                document.getElementById("activateInput").value = '';
+            }, 3300);
+        }
+        function dismissError(){
+                document.getElementById("gerai").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("gerai").style.backgroundColor = "white";
+                document.getElementById("warning").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning").style.display = "none";
+                document.getElementById("warningDiv").style.transform = "scale(1.3)";
+            }, 350);
+        }
+        function createError2(){
+                document.getElementById("createNow2").style.color = "rgba(201,201,201,255)";
+                document.getElementById("createNow2").style.backgroundColor = "rgba(201,201,201,255)";
+                document.getElementById("createLoad2").style.display = "flex";
+                document.getElementById("createNow2").style.pointerEvents = "none";
+                document.getElementById("passwordInput").style.pointerEvents = "none";
+                document.getElementById("emailInput").style.pointerEvents = "none";
+                document.getElementById("baigta").style.pointerEvents = "none";
+                document.getElementById("createAccount").style.pointerEvents = "none";
+                document.getElementById("forgot").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("createLoad2").style.opacity = "1";
+                document.getElementById("createNow2").style.backgroundColor = "white";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning2").style.display = "flex";
+            }, 3250);
+            setTimeout(() => {
+                document.getElementById("createLoad2").style.opacity = "1";
+                document.getElementById("warning2").style.opacity = "1";
+                document.getElementById("warningDiv2").style.transform = "scale(1)";
+                document.getElementById("createLoad2").style.opacity = "0";
+                document.getElementById("createNow2").style.pointerEvents = "all";
+                document.getElementById("createNow2").style.color = "rgba(23,120,219,255)";
+                document.getElementById("passwordInput").style.pointerEvents = "all";
+                document.getElementById("emailInput").style.pointerEvents = "all";
+                document.getElementById("emailInput").value = '';
+                document.getElementById("passwordInput").value = '';
+                document.getElementById("baigta").style.pointerEvents = "all";
+                document.getElementById("createAccount").style.pointerEvents = "all";
+                document.getElementById("forgot").style.pointerEvents = "all";
+            }, 3300);
+        }
+        function dismissError2(){
+                document.getElementById("gerai2").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("gerai2").style.backgroundColor = "white";
+                document.getElementById("warning2").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning2").style.display = "none";
+                document.getElementById("warningDiv2").style.transform = "scale(1.3)";
+            }, 350);
+        }
+        function remind(){
+                document.getElementById("forgot").style.color = "rgba(201,201,201,255)";
+                document.getElementById("warning3").style.display = "flex";
+            setTimeout(() => {
+                document.getElementById("forgot").style.color = "rgba(23,120,219,255)";
+                document.getElementById("warning3").style.opacity = "1";
+                document.getElementById("warningDiv3").style.transform = "scale(1)";
+            }, 150);
+        }
+        function dismissError3(){
+                document.getElementById("gerai3").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("gerai3").style.backgroundColor = "white";
+                document.getElementById("warning3").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warning3").style.display = "none";
+                document.getElementById("warningDiv3").style.transform = "scale(1.3)";
+            }, 350);
+        }
+        function confirmLogIn(){
+                document.getElementById("confirm").style.backgroundColor = "rgba(201,201,201,255)";
+                document.getElementById("back").style.pointerEvents = "none";
+                document.getElementById("other").style.pointerEvents = "none";
+                document.getElementById("confirm").style.pointerEvents = "none";
+                document.getElementById("logInLoad").style.display = "flex";
+            setTimeout(() => {
+                document.getElementById("confirm").style.backgroundColor = "white";
+                document.getElementById("logInLoad").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("loginScreen").style.left = "-100%";
+                document.getElementById("information").style.left = "-100%";
+                document.getElementById("pagrindinis").style.left = "0";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("navigacija").style.left = "0";
+                document.getElementById("logInLoad").style.opacity = "0";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("pagrindinis").style.border = "none";
+                document.getElementById("pagrindinis").style.position = "static";
+                document.getElementById("pagrindinis").style.height = "auto";
+                document.getElementById("logInLoad").style.display = "none";
+            }, 3700);
+        }
+        function accountOpen(){
+            document.getElementById("accountBtn").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("accountLoad").style.display = "flex";
+            document.getElementById("dots").style.pointerEvents = "none";
+            document.getElementById("naujienosIcon").style.pointerEvents = "none";
+            document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+            document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+            document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
+            document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("accountBtn").style.backgroundColor = "white";
+                document.getElementById("accountLoad").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-1px";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+                document.getElementById("accountLoad").style.opacity = "0";
             }, 3500);
             setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "1";
+                document.getElementById("accountLoad").style.display = "none";
+                document.getElementById("dots").style.pointerEvents = "all";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                document.getElementById("daugiauIcon").style.pointerEvents = "all";
+            }, 3600);
+        }
+        function accountOpen2(){
+            document.getElementById("accountBtn2").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("accountLoad2").style.display = "flex";
+            document.getElementById("naujienosIcon").style.pointerEvents = "none";
+            document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+            document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+            document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
+            document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("accountBtn2").style.backgroundColor = "white";
+                document.getElementById("accountLoad2").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-1px";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+                document.getElementById("accountLoad2").style.opacity = "0";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("accountLoad2").style.display = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                document.getElementById("daugiauIcon").style.pointerEvents = "all";
+            }, 3600);
+        }
+        function accountOpen3(){
+            document.getElementById("accountBtn3").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("accountLoad3").style.display = "flex";
+            document.getElementById("naujienosIcon").style.pointerEvents = "none";
+            document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+            document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+            document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
+            document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("accountBtn3").style.backgroundColor = "white";
+                document.getElementById("accountLoad3").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-1px";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+                document.getElementById("accountLoad3").style.opacity = "0";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("accountLoad3").style.display = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                document.getElementById("daugiauIcon").style.pointerEvents = "all";
+            }, 3600);
+        }
+        function accountOpen4(){
+            document.getElementById("accountBtn4").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("accountLoad4").style.display = "flex";
+            document.getElementById("naujienosIcon").style.pointerEvents = "none";
+            document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+            document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+            document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
+            document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("accountBtn4").style.backgroundColor = "white";
+                document.getElementById("accountLoad4").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-1px";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+                document.getElementById("accountLoad4").style.opacity = "0";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("accountLoad4").style.display = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                document.getElementById("daugiauIcon").style.pointerEvents = "all";
+            }, 3600);
+        }
+        function accountOpen5(){
+            document.getElementById("accountBtn5").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("accountLoad5").style.display = "flex";
+            document.getElementById("naujienosIcon").style.pointerEvents = "none";
+            document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+            document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+            document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
+            document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            document.getElementById("tvarkarastisBtn").style.pointerEvents = "none";
+            document.getElementById("pazymiaiBtn").style.pointerEvents = "none";
+            document.getElementById("pamokosBtn").style.pointerEvents = "none";
+            document.getElementById("namuDarbaiBtn").style.pointerEvents = "none";
+            document.getElementById("komentaraiBtn").style.pointerEvents = "none";
+            document.getElementById("lankomumasBtn").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("accountBtn5").style.backgroundColor = "white";
+                document.getElementById("accountLoad5").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-1px";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+                document.getElementById("accountLoad5").style.opacity = "0";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("accountLoad5").style.display = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                document.getElementById("daugiauIcon").style.pointerEvents = "all";
+                document.getElementById("tvarkarastisBtn").style.pointerEvents = "all";
+                document.getElementById("pazymiaiBtn").style.pointerEvents = "all";
+                document.getElementById("pamokosBtn").style.pointerEvents = "all";
+                document.getElementById("namuDarbaiBtn").style.pointerEvents = "all";
+                document.getElementById("komentaraiBtn").style.pointerEvents = "all";
+                document.getElementById("lankomumasBtn").style.pointerEvents = "all";
+            }, 3600);
+        }
+        function finishedAccount(){
+            document.getElementById("baigtaAcc").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigtaAcc").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-100%";
+            }, 350);
+        }
+        function signOut(){
+            document.getElementById("atsijungti").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("atsijungti").style.color = "rgba(201,201,201,255)";
+            document.getElementById("signOutLoad").style.display = "flex";
+            document.getElementById("baigtaAcc").style.pointerEvents = "none";
+            document.getElementById("atsijungti").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("atsijungti").style.backgroundColor = "white";
+                document.getElementById("signOutLoad").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("account").style.bottom = "-100%";
+            }, 3500);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "0";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+                document.getElementById("signOutLoad").style.opacity = "0";
+                document.getElementById("pagrindinis").style.opacity = "0";
+                document.getElementById("uzduotys").style.opacity = "0";
+                document.getElementById("vadoveliai").style.opacity = "0";
+                document.getElementById("pranesimai").style.opacity = "0";
+                document.getElementById("daugiau").style.opacity = "0";
+                document.getElementById("navigacija").style.opacity = "0";
+            }, 3300);
+            setTimeout(() => {
+                location.replace('index.html');
             }, 3800);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "0";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 4100);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 4400);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 4700);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "1";
-            }, 5000);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "0";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 5300);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 5600);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 5900);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "1";
-            }, 6200);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "0";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 6500);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 6800);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 7100);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "1";
-            }, 7400);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "0";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 7700);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 8000);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 8300);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "1";
-            }, 8600);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "0";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 8900);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 9200);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 9500);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "1";
-            }, 9800);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "0";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 10100);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "0";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 10400);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "0";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "0";
-            }, 10700);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("taskelis1").style.opacity = "1";
-                document.getElementById("taskelis2").style.opacity = "1";
-                document.getElementById("taskelis3").style.opacity = "1";
-            }, 11000);
-            setTimeout(() => {
-                document.getElementById("wifi").style.opacity = "1";
-                document.getElementById("addNoWifiBtn").style.display = "none";
-                document.getElementById("addBtn").style.display = "flex";
-                document.getElementById("noWifi").style.bottom = "-400px";
-                document.getElementById("black").style.opacity = "0";
-                document.getElementById("black").style.pointerEvents = "none";
-                document.getElementById("refresh").style.opacity = "1";
-            }, 11300);
-            setTimeout(() => {
-                document.getElementById("connecting").style.opacity = "0";
-            }, 11400);
-            setTimeout(() => {
-                document.getElementById("black").style.display = "none";
-                document.getElementById("taskelis4").style.opacity = "0";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 11600);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 11900);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 12200);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "1";
-            }, 12500);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "0";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 12800);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 13100);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 13400);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "1";
-            }, 13700);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "0";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-                document.getElementById("aplinka").style.display = "flex";
-                document.getElementById("aplinkaNera").style.display = "none";
-            }, 14000);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 14300);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 14600);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "1";
-            }, 14900);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "0";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-                document.getElementById("check1").style.display = "block";
-                document.getElementById("check2").style.display = "block";
-                document.getElementById("check3").style.display = "none";
-                document.getElementById("check4").style.display = "none";
-            }, 15200);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 15500);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 15800);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "1";
-                document.getElementById("butas").style.opacity = "1";
-            }, 16100);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "0";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 16400);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "0";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 16700);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "0";
-            }, 17000);
-            setTimeout(() => {
-                document.getElementById("taskelis4").style.opacity = "1";
-                document.getElementById("taskelis5").style.opacity = "1";
-                document.getElementById("taskelis6").style.opacity = "1";
-            }, 17300);
-            setTimeout(() => {
-                document.getElementById("noDevices").style.opacity = "1";
-            }, 17600);
-            setTimeout(() => {
-                document.getElementById("refresh").style.opacity = "0";
-            }, 17700);
         }
-        
-
-        function checkTime(i) {
-            if (i < 10) {
-            i = "0" + i;
+        function uzduotysAtidaryti(){
+            setTimeout(() => {
+                document.querySelector('#topUzduotys').scrollIntoView({
+                    behavior: 'auto'
+                });
+            }, 10);
+            document.getElementById("pagrindinis").style.display = "none";
+            document.getElementById("vadoveliai").style.display = "none";
+            document.getElementById("pranesimai").style.display = "none";
+            document.getElementById("daugiau").style.display = "none";
+            document.getElementById("uzduotys").style.display = "block";
+            document.getElementById("naujienosh2").style.display = "none";
+            document.getElementById("vadoveliaih2").style.display = "none";
+            document.getElementById("pranesimaih2").style.display = "none";
+            document.getElementById("daugiauh2").style.display = "none";
+            document.getElementById("dots").style.display = "none";
+            document.getElementById("editNews").style.display = "none";
+            document.getElementById("uzduotysh2").style.display = "block";
+            document.getElementById("naujienosIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("vadoveliaiIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("pranesimaiIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("daugiauIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("uzduotysIcon").style.color = "rgba(23,120,219,255)";
         }
-        return i;
+        function naujienosAtidaryti(){
+            setTimeout(() => {
+                document.querySelector('#topPagrindinis').scrollIntoView({
+                    behavior: 'auto'
+                });
+            }, 10);
+            document.getElementById("pagrindinis").style.display = "block";
+            document.getElementById("vadoveliai").style.display = "none";
+            document.getElementById("uzduotys").style.display = "none";
+            document.getElementById("pranesimai").style.display = "none";
+            document.getElementById("daugiau").style.display = "none";
+            document.getElementById("naujienosh2").style.display = "block";
+            document.getElementById("vadoveliaih2").style.display = "none";
+            document.getElementById("pranesimaih2").style.display = "none";
+            document.getElementById("daugiauh2").style.display = "none";
+            document.getElementById("dots").style.display = "block";
+            document.getElementById("editNews").style.display = "block";
+            document.getElementById("uzduotysh2").style.display = "none";
+            document.getElementById("naujienosIcon").style.color = "rgba(23,120,219,255)";
+            document.getElementById("vadoveliaiIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("pranesimaiIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("uzduotysIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("daugiauIcon").style.color = "rgba(130,129,134,255)";
         }
-
-        function startTime() {
-            var today = new Date();
-            var h = today.getHours();
-            var m = today.getMinutes();
-            // add a zero in front of numbers<10
-            m = checkTime(m);
-            document.getElementById('time').innerHTML = h + ":" + m;
-                t = setTimeout(function() {
-            startTime()
-            }, 500);
+        function vadoveliaiAtidaryti(){
+            setTimeout(() => {
+                document.querySelector('#topVadoveliai').scrollIntoView({
+                    behavior: 'auto'
+                });
+            }, 10);
+            document.getElementById("pagrindinis").style.display = "none";
+            document.getElementById("vadoveliai").style.display = "block";
+            document.getElementById("uzduotys").style.display = "none";
+            document.getElementById("pranesimai").style.display = "none";
+            document.getElementById("daugiau").style.display = "none";
+            document.getElementById("naujienosh2").style.display = "none";
+            document.getElementById("vadoveliaih2").style.display = "block";
+            document.getElementById("pranesimaih2").style.display = "none";
+            document.getElementById("dots").style.display = "none";
+            document.getElementById("editNews").style.display = "none";
+            document.getElementById("uzduotysh2").style.display = "none";
+            document.getElementById("daugiauh2").style.display = "none";
+            document.getElementById("naujienosIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("uzduotysIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("pranesimaiIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("daugiauIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("vadoveliaiIcon").style.color = "rgba(23,120,219,255)";
         }
-        startTime();
-
-        const temperature = ["18°C", "19°C", "20°C", "21°C", "22°C", "23°C"];
-
-        const random = Math.floor(Math.random() * temperature.length);
-        document.getElementById("temperatura").value = (random, temperature[random]);
-        
-        setTimeout(() => {
-            const humidity = ["37%", "38%", "39%", "40%", "41%", "42%", "43%", "44%", "45%", "46%", "47%", "48%", "49%", "50%", "51%", "52%", "53%", "54%", "55%", "56%", "57%", "58%", "59%", "60%", "61%", "62%", "63%", "64%", "65%"];
-
-            const random = Math.floor(Math.random() * humidity.length);
-            document.getElementById("dregme").value = (random, humidity[random]);
-        }, 10);
-        function add(){
-            document.getElementById("addBtn").style.transform = "scale(0.8)";
-            document.getElementById("black").style.display = "block";
-            document.getElementById("laikasLocation").style.width = "45%";
+        function pranesimaiAtidaryti(){
             setTimeout(() => {
-                document.getElementById("addBtn").style.transform = "scale(1)";
-                document.getElementById("black").style.opacity = "0.1";
-                document.getElementById("locationAccess").style.bottom = "-1px";
-            }, 100);
-            setTimeout(() => {
-                document.getElementById("trysS").style.display = "none";
-                document.getElementById("dviS").style.display = "block";
-            }, 1000);
-            setTimeout(() => {
-                document.getElementById("dviS").style.display = "none";
-                document.getElementById("vienaS").style.display = "block";
-            }, 2000);
-            setTimeout(() => {
-                document.getElementById("laikasLocation").style.display = "none";
-                document.getElementById("leistiLocation").style.display = "block";
-                document.getElementById("black").style.pointerEvents = "all";
-                document.getElementById("atsauktiLocation").style.pointerEvents = "all";
-                document.getElementById("atsauktiLocation").style.opacity = "1";
-            }, 3000);
+                document.querySelector('#topPranesimai').scrollIntoView({
+                    behavior: 'auto'
+                });
+            }, 10);
+            document.getElementById("pagrindinis").style.display = "none";
+            document.getElementById("vadoveliai").style.display = "none";
+            document.getElementById("uzduotys").style.display = "none";
+            document.getElementById("daugiau").style.display = "none";
+            document.getElementById("pranesimai").style.display = "block";
+            document.getElementById("naujienosh2").style.display = "none";
+            document.getElementById("vadoveliaih2").style.display = "none";
+            document.getElementById("daugiauh2").style.display = "none";
+            document.getElementById("pranesimaih2").style.display = "block";
+            document.getElementById("dots").style.display = "none";
+            document.getElementById("editNews").style.display = "block";
+            document.getElementById("uzduotysh2").style.display = "none";
+            document.getElementById("naujienosIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("uzduotysIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("pranesimaiIcon").style.color = "rgba(23,120,219,255)";
+            document.getElementById("vadoveliaiIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("daugiauIcon").style.color = "rgba(130,129,134,255)";
         }
-        function addNoWifi(){
-            document.getElementById("addNoWifiBtn").style.transform = "scale(0.8)";
-            document.getElementById("black").style.display = "block";
-            document.getElementById("black").style.pointerEvents = "all";
+        function daugiauAtidaryti(){
             setTimeout(() => {
-                document.getElementById("addNoWifiBtn").style.transform = "scale(1)";
-                document.getElementById("black").style.opacity = "0.1";
-                document.getElementById("noWifi").style.bottom = "-1px";
-            }, 100);
+                document.querySelector('#topDaugiau').scrollIntoView({
+                    behavior: 'auto'
+                });
+            }, 10);
+            document.getElementById("pagrindinis").style.display = "none";
+            document.getElementById("vadoveliai").style.display = "none";
+            document.getElementById("uzduotys").style.display = "none";
+            document.getElementById("daugiau").style.display = "block";
+            document.getElementById("pranesimai").style.display = "none";
+            document.getElementById("naujienosh2").style.display = "none";
+            document.getElementById("vadoveliaih2").style.display = "none";
+            document.getElementById("daugiauh2").style.display = "block";
+            document.getElementById("pranesimaih2").style.display = "none";
+            document.getElementById("dots").style.display = "none";
+            document.getElementById("editNews").style.display = "none";
+            document.getElementById("uzduotysh2").style.display = "none";
+            document.getElementById("naujienosIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("uzduotysIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("pranesimaiIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("vadoveliaiIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("daugiauIcon").style.color = "rgba(23,120,219,255)";
         }
-        function closeLocation(){
-            document.getElementById("black").style.opacity = "0";
-            document.getElementById("black").style.pointerEvents = "none";
-            document.getElementById("locationAccess").style.bottom = "-400px";
-            document.getElementById("noWifi").style.bottom = "-400px";
-            document.getElementById("cantFind").style.bottom = "-400px";
+        function scheduleOpen(){
+            document.getElementById("tvarkarastisBtn").style.backgroundColor = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("black").style.display = "none";
-                document.getElementById("atsauktiLocation").style.pointerEvents = "none";
-                document.getElementById("atsauktiLocation").style.opacity = "0.4";
-                document.getElementById("laikasLocation").style.width = "0";
-                document.getElementById("laikasLocation").style.display = "block";
-                document.getElementById("leistiLocation").style.display = "none";
-                document.getElementById("trysS").style.display = "block";
-                document.getElementById("vienaS").style.display = "none";
-            }, 300);
+                document.getElementById("tvarkarastisBtn").style.backgroundColor = "white";
+                document.getElementById("tvarkarastis").style.bottom = "-1px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
         }
-        function cancelLocation(){
-            document.getElementById("atsauktiLocation").style.transform = "scale(0.8)";
+        function finishedSchedule(){
+            document.getElementById("baigtaTvark").style.color = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("atsauktiLocation").style.transform = "scale(1)";
-                document.getElementById("black").style.opacity = "0";
-                document.getElementById("black").style.pointerEvents = "none";
-                document.getElementById("locationAccess").style.bottom = "-400px";
-            }, 100);
+                document.getElementById("baigtaTvark").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
             setTimeout(() => {
-                document.getElementById("black").style.display = "none";
-                document.getElementById("atsauktiLocation").style.pointerEvents = "none";
-                document.getElementById("atsauktiLocation").style.opacity = "0.4";
-                document.getElementById("laikasLocation").style.width = "0";
-                document.getElementById("laikasLocation").style.display = "block";
-                document.getElementById("leistiLocation").style.display = "none";
-                document.getElementById("trysS").style.display = "block";
-                document.getElementById("vienaS").style.display = "none";
-            }, 400);
+                document.getElementById("tvarkarastis").style.bottom = "-100%";
+            }, 350);
         }
-        function wifiClose(){
-            document.getElementById("closeWifi").style.transform = "scale(0.8)";
+        function pazymiaiOpen(){
+            document.getElementById("pazymiaiBtn").style.backgroundColor = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("closeWifi").style.transform = "scale(1)";
-                document.getElementById("black").style.opacity = "0";
-                document.getElementById("black").style.pointerEvents = "none";
-                document.getElementById("noWifi").style.bottom = "-400px";
-            }, 100);
+                document.getElementById("pazymiaiBtn").style.backgroundColor = "white";
+                document.getElementById("pazymiai").style.bottom = "-1px";
+            }, 150);
             setTimeout(() => {
-                document.getElementById("black").style.display = "none";
-            }, 400);
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
         }
-        function addDeviceConfirm(){
-            document.getElementById("devicesAdd").style.display = "block";
-            document.getElementById("leistiLocation").style.transform = "scale(0.8)";
+        function finishedGrades(){
+            document.getElementById("baigtaPazym").style.color = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("leistiLocation").style.transform = "scale(1)";
-                document.getElementById("black").style.opacity = "0";
-                document.getElementById("black").style.pointerEvents = "none";
-                document.getElementById("locationAccess").style.bottom = "-400px";
-            }, 100);
+                document.getElementById("baigtaPazym").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
             setTimeout(() => {
-                document.getElementById("black").style.display = "none";
-                document.getElementById("atsauktiLocation").style.pointerEvents = "none";
-                document.getElementById("atsauktiLocation").style.opacity = "0.4";
-                document.getElementById("laikasLocation").style.width = "0";
-                document.getElementById("laikasLocation").style.display = "block";
-                document.getElementById("leistiLocation").style.display = "none";
-                document.getElementById("trysS").style.display = "block";
-                document.getElementById("vienaS").style.display = "none";
-                document.getElementById("devicesAdd").style.transform = "scale(1.0)";
-                document.getElementById("devicesAdd").style.opacity = "1";
-                document.getElementById("devicesAdd").style.borderRadius = "0";
-            }, 400);
+                document.getElementById("pazymiai").style.bottom = "-100%";
+            }, 350);
         }
-        function closeAdd(){
-            document.getElementById("addChevron").style.transform = "scale(0.5)";
+        function lessonsOpen(){
+            document.getElementById("pamokosBtn").style.backgroundColor = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("addChevron").style.transform = "scale(1)";
-                document.getElementById("devicesAdd").style.transform = "scale(0.7)";
-                document.getElementById("devicesAdd").style.opacity = "0";
-                document.getElementById("devicesAdd").style.borderRadius = "25px";
-            }, 100);
+                document.getElementById("pamokosBtn").style.backgroundColor = "white";
+                document.getElementById("pamokos").style.bottom = "-1px";
+            }, 150);
             setTimeout(() => {
-                document.getElementById("devicesAdd").style.display = "none";
-            }, 400);
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
         }
-        function questionAdd(){
-            document.getElementById("addQuestion").style.transform = "scale(0.5)";
-            document.getElementById("black").style.display = "block";
-            document.getElementById("black").style.pointerEvents = "all";
+        function finishedLessons(){
+            document.getElementById("baigtaPamok").style.color = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("addQuestion").style.transform = "scale(1)";
-                document.getElementById("black").style.opacity = "0.1";
-                document.getElementById("cantFind").style.bottom = "-1px";
-            }, 100);
+                document.getElementById("baigtaPamok").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("pamokos").style.bottom = "-100%";
+            }, 350);
         }
-        function helpAddClose(){
-            document.getElementById("closeHelpAdd").style.transform = "scale(0.8)";
+        function homeworkOpen(){
+            document.getElementById("namuDarbaiBtn").style.backgroundColor = "rgba(201,201,201,255)";
             setTimeout(() => {
-                document.getElementById("closeHelpAdd").style.transform = "scale(1)";
-                document.getElementById("black").style.opacity = "0";
-                document.getElementById("black").style.pointerEvents = "none";
-                document.getElementById("cantFind").style.bottom = "-400px";
-            }, 100);
+                document.getElementById("namuDarbaiBtn").style.backgroundColor = "white";
+                document.getElementById("namuDarbai").style.bottom = "-1px";
+            }, 150);
             setTimeout(() => {
-                document.getElementById("black").style.display = "none";
-            }, 400);
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
+        }
+        function finishedHomework(){
+            document.getElementById("baigtaNamud").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigtaNamud").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("namuDarbai").style.bottom = "-100%";
+            }, 350);
+        }
+        function commentsOpen(){
+            document.getElementById("komentaraiBtn").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("komentaraiBtn").style.backgroundColor = "white";
+                document.getElementById("komentarai").style.bottom = "-1px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
+        }
+        function finishedComments(){
+            document.getElementById("baigtaKomen").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigtaKomen").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("komentarai").style.bottom = "-100%";
+            }, 350);
+        }
+        function attendanceOpen(){
+            document.getElementById("lankomumasBtn").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("lankomumasBtn").style.backgroundColor = "white";
+                document.getElementById("lankomumas").style.bottom = "-1px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
+        }
+        function finishedAttendance(){
+            document.getElementById("baigtaLanko").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigtaLanko").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("lankomumas").style.bottom = "-100%";
+            }, 350);
         }
     </script>
-</body>
 </html>
