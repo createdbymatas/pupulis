@@ -457,6 +457,20 @@
     z-index: 2;
     box-shadow: 0 0 5px rgba(213,213,214,255);
 }
+#pranesimas{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    overflow-y: scroll;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 2;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
 @media only screen and (max-width: 750px){
     #computer{
         display: none;
@@ -660,9 +674,18 @@
                     <div class="ispinner-blade"></div>
                   </div>
                 </div>
-            <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pranešimų nėra</p></button>
+            <button style="margin-top: 35px;" onclick="messageOpen()" id="messageBtn"><i class="fa-regular fa-envelope-open" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;" id="msgEnv1"></i><i class="fa-regular fa-envelope" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px; display: none;" id="msgEnv2"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; font-weight: 600;" id="messageTxt">Dėl pamokų</p> <i class="fa-solid fa-exclamation" style="color: red; font-size: 20px; position: absolute; right: 15px; height: 100%; display: flex; justify-content: center; align-items: center; top: 0;"></i></button>
             <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;"><span style="color: red; margin-right: 3px;"><i class="fa-solid fa-exclamation"></i></span> pažymėti pranešimai yra svarbūs.</p>
-            <button style="position: fixed; left: 5%; bottom: 70px;"><i class="fa-solid fa-graduation-cap" style="background-color: rgba(181,181,180,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; color: rgba(130,129,134,255); position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Rašyti pranešimą</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <button style="position: fixed; left: 5%; bottom: 70px;"><i class="fa-solid fa-pen" style="background-color: rgba(181,181,180,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; color: rgba(130,129,134,255); position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Rašyti pranešimą</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+        </div>
+        <div id="pranesimas">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Pranešimas</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaPrane" onclick="finishedMessage()">Baigti</h2>
+            <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+            <button style="height: 90px; margin-top: 92px;"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 60px; height: 60px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 34px;"></i><p style="width: 50%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Pupulis</p><p style="width: 70%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -17px;"><i class="fa-regular fa-clock" style="margin-right: 5px;"></i> 2023-02-24 21:03</p></button>
+            <button style="margin-top: 25px;"><p style="width: 70%; color: black; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Dėl pamokų</p><i class="fa-solid fa-exclamation" style="color: red; font-size: 20px; position: absolute; right: 15px; height: 100%; display: flex; justify-content: center; align-items: center; top: 0;"></i></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;" id="infoApieNaujienas">Labas, <br>Anglų kalbos rašybos pamoką planuoju daryti rytoj (vasario 25 d.), o rusų k. pamokas noriu daryti nuo kitos savaitės. Vadovėliai bus keli, juos galėsi parsisiųsti iš dienyno programėlės. <br>Mokytojas Pupulis</p>
+            <button style="margin-top: 25px;"><i class="fa-solid fa-reply" style="background-color: rgba(181,181,180,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; color: rgba(130,129,134,255); position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Atsakyti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
         </div>
         <div id="daugiau">
             <div style="position: absolute; top: 0;" id="topDaugiau"></div>
@@ -696,7 +719,7 @@
             <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(23,120,219,255); transition: 0s;" id="naujienosIcon" onclick="naujienosAtidaryti()"><i class="fa-regular fa-newspaper" style="transition:0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Naujienos</p></div>
             <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(130,129,134,255); transition: 0s;" id="uzduotysIcon" onclick="uzduotysAtidaryti()"><i class="fa-solid fa-bars-progress" style="transition:0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Užduotys</p></div>
             <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(130,129,134,255); transition: 0s;" id="vadoveliaiIcon" onclick="vadoveliaiAtidaryti()"><i class="fa-solid fa-book" style="transition: 0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Vadovėliai</p></div>
-            <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(130,129,134,255); transition: 0s;" id="pranesimaiIcon" onclick="pranesimaiAtidaryti()"><i class="fa-regular fa-envelope" style="transition: 0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Pranešimai</p></div>
+            <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(130,129,134,255); transition: 0s;" id="pranesimaiIcon" onclick="pranesimaiAtidaryti()"><i class="fa-regular fa-envelope" style="transition: 0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Pranešimai</p><div style="width: 15px; height: 15px; border: 3px solid rgba(242,241,246,255); background-color: red; position: absolute; border-radius: 100%; margin-top: -31px; margin-left: 21px;" id="iconNotifications"></div></div>
             <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(130,129,134,255); transition: 0s;" id="daugiauIcon" onclick="daugiauAtidaryti()"><i class="fa-solid fa-ellipsis" style="transition: none;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: none;">Daugiau</p></div>
         </div>
         <div id="account">
@@ -785,6 +808,25 @@
     </body>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
+        function getCookie(cname) {
+  let name = cname + "=";
+  let ca = document.cookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+
+
+
+
         function changeTime(){
                 document.getElementById("dots").style.color = "rgba(201,201,201,255)";
                 document.getElementById("newsTime").style.width = "215px";
@@ -892,12 +934,30 @@
                 }, 3300);
         }
         function loadFunction(){
-                setTimeout(() => {
-                    document.getElementById("loading").style.opacity = "0";
-                }, 100);
-                setTimeout(() => {
-                    document.getElementById("loading").style.display = "none";
-                }, 400);
+            let cookis = getCookie("cookie>notifications>message>number_1");
+            if (cookis != "") {
+                document.getElementById("iconNotifications").style.display = "none";
+                document.getElementById("messageTxt").style.fontWeight = "400";
+                document.getElementById("msgEnv1").style.display = "none";
+                document.getElementById("msgEnv2").style.display = "flex";
+            } else {
+                document.getElementById("iconNotifications").style.display = "block";
+                document.getElementById("messageTxt").style.fontWeight = "600";
+                document.getElementById("msgEnv1").style.display = "flex";
+                document.getElementById("msgEnv2").style.display = "none";
+                if (cookis != "" && cookis != null) {
+                    document.getElementById("iconNotifications").style.display = "block";
+                    document.getElementById("messageTxt").style.fontWeight = "600";
+                    document.getElementById("msgEnv1").style.display = "flex";
+                    document.getElementById("msgEnv2").style.display = "none";
+            }
+        }
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 100);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+            }, 400);
         }
 
 window.onscroll = function() {scrollFunction()};
@@ -1461,6 +1521,10 @@ function scrollFunction() {
             document.getElementById("pranesimaiIcon").style.color = "rgba(23,120,219,255)";
             document.getElementById("vadoveliaiIcon").style.color = "rgba(130,129,134,255)";
             document.getElementById("daugiauIcon").style.color = "rgba(130,129,134,255)";
+            document.getElementById("iconNotifications").style.opacity = "0";
+            setTimeout(() => {
+                document.getElementById("iconNotifications").style.display = "none";
+            }, 300);
         }
         function daugiauAtidaryti(){
             setTimeout(() => {
@@ -1664,6 +1728,42 @@ function scrollFunction() {
             }, 150);
             setTimeout(() => {
                 document.getElementById("lankomumas").style.bottom = "-100%";
+            }, 350);
+        }
+        function messageOpen(){
+            document.cookie = "cookie>notifications>message>number_1=read";
+            document.getElementById("messageBtn").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("messageBtn").style.backgroundColor = "white";
+                document.getElementById("pranesimas").style.bottom = "-1px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("body").style.backgroundColor = "black";
+            }, 350);
+            setTimeout(() => {
+                document.getElementById("messageTxt").style.fontWeight = "400";
+                document.getElementById("msgEnv1").style.display = "none";
+                document.getElementById("msgEnv2").style.display = "flex";
+            }, 450);
+        }
+        function finishedMessage(){
+            document.getElementById("baigtaPrane").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigtaPrane").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "0";
+                document.getElementById("information2").style.borderRadius = "0";
+                document.getElementById("information2").style.width = "100%";
+                document.getElementById("information2").style.left = "0";
+                document.getElementById("information2").style.opacity = "1";
+                document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("pranesimas").style.bottom = "-100%";
             }, 350);
         }
     </script>
