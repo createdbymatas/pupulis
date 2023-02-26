@@ -541,7 +541,7 @@
             <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow2" onclick="createError2()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; transition: 0.01s;">Prisijungti</p></button>
             <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="forgot" onclick="remind()">Pamiršai slaptažodį?</p>
             <button style="margin-top: 20px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Kurti naują paskyrą</p></button>
-            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir kita.</p>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
             <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.60); position: absolute; top: 228.5px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="createLoad2">
                 <div class="ispinner ispinner-large">
                     <div class="ispinner-blade"></div>
@@ -607,9 +607,9 @@
 
         <!-- pradzia -->
         <div id="information2"><p style="font-size: 17.5px; position: absolute; left: 16px; transition: 0.15s; font-weight: 100; bottom: 10px; color: rgba(130,129,134,255);" id="editNews">Redaguoti</p><h2 id="naujienosh2" style="opacity: 0;">Naujienos</h2><h2 id="uzduotysh2" style="opacity: 0; display: none;">Užduotys</h2><h2 id="vadoveliaih2" style="opacity: 0; display: none;">Vadovėliai</h2><h2 id="pranesimaih2" style="opacity: 0; display: none;">Pranešimai</h2><h2 id="daugiauh2" style="opacity: 0; display: none;">Daugiau</h2><i class="fa-solid fa-ellipsis" style="font-size: 20px; color: rgba(23,120,219,255); position: absolute; right: 16px; transition: 0.15s;" id="dots" onclick="changeTime()"></i><i class="fa-solid fa-ellipsis" style="font-size: 20px; color: rgba(23,120,219,255); position: absolute; right: 16px; transition: 0.15s; display: none;" id="dotsTasks" onclick="changeTasksInfo()"></i></div>
-        <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="newsTime"><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Naujienų laikotarpis:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fiveDays()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="check5"></i> 5 dienos</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fourteenDays()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="check14"></i> 14 dienų</p></div>
+        <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="newsTime"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Laikotarpis:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fiveDays()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="check5"></i> 5 dienos</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fourteenDays()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="check14"></i> 14 dienų</p></div>
         <div id="disableTime" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 2;" onclick="closeTime()"></div>
-        <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="tasksInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksNotDone()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkTskNdon"></i> Paskirtos</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksDone()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkTskDon"></i> Atliktos</p></div>
+        <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="tasksInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksNotDone()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkTskNdon"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksDone()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkTskDon"></i> Atlikta</p></div>
         <div id="disableTsk" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 2;" onclick="closeTasksInfo()"></div>
         <div id="pagrindinis">
             <div style="position: absolute; top: 0;" id="topPagrindinis"></div>
@@ -641,11 +641,23 @@
                 </div>
             <!-- nepamirsk pakeist scripte kad kai pakeiti naujienu laika pasikeistu is "naujienu nera" i normalias naujienas !!!!! -->
             <button style="margin-top: 35px;" id="neraNaujienu"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Naujienų nėra</p></button>
-            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;" id="infoApieNaujienas">Čia rodomi renginiai, šventės, atostogos ir kita.</p>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;" id="infoApieNaujienas">Naujienose rodomi renginiai, atostogos, svarbi informacija ir dar daugiau.</p>
         </div>
         <div id="uzduotys">
             <div style="position: absolute; top: 0;" id="topUzduotys"></div>
             <h1 style="margin-top: 95px;">Užduotys</h1>
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.7); position: absolute; top: 98.8px; left: 179.5px; opacity: 0; display: none; background-color: rgba(242,241,246,255);" id="uzduotysLoad">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
             <button style="height: 90px;" id="accountBtn2" onclick="accountOpen2()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 60px; height: 60px; border-radius: 100%; display: flex; justify-content: center; align-items: center; position: absolute; top: 15px; left: 15px; font-size: 34px;"></i><p style="width: 50%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 24px; top: -12px;">Ieva</p><p style="width: 70%; height: 100%; position: absolute; left: 90px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 14px; bottom: -17px;">Paskyros informacija, atsijungti</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
             <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 173px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="accountLoad2">
                 <div class="ispinner ispinner-large">
@@ -659,8 +671,8 @@
                     <div class="ispinner-blade"></div>
                   </div>
                 </div>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;" id="paskirtosUzdTsk">Paskirtos:</p>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px; display: none; opacity: 0;" id="atliktosUzdTsk">Atliktos:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;" id="paskirtosUzdTsk">Paskirta:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px; display: none; opacity: 0;" id="atliktosUzdTsk">Atlikta:</p>
             <button id="uzduociuNera"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Užduočių nėra</p></button>
         </div>
         <div id="vadoveliai">
@@ -815,22 +827,37 @@
             <div id="warningPamoka">
                 <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
                 <div id="warningPamokaDiv" style="transform: scale(1.3);">
-                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Writing a book review</h2>
-                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;"><i>Klasės darbas:</i> Making a plan to write a book review. Requirements: write 4 paragraphs in total; minimum 150 words.</p>
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">02-25 Anglų k. rašyba</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 10px; margin-right: 10px;"><b style="font-weight: 500;">Tema:</b> Writing a book review <br><b style="font-weight: 500;">Klasės darbas:</b> Making a plan to write a book review. Requirements: write 4 paragraphs in total; minimum 150 words.</p>
                     <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorPamoka()" id="geraiPamoka">Gerai</button>
                 </div>
             </div>
         </div>
         <div id="namuDarbai">
-            <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 90px; left: 10px; opacity: 0; z-index: 6; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="homeworkInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoUpc()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkUpcoming"></i> Paskirti</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoBef()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkBefore"></i> Atlikti</p></div>
+            <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 97px; left: 10px; opacity: 0; z-index: 6; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="homeworkInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoUpc()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkUpcoming"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoBef()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkBefore"></i> Atlikta</p></div>
             <div id="disableHw" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 5;" onclick="closeHomeworkInfo()"></div>
             <i class="fa-solid fa-ellipsis" style="font-size: 20px; color: rgba(23,120,219,255); position: absolute; left: 16px; transition: 0.15s; z-index: 3; top: 20px;" id="dotsHw" onclick="changeHomeworkInfo()"></i>
             <!-- nepamirsk pakeist scripte kad kai pakeiti namu darbu rodyma pasikeistu is "namu darbu nera" i normalius namu darbus !!!!! -->
+            <div style="display: flex; justify-content: center; align-items: center; width: 50%; margin-left: 25%; height: 40px; position: absolute; z-index: 3;">
+            <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.5); position: absolute; top: 10px; margin-left: 127px; opacity: 0; display: none; background-color: rgba(242,241,246,255);" id="ndLoad">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            </div>
+            <div style="position: absolute; top: 0; width: 100%; height: 1px; left: 0;" id="topNamuDarbai"></div>
             <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Namų darbai</h2>
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaNamud" onclick="finishedHomework()">Baigti</h2>
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px; " id="artejaNd">Paskirti:</p>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px; opacity: 0; display: none; " id="praejeNd">Atlikti:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;" id="artejaNd">Paskirta:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px; opacity: 0; display: none;" id="praejeNd">Atlikta:</p>
             <button id="namuDarbuNera"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbų nėra</p></button>
         </div>
         <div id="komentarai">
@@ -844,9 +871,10 @@
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaLanko" onclick="finishedAttendance()">Baigti</h2>
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
             <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Procentais:</p>
-            <button><p style="width: 100%; color: rgba(130,129,134,255); height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px;">0%</p></button>
+            <button><p style="width: 100%; height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px;">100%</p></button>
             <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Praėjusios pamokos:</p>
-            <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+            <!-- <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button> -->
+            <button><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">02-25 Anglų k. rašyba</p></button>
         </div>
     </body>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
@@ -872,7 +900,7 @@
 
         function changeTime(){
                 document.getElementById("dots").style.color = "rgba(201,201,201,255)";
-                document.getElementById("newsTime").style.width = "205px";
+                document.getElementById("newsTime").style.width = "175px";
                 document.getElementById("newsTime").style.height = "155px";
                 document.getElementById("disableTime").style.display = "block";
                 setTimeout(() => {
@@ -883,7 +911,7 @@
                 }, 150);
                 setTimeout(() => {
                     document.getElementById("newsTime").style.height = "150px";
-                    document.getElementById("newsTime").style.width = "200px";
+                    document.getElementById("newsTime").style.width = "170px";
                 }, 200);
         }
         function closeTime(){
@@ -978,7 +1006,7 @@
         }
         function changeTasksInfo(){
                 document.getElementById("dotsTasks").style.color = "rgba(201,201,201,255)";
-                document.getElementById("tasksInfo").style.width = "155px";
+                document.getElementById("tasksInfo").style.width = "175px";
                 document.getElementById("tasksInfo").style.height = "155px";
                 document.getElementById("disableTsk").style.display = "block";
                 setTimeout(() => {
@@ -989,7 +1017,7 @@
                 }, 150);
                 setTimeout(() => {
                     document.getElementById("tasksInfo").style.height = "150px";
-                    document.getElementById("tasksInfo").style.width = "150px";
+                    document.getElementById("tasksInfo").style.width = "170px";
                 }, 200);
         }
         function closeTasksInfo(){
@@ -1001,15 +1029,24 @@
                 }, 200);
         }
         function tasksNotDone(){
-            document.getElementById("tasksInfo").style.opacity = "0";
-                document.getElementById("disableTsk").style.display = "none";
+                document.getElementById("tasksInfo").style.opacity = "0";
+                document.getElementById("dotsTasks").style.pointerEvents = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "none";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+                document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
+                document.getElementById("daugiauIcon").style.pointerEvents = "none";
+                document.getElementById("accountBtn2").style.pointerEvents = "none";
                 document.querySelector('#topUzduotys').scrollIntoView({
                 behavior: 'smooth'
                 });
+                document.getElementById("disableTsk").style.display = "none";
+                document.getElementById("uzduotysLoad").style.display = "flex";
                 setTimeout(() => {
+                    document.getElementById("uzduotysLoad").style.opacity = "1";
+                    document.getElementById("uzduociuNera").style.opacity = "0";
                     document.getElementById("paskirtosUzdTsk").style.opacity = "0";
                     document.getElementById("atliktosUzdTsk").style.opacity = "0";
-                    document.getElementById("uzduociuNera").style.opacity = "0";
                 }, 10);
                 setTimeout(() => {
                     document.getElementById("tasksInfo").style.height = "0";
@@ -1020,22 +1057,42 @@
                 setTimeout(() => {
                     document.getElementById("atliktosUzdTsk").style.display = "none";
                     document.getElementById("paskirtosUzdTsk").style.display = "block";
-                }, 310);
+                }, 2950);
                 setTimeout(() => {
-                    document.getElementById("paskirtosUzdTsk").style.opacity = "1";
+                    document.getElementById("uzduotysLoad").style.opacity = "0";
                     document.getElementById("uzduociuNera").style.opacity = "1";
-                }, 350);
+                    document.getElementById("paskirtosUzdTsk").style.opacity = "1";
+                }, 3000);
+                setTimeout(() => {
+                    document.getElementById("uzduotysLoad").style.display = "none";
+                    document.getElementById("dotsTasks").style.pointerEvents = "all";
+                    document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                    document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                    document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                    document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                    document.getElementById("daugiauIcon").style.pointerEvents = "all";
+                    document.getElementById("accountBtn2").style.pointerEvents = "all";
+                }, 3300);
         }
         function tasksDone(){
                 document.getElementById("tasksInfo").style.opacity = "0";
-                document.getElementById("disableTsk").style.display = "none";
+                document.getElementById("dotsTasks").style.pointerEvents = "none";
+                document.getElementById("naujienosIcon").style.pointerEvents = "none";
+                document.getElementById("uzduotysIcon").style.pointerEvents = "none";
+                document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
+                document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
+                document.getElementById("daugiauIcon").style.pointerEvents = "none";
+                document.getElementById("accountBtn2").style.pointerEvents = "none";
                 document.querySelector('#topUzduotys').scrollIntoView({
                 behavior: 'smooth'
                 });
+                document.getElementById("disableTsk").style.display = "none";
+                document.getElementById("uzduotysLoad").style.display = "flex";
                 setTimeout(() => {
+                    document.getElementById("uzduotysLoad").style.opacity = "1";
+                    document.getElementById("uzduociuNera").style.opacity = "0";
                     document.getElementById("paskirtosUzdTsk").style.opacity = "0";
                     document.getElementById("atliktosUzdTsk").style.opacity = "0";
-                    document.getElementById("uzduociuNera").style.opacity = "0";
                 }, 10);
                 setTimeout(() => {
                     document.getElementById("tasksInfo").style.height = "0";
@@ -1046,15 +1103,26 @@
                 setTimeout(() => {
                     document.getElementById("paskirtosUzdTsk").style.display = "none";
                     document.getElementById("atliktosUzdTsk").style.display = "block";
-                }, 310);
+                }, 2950);
                 setTimeout(() => {
-                    document.getElementById("atliktosUzdTsk").style.opacity = "1";
+                    document.getElementById("uzduotysLoad").style.opacity = "0";
                     document.getElementById("uzduociuNera").style.opacity = "1";
-                }, 350);
+                    document.getElementById("atliktosUzdTsk").style.opacity = "1";
+                }, 3000);
+                setTimeout(() => {
+                    document.getElementById("uzduotysLoad").style.display = "none";
+                    document.getElementById("dotsTasks").style.pointerEvents = "all";
+                    document.getElementById("naujienosIcon").style.pointerEvents = "all";
+                    document.getElementById("uzduotysIcon").style.pointerEvents = "all";
+                    document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
+                    document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                    document.getElementById("daugiauIcon").style.pointerEvents = "all";
+                    document.getElementById("accountBtn2").style.pointerEvents = "all";
+                }, 3300);
         }
         function changeHomeworkInfo(){
                 document.getElementById("dotsHw").style.color = "rgba(201,201,201,255)";
-                document.getElementById("homeworkInfo").style.width = "155px";
+                document.getElementById("homeworkInfo").style.width = "175px";
                 document.getElementById("homeworkInfo").style.height = "155px";
                 document.getElementById("disableHw").style.display = "block";
                 setTimeout(() => {
@@ -1065,7 +1133,7 @@
                 }, 150);
                 setTimeout(() => {
                     document.getElementById("homeworkInfo").style.height = "150px";
-                    document.getElementById("homeworkInfo").style.width = "150px";
+                    document.getElementById("homeworkInfo").style.width = "170px";
                 }, 200);
         }
         function closeHomeworkInfo(){
@@ -1078,11 +1146,18 @@
         }
         function homeworkInfoBef(){
                 document.getElementById("homeworkInfo").style.opacity = "0";
+                document.getElementById("dotsHw").style.pointerEvents = "none";
+                document.getElementById("baigtaNamud").style.pointerEvents = "none";
+                document.querySelector('#topNamuDarbai').scrollIntoView({
+                behavior: 'smooth'
+                });
                 document.getElementById("disableHw").style.display = "none";
+                document.getElementById("ndLoad").style.display = "flex";
                 setTimeout(() => {
+                    document.getElementById("ndLoad").style.opacity = "1";
+                    document.getElementById("namuDarbuNera").style.opacity = "0";
                     document.getElementById("artejaNd").style.opacity = "0";
                     document.getElementById("praejeNd").style.opacity = "0";
-                    document.getElementById("namuDarbuNera").style.opacity = "0";
                 }, 10);
                 setTimeout(() => {
                     document.getElementById("homeworkInfo").style.height = "0";
@@ -1093,19 +1168,32 @@
                 setTimeout(() => {
                     document.getElementById("artejaNd").style.display = "none";
                     document.getElementById("praejeNd").style.display = "block";
-                }, 310);
+                }, 2950);
                 setTimeout(() => {
-                    document.getElementById("praejeNd").style.opacity = "1";
+                    document.getElementById("ndLoad").style.opacity = "0";
                     document.getElementById("namuDarbuNera").style.opacity = "1";
-                }, 350);
+                    document.getElementById("praejeNd").style.opacity = "1";
+                }, 3000);
+                setTimeout(() => {
+                    document.getElementById("ndLoad").style.display = "none";
+                    document.getElementById("dotsHw").style.pointerEvents = "all";
+                    document.getElementById("baigtaNamud").style.pointerEvents = "all";
+                }, 3300);
         }
         function homeworkInfoUpc(){
                 document.getElementById("homeworkInfo").style.opacity = "0";
+                document.getElementById("dotsHw").style.pointerEvents = "none";
+                document.getElementById("baigtaNamud").style.pointerEvents = "none";
+                document.querySelector('#topNamuDarbai').scrollIntoView({
+                behavior: 'smooth'
+                });
                 document.getElementById("disableHw").style.display = "none";
+                document.getElementById("ndLoad").style.display = "flex";
                 setTimeout(() => {
+                    document.getElementById("ndLoad").style.opacity = "1";
+                    document.getElementById("namuDarbuNera").style.opacity = "0";
                     document.getElementById("artejaNd").style.opacity = "0";
                     document.getElementById("praejeNd").style.opacity = "0";
-                    document.getElementById("namuDarbuNera").style.opacity = "0";
                 }, 10);
                 setTimeout(() => {
                     document.getElementById("homeworkInfo").style.height = "0";
@@ -1116,11 +1204,17 @@
                 setTimeout(() => {
                     document.getElementById("praejeNd").style.display = "none";
                     document.getElementById("artejaNd").style.display = "block";
-                }, 310);
+                }, 2950);
                 setTimeout(() => {
-                    document.getElementById("artejaNd").style.opacity = "1";
+                    document.getElementById("ndLoad").style.opacity = "0";
                     document.getElementById("namuDarbuNera").style.opacity = "1";
-                }, 350);
+                    document.getElementById("artejaNd").style.opacity = "1";
+                }, 3000);
+                setTimeout(() => {
+                    document.getElementById("ndLoad").style.display = "none";
+                    document.getElementById("dotsHw").style.pointerEvents = "all";
+                    document.getElementById("baigtaNamud").style.pointerEvents = "all";
+                }, 3300);
         }
         function loadFunction(){
             let cookis = getCookie("cookie>notifications>message>number_1");
@@ -1429,6 +1523,7 @@ function scrollFunction() {
         function accountOpen2(){
             document.getElementById("accountBtn2").style.backgroundColor = "rgba(201,201,201,255)";
             document.getElementById("accountLoad2").style.display = "flex";
+            document.getElementById("dotsTasks").style.pointerEvents = "none";
             document.getElementById("naujienosIcon").style.pointerEvents = "none";
             document.getElementById("uzduotysIcon").style.pointerEvents = "none";
             document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
@@ -1452,6 +1547,7 @@ function scrollFunction() {
             }, 3500);
             setTimeout(() => {
                 document.getElementById("accountLoad2").style.display = "none";
+                document.getElementById("dots").style.pointerEvents = "all";
                 document.getElementById("naujienosIcon").style.pointerEvents = "all";
                 document.getElementById("uzduotysIcon").style.pointerEvents = "all";
                 document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
