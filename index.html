@@ -517,6 +517,52 @@
     position: relative;
     transition: 0.2s;
 }
+#warningPamoka2{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+    z-index: 5;
+}
+#warningPamoka2 div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
+#warningNamai{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+    z-index: 5;
+}
+#warningNamai div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
 @media only screen and (max-width: 750px){
     #computer{
         display: none;
@@ -632,9 +678,9 @@
 
         <!-- pradzia -->
         <div id="information2"><p style="font-size: 17.5px; position: absolute; left: 16px; transition: 0.15s; font-weight: 100; bottom: 10px; color: rgba(130,129,134,255);" id="editNews">Redaguoti</p><h2 id="naujienosh2" style="opacity: 0;">Naujienos</h2><h2 id="uzduotysh2" style="opacity: 0; display: none;">Užduotys</h2><h2 id="vadoveliaih2" style="opacity: 0; display: none;">Vadovėliai</h2><h2 id="pranesimaih2" style="opacity: 0; display: none;">Pranešimai</h2><h2 id="daugiauh2" style="opacity: 0; display: none;">Daugiau</h2><i class="fa-solid fa-ellipsis" style="font-size: 20px; color: rgba(23,120,219,255); position: absolute; right: 16px; transition: 0.15s;" id="dots" onclick="changeTime()"></i><i class="fa-solid fa-ellipsis" style="font-size: 20px; color: rgba(23,120,219,255); position: absolute; right: 16px; transition: 0.15s; display: none;" id="dotsTasks" onclick="changeTasksInfo()"></i></div>
-        <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="newsTime"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Laikotarpis:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fiveDays()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="check5"></i> 5 dienos</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fourteenDays()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="check14"></i> 14 dienų</p></div>
+        <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s; pointer-events: none;" id="newsTime"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Laikotarpis:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fiveDays()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="check5"></i> 5 dienos</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fourteenDays()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="check14"></i> 14 dienų</p></div>
         <div id="disableTime" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 2;" onclick="closeTime()"></div>
-        <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="tasksInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksNotDone()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkTskNdon"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksDone()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkTskDon"></i> Atlikta</p></div>
+        <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s; pointer-events: none;" id="tasksInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksNotDone()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkTskNdon"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksDone()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkTskDon"></i> Atlikta</p></div>
         <div id="disableTsk" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 2;" onclick="closeTasksInfo()"></div>
         <div id="pagrindinis">
             <div style="position: absolute; top: 0;" id="topPagrindinis"></div>
@@ -858,18 +904,28 @@
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaPamok" onclick="finishedLessons()">Baigti</h2>
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
             <!-- <button style="margin-top: 92px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button> -->
-            <button style="margin-top: 92px;" onclick="pamokaOpen()" id="pamokaBtn"><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">02-25 Anglų k. rašyba</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <button style="margin-top: 92px; border-radius: 10px 10px 0 0;" onclick="pamokaOpen2()" id="pamokaBtn2"><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">03-04 Anglų k. rašyba</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0 0 10px 10px;" onclick="pamokaOpen()" id="pamokaBtn"><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">02-25 Anglų k. rašyba</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
             <div id="warningPamoka">
                 <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
                 <div id="warningPamokaDiv" style="transform: scale(1.3);">
                     <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">02-25 Anglų k. rašyba</h2>
-                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;"><b style="font-weight: 500;">Tema:</b> Writing a book review <br><b style="font-weight: 500;">Klasės darbas:</b> Making a plan to write a book review. Requirements: write 4 paragraphs in total, minimum 150 words.</p>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;"><b style="font-weight: 500;">Tema</b> Writing a book review <br><b style="font-weight: 500;">Klasės darbas</b> Making a plan to write a book review. Requirements: write 4 paragraphs in total, minimum 150 words.</p>
                     <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorPamoka()" id="geraiPamoka">Gerai</button>
+                </div>
+            </div>
+            <div id="warningPamoka2">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningPamokaDiv2" style="transform: scale(1.3);">
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">03-04 Anglų k. rašyba</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;"><b style="font-weight: 500;">Tema</b> Writing a book review <br><b style="font-weight: 500;">Klasės darbas</b> Finishing a plan to write a book review. Requirements: write 4 paragraphs in total, minimum 150 words.<br><b style="font-weight: 500;">Namų darbas</b> Finish writing a book review.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorPamoka2()" id="geraiPamoka2">Gerai</button>
                 </div>
             </div>
         </div>
         <div id="namuDarbai">
-            <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 97px; left: 10px; opacity: 0; z-index: 6; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s;" id="homeworkInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoUpc()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkUpcoming"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoBef()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkBefore"></i> Atlikta</p></div>
+            <div style="width: 0; height: 0; background-color: white; border-radius: 15px; position: fixed; top: 97px; left: 10px; opacity: 0; z-index: 6; box-shadow: 0 0 10px rgba(213,213,214,255); transition: 0.2s; pointer-events: none;" id="homeworkInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoUpc()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkUpcoming"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoBef()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkBefore"></i> Atlikta</p></div>
             <div id="disableHw" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 5;" onclick="closeHomeworkInfo()"></div>
             <i class="fa-solid fa-ellipsis" style="font-size: 20px; color: rgba(23,120,219,255); position: absolute; left: 16px; transition: 0.15s; z-index: 3; top: 20px;" id="dotsHw" onclick="changeHomeworkInfo()"></i>
             <!-- nepamirsk pakeist scripte kad kai pakeiti namu darbu rodyma pasikeistu is "namu darbu nera" i normalius namu darbus !!!!! -->
@@ -893,7 +949,16 @@
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
             <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;" id="artejaNd">Paskirta</p>
             <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px; opacity: 0; display: none;" id="praejeNd">Atlikta</p>
-            <button id="namuDarbuNera"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbų nėra</p></button>
+            <button id="namuDarbuNera" style="display: none; opacity: 0;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbų nėra</p></button>
+            <button onclick="namaiOpen()" id="namaiBtn"><i class="fa-solid fa-briefcase" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Anglų k. rašyba</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <div id="warningNamai">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningNamaiDiv" style="transform: scale(1.3);">
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Anglų k. rašyba</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;"><b style="font-weight: 500;">Atlikti iki</b> 03-10 <br><b style="font-weight: 500;">Namų darbas</b> Finish writing a book review.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorNamai()" id="geraiNamai">Gerai</button>
+                </div>
+            </div>
         </div>
         <div id="komentarai">
             <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Komentarai</h2>
@@ -909,7 +974,9 @@
             <button><p style="width: 100%; height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px;">100%</p></button>
             <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Praėjusios pamokos</p>
             <!-- <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button> -->
-            <button><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">02-25 Anglų k. rašyba</p></button>
+            <button style="border-radius: 10px 10px 0 0"><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">03-04 Anglų k. rašyba</p></button>
+            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <button style="border-radius: 0 0 10px 10px;"><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">02-25 Anglų k. rašyba</p></button>
         </div>
     </body>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
@@ -937,6 +1004,7 @@
                 document.getElementById("dots").style.color = "rgba(201,201,201,255)";
                 document.getElementById("newsTime").style.width = "175px";
                 document.getElementById("newsTime").style.height = "155px";
+                document.getElementById("newsTime").style.pointerEvents = "all";
                 document.getElementById("disableTime").style.display = "block";
                 setTimeout(() => {
                     document.getElementById("newsTime").style.opacity = "1";
@@ -951,6 +1019,7 @@
         }
         function closeTime(){
                 document.getElementById("newsTime").style.opacity = "0";
+                document.getElementById("newsTime").style.pointerEvents = "none";
                 document.getElementById("disableTime").style.display = "none";
                 setTimeout(() => {
                     document.getElementById("newsTime").style.height = "0";
@@ -1057,6 +1126,7 @@
                 document.getElementById("dotsTasks").style.color = "rgba(201,201,201,255)";
                 document.getElementById("tasksInfo").style.width = "175px";
                 document.getElementById("tasksInfo").style.height = "155px";
+                document.getElementById("tasksInfo").style.pointerEvents = "all";
                 document.getElementById("disableTsk").style.display = "block";
                 setTimeout(() => {
                     document.getElementById("tasksInfo").style.opacity = "1";
@@ -1071,6 +1141,7 @@
         }
         function closeTasksInfo(){
                 document.getElementById("tasksInfo").style.opacity = "0";
+                document.getElementById("tasksInfo").style.pointerEvents = "none";
                 document.getElementById("disableTsk").style.display = "none";
                 setTimeout(() => {
                     document.getElementById("tasksInfo").style.height = "0";
@@ -1173,6 +1244,7 @@
                 document.getElementById("dotsHw").style.color = "rgba(201,201,201,255)";
                 document.getElementById("homeworkInfo").style.width = "175px";
                 document.getElementById("homeworkInfo").style.height = "155px";
+                document.getElementById("homeworkInfo").style.pointerEvents = "all";
                 document.getElementById("disableHw").style.display = "block";
                 setTimeout(() => {
                     document.getElementById("homeworkInfo").style.opacity = "1";
@@ -1187,6 +1259,7 @@
         }
         function closeHomeworkInfo(){
                 document.getElementById("homeworkInfo").style.opacity = "0";
+                document.getElementById("homeworkInfo").style.pointerEvents = "none";
                 document.getElementById("disableHw").style.display = "none";
                 setTimeout(() => {
                     document.getElementById("homeworkInfo").style.height = "0";
@@ -1205,6 +1278,7 @@
                 setTimeout(() => {
                     document.getElementById("ndLoad").style.opacity = "1";
                     document.getElementById("namuDarbuNera").style.opacity = "0";
+                    document.getElementById("namaiBtn").style.opacity = "0";
                     document.getElementById("artejaNd").style.opacity = "0";
                     document.getElementById("praejeNd").style.opacity = "0";
                 }, 10);
@@ -1217,6 +1291,8 @@
                 setTimeout(() => {
                     document.getElementById("artejaNd").style.display = "none";
                     document.getElementById("praejeNd").style.display = "block";
+                    document.getElementById("namaiBtn").style.display = "none";
+                    document.getElementById("namuDarbuNera").style.display = "inline-block";
                 }, 2950);
                 setTimeout(() => {
                     document.getElementById("ndLoad").style.opacity = "0";
@@ -1241,6 +1317,7 @@
                 setTimeout(() => {
                     document.getElementById("ndLoad").style.opacity = "1";
                     document.getElementById("namuDarbuNera").style.opacity = "0";
+                    document.getElementById("namaiBtn").style.opacity = "0";
                     document.getElementById("artejaNd").style.opacity = "0";
                     document.getElementById("praejeNd").style.opacity = "0";
                 }, 10);
@@ -1253,10 +1330,12 @@
                 setTimeout(() => {
                     document.getElementById("praejeNd").style.display = "none";
                     document.getElementById("artejaNd").style.display = "block";
+                    document.getElementById("namuDarbuNera").style.display = "none";
+                    document.getElementById("namaiBtn").style.display = "inline-block";
                 }, 2950);
                 setTimeout(() => {
                     document.getElementById("ndLoad").style.opacity = "0";
-                    document.getElementById("namuDarbuNera").style.opacity = "1";
+                    document.getElementById("namaiBtn").style.opacity = "1";
                     document.getElementById("artejaNd").style.opacity = "1";
                 }, 3000);
                 setTimeout(() => {
@@ -1645,6 +1724,7 @@ function scrollFunction() {
             document.getElementById("pranesimaiIcon").style.pointerEvents = "none";
             document.getElementById("vadoveliaiIcon").style.pointerEvents = "none";
             document.getElementById("daugiauIcon").style.pointerEvents = "none";
+            document.getElementById("messageBtn").style.pointerEvents = "none";
             setTimeout(() => {
                 document.getElementById("accountBtn4").style.backgroundColor = "white";
                 document.getElementById("accountLoad4").style.opacity = "1";
@@ -1668,6 +1748,7 @@ function scrollFunction() {
                 document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
                 document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
                 document.getElementById("daugiauIcon").style.pointerEvents = "all";
+                document.getElementById("messageBtn").style.pointerEvents = "all";
             }, 3600);
         }
         function accountOpen5(){
@@ -2146,6 +2227,26 @@ function scrollFunction() {
                 document.getElementById("warningPamokaDiv").style.transform = "scale(1.3)";
             }, 350);
         }
+        function pamokaOpen2(){
+                document.getElementById("pamokaBtn2").style.backgroundColor = "rgba(201,201,201,255)";
+                document.getElementById("warningPamoka2").style.display = "flex";
+            setTimeout(() => {
+                document.getElementById("pamokaBtn2").style.backgroundColor = "white";
+                document.getElementById("warningPamoka2").style.opacity = "1";
+                document.getElementById("warningPamokaDiv2").style.transform = "scale(1)";
+            }, 150);
+        }
+        function dismissErrorPamoka2(){
+                document.getElementById("geraiPamoka2").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("geraiPamoka2").style.backgroundColor = "white";
+                document.getElementById("warningPamoka2").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warningPamoka2").style.display = "none";
+                document.getElementById("warningPamokaDiv2").style.transform = "scale(1.3)";
+            }, 350);
+        }
         function createErrorImg(){
                 document.getElementById("accountImg").style.opacity = "0";
                 document.getElementById("warningImg").style.display = "flex";
@@ -2164,6 +2265,26 @@ function scrollFunction() {
             setTimeout(() => {
                 document.getElementById("warningImg").style.display = "none";
                 document.getElementById("warningDivImg").style.transform = "scale(1.3)";
+            }, 350);
+        }
+        function namaiOpen(){
+                document.getElementById("namaiBtn").style.backgroundColor = "rgba(201,201,201,255)";
+                document.getElementById("warningNamai").style.display = "flex";
+            setTimeout(() => {
+                document.getElementById("namaiBtn").style.backgroundColor = "white";
+                document.getElementById("warningNamai").style.opacity = "1";
+                document.getElementById("warningNamaiDiv").style.transform = "scale(1)";
+            }, 150);
+        }
+        function dismissErrorNamai(){
+                document.getElementById("geraiNamai").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("geraiNamai").style.backgroundColor = "white";
+                document.getElementById("warningNamai").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warningNamai").style.display = "none";
+                document.getElementById("warningNamaiDiv").style.transform = "scale(1.3)";
             }, 350);
         }
     </script>
