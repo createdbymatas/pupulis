@@ -507,6 +507,8 @@
         <img src="logo.jpg" alt="Pupulio pamokos" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 50px; display: block;">
         <h1>Pupulio pamokos</h1>
         <button onclick="login()" id="loginBtn"><i class="fa-solid fa-arrow-right-to-bracket" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Prisijungimas</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+        <button style="position: absolute; bottom: 123px; left: 5%; border-radius: 0 0 10px 10px;"><i class="fa-solid fa-diamond" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Powered by iPupulis</p></button>
+        <div style="width: 90%; height: 1px; position: absolute; bottom: 122.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
         <button style="position: absolute; bottom: 73px; left: 5%; border-radius: 10px 10px 0 0;"><i class="fa-regular fa-copyright" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">All rights reserved</p></button>
         <div style="width: 90%; height: 1px; position: absolute; bottom: 72.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
         <button style="position: absolute; bottom: 23px; left: 5%; border-radius: 0 0 10px 10px;"><i class="fa-solid fa-hammer" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Created by Matas</p></button>
@@ -514,7 +516,7 @@
     <div id="loginScreen">
         <div id="information"><p style="font-size: 17.5px; position: absolute; left: 10px; bottom: 8.5px; color: rgba(23,120,219,255); display: flex; justify-content: center; align-items: center; font-weight: 100; transition: 0.15s;" id="back" onclick="closeLogin()"><i class="fa-solid fa-chevron-left" style="font-size: 23px; transition: 0.01s; margin-right: 5px;"></i> Pagrindinis</p><h2>Prisijungimas</h2></div>
         <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 110px; display: block;">
-        <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400;">Ankstesni naudotojai:</p>
+        <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400;">Ankstesni naudotojai</p>
         <button id="confirm" onclick="confirmLogIn()"><i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Ieva</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 20px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
         <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="other" onclick="otherUser()">Kitas naudotojas?</p>
         <div style="width: 40px; height: 40px; border-radius: 100%; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 359.3px; right: 6.3%; opacity: 0; display: none; background-color: white;" id="logInLoad">
@@ -640,7 +642,9 @@
                   </div>
                 </div>
             <!-- nepamirsk pakeist scripte kad kai pakeiti naujienu laika pasikeistu is "naujienu nera" i normalias naujienas !!!!! -->
-            <button style="margin-top: 35px;" id="neraNaujienu"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Naujienų nėra</p></button>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;" id="penkiosDienosNaujienos">5 dienos</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px; display: none; opacity: 0;" id="keturiolikaDienuNaujienos">14 dienų</p>
+            <button id="neraNaujienu"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Naujienų nėra</p></button>
             <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;" id="infoApieNaujienas">Naujienose rodomi renginiai, atostogos, svarbi informacija ir dar daugiau.</p>
         </div>
         <div id="uzduotys">
@@ -671,8 +675,8 @@
                     <div class="ispinner-blade"></div>
                   </div>
                 </div>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;" id="paskirtosUzdTsk">Paskirta:</p>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px; display: none; opacity: 0;" id="atliktosUzdTsk">Atlikta:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;" id="paskirtosUzdTsk">Paskirta</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px; display: none; opacity: 0;" id="atliktosUzdTsk">Atlikta</p>
             <button id="uzduociuNera"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Užduočių nėra</p></button>
         </div>
         <div id="vadoveliai">
@@ -768,7 +772,7 @@
             <i class="fa-regular fa-user" style="background-color: rgba(23,120,219,255); margin: 0 auto; margin-top: 35px; color: white; width: 100px; height: 100px; border-radius: 100%; display: flex; justify-content: center; align-items: center; font-size: 56px;"></i>
             <p style="font-size: 28px; margin-top: 10px;">Ieva</p>
             <p style="color: rgba(130,129,134,255); font-size: 17.5px;">ievakasparav@gmail.com</p>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Paskyros informacija:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Paskyros informacija</p>
             <button style="border-radius: 10px 10px 0 0;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Naudotojas nuo</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: left; font-size: 17.5px; color: rgba(130,129,134,255);">2022-08-09</p></button>
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 15px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
             <button style="border-radius: 0;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Mokymosi metai</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">1</p></button>
@@ -794,19 +798,19 @@
             <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Tvarkaraštis</h2>
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaTvark" onclick="finishedSchedule()">Baigti</h2>
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Pirmadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Pirmadienis</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Antradienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Antradienis</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Trečiadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Trečiadienis</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Ketvirtadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Ketvirtadienis</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Penktadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Penktadienis</p>
             <button><i class="fa-regular fa-calendar-check" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 85%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">19:00 - 19:30: Anglų k. rašyba</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Šeštadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Šeštadienis</p>
             <button><i class="fa-regular fa-calendar-check" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 85%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">19:00 - 19:45: Rusų k.</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Sekmadienis:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Sekmadienis</p>
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
         </div>
         <div id="pazymiai">
@@ -856,8 +860,8 @@
             <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Namų darbai</h2>
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaNamud" onclick="finishedHomework()">Baigti</h2>
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;" id="artejaNd">Paskirta:</p>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px; opacity: 0; display: none;" id="praejeNd">Atlikta:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;" id="artejaNd">Paskirta</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px; opacity: 0; display: none;" id="praejeNd">Atlikta</p>
             <button id="namuDarbuNera"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Namų darbų nėra</p></button>
         </div>
         <div id="komentarai">
@@ -870,9 +874,9 @@
             <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Lankomumas</h2>
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaLanko" onclick="finishedAttendance()">Baigti</h2>
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Procentais:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Procentais</p>
             <button><p style="width: 100%; height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px;">100%</p></button>
-            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Praėjusios pamokos:</p>
+            <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Praėjusios pamokos</p>
             <!-- <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button> -->
             <button><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">02-25 Anglų k. rašyba</p></button>
         </div>
@@ -940,6 +944,8 @@
                     document.getElementById("naujienosLoad").style.opacity = "1";
                     document.getElementById("neraNaujienu").style.opacity = "0";
                     document.getElementById("infoApieNaujienas").style.opacity = "0";
+                    document.getElementById("penkiosDienosNaujienos").style.opacity = "0";
+                    document.getElementById("keturiolikaDienuNaujienos").style.opacity = "0";
                 }, 10);
                 setTimeout(() => {
                     document.getElementById("newsTime").style.height = "0";
@@ -948,9 +954,14 @@
                     document.getElementById("check14").style.opacity = "0";
                 }, 200);
                 setTimeout(() => {
+                    document.getElementById("keturiolikaDienuNaujienos").style.display = "none";
+                    document.getElementById("penkiosDienosNaujienos").style.display = "block";
+                }, 2950);
+                setTimeout(() => {
                     document.getElementById("naujienosLoad").style.opacity = "0";
                     document.getElementById("neraNaujienu").style.opacity = "1";
                     document.getElementById("infoApieNaujienas").style.opacity = "1";
+                    document.getElementById("penkiosDienosNaujienos").style.opacity = "1";
                 }, 3000);
                 setTimeout(() => {
                     document.getElementById("naujienosLoad").style.display = "none";
@@ -981,6 +992,8 @@
                     document.getElementById("naujienosLoad").style.opacity = "1";
                     document.getElementById("neraNaujienu").style.opacity = "0";
                     document.getElementById("infoApieNaujienas").style.opacity = "0";
+                    document.getElementById("penkiosDienosNaujienos").style.opacity = "0";
+                    document.getElementById("keturiolikaDienuNaujienos").style.opacity = "0";
                 }, 10);
                 setTimeout(() => {
                     document.getElementById("newsTime").style.height = "0";
@@ -989,9 +1002,14 @@
                     document.getElementById("check14").style.opacity = "1";
                 }, 200);
                 setTimeout(() => {
+                    document.getElementById("penkiosDienosNaujienos").style.display = "none";
+                    document.getElementById("keturiolikaDienuNaujienos").style.display = "block";
+                }, 2950);
+                setTimeout(() => {
                     document.getElementById("naujienosLoad").style.opacity = "0";
                     document.getElementById("neraNaujienu").style.opacity = "1";
                     document.getElementById("infoApieNaujienas").style.opacity = "1";
+                    document.getElementById("keturiolikaDienuNaujienos").style.opacity = "1";
                 }, 3000);
                 setTimeout(() => {
                     document.getElementById("naujienosLoad").style.display = "none";
