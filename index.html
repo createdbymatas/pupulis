@@ -573,6 +573,19 @@
 </style>
     <div id="computer"></div>
     <div id="loading" style="width: 100%; z-index: 100; transition: 0.3s; overflow: hidden; height: 100%; background-color: rgba(242,241,246,255); position: fixed; top: 0; left: 0; bottom: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+        <div style="width: 40px; height: 40px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6);" id="logInLoad">
+            <div class="ispinner ispinner-large" style="background-color: transparent;">
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+              </div>
+            </div>
+        <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14px; margin-top: -3px;">Kraunasi</p>
     </div>
     <div id="animationScreen">
         <img src="logo.jpg" alt="Pupulio pamokos" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 50px; display: block;">
@@ -1368,10 +1381,10 @@
         }
             setTimeout(() => {
                 document.getElementById("loading").style.opacity = "0";
-            }, 100);
+            }, 2000);
             setTimeout(() => {
                 document.getElementById("loading").style.display = "none";
-            }, 400);
+            }, 2300);
         }
 
 window.onscroll = function() {scrollFunction()};
