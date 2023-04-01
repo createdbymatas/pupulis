@@ -194,6 +194,19 @@
     z-index: 2;
     box-shadow: 0 0 5px rgba(213,213,214,255);
 }
+#workAccountLogIn{
+    width: 100%;
+    height: 95%;
+    border-radius: 10px 10px 0 0;
+    position: fixed;
+    bottom: -100%;
+    left: 0;
+    right: 0;
+    transition: 0.3s;
+    background-color: rgba(242,241,246,255);
+    z-index: 3;
+    box-shadow: 0 0 5px rgba(213,213,214,255);
+}
 #create{
     width: 100%;
     height: 95%;
@@ -273,6 +286,50 @@
     position: relative;
     transition: 0.2s;
 }
+#warningWork{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+}
+#warningWork div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
+#warningWork2{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    opacity: 0;
+    transition: 0.2s;
+}
+#warningWork2 div{
+    width: 70%;
+    height: auto;
+    background-color: white;
+    border-radius: 15px;
+    position: relative;
+    transition: 0.2s;
+}
 #computer{
     width: 100%;
     height: 100%;
@@ -281,8 +338,11 @@
     left: 0;
     bottom: 0;
     right: 0;
-    background-color: rgba(242,241,246,255);
+    background-color: white;
     z-index: 50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -571,7 +631,10 @@
     }
 }
 </style>
-    <div id="computer"></div>
+    <div id="computer">
+        <h3 style="color: rgba(130,129,134,255); font-size: 33px; font-weight: 600;">Cannot connect to Pupulio pamokos</h3>
+        <p style="position: absolute; border: 1px solid rgba(130,129,134,255); margin-top: 120px; color: rgba(130,129,134,255); width: 105px; height: 25px; font-size: 18px; border-radius: 2px; font-weight: 500; display: flex; justify-content: center; align-items: center; cursor: pointer;" onclick="location.replace('index.html')">Retry</p>
+    </div>
     <div id="loading" style="width: 100%; z-index: 100; transition: 0.3s; overflow: hidden; height: 100%; background-color: rgba(242,241,246,255); position: fixed; top: 0; left: 0; bottom: 0; display: flex; justify-content: center; align-items: center; flex-direction: column;">
         <div style="width: 40px; height: 40px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6);">
             <div class="ispinner ispinner-large" style="background-color: transparent;">
@@ -628,7 +691,7 @@
             <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="forgot" onclick="remind()">Pamiršai slaptažodį?</p>
             <button style="margin-top: 20px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Kurti naują paskyrą</p></button>
             <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
-            <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 209px; right: 0.7%; opacity: 0; display: none;" id="createLoad2">
+            <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 208px; right: 0.7%; opacity: 0; display: none;" id="createLoad2">
                 <div class="ispinner ispinner-large">
                     <div class="ispinner-blade"></div>
                     <div class="ispinner-blade"></div>
@@ -651,7 +714,7 @@
             <div id="warning3">
                 <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
                 <div id="warningDiv3" style="transform: scale(1.3);">
-                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Slaptažodžio priminimas</h2>
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Pamiršai slaptažodį?</h2>
                     <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Pranešk savo mokytojui.</p>
                     <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError3()" id="gerai3">Gerai</button>
                 </div>
@@ -682,6 +745,46 @@
                     <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Klaida</h2>
                     <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Įvestas aktyvavimo kodas negalioja.</p>
                     <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError()" id="gerai">Gerai</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="workAccountLogIn">
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Sign in to Work Account</h2>
+            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigtaWork" onclick="finishedWork()">Done</h2>
+            <p style="position: absolute; z-index: 1; top: 104.5px; left: 5%; width: 90px; padding-left: 15px; text-align: left; font-size: 17.5px;">Email</p>
+            <input type="email" style="border-radius: 10px 10px 0 0; padding-left: 70px; margin-top: 35px;" placeholder="Email" id="emailInput2">
+            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 15px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+            <p style="position: absolute; z-index: 1; top: 155px; left: 5%; width: 105px; padding-left: 15px; text-align: left; font-size: 17.5px;">Password</p>
+            <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 100px;" placeholder="Required" id="passwordInput2">
+            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createWork" onclick="createWorkError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; transition: 0.01s;">Sign in</p></button>
+            <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="forgotWork" onclick="remindWork()">Forgot password?</p>
+            <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 208px; right: 0.7%; opacity: 0; display: none;" id="createWorkLoad">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                  </div>
+                </div>
+            <div id="warningWork">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningWorkDiv" style="transform: scale(1.3);">
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Error</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Email entered is not registered.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorWork()" id="geraiWork">OK</button>
+                </div>
+            </div>
+            <div id="warningWork2">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningWorkDiv2" style="transform: scale(1.3);">
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Forgot password?</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Contact administration.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorWork2()" id="geraiWork2">OK</button>
                 </div>
             </div>
         </div>
@@ -872,7 +975,7 @@
             <button style="border-radius: 0;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Mokytojas</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">Pupulis</p></button>
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 15px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
             <button style="border-radius: 0 0 10px 10px;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Mokomieji dalykai</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">Rusų k., Anglų k. rašyba</p></button>
-            <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Sign in to Work Account...</p></button>
+            <button style="margin-top: 35px;" id="signInWorkBtn" onclick="workWindowOpen()"><p style="width: 70%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Sign in to Work Account...</p></button>
             <button style="margin-top: 30px; color: red;" id="atsijungti" onclick="signOut()"><p style="width: 100%; height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: center; font-size: 17.5px; font-weight: 100; transition: 0.01s;">Atsijungti</p></button>
             <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 604px; right: 0.7%; opacity: 0; display: none;" id="signOutLoad">
                 <div class="ispinner ispinner-large">
@@ -1427,11 +1530,15 @@ function scrollFunction() {
                 document.getElementById("pupulioPamokos").style.color = "rgba(23,120,219,255)";
             }, 150);
             setTimeout(() => {
+                document.getElementById("pupulioPamokos").style.display = "none";
+            }, 450);
+            setTimeout(() => {
                 document.getElementById("loginScreen").style.border = "none";
             }, 550);
         }
         function closeLogin(){
                 document.getElementById("back").style.color = "rgba(201,201,201,255)";
+                document.getElementById("pupulioPamokos").style.display = "block";
             setTimeout(() => {
                 document.getElementById("back").style.color = "rgba(23,120,219,255)";
                 document.getElementById("animationScreen").style.left = "0";
@@ -1536,6 +1643,9 @@ function scrollFunction() {
                 document.getElementById("baigta2").style.pointerEvents = "all";
                 document.getElementById("activateInput").value = '';
             }, 3300);
+            setTimeout(() => {
+                document.getElementById("createLoad").style.display = "none";
+            }, 3600);
         }
         function dismissError(){
                 document.getElementById("gerai").style.backgroundColor = "rgba(201,201,201,255)";
@@ -1580,6 +1690,9 @@ function scrollFunction() {
                 document.getElementById("createAccount").style.pointerEvents = "all";
                 document.getElementById("forgot").style.pointerEvents = "all";
             }, 3300);
+            setTimeout(() => {
+                document.getElementById("createLoad2").style.display = "none";
+            }, 3600);
         }
         function dismissError2(){
                 document.getElementById("gerai2").style.backgroundColor = "rgba(201,201,201,255)";
@@ -1868,6 +1981,107 @@ function scrollFunction() {
             setTimeout(() => {
                 location.replace('index.html');
             }, 3800);
+        }
+        function createWorkError(){
+                document.getElementById("createWork").style.color = "rgba(201,201,201,255)";
+                document.getElementById("createWork").style.backgroundColor = "rgba(201,201,201,255)";
+                document.getElementById("createWorkLoad").style.display = "flex";
+                document.getElementById("createWork").style.pointerEvents = "none";
+                document.getElementById("passwordInput2").style.pointerEvents = "none";
+                document.getElementById("emailInput2").style.pointerEvents = "none";
+                document.getElementById("baigtaWork").style.pointerEvents = "none";
+                document.getElementById("forgotWork").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("createWorkLoad").style.opacity = "1";
+                document.getElementById("createWork").style.backgroundColor = "white";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warningWork").style.display = "flex";
+            }, 3250);
+            setTimeout(() => {
+                document.getElementById("createWorkLoad").style.opacity = "1";
+                document.getElementById("warningWork").style.opacity = "1";
+                document.getElementById("warningWorkDiv").style.transform = "scale(1)";
+                document.getElementById("createWorkLoad").style.opacity = "0";
+                document.getElementById("createWork").style.pointerEvents = "all";
+                document.getElementById("createWork").style.color = "rgba(23,120,219,255)";
+                document.getElementById("passwordInput2").style.pointerEvents = "all";
+                document.getElementById("emailInput2").style.pointerEvents = "all";
+                document.getElementById("emailInput2").value = '';
+                document.getElementById("passwordInput2").value = '';
+                document.getElementById("baigtaWork").style.pointerEvents = "all";
+                document.getElementById("forgotWork").style.pointerEvents = "all";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("createWorkLoad").style.display = "none";
+            }, 3600);
+        }
+        function workWindowOpen(){
+            document.getElementById("signInWorkBtn").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("signInWorkBtn").style.backgroundColor = "white";
+                document.getElementById("workAccountLogIn").style.bottom = "-1px";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("information2").style.top = "3%";
+                document.getElementById("information2").style.width = "82%";
+                document.getElementById("information2").style.left = "9%";
+                document.getElementById("information2").style.opacity = "0.8";
+                document.getElementById("account").style.bottom = "1%";
+                document.getElementById("account").style.width = "91%";
+                document.getElementById("account").style.left = "4.5%";
+                document.getElementById("account").style.opacity = "0.9";
+            }, 350);
+        }
+        function finishedWork(){
+            document.getElementById("baigtaWork").style.color = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("baigtaWork").style.color = "rgba(23,120,219,255)";
+                document.getElementById("information2").style.top = "4%";
+                document.getElementById("information2").style.opacity = "0.9";
+                document.getElementById("information2").style.width = "91%";
+                document.getElementById("information2").style.left = "4.5%";
+                document.getElementById("account").style.bottom = "-1px";
+                document.getElementById("account").style.width = "100%";
+                document.getElementById("account").style.left = "0";
+                document.getElementById("account").style.opacity = "1";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("workAccountLogIn").style.bottom = "-100%";
+                document.getElementById("emailInput2").value = '';
+                document.getElementById("passwordInput2").value = '';
+            }, 350);
+        }
+        function dismissErrorWork(){
+                document.getElementById("geraiWork").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("geraiWork").style.backgroundColor = "white";
+                document.getElementById("warningWork").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warningWork").style.display = "none";
+                document.getElementById("warningWorkDiv").style.transform = "scale(1.3)";
+            }, 350);
+        }
+        function remindWork(){
+                document.getElementById("forgotWork").style.color = "rgba(201,201,201,255)";
+                document.getElementById("warningWork2").style.display = "flex";
+            setTimeout(() => {
+                document.getElementById("forgotWork").style.color = "rgba(23,120,219,255)";
+                document.getElementById("warningWork2").style.opacity = "1";
+                document.getElementById("warningWorkDiv2").style.transform = "scale(1)";
+            }, 150);
+        }
+        function dismissErrorWork2(){
+                document.getElementById("geraiWork2").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("geraiWork2").style.backgroundColor = "white";
+                document.getElementById("warningWork2").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warningWork2").style.display = "none";
+                document.getElementById("warningWorkDiv2").style.transform = "scale(1.3)";
+            }, 350);
         }
         function uzduotysAtidaryti(){
             setTimeout(() => {
