@@ -9,99 +9,99 @@
     <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
 </head>
 <body onload="loadFunction()" id="body">
-<style>
-    *{
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        font-family: 'SF Pro Display', sans-serif;
-        user-select: none;
-        transition: 0.3s;
-        font-weight: 400;
-        -webkit-tap-highlight-color: transparent;
-    }
-    body{
-        background-color: rgba(242,241,246,255);
-        text-align: center;
-    }
-    h1{
-        text-align: left;
-        width: 90%;
-        margin-left: 6%;
-        margin-top: 0;
-        font-size: 35px;
-        margin-bottom: 10px;
-        font-weight: 600;
-    }
-    h2{
-        font-weight: 500;
-        font-size: 17.5px;
-    }
-    button{
-        width: 90%;
-        height: 50px;
-        border-radius: 10px;
-        border: none;
-        background-color: white;
-        position: relative;
-    }
-    input{
-        width: 90%;
-        height: 50px;
-        border-radius: 10px;
-        border: none;
-        background-color: white;
-        position: relative;
-        font-size: 17.5px;
-        padding-right: 15px;
-    }
-    input:focus{
-        outline: none;
-    }
-    button:focus{
-        outline: none;
-    }
-    #animationScreen{
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 0;
-        bottom: 0;
-        transition: 0.4s;
-    }
-    #loginScreen{
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 100%;
-        bottom: 0;
-        transition: 0.4s;
-        border-left: 1px solid rgba(213,213,214,255);
-        z-index: 1;
-    }
-    #information{
-        width: 100%;
-        height: 60px;
-        position: fixed;
-        top: -1px;
-        left: 100%;
-        background-color: rgba(242,241,246,255);
-        font-size: 11px;
-        display: flex;
-        transition: 0.4s;
-        justify-content: space-around;
-        align-items: flex-end;
-        padding-bottom: 10px;
-    }
-    .ispinner {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  background-color: white;
-  border-radius: 100%; }
-  .ispinner .ispinner-blade {
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'SF Pro Display', sans-serif;
+            user-select: none;
+            transition: 0.3s;
+            font-weight: 400;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body{
+            background-color: rgba(242,241,246,255);
+            text-align: center;
+        }
+        h1{
+            text-align: left;
+            width: 90%;
+            margin-left: 6%;
+            margin-top: 0;
+            font-size: 35px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        h2{
+            font-weight: 500;
+            font-size: 17.5px;
+        }
+        button{
+            width: 90%;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            background-color: white;
+            position: relative;
+        }
+        input{
+            width: 90%;
+            height: 50px;
+            border-radius: 10px;
+            border: none;
+            background-color: white;
+            position: relative;
+            font-size: 17.5px;
+            padding-right: 15px;
+        }
+        input:focus{
+            outline: none;
+        }
+        button:focus{
+            outline: none;
+        }
+        #animationScreen{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            transition: 0.4s;
+        }
+        #loginScreen{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 100%;
+            bottom: 0;
+            transition: 0.4s;
+            border-left: 1px solid rgba(213,213,214,255);
+            z-index: 1;
+        }
+        #information{
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            top: -1px;
+            left: 100%;
+            background-color: rgba(242,241,246,255);
+            font-size: 11px;
+            display: flex;
+            transition: 0.4s;
+            justify-content: space-around;
+            align-items: flex-end;
+            padding-bottom: 10px;
+        }
+        .ispinner {
+            position: relative;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border-radius: 100%; }
+        .ispinner .ispinner-blade {
     position: absolute;
     top: 6.5px;
     left: 8.5px;
@@ -111,57 +111,57 @@
     border-radius: 1.25px;
     animation: iSpinnerBlade 1s linear infinite;
     will-change: opacity; }
-    .ispinner .ispinner-blade:nth-child(1) {
+        .ispinner .ispinner-blade:nth-child(1) {
       transform: rotate(45deg) translateY(-6.5px);
       animation-delay: -1.625s; }
-    .ispinner .ispinner-blade:nth-child(2) {
+        .ispinner .ispinner-blade:nth-child(2) {
       transform: rotate(90deg) translateY(-6.5px);
       animation-delay: -1.5s; }
-    .ispinner .ispinner-blade:nth-child(3) {
+        .ispinner .ispinner-blade:nth-child(3) {
       transform: rotate(135deg) translateY(-6.5px);
       animation-delay: -1.375s; }
-    .ispinner .ispinner-blade:nth-child(4) {
+        .ispinner .ispinner-blade:nth-child(4) {
       transform: rotate(180deg) translateY(-6.5px);
       animation-delay: -1.25s; }
-    .ispinner .ispinner-blade:nth-child(5) {
+        .ispinner .ispinner-blade:nth-child(5) {
       transform: rotate(225deg) translateY(-6.5px);
       animation-delay: -1.125s; }
-    .ispinner .ispinner-blade:nth-child(6) {
+        .ispinner .ispinner-blade:nth-child(6) {
       transform: rotate(270deg) translateY(-6.5px);
       animation-delay: -1s; }
-    .ispinner .ispinner-blade:nth-child(7) {
+        .ispinner .ispinner-blade:nth-child(7) {
       transform: rotate(315deg) translateY(-6.5px);
       animation-delay: -0.875s; }
-    .ispinner .ispinner-blade:nth-child(8) {
+        .ispinner .ispinner-blade:nth-child(8) {
       transform: rotate(360deg) translateY(-6.5px);
       animation-delay: -0.75s; }
-  .ispinner.ispinner-large {
+        .ispinner.ispinner-large {
     width: 35px;
     height: 35px; }
-    .ispinner.ispinner-large .ispinner-blade {
+        .ispinner.ispinner-large .ispinner-blade {
       top: 11.5px;
       left: 15px;
       width: 5px;
       height: 12px;
       border-radius: 2.5px; }
-      .ispinner.ispinner-large .ispinner-blade:nth-child(1) {
+        .ispinner.ispinner-large .ispinner-blade:nth-child(1) {
         transform: rotate(45deg) translateY(-11.5px); }
-      .ispinner.ispinner-large .ispinner-blade:nth-child(2) {
+        .ispinner.ispinner-large .ispinner-blade:nth-child(2) {
         transform: rotate(90deg) translateY(-11.5px); }
-      .ispinner.ispinner-large .ispinner-blade:nth-child(3) {
+        .ispinner.ispinner-large .ispinner-blade:nth-child(3) {
         transform: rotate(135deg) translateY(-11.5px); }
-      .ispinner.ispinner-large .ispinner-blade:nth-child(4) {
+        .ispinner.ispinner-large .ispinner-blade:nth-child(4) {
         transform: rotate(180deg) translateY(-11.5px); }
-      .ispinner.ispinner-large .ispinner-blade:nth-child(5) {
+        .ispinner.ispinner-large .ispinner-blade:nth-child(5) {
         transform: rotate(225deg) translateY(-11.5px); }
-      .ispinner.ispinner-large .ispinner-blade:nth-child(6) {
+        .ispinner.ispinner-large .ispinner-blade:nth-child(6) {
         transform: rotate(270deg) translateY(-11.5px); }
-      .ispinner.ispinner-large .ispinner-blade:nth-child(7) {
+        .ispinner.ispinner-large .ispinner-blade:nth-child(7) {
         transform: rotate(315deg) translateY(-11.5px); }
-      .ispinner.ispinner-large .ispinner-blade:nth-child(8) {
+        .ispinner.ispinner-large .ispinner-blade:nth-child(8) {
         transform: rotate(360deg) translateY(-11.5px); }
 
-@keyframes iSpinnerBlade {
+        @keyframes iSpinnerBlade {
   0% {
     opacity: 0.85; }
   50% {
@@ -169,473 +169,473 @@
   100% {
     opacity: 0.25; } }
 
-::placeholder {
-  color: rgba(181,181,180,255);
-  opacity: 1;
-}
+        ::placeholder {
+            color: rgba(181,181,180,255);
+            opacity: 1;
+        }
 
-:-ms-input-placeholder {
-  color: rgba(181,181,180,255);
-}
+        :-ms-input-placeholder {
+            color: rgba(181,181,180,255);
+        }
 
-::-ms-input-placeholder {
-  color: rgba(181,181,180,255);
-}
-#logInOther{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#workAccountLogIn{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 3;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#create{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#warning{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    opacity: 0;
-    transition: 0.2s;
-}
-#warning div{
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.2s;
-}
-#warning2{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    opacity: 0;
-    transition: 0.2s;
-}
-#warning2 div{
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.2s;
-}
-#warning3{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    opacity: 0;
-    transition: 0.2s;
-}
-#warning3 div{
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.2s;
-}
-#warningWork{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    opacity: 0;
-    transition: 0.2s;
-}
-#warningWork div{
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.2s;
-}
-#warningWork2{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    opacity: 0;
-    transition: 0.2s;
-}
-#warningWork2 div{
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.2s;
-}
-#computer{
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background-color: white;
-    z-index: 50;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-
+        ::-ms-input-placeholder {
+            color: rgba(181,181,180,255);
+        }
+        #logInOther{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #workAccountLogIn{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 3;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #create{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #warning{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        #warning div{
+            width: 70%;
+            height: auto;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            transition: 0.2s;
+        }
+        #warning2{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        #warning2 div{
+            width: 70%;
+            height: auto;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            transition: 0.2s;
+        }
+        #warning3{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        #warning3 div{
+            width: 70%;
+            height: auto;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            transition: 0.2s;
+        }
+        #warningWork{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        #warningWork div{
+            width: 70%;
+            height: auto;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            transition: 0.2s;
+        }
+        #warningWork2{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            opacity: 0;
+            transition: 0.2s;
+        }
+        #warningWork2 div{
+            width: 70%;
+            height: auto;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            transition: 0.2s;
+        }
+        #computer{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-color: white;
+            z-index: 50;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
 
-/* pradzia */
-    #pagrindinis{
-        padding-bottom: 85px;
-        width: 100%;
-        height: 100%;
-        position: fixed;
-        top: 0;
-        left: 100%;
-        border-left: 1px solid rgba(213,213,214,255);
-        transition: 0.4s;
-    }
-    #uzduotys{
-        padding-bottom: 85px;
-        width: 100%;
-        height: auto;
-        position: static;
-        transition: 0.4s;
-        display: none;
-    }
-    #vadoveliai{
-        padding-bottom: 85px;
-        width: 100%;
-        height: auto;
-        position: static;
-        transition: 0.4s;
-        display: none;
-    }
-    #pranesimai{
-        padding-bottom: 85px;
-        width: 100%;
-        height: auto;
-        position: static;
-        transition: 0.4s;
-        display: none;
-    }
-    #daugiau{
-        padding-bottom: 85px;
-        width: 100%;
-        height: auto;
-        position: static;
-        transition: 0.4s;
-        display: none;
-    }
-    #information2{
-        width: 100%;
-        height: 60px;
-        position: fixed;
-        top: -1px;
-        left: 100%;
-        background-color: rgba(242,241,246,0.75);
-        font-size: 11px;
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-end;
-        transition: 0.4s;
-        padding-bottom: 10px;
-        border-bottom: 1px solid rgba(242,241,246,255);
-        z-index: 1;
-        -webkit-backdrop-filter: blur(8px);
-        backdrop-filter: blur(8px);
-        overflow: hidden;
-    }
-    #navigacija{
-        width: 100%;
-        height: 60px;
-        position: fixed;
-        bottom: -1px;
-        left: 100%;
-        background-color: rgba(242,241,246,0.75);
-        font-size: 11px;
-        display: flex;
-        justify-content: space-around;
-        align-items: flex-start;
-        transition: 0.4s;
-        border-top: 1px solid rgba(242,241,246,255);
-        z-index: 1;
-        -webkit-backdrop-filter: blur(8px);
-        backdrop-filter: blur(8px);
-    }
-    #account{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#tvarkarastis{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    overflow-y: scroll;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#pazymiai{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    overflow-y: scroll;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#pamokos{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    overflow-y: scroll;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#namuDarbai{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    overflow-y: scroll;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#komentarai{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    overflow-y: scroll;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#lankomumas{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    overflow-y: scroll;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#pranesimas{
-    width: 100%;
-    height: 95%;
-    border-radius: 10px 10px 0 0;
-    overflow-y: scroll;
-    position: fixed;
-    bottom: -100%;
-    left: 0;
-    right: 0;
-    transition: 0.3s;
-    background-color: rgba(242,241,246,255);
-    z-index: 2;
-    box-shadow: 0 0 5px rgba(213,213,214,255);
-}
-#warningImg{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    opacity: 0;
-    transition: 0.2s;
-    z-index: 5;
-}
-#warningImg div{
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.2s;
-}
-#warningPamoka{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    opacity: 0;
-    transition: 0.2s;
-    z-index: 5;
-}
-#warningPamoka div{
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.2s;
-}
-#warningPamoka2{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    opacity: 0;
-    transition: 0.2s;
-    z-index: 5;
-}
-#warningPamoka2 div{
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.2s;
-}
-#warningNamai{
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    justify-content: center;
-    align-items: center;
-    display: none;
-    opacity: 0;
-    transition: 0.2s;
-    z-index: 5;
-}
-#warningNamai div{
-    width: 70%;
-    height: auto;
-    background-color: white;
-    border-radius: 15px;
-    position: relative;
-    transition: 0.2s;
-}
-@media only screen and (max-width: 750px){
-    #computer{
-        display: none;
-    }
-}
-</style>
+
+
+        /* pradzia */
+        #pagrindinis{
+            padding-bottom: 85px;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 100%;
+            border-left: 1px solid rgba(213,213,214,255);
+            transition: 0.4s;
+        }
+        #uzduotys{
+            padding-bottom: 85px;
+            width: 100%;
+            height: auto;
+            position: static;
+            transition: 0.4s;
+            display: none;
+        }
+        #vadoveliai{
+            padding-bottom: 85px;
+            width: 100%;
+            height: auto;
+            position: static;
+            transition: 0.4s;
+            display: none;
+        }
+        #pranesimai{
+            padding-bottom: 85px;
+            width: 100%;
+            height: auto;
+            position: static;
+            transition: 0.4s;
+            display: none;
+        }
+        #daugiau{
+            padding-bottom: 85px;
+            width: 100%;
+            height: auto;
+            position: static;
+            transition: 0.4s;
+            display: none;
+        }
+        #information2{
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            top: -1px;
+            left: 100%;
+            background-color: rgba(242,241,246,0.75);
+            font-size: 11px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-end;
+            transition: 0.4s;
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(242,241,246,255);
+            z-index: 1;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+            overflow: hidden;
+        }
+        #navigacija{
+            width: 100%;
+            height: 60px;
+            position: fixed;
+            bottom: -1px;
+            left: 100%;
+            background-color: rgba(242,241,246,0.75);
+            font-size: 11px;
+            display: flex;
+            justify-content: space-around;
+            align-items: flex-start;
+            transition: 0.4s;
+            border-top: 1px solid rgba(242,241,246,255);
+            z-index: 1;
+            -webkit-backdrop-filter: blur(8px);
+            backdrop-filter: blur(8px);
+        }
+        #account{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #tvarkarastis{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            overflow-y: scroll;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #pazymiai{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            overflow-y: scroll;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #pamokos{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            overflow-y: scroll;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #namuDarbai{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            overflow-y: scroll;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #komentarai{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            overflow-y: scroll;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #lankomumas{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            overflow-y: scroll;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #pranesimas{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            overflow-y: scroll;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
+        #warningImg{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            opacity: 0;
+            transition: 0.2s;
+            z-index: 5;
+        }
+        #warningImg div{
+            width: 70%;
+            height: auto;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            transition: 0.2s;
+        }
+        #warningPamoka{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            opacity: 0;
+            transition: 0.2s;
+            z-index: 5;
+        }
+        #warningPamoka div{
+            width: 70%;
+            height: auto;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            transition: 0.2s;
+        }
+        #warningPamoka2{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            opacity: 0;
+            transition: 0.2s;
+            z-index: 5;
+        }
+        #warningPamoka2 div{
+            width: 70%;
+            height: auto;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            transition: 0.2s;
+        }
+        #warningNamai{
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            justify-content: center;
+            align-items: center;
+            display: none;
+            opacity: 0;
+            transition: 0.2s;
+            z-index: 5;
+        }
+        #warningNamai div{
+            width: 70%;
+            height: auto;
+            background-color: white;
+            border-radius: 15px;
+            position: relative;
+            transition: 0.2s;
+        }
+        @media only screen and (max-width: 750px){
+            #computer{
+                display: none;
+            }
+        }
+    </style>
     <div id="computer">
         <h3 style="color: rgba(130,129,134,255); font-size: 33px; font-weight: 600;">Cannot connect to Pupulio pamokos</h3>
         <p style="position: absolute; border: 1px solid rgba(130,129,134,255); margin-top: 120px; color: rgba(130,129,134,255); width: 105px; height: 25px; font-size: 18px; border-radius: 2px; font-weight: 500; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: 0.15s;" onclick="refresh()" id="retryRefresh">Retry</p>
@@ -683,118 +683,118 @@
                 <div class="ispinner-blade"></div>
                 <div class="ispinner-blade"></div>
                 <div class="ispinner-blade"></div>
-              </div>
             </div>
         </div>
-        <div id="logInOther">
-            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Kitas naudotojas</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigta" onclick="finishedOther()">Baigti</h2>
-            <p style="position: absolute; z-index: 1; top: 104.5px; left: 5%; width: 90px; padding-left: 15px; text-align: left; font-size: 17.5px;">El. paštas</p>
-            <input type="email" style="border-radius: 10px 10px 0 0; padding-left: 95px; margin-top: 35px;" placeholder="El. paštas" id="emailInput">
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 15px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <p style="position: absolute; z-index: 1; top: 155px; left: 5%; width: 105px; padding-left: 15px; text-align: left; font-size: 17.5px;">Slaptažodis</p>
-            <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 112px;" placeholder="Privaloma" id="passwordInput">
-            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow2" onclick="createError2()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; transition: 0.01s;">Prisijungti</p></button>
-            <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="forgot" onclick="remind()">Pamiršai slaptažodį?</p>
-            <button style="margin-top: 20px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Kurti naują paskyrą</p></button>
-            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
-            <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 208px; right: 0.7%; opacity: 0; display: none;" id="createLoad2">
-                <div class="ispinner ispinner-large">
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                  </div>
-                </div>
-            <div id="warning2">
-                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
-                <div id="warningDiv2" style="transform: scale(1.3);">
-                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Klaida</h2>
-                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Įvestas el. paštas negalioja.</p>
-                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError2()" id="gerai2">Gerai</button>
-                </div>
-            </div>
-            <div id="warning3">
-                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
-                <div id="warningDiv3" style="transform: scale(1.3);">
-                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Pamiršai slaptažodį?</h2>
-                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Pranešk savo mokytojui.</p>
-                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError3()" id="gerai3">Gerai</button>
-                </div>
+    </div>
+    <div id="logInOther">
+        <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Kitas naudotojas</h2>
+        <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigta" onclick="finishedOther()">Baigti</h2>
+        <p style="position: absolute; z-index: 1; top: 104.5px; left: 5%; width: 90px; padding-left: 15px; text-align: left; font-size: 17.5px;">El. paštas</p>
+        <input type="email" style="border-radius: 10px 10px 0 0; padding-left: 95px; margin-top: 35px;" placeholder="El. paštas" id="emailInput">
+        <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 15px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+        <p style="position: absolute; z-index: 1; top: 155px; left: 5%; width: 105px; padding-left: 15px; text-align: left; font-size: 17.5px;">Slaptažodis</p>
+        <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 112px;" placeholder="Privaloma" id="passwordInput">
+        <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow2" onclick="createError2()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; transition: 0.01s;">Prisijungti</p></button>
+        <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="forgot" onclick="remind()">Pamiršai slaptažodį?</p>
+        <button style="margin-top: 20px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Kurti naują paskyrą</p></button>
+        <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
+        <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 208px; right: 0.7%; opacity: 0; display: none;" id="createLoad2">
+            <div class="ispinner ispinner-large">
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
             </div>
         </div>
-        <div id="create">
-            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Nauja paskyra</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigta2" onclick="finishedCreate()">Baigti</h2>
-            <p style="position: absolute; z-index: 1; top: 104px; left: 5%; width: 160px; padding-left: 15px; text-align: left; font-size: 18px;">Aktyvavimo kodas</p>
-            <input type="number" style="padding-left: 165px; margin-top: 35px;" placeholder="Privaloma" id="activateInput" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
-            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Aktyvavimo kodą tau suteikė tavo mokytojas.</p>
-            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow" onclick="createError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px; transition: 0.01s;">Kurti paskyrą</p></button>
-            <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 182px; right: 0.7%; opacity: 0; display: none;" id="createLoad">
-                <div class="ispinner ispinner-large">
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                  </div>
-                </div>
-            <div id="warning">
-                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
-                <div id="warningDiv" style="transform: scale(1.3);">
-                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Klaida</h2>
-                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Įvestas aktyvavimo kodas negalioja.</p>
-                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError()" id="gerai">Gerai</button>
-                </div>
+        <div id="warning2">
+            <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+            <div id="warningDiv2" style="transform: scale(1.3);">
+                <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Klaida</h2>
+                <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Įvestas el. paštas negalioja.</p>
+                <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError2()" id="gerai2">Gerai</button>
             </div>
         </div>
+        <div id="warning3">
+            <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+            <div id="warningDiv3" style="transform: scale(1.3);">
+                <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Pamiršai slaptažodį?</h2>
+                <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Pranešk savo mokytojui.</p>
+                <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError3()" id="gerai3">Gerai</button>
+            </div>
+        </div>
+    </div>
+    <div id="create">
+        <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Nauja paskyra</h2>
+        <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigta2" onclick="finishedCreate()">Baigti</h2>
+        <p style="position: absolute; z-index: 1; top: 104px; left: 5%; width: 160px; padding-left: 15px; text-align: left; font-size: 18px;">Aktyvavimo kodas</p>
+        <input type="number" style="padding-left: 165px; margin-top: 35px;" placeholder="Privaloma" id="activateInput" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+        <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Aktyvavimo kodą tau suteikė tavo mokytojas.</p>
+        <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow" onclick="createError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px; transition: 0.01s;">Kurti paskyrą</p></button>
+        <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 182px; right: 0.7%; opacity: 0; display: none;" id="createLoad">
+            <div class="ispinner ispinner-large">
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+            </div>
+        </div>
+        <div id="warning">
+            <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+            <div id="warningDiv" style="transform: scale(1.3);">
+                <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Klaida</h2>
+                <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Įvestas aktyvavimo kodas negalioja.</p>
+                <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError()" id="gerai">Gerai</button>
+            </div>
+        </div>
+    </div>
 
-        <div id="workAccountLogIn">
-            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Sign in to Work Account</h2>
-            <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigtaWork" onclick="finishedWork()">Done</h2>
-            <p style="position: absolute; z-index: 1; top: 104.5px; left: 5%; width: 90px; padding-left: 15px; text-align: left; font-size: 17.5px;">Email</p>
-            <input type="email" style="border-radius: 10px 10px 0 0; padding-left: 70px; margin-top: 35px;" placeholder="Email" id="emailInput2">
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 15px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <p style="position: absolute; z-index: 1; top: 155px; left: 5%; width: 105px; padding-left: 15px; text-align: left; font-size: 17.5px;">Password</p>
-            <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 100px;" placeholder="Required" id="passwordInput2">
-            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createWork" onclick="createWorkError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; transition: 0.01s;">Sign in</p></button>
-            <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="forgotWork" onclick="remindWork()">Forgot password?</p>
-            <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 208px; right: 0.7%; opacity: 0; display: none;" id="createWorkLoad">
-                <div class="ispinner ispinner-large">
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                    <div class="ispinner-blade"></div>
-                  </div>
-                </div>
-            <div id="warningWork">
-                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
-                <div id="warningWorkDiv" style="transform: scale(1.3);">
-                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Error</h2>
-                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Email entered is not registered.</p>
-                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorWork()" id="geraiWork">OK</button>
-                </div>
-            </div>
-            <div id="warningWork2">
-                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
-                <div id="warningWorkDiv2" style="transform: scale(1.3);">
-                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Forgot password?</h2>
-                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Contact administration.</p>
-                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorWork2()" id="geraiWork2">OK</button>
-                </div>
+    <div id="workAccountLogIn">
+        <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Sign in to Work Account</h2>
+        <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigtaWork" onclick="finishedWork()">Done</h2>
+        <p style="position: absolute; z-index: 1; top: 104.5px; left: 5%; width: 90px; padding-left: 15px; text-align: left; font-size: 17.5px;">Email</p>
+        <input type="email" style="border-radius: 10px 10px 0 0; padding-left: 70px; margin-top: 35px;" placeholder="Email" id="emailInput2">
+        <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 15px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
+        <p style="position: absolute; z-index: 1; top: 155px; left: 5%; width: 105px; padding-left: 15px; text-align: left; font-size: 17.5px;">Password</p>
+        <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 100px;" placeholder="Required" id="passwordInput2">
+        <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createWork" onclick="createWorkError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; transition: 0.01s;">Sign in</p></button>
+        <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="forgotWork" onclick="remindWork()">Forgot password?</p>
+        <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 208px; right: 0.7%; opacity: 0; display: none;" id="createWorkLoad">
+            <div class="ispinner ispinner-large">
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
+                <div class="ispinner-blade"></div>
             </div>
         </div>
+        <div id="warningWork">
+            <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+            <div id="warningWorkDiv" style="transform: scale(1.3);">
+                <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Error</h2>
+                <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Email entered is not registered.</p>
+                <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorWork()" id="geraiWork">OK</button>
+            </div>
+        </div>
+        <div id="warningWork2">
+            <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+            <div id="warningWorkDiv2" style="transform: scale(1.3);">
+                <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Forgot password?</h2>
+                <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Contact administration.</p>
+                <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: white; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorWork2()" id="geraiWork2">OK</button>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -998,6 +998,7 @@
                 </div>
         </div>
         <div id="tvarkarastis">
+            <a href="tvarkarastis.pdf" style="text-decoration: none;" download><i class="fa-solid fa-download" style="font-size: 17px; color: rgba(23,120,219,255); position: absolute; left: 16px; transition: 0.15s; z-index: 3; top: 20px;" id="pdfI" onclick="scheduleDownload()"></i><p style="background-color: rgba(23,120,219,255); position: absolute; top: 13px; left: 27px; z-index: 3; color: white; text-transform: uppercase; width: 23px; height: 13px; border-radius: 5px; font-size: 9px; padding: 1px;" id="pdfP" onclick="scheduleDownload()">.pdf</p></a>
             <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Tvarkaraštis</h2>
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaTvark" onclick="finishedSchedule()">Baigti</h2>
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
@@ -1017,7 +1018,6 @@
             <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
         </div>
         <div id="pazymiai">
-            <i class="fa-solid fa-ellipsis" style="font-size: 15px; color: rgba(130,129,134,255); position: absolute; left: 16px; transition: 0.15s; border: 2px solid rgba(130,129,134,255); border-radius: 100%; width: 22px; height: 22px; display: flex; justify-content: center; align-items: center; z-index: 3; top: 20px;"></i>
             <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Įvertinimai</h2>
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaPazym" onclick="finishedGrades()">Baigti</h2>
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
@@ -1025,7 +1025,6 @@
             <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;"><span style="color: red;">Raudona</span> spalva pažymėti įvertinimai yra kontroliniai darbai.</p>
         </div>
         <div id="pamokos">
-            <i class="fa-solid fa-ellipsis" style="font-size: 15px; color: rgba(130,129,134,255); position: absolute; left: 16px; transition: 0.15s; border: 2px solid rgba(130,129,134,255); border-radius: 100%; width: 22px; height: 22px; display: flex; justify-content: center; align-items: center; z-index: 3; top: 20px;"></i>
             <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Pamokos</h2>
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaPamok" onclick="finishedLessons()">Baigti</h2>
             <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
@@ -1100,9 +1099,9 @@
             <button><p style="width: 100%; height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px;">100%</p></button>
             <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Ankstesnės pamokos</p>
             <!-- <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button> -->
-            <button style="border-radius: 10px 10px 0 0"><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">03-04 Anglų k. rašyba</p></button>
+            <button style="border-radius: 10px 10px 0 0"><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">03-04 Anglų k. rašyba</p></button>
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button style="border-radius: 0 0 10px 10px;"><i class="fa-solid fa-bars-staggered" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">02-25 Anglų k. rašyba</p></button>
+            <button style="border-radius: 0 0 10px 10px;"><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">02-25 Anglų k. rašyba</p></button>
         </div>
     </body>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
@@ -2272,6 +2271,14 @@ function scrollFunction() {
             document.getElementById("pranesimaiIcon").style.color = "rgba(130,129,134,255)";
             document.getElementById("vadoveliaiIcon").style.color = "rgba(130,129,134,255)";
             document.getElementById("daugiauIcon").style.color = "rgba(23,120,219,255)";
+        }
+        function scheduleDownload(){
+            document.getElementById("pdfI").style.opacity = "0.3";
+            document.getElementById("pdfP").style.opacity = "0.3";
+            setTimeout(() => {
+                document.getElementById("pdfI").style.opacity = "1";
+                document.getElementById("pdfP").style.opacity = "1";
+            }, 150);
         }
         function scheduleOpen(){
             document.getElementById("tvarkarastisBtn").style.backgroundColor = "rgba(201,201,201,255)";
