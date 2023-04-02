@@ -803,9 +803,9 @@
 
         <!-- pradzia -->
         <div id="information2"><p style="font-size: 17.5px; position: absolute; left: 16px; transition: 0.15s; font-weight: 100; bottom: 10px; color: rgba(130,129,134,255); display: none;" id="editMessages">Redaguoti</p><h2 id="naujienosh2" style="opacity: 0; position: absolute; bottom: -30px;">Naujienos</h2><h2 id="uzduotysh2" style="opacity: 0; position: absolute; bottom: -30px; display: none;">Užduotys</h2><h2 id="vadoveliaih2" style="opacity: 0; position: absolute; bottom: -30px; display: none;">Vadovėliai</h2><h2 id="pranesimaih2" style="opacity: 0; position: absolute; bottom: -30px; display: none;">Pranešimai</h2><h2 id="daugiauh2" style="opacity: 0; position: absolute; bottom: -30px; display: none;">Daugiau</h2><i class="fa-solid fa-ellipsis" style="font-size: 15px; color: rgba(23,120,219,255); position: absolute; right: 16px; transition: 0.15s; border: 2px solid rgba(23,120,219,255); border-radius: 100%; width: 22px; height: 22px; display: flex; justify-content: center; align-items: center;" id="dots" onclick="changeTime()"></i><i class="fa-solid fa-ellipsis" style="font-size: 15px; color: rgba(23,120,219,255); position: absolute; right: 16px; transition: 0.15s; border: 2px solid rgba(23,120,219,255); border-radius: 100%; width: 22px; height: 22px; display: none; justify-content: center; align-items: center;" id="dotsTasks" onclick="changeTasksInfo()"></i><i class="fa-solid fa-plus" style="position: absolute; font-size: 20px; right: 16px; color: rgba(130,129,134,255); display: none;" id="plusMessage"></i></div>
-        <div style="width: 0; height: 0; background-color: rgba(255,255,255,0.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 100px rgba(213,213,214,255); transition: 0.2s; pointer-events: none;" id="newsTime"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Laikotarpis:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fiveDays()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="check5"></i> 5 artėjančios dienos</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="fourteenDays()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="check14"></i> 14 artėjančių dienų</p></div>
+        <div style="width: 0; height: 0; background-color: rgba(255,255,255,0.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 100px rgba(213,213,214,255); transition: 0.2s; pointer-events: none;" id="newsTime"><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: black;" onclick="fiveDays()"><i class="fa-solid fa-check" style="margin-right: 7px;" id="check5"></i> 5 artėjančios dienos</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: black;" onclick="fourteenDays()"><i class="fa-solid fa-check" style="margin-right: 7px; opacity: 0;" id="check14"></i> 14 artėjančių dienų</p></div>
         <div id="disableTime" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 2;" onclick="closeTime()"></div>
-        <div style="width: 0; height: 0; background-color: rgba(255,255,255,0.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 100px rgba(213,213,214,255); transition: 0.2s; pointer-events: none;" id="tasksInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksNotDone()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkTskNdon"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="tasksDone()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkTskDon"></i> Atlikta</p></div>
+        <div style="width: 0; height: 0; background-color: rgba(255,255,255,0.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 15px; position: fixed; top: 60px; right: 10px; opacity: 0; z-index: 3; box-shadow: 0 0 100px rgba(213,213,214,255); transition: 0.2s; pointer-events: none;" id="tasksInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: black;" onclick="tasksNotDone()"><i class="fa-solid fa-check" style="margin-right: 7px;" id="checkTskNdon"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: black;" onclick="tasksDone()"><i class="fa-solid fa-check" style="margin-right: 7px; opacity: 0;" id="checkTskDon"></i> Atlikta</p></div>
         <div id="disableTsk" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 2;" onclick="closeTasksInfo()"></div>
         <div id="pagrindinis">
             <div style="position: absolute; top: 0;" id="topPagrindinis"></div>
@@ -1051,7 +1051,7 @@
             </div>
         </div>
         <div id="namuDarbai">
-            <div style="width: 0; height: 0; background-color: rgba(255,255,255,0.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 15px; position: fixed; top: 98px; left: 10px; opacity: 0; z-index: 6; box-shadow: 0 0 100px rgba(213,213,214,255); transition: 0.2s; pointer-events: none;" id="homeworkInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(130,129,134,255);">Rodymas:</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoUpc()"><i class="fa-solid fa-check" style="margin-right: 5px;" id="checkUpcoming"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: rgba(23,120,219,255);" onclick="homeworkInfoBef()"><i class="fa-solid fa-check" style="margin-right: 5px; opacity: 0;" id="checkBefore"></i> Atlikta</p></div>
+            <div style="width: 0; height: 0; background-color: rgba(255,255,255,0.75); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); border-radius: 15px; position: fixed; top: 98px; left: 10px; opacity: 0; z-index: 6; box-shadow: 0 0 100px rgba(213,213,214,255); transition: 0.2s; pointer-events: none;" id="homeworkInfo"><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; border-bottom: 1px solid rgba(220,220,220,255); font-size: 17.5px; color: black;" onclick="homeworkInfoUpc()"><i class="fa-solid fa-check" style="margin-right: 7px;" id="checkUpcoming"></i> Paskirta</p><p style="width: 100%; height: 50px; display: flex; justify-content: left; align-items: center; padding-left: 15px; font-size: 17.5px; color: black;" onclick="homeworkInfoBef()"><i class="fa-solid fa-check" style="margin-right: 7px; opacity: 0;" id="checkBefore"></i> Atlikta</p></div>
             <div id="disableHw" style="width: 100%; height: 100%; position: fixed; top: 0; right: 0; left: 0; bottom: 0; display: none; z-index: 5;" onclick="closeHomeworkInfo()"></div>
             <i class="fa-solid fa-ellipsis" style="font-size: 15px; color: rgba(23,120,219,255); position: absolute; left: 16px; transition: 0.15s; border: 2px solid rgba(23,120,219,255); border-radius: 100%; width: 22px; height: 22px; display: flex; justify-content: center; align-items: center; z-index: 3; top: 20px;" id="dotsHw" onclick="changeHomeworkInfo()"></i>
             <!-- nepamirsk pakeist scripte kad kai pakeiti namu darbu rodyma pasikeistu is "namu darbu nera" i normalius namu darbus !!!!! -->
@@ -1138,14 +1138,14 @@
         function changeTime(){
                 document.getElementById("dots").style.opacity = "0.3";
                 document.getElementById("newsTime").style.width = "235px";
-                document.getElementById("newsTime").style.height = "155px";
+                document.getElementById("newsTime").style.height = "105px";
                 document.getElementById("newsTime").style.pointerEvents = "all";
                 document.getElementById("disableTime").style.display = "block";
                 setTimeout(() => {
                     document.getElementById("newsTime").style.opacity = "1";
                 }, 40);
                 setTimeout(() => {
-                    document.getElementById("newsTime").style.height = "150px";
+                    document.getElementById("newsTime").style.height = "100px";
                     document.getElementById("newsTime").style.width = "230px";
                 }, 200);
         }
@@ -1259,16 +1259,16 @@
         }
         function changeTasksInfo(){
                 document.getElementById("dotsTasks").style.opacity = "0.3";
-                document.getElementById("tasksInfo").style.width = "175px";
-                document.getElementById("tasksInfo").style.height = "155px";
+                document.getElementById("tasksInfo").style.width = "155px";
+                document.getElementById("tasksInfo").style.height = "105px";
                 document.getElementById("tasksInfo").style.pointerEvents = "all";
                 document.getElementById("disableTsk").style.display = "block";
                 setTimeout(() => {
                     document.getElementById("tasksInfo").style.opacity = "1";
                 }, 40);
                 setTimeout(() => {
-                    document.getElementById("tasksInfo").style.height = "150px";
-                    document.getElementById("tasksInfo").style.width = "170px";
+                    document.getElementById("tasksInfo").style.height = "100px";
+                    document.getElementById("tasksInfo").style.width = "150px";
                 }, 200);
         }
         function closeTasksInfo(){
@@ -1377,8 +1377,8 @@
         }
         function changeHomeworkInfo(){
                 document.getElementById("dotsHw").style.opacity = "0.3";
-                document.getElementById("homeworkInfo").style.width = "175px";
-                document.getElementById("homeworkInfo").style.height = "155px";
+                document.getElementById("homeworkInfo").style.width = "155px";
+                document.getElementById("homeworkInfo").style.height = "105px";
                 document.getElementById("homeworkInfo").style.pointerEvents = "all";
                 document.getElementById("disableHw").style.display = "block";
                 setTimeout(() => {
@@ -1388,8 +1388,8 @@
                     document.getElementById("dotsHw").style.color = "rgba(23,120,219,255)";
                 }, 150);
                 setTimeout(() => {
-                    document.getElementById("homeworkInfo").style.height = "150px";
-                    document.getElementById("homeworkInfo").style.width = "170px";
+                    document.getElementById("homeworkInfo").style.height = "100px";
+                    document.getElementById("homeworkInfo").style.width = "150px";
                 }, 200);
         }
         function closeHomeworkInfo(){
