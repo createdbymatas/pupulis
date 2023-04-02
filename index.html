@@ -538,6 +538,20 @@
             z-index: 2;
             box-shadow: 0 0 5px rgba(213,213,214,255);
         }
+        #vadovelis1{
+            width: 100%;
+            height: 95%;
+            border-radius: 10px 10px 0 0;
+            overflow-y: hidden;
+            position: fixed;
+            bottom: -100%;
+            left: 0;
+            right: 0;
+            transition: 0.3s;
+            background-color: rgba(242,241,246,255);
+            z-index: 2;
+            box-shadow: 0 0 5px rgba(213,213,214,255);
+        }
         #warningImg{
             position: fixed;
             width: 100%;
@@ -889,8 +903,17 @@
                 <div class="ispinner-blade"></div>
             </div>
         </div>
-        <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Vadovėlių nėra</p></button>
+        <!-- <button style="margin-top: 35px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Vadovėlių nėra</p></button> -->
+        <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 35px;">Rusų kalba</p>
+        <button onclick="vadovelis1Open()" id="vadovelis1Btn"><i class="fa-regular fa-bookmark" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">1 pamoka</p><i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 17px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
         <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Įkeltos naujausios vadovėlių versijos, todėl kartais gali pasitaikyti netikslumų tarp įkeltų ir seniau peržiūrėtų vadovėlių.</p>
+    </div>
+    <div id="vadovelis1">
+        <a href="rusu-k-1pamoka.pdf" style="text-decoration: none;" download><i class="fa-solid fa-download" style="font-size: 17px; color: rgba(23,120,219,255); position: absolute; left: 16px; transition: 0.15s; z-index: 3; top: 20px;" id="vadovelis1PdfI" onclick="vadovelis1Download()"></i><p style="background-color: rgba(23,120,219,255); position: absolute; top: 13px; left: 27px; z-index: 3; color: white; text-transform: uppercase; width: 23px; height: 13px; border-radius: 5px; font-size: 9px; padding: 1px;" id="vadovelis1PdfP" onclick="vadovelis1Download()">.pdf</p></a>
+        <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Vadovėlis</h2>
+        <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaVadovelis1" onclick="finishedVadovelis1()">Baigti</h2>
+        <div style="background-color: rgba(242,241,246,255); width: 100%; height: 57px; position: absolute; top: 0; left: 0; right: 0; border-radius: 10px 10px 0 0; z-index: 1;"></div>
+        <iframe src="https://read.bookcreator.com/fGJQjxH2IiRhodsFobJjP6DrVWV2/Uf0hw7RZQcCTUBLj_qcjjw" frameborder="0" style="width: 100%; height: 100%; padding-top: 5px;"></iframe>
     </div>
     <div id="pranesimai">
         <div style="position: absolute; top: 0;" id="topPranesimai"></div>
@@ -1015,7 +1038,7 @@
         <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Šeštadienis</p>
         <button><i class="fa-regular fa-calendar-check" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 85%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">19:00 - 19:45 Rusų k.</p></button>
         <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Sekmadienis</p>
-        <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
+        <button style="margin-bottom: 30px;"><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button>
     </div>
     <div id="pazymiai">
         <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px; z-index: 2; position: absolute; width: 100%;">Įvertinimai</h2>
@@ -2272,6 +2295,44 @@
         document.getElementById("pranesimaiIcon").style.color = "rgba(130,129,134,255)";
         document.getElementById("vadoveliaiIcon").style.color = "rgba(130,129,134,255)";
         document.getElementById("daugiauIcon").style.color = "rgba(23,120,219,255)";
+    }
+    function vadovelis1Open(){
+        document.getElementById("vadovelis1Btn").style.backgroundColor = "rgba(201,201,201,255)";
+        setTimeout(() => {
+            document.getElementById("vadovelis1Btn").style.backgroundColor = "white";
+            document.getElementById("vadovelis1").style.bottom = "-1px";
+        }, 150);
+        setTimeout(() => {
+            document.getElementById("information2").style.top = "4%";
+            document.getElementById("information2").style.borderRadius = "10px 10px 0 0";
+            document.getElementById("information2").style.width = "91%";
+            document.getElementById("information2").style.left = "4.5%";
+            document.getElementById("information2").style.opacity = "0.9";
+            document.getElementById("body").style.backgroundColor = "black";
+        }, 350);
+    }
+    function finishedVadovelis1(){
+        document.getElementById("baigtaVadovelis1").style.opacity = "0.3";
+        setTimeout(() => {
+            document.getElementById("baigtaVadovelis1").style.opacity = "1";
+            document.getElementById("information2").style.top = "0";
+            document.getElementById("information2").style.borderRadius = "0";
+            document.getElementById("information2").style.width = "100%";
+            document.getElementById("information2").style.left = "0";
+            document.getElementById("information2").style.opacity = "1";
+            document.getElementById("body").style.backgroundColor = "rgba(242,241,246,255)";
+        }, 150);
+        setTimeout(() => {
+            document.getElementById("vadovelis1").style.bottom = "-100%";
+        }, 350);
+    }
+    function vadovelis1Download(){
+        document.getElementById("vadovelis1PdfI").style.opacity = "0.3";
+        document.getElementById("vadovelis1PdfP").style.opacity = "0.3";
+        setTimeout(() => {
+            document.getElementById("vadovelis1PdfI").style.opacity = "1";
+            document.getElementById("vadovelis1PdfP").style.opacity = "1";
+        }, 150);
     }
     function scheduleOpen(){
         document.getElementById("tvarkarastisBtn").style.backgroundColor = "rgba(201,201,201,255)";
