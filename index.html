@@ -195,6 +195,19 @@
                 z-index: 2;
                 box-shadow: 0 0 5px rgba(213,213,214,255);
             }
+            #create{
+                width: 100%;
+                height: 95%;
+                border-radius: 10px 10px 0 0;
+                position: fixed;
+                bottom: -100%;
+                left: 0;
+                right: 0;
+                transition: 0.3s;
+                background-color: rgba(242,241,246,255);
+                z-index: 2;
+                box-shadow: 0 0 5px rgba(213,213,214,255);
+            }
             #workAccountLogIn{
                 width: 100%;
                 height: 95%;
@@ -208,18 +221,55 @@
                 z-index: 3;
                 box-shadow: 0 0 5px rgba(213,213,214,255);
             }
-            #create{
+            #registerScreen{
                 width: 100%;
-                height: 95%;
-                border-radius: 10px 10px 0 0;
+                height: 100%;
                 position: fixed;
-                bottom: -100%;
+                top: 0;
+                left: 100%;
+                bottom: 0;
+                transition: 0.4s;
+                border-left: 1px solid rgba(213,213,214,255);
+                z-index: 1;
+            }
+            #registerInfo{
+                width: 100%;
+                height: 60px;
+                position: fixed;
+                top: -1px;
+                left: 100%;
+                background-color: rgba(242,241,246,255);
+                font-size: 11px;
+                display: flex;
+                transition: 0.4s;
+                justify-content: space-around;
+                align-items: flex-end;
+                padding-bottom: 10px;
+            }
+            #warningRegister{
+                position: fixed;
+                width: 100%;
+                height: 100%;
+                top: 0;
                 left: 0;
                 right: 0;
-                transition: 0.3s;
-                background-color: rgba(242,241,246,255);
-                z-index: 2;
-                box-shadow: 0 0 5px rgba(213,213,214,255);
+                bottom: 0;
+                justify-content: center;
+                align-items: center;
+                display: none;
+                opacity: 0;
+                transition: 0.2s;
+                z-index: 5;
+            }
+            #warningRegister div{
+                width: 70%;
+                height: auto;
+                background-color: rgba(255,255,255,0.75); 
+                -webkit-backdrop-filter: blur(8px); 
+                backdrop-filter: blur(8px);
+                border-radius: 15px;
+                position: relative;
+                transition: 0.2s;
             }
             #warning{
                 position: fixed;
@@ -234,6 +284,7 @@
                 display: none;
                 opacity: 0;
                 transition: 0.2s;
+                z-index: 5;
             }
             #warning div{
                 width: 70%;
@@ -258,6 +309,7 @@
                 display: none;
                 opacity: 0;
                 transition: 0.2s;
+                z-index: 5;
             }
             #warning2 div{
                 width: 70%;
@@ -282,6 +334,7 @@
                 display: none;
                 opacity: 0;
                 transition: 0.2s;
+                z-index: 5;
             }
             #warning3 div{
                 width: 70%;
@@ -306,6 +359,7 @@
                 display: none;
                 opacity: 0;
                 transition: 0.2s;
+                z-index: 5;
             }
             #warningWork div{
                 width: 70%;
@@ -330,6 +384,7 @@
                 display: none;
                 opacity: 0;
                 transition: 0.2s;
+                z-index: 5;
             }
             #warningWork2 div{
                 width: 70%;
@@ -705,8 +760,8 @@
             <h1 style="position: fixed; top: 270px; left: 0;" id="pupulioPamokos">Pupulio pamokos</h1>
             <button onclick="login()" id="loginBtn" style="margin-top: 51px; border-radius: 10px 10px 0 0;"><i class="fa-solid fa-arrow-right-to-bracket" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Prisijungimas</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 17px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button style="border-radius: 0 0 10px 10px;"><i class="fa-regular fa-address-card" style="background-color: rgba(130,129,134,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Registracija</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 17px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
-            <button style="position: absolute; bottom: 123px; left: 5%; border-radius: 10px 10px 0 0;"><i class="fa-solid fa-diamond" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Powered by iPupulis</p></button>
+            <button onclick="registerOpen()" id="registerBtn" style="border-radius: 0 0 10px 10px;"><i class="fa-regular fa-address-card" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Registracija</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 17px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <button style="position: absolute; bottom: 123px; left: 5%; border-radius: 10px 10px 0 0;"><i class="fa-solid fa-diamond" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Powered by PupulisOS</p></button>
             <div style="width: 90%; height: 1px; position: absolute; bottom: 122.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
             <button style="position: absolute; bottom: 73px; left: 5%; border-radius: 0;"><i class="fa-regular fa-copyright" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">All rights reserved</p></button>
             <div style="width: 90%; height: 1px; position: absolute; bottom: 72.5px; left: 5%; padding-left: 63px; z-index: 1;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
@@ -741,8 +796,8 @@
             <input type="password" style="border-radius: 0 0 10px 10px; padding-left: 112px;" placeholder="Privaloma" id="passwordInput">
             <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow2" onclick="createError2()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; transition: 0.01s;">Prisijungti</p></button>
             <p style="color: rgba(23,120,219,255); font-size: 14px; margin-top: 8px; margin-bottom: 10px; transition: 0.15s; font-weight: 100;" id="forgot" onclick="remind()">Pamiršai slaptažodį?</p>
-            <button style="margin-top: 20px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Kurti naują paskyrą</p></button>
-            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
+            <button style="margin-top: 20px;" id="createAccount" onclick="createAnAccount()"><p style="width: 50%; color: rgba(23,120,219,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Aktyvuoti seną paskyrą</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Su atnaujinta paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
             <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 208px; right: 0.7%; opacity: 0; display: none;" id="createLoad2">
                 <div class="ispinner ispinner-large">
                     <div class="ispinner-blade"></div>
@@ -773,12 +828,12 @@
             </div>
         </div>
         <div id="create">
-            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Nauja paskyra</h2>
+            <h2 style="font-size: 17.5px; margin-top: 19px; margin-bottom: 15px;">Aktyvuoti seną paskyrą</h2>
             <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s;" id="baigta2" onclick="finishedCreate()">Baigti</h2>
             <p style="position: absolute; z-index: 1; top: 104px; left: 5%; width: 160px; padding-left: 15px; text-align: left; font-size: 18px;">Aktyvavimo kodas</p>
             <input type="number" style="padding-left: 165px; margin-top: 35px;" placeholder="Privaloma" id="activateInput" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
             <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Aktyvavimo kodą tau suteikė tavo mokytojas.</p>
-            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow" onclick="createError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px; transition: 0.01s;">Kurti paskyrą</p></button>
+            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="createNow" onclick="createError()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px; transition: 0.01s;">Aktyvuoti paskyrą</p></button>
             <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 182px; right: 0.7%; opacity: 0; display: none;" id="createLoad">
                 <div class="ispinner ispinner-large">
                     <div class="ispinner-blade"></div>
@@ -797,6 +852,35 @@
                     <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Klaida</h2>
                     <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Įvestas aktyvavimo kodas negalioja.</p>
                     <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: transparent; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissError()" id="gerai">Gerai</button>
+                </div>
+            </div>
+        </div>
+        <div id="registerScreen">
+            <div id="registerInfo"><p style="font-size: 17.5px; position: absolute; left: 10px; bottom: 8.5px; color: rgba(23,120,219,255); display: flex; justify-content: center; align-items: center; font-weight: 100; transition: 0.15s;" id="backRegister" onclick="closeRegister()"><i class="fa-solid fa-chevron-left" style="font-size: 23px; transition: 0.01s; margin-right: 5px;"></i> Pagrindinis</p><h2>Registracija</h2></div>
+            <img src="logo.jpg" alt="Pupulis" style="width: 200px; border-radius: 100%; text-align: center; margin: 20px auto; margin-top: 110px; display: block;">
+            <p style="position: absolute; z-index: 1; top: 379.5px; left: 5%; width: 160px; padding-left: 15px; text-align: left; font-size: 18px;">Aktyvavimo kodas</p>
+            <input type="number" style="padding-left: 165px; margin-top: 35px;" placeholder="Privaloma" id="activateInputRegister" maxlength="10" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);">
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Aktyvavimo kodą tau suteikė tavo mokytojas.</p>
+            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="registerNowBtn" onclick="registerNow()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px; transition: 0.01s;">Registruotis</p></button>
+            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100;">Su paskyra galėsi matyti visą informaciją susijusią su tavo pamokomis, pažymius ir dar daugiau.</p>
+            <div style="width: 83.4px; height: 83.4px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(0.6); position: absolute; top: 457px; right: 0.7%; opacity: 0; display: none;" id="registerLoad">
+                <div class="ispinner ispinner-large">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                </div>
+            </div>
+            <div id="warningRegister">
+                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
+                <div id="warningRegisterDiv" style="transform: scale(1.3);">
+                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500;">Klaida</h2>
+                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px;">Įvestas aktyvavimo kodas negalioja.</p>
+                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: transparent; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissErrorRegister()" id="geraiRegister">Gerai</button>
                 </div>
             </div>
         </div>
@@ -1029,7 +1113,7 @@
             <p style="font-size: 28px; margin-top: 10px;">Ieva</p>
             <p style="color: rgba(130,129,134,255); font-size: 16px;">ievakasparav@gmail.com</p>
             <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px;">Paskyros informacija</p>
-            <button style="border-radius: 10px 10px 0 0;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Naudotojas nuo</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: left; font-size: 17.5px; color: rgba(130,129,134,255);">2022-08-09</p></button>
+            <button style="border-radius: 10px 10px 0 0;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Aktyvi nuo</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: left; font-size: 17.5px; color: rgba(130,129,134,255);">2022-08-09</p></button>
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 15px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
             <button style="border-radius: 0;"><p style="width: 70%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Mokymosi metai</p><p style="width: 70%; height: 100%; position: absolute; right: 15px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">1</p></button>
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 15px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
@@ -1842,6 +1926,80 @@
                 document.getElementById("pagrindinis").style.height = "auto";
                 document.getElementById("logInLoad").style.display = "none";
             }, 3700);
+        }
+        function registerOpen(){
+            document.getElementById("registerBtn").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("registerBtn").style.backgroundColor = "white";
+                document.getElementById("animationScreen").style.left = "-100%";
+                document.getElementById("registerScreen").style.left = "0";
+                document.getElementById("registerInfo").style.left = "0";
+                document.getElementById("pupulioPamokos").style.top = "29px";
+                document.getElementById("pupulioPamokos").style.fontSize = "17.5px";
+                document.getElementById("pupulioPamokos").style.fontWeight = "400";
+                document.getElementById("pupulioPamokos").style.color = "rgba(23,120,219,255)";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("pupulioPamokos").style.display = "none";
+            }, 450);
+            setTimeout(() => {
+                document.getElementById("registerScreen").style.border = "none";
+            }, 550);
+        }
+        function closeRegister(){
+            document.getElementById("backRegister").style.opacity = "0.3";
+            document.getElementById("pupulioPamokos").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("backRegister").style.opacity = "1";
+                document.getElementById("animationScreen").style.left = "0";
+                document.getElementById("registerScreen").style.left = "100%";
+                document.getElementById("registerInfo").style.left = "100%";
+                document.getElementById("registerScreen").style.borderLeft = "1px solid rgba(213,213,214,255)";
+                document.getElementById("pupulioPamokos").style.top = "270px";
+                document.getElementById("pupulioPamokos").style.fontSize = "35px";
+                document.getElementById("pupulioPamokos").style.fontWeight = "600";
+                document.getElementById("pupulioPamokos").style.color = "black";
+            }, 150);
+        }
+        function registerNow(){
+            document.getElementById("registerNowBtn").style.color = "rgba(201,201,201,255)";
+            document.getElementById("registerNowBtn").style.backgroundColor = "rgba(201,201,201,255)";
+            document.getElementById("registerLoad").style.display = "flex";
+            document.getElementById("registerNowBtn").style.pointerEvents = "none";
+            document.getElementById("activateInputRegister").style.pointerEvents = "none";
+            document.getElementById("backRegister").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("registerLoad").style.opacity = "1";
+                document.getElementById("registerNowBtn").style.backgroundColor = "white";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warningRegister").style.display = "flex";
+            }, 3250);
+            setTimeout(() => {
+                document.getElementById("createLoad").style.opacity = "1";
+                document.getElementById("warningRegister").style.opacity = "1";
+                document.getElementById("warningRegisterDiv").style.transform = "scale(1)";
+                document.getElementById("registerLoad").style.opacity = "0";
+                document.getElementById("registerNowBtn").style.pointerEvents = "all";
+                document.getElementById("registerNowBtn").style.color = "rgba(23,120,219,255)";
+                document.getElementById("activateInputRegister").style.pointerEvents = "all";
+                document.getElementById("activateInputRegister").value = '';
+                document.getElementById("backRegister").style.pointerEvents = "all";
+            }, 3300);
+            setTimeout(() => {
+                document.getElementById("registerLoad").style.display = "none";
+            }, 3600);
+        }
+        function dismissErrorRegister(){
+            document.getElementById("geraiRegister").style.backgroundColor = "rgba(201,201,201,255)";
+            setTimeout(() => {
+                document.getElementById("geraiRegister").style.backgroundColor = "transparent";
+                document.getElementById("warningRegister").style.opacity = "0";
+            }, 150);
+            setTimeout(() => {
+                document.getElementById("warningRegister").style.display = "none";
+                document.getElementById("warningRegisterDiv").style.transform = "scale(1.3)";
+            }, 350);
         }
         function accountOpen(){
             document.getElementById("accountBtn").style.backgroundColor = "rgba(201,201,201,255)";
