@@ -7,9 +7,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <title>Pupulio pamokos</title>
         <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
     </head>
     <body onload="loadFunction()" id="body">
         <style>
@@ -786,84 +783,6 @@
                 transition: 0.2s;
                 font-weight: 100;
             }
-            #updateScreen{
-                width: 100%;
-                height: 100%;
-                position: fixed;
-                top: 0;
-                left: 0;
-                bottom: 0;
-                transition: 0.4s;
-                z-index: 1;
-                background-color: rgba(242,241,246,255);
-            }
-            #updateInfo{
-                width: 100%;
-                height: 60px;
-                position: fixed;
-                top: -1px;
-                left: 0;
-                background-color: rgba(242,241,246,255);
-                font-size: 11px;
-                display: flex;
-                transition: 0.4s;
-                justify-content: space-around;
-                align-items: flex-end;
-                padding-bottom: 10px;
-            }
-            #warningUpdate{
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                justify-content: center;
-                align-items: center;
-                display: none;
-                opacity: 0;
-                transition: 0.2s;
-                z-index: 5;
-            }
-            #warningUpdateDiv{
-                width: 70%;
-                height: auto;
-                background-color: rgba(255,255,255,0.75); 
-                -webkit-backdrop-filter: blur(8px); 
-                backdrop-filter: blur(8px);
-                border-radius: 15px;
-                position: relative;
-                display: flex; justify-content: center; align-items: center;
-                transition: 0.2s;
-                font-weight: 100;
-            }
-            #warningUpdate2{
-                position: fixed;
-                width: 100%;
-                height: 100%;
-                top: 0;
-                left: 0;
-                right: 0;
-                bottom: 0;
-                justify-content: center;
-                align-items: center;
-                display: none;
-                opacity: 0;
-                transition: 0.2s;
-                z-index: 5;
-            }
-            #warningUpdate2Div{
-                width: 70%;
-                height: auto;
-                background-color: rgba(255,255,255,0.75); 
-                -webkit-backdrop-filter: blur(8px); 
-                backdrop-filter: blur(8px);
-                border-radius: 15px;
-                position: relative;
-                transition: 0.2s;
-                font-weight: 100;
-            }
             @media only screen and (max-width: 750px){
                 #computer{
                     display: none;
@@ -1059,39 +978,6 @@
             </div>
         </div>
 
-        <div id="updateScreen">
-            <div id="updateBackground" style="width: 100%; height: 100%; position: fixed; top: 0; left: 0; right: 0; bottom: 0; z-index: 2; background-color: white; display: none; justify-content: center; align-items: center; flex-direction: column; opacity: 0;"><img src="logo.jpg" alt="Pupulio pamokos" style="width: 100px; border-radius: 100%; text-align: center; display: block; margin-top: -30px;"><div style="width: 60%; border-radius: 5px; height: 3px; background-color: darkgrey; margin-top: 20px;"></div><div style="width: 0; border-radius: 5px 0 0 5px; height: 3px; background-color: black; margin-top: 90px; position: absolute; left: 20%;" id="upBlack"></div><p style="position: absolute; bottom: 30px; font-family: 'Raleway', sans-serif; opacity: 0;" id="upCreated">Created by Matas</p></div>
-            <div id="updateInfo"><h2>Software Update</h2></div>
-            <div style="width: 90%; height: 165px; border-radius: 10px; border: none; background-color: white; position: relative; color: black; margin: 0 auto; margin-top: 92px;"><img src="logo.jpg" style="width: 50px; height: 50px; border-radius: 100%; position: absolute; top: 15px; left: 15px;"> <p style="width: 50%; position: absolute; left: 80px; top: 18px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; font-weight: 600;">PupulisOS 1.1</p> <p style="width: 50%; position: absolute; left: 80px; top: 41px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 13px;" id="upCreatedByMatas">Created by Matas</p> <div style="width: 100%; height: 2px; position: absolute; left: 80px; top: 41px; padding-right: 95px; opacity: 0;" id="upLoadBar"><div style="width: 100%; height: 2px; background-color: darkgrey; border-radius: 5px;"></div><div style="width: 0; height: 2px; background-color: rgba(23,120,219,255); border-radius: 5px 0 0 5px; position: absolute; top: 0;" id="upBlue"></div></div> <p style="width: 50%; position: absolute; left: 80px; top: 45px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 11px; opacity: 0;" id="upAbout2min">About 2 minutes remaining</p><p style="width: 50%; position: absolute; left: 80px; top: 45px; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 11px; opacity: 0;" id="upAbout1min">About 1 minute remaining</p> <p style="width: 100%; position: absolute; left: 0; top: 80px; text-align: left; font-size: 16px; padding-left: 15px; padding-right: 15px;">This update provides important security updates and bug fixes. <span style="display: block; color: red; margin-top: 15px;" id="requiredToInstall">This update is required to be installed.</span></p></div>
-            <button style="margin-top: 35px; color: rgba(23,120,219,255);" id="updateBtn" onclick="update()"><p style="width: 50%; height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 18px; transition: 0.01s;"><span id="updateBtnTxt1">Download and Install</span> <span style="color: rgba(130,129,134,255); display: none;" id="updateBtnTxt2">Downloading...</span></p></button>
-            <p style="color: rgba(130,129,134,255); font-size: 14px; text-align: left; width: 82%; margin-left: 9%; margin-top: 7px; font-weight: 100; letter-spacing: 0.3px;">Do not close the app and keep your screen turned on while updating.</p>
-            <div id="warningUpdate">
-                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
-                <div id="warningUpdateDiv" style="transform: scale(1.3);">
-                    <div style="width: 40px; height: 40px; border-radius: 10px; justify-content: center; align-items: center; display: flex; transform: scale(0.6);">
-                        <div class="ispinner ispinner-large" style="background-color: transparent;">
-                            <div class="ispinner-blade"></div>
-                            <div class="ispinner-blade"></div>
-                            <div class="ispinner-blade"></div>
-                            <div class="ispinner-blade"></div>
-                            <div class="ispinner-blade"></div>
-                            <div class="ispinner-blade"></div>
-                            <div class="ispinner-blade"></div>
-                            <div class="ispinner-blade"></div>
-                        </div>
-                    </div>
-                    <h2 style="font-size: 17px; margin-top: 40px; margin-bottom: 40px; font-weight: 500;">Verifying update...</h2>
-                </div>
-            </div>
-            <div id="warningUpdate2">
-                <div style="position: absolute; width: 100%; height: 100%; top: 0; right: 0; left: 0; bottom: 0; background-color: black; opacity: 0.1; border-radius: 0;"></div>
-                <div id="warningUpdate2Div" style="transform: scale(1.3);">
-                    <h2 style="font-size: 20px; margin-top: 25px; margin-bottom: 10px; font-weight: 500; margin-left: 15px; margin-right: 15px;">Software Update Failed</h2>
-                    <p style="font-size: 17px; margin-bottom: 70px; margin-left: 15px; margin-right: 15px; letter-spacing: 0.3px;">An error occured installing PupulisOS 1.1.</p>
-                    <button style="position: absolute; width: 100%; bottom: 0; left: 0; right: 0; background-color: transparent; border: none; border-top: 1px solid rgba(213,213,214,255); border-radius: 0 0 15px 15px; font-size: 19px; color: rgba(23,120,219,255); font-weight: 500;" onclick="dismissUpdate2()" id="geraiUpdate2">Close</button>
-                </div>
-            </div>
-        </div>
 
 
 
@@ -1281,7 +1167,7 @@
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
             <button style="border-radius: 0;" id="komentaraiBtn" onclick="commentsOpen()"><i class="fa-regular fa-comments" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pagyrimai/Pastabos</p> <p style="width: 70%; height: 100%; position: absolute; right: 37px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">Nėra</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 17px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button style="border-radius: 0 0 10px 10px;" id="lankomumasBtn" onclick="attendanceOpen()"><i class="fa-regular fa-address-book" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Lankomumas</p> <p style="width: 70%; height: 100%; position: absolute; right: 37px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">8%</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 17px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
+            <button style="border-radius: 0 0 10px 10px;" id="lankomumasBtn" onclick="attendanceOpen()"><i class="fa-regular fa-address-book" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 50%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Lankomumas</p> <p style="width: 70%; height: 100%; position: absolute; right: 37px; top: 0; display: flex; justify-content: right; align-items: center; text-align: right; font-size: 17.5px; color: rgba(130,129,134,255);">15%</p> <i class="fa-solid fa-chevron-right" style="color: rgba(181,181,180,255); position: absolute; top: 0; right: 17px; font-size: 14px; width: 50px; height: 100%; display: flex; justify-content: right; align-items: center;"></i></button>
         </div>
         <div id="navigacija">
             <div style="width: 50px; height: 50px; display: flex; justify-content: center; align-items: center; flex-direction: column; font-size: 25px; color: rgba(23,120,219,255); transition: 0s;" id="naujienosIcon" onclick="naujienosAtidaryti()"><i class="fa-regular fa-newspaper" style="transition:0s;"></i><p style="font-size: 11px; font-weight: 100; margin-top: 2px; transition: 0s;">Naujienos</p></div>
@@ -1451,32 +1337,10 @@
                 <h2 style="color: rgba(23,120,219,255); font-size: 17.5px; position: absolute; top: 19px; right: 16px; transition: 0.15s; z-index: 3;" id="baigtaLanko" onclick="finishedAttendance()">Baigti</h2>
             </div>
             <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 92px;">Procentais</p>
-            <button><p style="width: 100%; height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px; color: rgba(23,120,219,255);">8%</p></button>
+            <button><p style="width: 100%; height: 100%; position: absolute; top: 0; display: flex; justify-content: center; align-items: center; text-align: left; font-size: 17.5px; color: rgba(23,120,219,255);">15%</p></button>
             <p style="text-transform: uppercase; color: rgba(130,129,134,255); font-size: 14.5px; width: 81%; margin-left: 10%; text-align: left; margin-bottom: 7px; font-size: 400; margin-top: 25px; letter-spacing: 0.3px;">Ankstesnės pamokos</p>
             <!-- <button><p style="width: 70%; color: rgba(130,129,134,255); height: 100%; position: absolute; left: 15px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px;">Pamokų nėra</p></button> -->
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">08-04 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">07-28 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">07-21 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">07-14 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">07-07 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">06-30 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">06-23 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">06-16 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">06-09 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">06-02 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">05-26 Anglų k. rašyba</p></button>
-            <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
-            <button><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">05-19 Anglų k. rašyba</p></button>
+            <button style="border-radius: 10px 10px 0 0;"><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">05-19 Anglų k. rašyba</p></button>
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
             <button style="border-radius: 0;"><i class="fa-solid fa-chart-bar" style="background-color: rgba(23,120,219,255); color: white; width: 35px; height: 35px; border-radius: 8px; display: flex; justify-content: center; align-items: center; position: absolute; top: 7.5px; left: 15px; font-size: 19px;"></i> <p style="width: 70%; height: 100%; position: absolute; left: 63px; top: 0; display: flex; justify-content: left; align-items: center; text-align: left; font-size: 17.5px; color: red;">05-12 Anglų k. rašyba</p></button>
             <div style="width: 90%; height: 1px; position: absolute; left: 5%; padding-left: 63px; z-index: 1; margin-top: -0.5px;"><hr style="border: none; border-top: 1px solid rgba(220,220,220,255);"></div>
@@ -1841,7 +1705,7 @@
             setTimeout(() => {
                 document.getElementById("vadoveliaiLoad").style.display = "none";
                 document.getElementById("dotsVadov").style.pointerEvents = "all";
-                document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
+                document.getElementById("naujienosIcon").style.pointerEvents = "all";
                 document.getElementById("uzduotysIcon").style.pointerEvents = "all";
                 document.getElementById("pranesimaiIcon").style.pointerEvents = "all";
                 document.getElementById("vadoveliaiIcon").style.pointerEvents = "all";
@@ -2104,7 +1968,7 @@
         }
         document.getElementById("lankomumas").onscroll = function() {scrollFunction2()};
         function scrollFunction2() {
-            if (document.getElementById("lankomumas").scrollTop > 1) {
+            if (document.getElementById("lankomumas").scrollTop > 37) {
                 document.getElementById("lankomumasVirsus").style.backgroundColor = "rgba(255,255,255,0.75)";
                 document.getElementById("lankomumasVirsus").style.borderBottom = "1px solid rgba(220,220,220,255)";
             }
@@ -2115,7 +1979,7 @@
         }
         document.getElementById("tvarkarastis").onscroll = function() {scrollFunction3()};
         function scrollFunction3() {
-            if (document.getElementById("tvarkarastis").scrollTop > 1) {
+            if (document.getElementById("tvarkarastis").scrollTop > 37) {
                 document.getElementById("tvarkarastisVirsus").style.backgroundColor = "rgba(255,255,255,0.75)";
                 document.getElementById("tvarkarastisVirsus").style.borderBottom = "1px solid rgba(220,220,220,255)";
             }
@@ -2124,272 +1988,6 @@
                 document.getElementById("tvarkarastisVirsus").style.borderBottom = "1px solid rgba(242,241,246,255)";
             }
         }
-
-        function update(){
-            document.getElementById("updateBtn").style.backgroundColor = "rgba(201,201,201,255)";
-            document.getElementById("updateBtn").style.pointerEvents = "none";
-            setTimeout(() => {
-                document.getElementById("updateBtn").style.backgroundColor = "white";
-                document.getElementById("updateBtn").style.color = "rgba(130,129,134,255)";
-            }, 150);
-            setTimeout(() => {
-                document.getElementById("upCreatedByMatas").style.opacity = "0";
-                document.getElementById("upLoadBar").style.opacity = "1";
-            }, 2150);
-            setTimeout(() => {
-                document.getElementById("upAbout2min").style.opacity = "1";
-                document.getElementById("upAbout2min").style.transition = "none";
-            }, 2450);
-            setTimeout(() => {
-                document.getElementById("updateBtnTxt1").style.display = "none";
-                document.getElementById("updateBtnTxt2").style.display = "block";
-            }, 2750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "1%";
-                document.getElementById("upBlue").style.transition = "none";
-            }, 12750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "2%";
-            }, 14950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "3%";
-            }, 17150);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "4%";
-            }, 19350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "5%";
-            }, 21550);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "6%";
-            }, 23750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "7%";
-            }, 25950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "8%";
-            }, 28150);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "9%";
-            }, 30350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "10%";
-            }, 32550);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "11%";
-            }, 34750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "12%";
-            }, 36950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "13%";
-            }, 39150);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "14%";
-            }, 41350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "15%";
-            }, 43550);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "16%";
-            }, 45750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "17%";
-            }, 47950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "18%";
-            }, 50150);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "19%";
-            }, 52350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "20%";
-            }, 54550);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "21%";
-            }, 56750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "22%";
-            }, 58950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "23%";
-            }, 61150);
-            setTimeout(() => {
-                document.getElementById("upAbout2min").style.opacity = "0";
-                document.getElementById("upAbout1min").style.transition = "none";
-                document.getElementById("upAbout1min").style.opacity = "1";
-            }, 62450);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "24%";
-            }, 63350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "25%";
-            }, 65550);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "26%";
-            }, 67750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "27%";
-            }, 69950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "28%";
-            }, 72150);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "29%";
-            }, 74350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "30%";
-            }, 76550);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "31%";
-            }, 78750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "32%";
-            }, 80950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "33%";
-            }, 83150);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "34%";
-            }, 85350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "35%";
-            }, 87550);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "36%";
-            }, 89750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "37%";
-            }, 91950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "38%";
-            }, 94150);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "39%";
-            }, 96350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "40%";
-            }, 98550);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "41%";
-            }, 100750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "42%";
-            }, 102950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "43%";
-            }, 105150);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "44%";
-            }, 107350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "45%";
-            }, 109550);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "46%";
-            }, 111750);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "47%";
-            }, 113950);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "48%";
-            }, 116150);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "49%";
-            }, 118350);
-            setTimeout(() => {
-                document.getElementById("upBlue").style.width = "50%";
-                document.getElementById("upAbout1min").style.opacity = "0";
-                document.getElementById("updateBtnTxt1").style.display = "block";
-                document.getElementById("updateBtnTxt2").style.display = "none";
-                document.getElementById("warningUpdate").style.display = "flex";
-                document.getElementById("upCreatedByMatas").style.opacity = "1";
-                document.getElementById("upLoadBar").style.opacity = "0";
-            }, 122750);
-            setTimeout(() => {
-                document.getElementById("warningUpdate").style.opacity = "1";
-                document.getElementById("warningUpdateDiv").style.transform = "scale(1)";
-            }, 122800);
-            setTimeout(() => {
-                document.getElementById("warningUpdate").style.opacity = "0";
-                document.getElementById("updateBackground").style.display = "flex";
-            }, 152800);
-            setTimeout(() => {
-                document.getElementById("warningUpdate").style.display = "none";
-                document.getElementById("warningUpdateDiv").style.transform = "scale(1.3)";
-                document.getElementById("updateBtn").style.pointerEvents = "all";
-                document.getElementById("updateBtn").style.color = "rgba(23,120,219,255)";
-                document.getElementById("upBlue").style.width = "0";
-                document.getElementById("updateBackground").style.opacity = "1";
-            }, 153000);
-            setTimeout(() => {
-                document.getElementById("upCreated").style.opacity = "1";
-            }, 156000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "1%";
-                document.getElementById("upBlack").style.transition = "none";
-            }, 157000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "3%";
-            }, 160000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "7%";
-            }, 164000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "9%";
-            }, 167000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "12%";
-            }, 171000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "15%";
-            }, 173000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "16%";
-            }, 175000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "18%";
-            }, 177000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "21%";
-            }, 181000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "24%";
-            }, 183000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "26%";
-            }, 187000);
-            setTimeout(() => {
-                document.getElementById("upBlack").style.width = "0";
-                document.getElementById("upCreated").style.opacity = "0";
-                document.getElementById("updateBackground").style.opacity = "0";
-                document.getElementById("warningUpdate2").style.display = "flex";
-            }, 195000);
-            setTimeout(() => {
-                document.getElementById("warningUpdate2").style.opacity = "1";
-                document.getElementById("warningUpdate2Div").style.transform = "scale(1)";
-                document.getElementById("updateBackground").style.display = "none";
-            }, 195300);
-        }
-        function dismissUpdate2(){
-            document.getElementById("geraiUpdate2").style.backgroundColor = "rgba(201,201,201,255)";
-            setTimeout(() => {
-                document.getElementById("geraiUpdate2").style.backgroundColor = "transparent";
-                document.getElementById("warningUpdate2").style.opacity = "0";
-            }, 150);
-            setTimeout(() => {
-                document.getElementById("warningUpdate2").style.display = "none";
-                document.getElementById("warningUpdate2Div").style.transform = "scale(1.3)";
-            }, 350);
-        }
-        function closeUpdate(){
-            document.getElementById("backUpdate").style.opacity = "0.3";
-            setTimeout(() => {
-                document.getElementById("backUpdate").style.opacity = "1";
-                window.close();
-            }, 150);
-        }
-
         function login(){
             document.getElementById("loginBtn").style.backgroundColor = "rgba(201,201,201,255)";
             setTimeout(() => {
