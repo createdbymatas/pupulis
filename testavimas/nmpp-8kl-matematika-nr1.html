@@ -643,7 +643,7 @@
         <div id="results">
             <input type="number" id="resultsInput" style="display: none;">
             <h1>Rezultatai</h1>
-            <p>Jūs surinkote <b id="surinktiTaskai">00</b> taškų (-us) iš <b>14</b> galimų.</p>
+            <p>Jūs surinkote <b id="surinktiTaskai">00</b> taškų (-us) iš <b>14</b> galimų. Tai sudaro <b id="surinktiProcentai">00</b><b>%</b> taškų.</p>
             <p style="color: red;">Neuždarykite ir neperkraukite šio lango, nes patikrinimas ir jo rezultatai nėra išsaugomi.</p>
             <p>Spauskite <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;">Peržiūrėti apžvalgą <i class="fa-solid fa-chevron-right"></i></span>  ir peržiūrėkite rezultatus su savo mokytoju.</b></p>
         </div>
@@ -1688,9 +1688,13 @@
                 document.getElementById("loading").style.opacity = "0";
             }, 10320);
             setTimeout(() => {
+                let num = (Number(document.getElementById("resultsInput").value)/14)*100
+                let roundedString = num.toFixed(2);
+                let rounded = Number(roundedString);
                 document.getElementById("loading").style.display = "none";
                 document.getElementById("results").style.display = "flex";
                 document.getElementById("surinktiTaskai").innerHTML = document.getElementById("resultsInput").value;
+                document.getElementById("surinktiProcentai").innerHTML = rounded;
             }, 10620);
             setTimeout(() => {
                 document.getElementById("results").style.opacity = "1";
