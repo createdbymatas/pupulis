@@ -7,6 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
         <link rel="shortcut icon" type="image/png" href="favicon.ico">
         <title>Pupulio pamokos: e. testavimas - NMPP 8 kl. bandymas - matematika (testas nr. 1)</title>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
         <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
     </head>
     <body onload="loadFunction()" id="body">
@@ -428,6 +429,9 @@
                 overflow-y: scroll;
             }
         </style>
+        <form method="post" style="position: absolute; top: 0; left: 0; z-index: 100;">
+            <input type="button" value="Send Email" onclick="sendEmail()" />
+        </form>
         <div id="fullScreenWarning">
             <i class="fa-solid fa-ban ban"></i>
             <h2>Sistemos pažeidimas</h2>
@@ -436,7 +440,7 @@
             <button onclick="backToFullscreen()">Grįžti į pilno ekrano režimą <i class="fa-solid fa-chevron-right"></i></button>
         </div>
         <div id="operationSymbols">
-            <i class="fa-solid fa-minimize" style="font-size: 15px; position: absolute; left: 13px; top: 13px; cursor: pointer;" onclick="hideOperationSymbols()"></i>
+            <i class="fa-solid fa-compress" style="font-size: 15px; position: absolute; left: 13px; top: 13px; cursor: pointer;" onclick="hideOperationSymbols()"></i>
             <h2 id="zenklai">Veiksmų ženklai</h2>
             <h2 id="zenklaiNukopijuota" style="display: none; color: rgba(23,120,219,255); transition: none;">Nukopijuota!</h2>
             <p style="padding-bottom: 7px;">Paspauskite ant ženklo, norėdami jį nukopijuoti.</p>
@@ -744,6 +748,20 @@
     </body>
     <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
     <script>
+        function sendEmail() {
+            Email.send({
+                Host: "smtp.gmail.com",
+                Username: "mattkaspar9@gmail.com",
+                Password: "Pages/matasieva/19*",
+                To: 'matas.kaspar@gmail.com',
+                From: "mattkaspar9@gmail.com",
+                Subject: "Sending Email using javascript",
+                Body: "Well that was easy!!",
+            })
+                .then(function (message) {
+                    alert("mail sent successfully")
+                });
+        }
         if (document.addEventListener)
         {
             document.addEventListener('fullscreenchange', exitHandler, false);
