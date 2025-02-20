@@ -584,7 +584,7 @@
         </div>
         <div id="task6">
             <h1>6 užduotis</h1>
-            <p>Trys draugai Jonas, Mykolas ir Rokas lanko baseiną. Jonas eina plaukioti kas antrą dieną, Mykolas - kas trečią, o Rokas - kas ketvirtą. Visi trys draugai kartu baseine buvo antradienį. Po kiek mažiausiai dienų baseine jie vėl bus kartu?<i>(1 taškas)</i></p>
+            <p>Trys draugai Jonas, Mykolas ir Rokas lanko baseiną. Jonas eina plaukioti kas antrą dieną, Mykolas - kas trečią, o Rokas - kas ketvirtą. Visi trys draugai kartu baseine buvo antradienį. Po kiek mažiausiai dienų baseine jie vėl bus kartu? <i>(1 taškas)</i></p>
             <div class="separationLine"></div>
             <p><i>Sprendimas:</i></p>
             <textarea name="Sprendimas" rows="15" id="textareaQuestion6"></textarea>
@@ -695,7 +695,7 @@
             <p style="color: darkgrey;">(Teisingas atsakymas: <b>6,25</b>)</p>
             <div class="separationLine2"></div>
             <h1 style="margin-top: 25px;">6 užduotis</h1>
-            <p>Trys draugai Jonas, Mykolas ir Rokas lanko baseiną. Jonas eina plaukioti kas antrą dieną, Mykolas - kas trečią, o Rokas - kas ketvirtą. Visi trys draugai kartu baseine buvo antradienį. Po kiek mažiausiai dienų baseine jie vėl bus kartu?<i>(1 taškas)</i></p>
+            <p>Trys draugai Jonas, Mykolas ir Rokas lanko baseiną. Jonas eina plaukioti kas antrą dieną, Mykolas - kas trečią, o Rokas - kas ketvirtą. Visi trys draugai kartu baseine buvo antradienį. Po kiek mažiausiai dienų baseine jie vėl bus kartu? <i>(1 taškas)</i></p>
             <div class="separationLine2"></div>
             <p><i>Pateiktas sprendimas:</i></p>
             <textarea name="Sprendimas" rows="15" id="question6summaryTextarea" style="pointer-events: none;"></textarea>
@@ -1201,23 +1201,28 @@
                 document.getElementById("loading").style.opacity = "1";
             }, 320);
             setTimeout(() => {
-                const startingMinutes = 60;
-                let time = startingMinutes * 60; //minutes * 60 seconds
-                let refreshIntervalId = setInterval(updateCountdown, 1000); //update every 1 second
+                const countdownElement = document.getElementById("countdown"); 
+                if (countdownElement.innerHTML === "60:00") {
+                    const startingMinutes = 60;
+                    let time = startingMinutes * 60; //minutes * 60 seconds
+                    let refreshIntervalId = setInterval(updateCountdown, 1000); //update every 1 second
+                    function updateCountdown() {
+                        const minutes = Math.floor(time / 60); // rounds a number DOWN to the nearest integer
+                        let seconds = time % 60;
 
-                function updateCountdown() {
-                    const minutes = Math.floor(time / 60); // rounds a number DOWN to the nearest integer
-                    let seconds = time % 60;
+                        seconds = seconds < 10 ? '0' + seconds : seconds; 
+                    
+                        countdownElement.innerHTML = `${minutes}:${seconds}`;
 
-                    seconds = seconds < 10 ? '0' + seconds : seconds; 
-                    const countdownElement = document.getElementById("countdown"); 
-                    countdownElement.innerHTML = `${minutes}:${seconds}`;
+                        time--;
 
-                    time--;
-
-                    if (time < 0) { //stop the setInterval when time = 0 for avoid negative time
-                        clearInterval(refreshIntervalId);
+                        if (time < 0) { //stop the setInterval when time = 0 for avoid negative time
+                            clearInterval(refreshIntervalId);
+                        }
                     }
+                }
+                else {
+                    
                 }
             }, 620);
             setTimeout(() => {
