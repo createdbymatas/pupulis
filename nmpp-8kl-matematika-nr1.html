@@ -1,0 +1,2079 @@
+<!DOCTYPE html>
+<html lang="lt">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/jpg" href="favicon.ico">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="shortcut icon" type="image/png" href="favicon.ico">
+        <title>Pupulio pamokos: e. testavimas - NMPP 8 kl. bandymas - matematika (testas nr. 1)</title>
+        <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+    </head>
+    <body onload="loadFunction()" id="body">
+        <style>
+            *{
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'SF Pro Display', sans-serif;
+                user-select: none;
+                transition: 0.3s;
+                font-weight: 400;
+                -webkit-tap-highlight-color: transparent;
+                -webkit-tap-highlight-color: transparent;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+            ::-webkit-scrollbar {
+                width: 0;
+            }
+            body{
+                background-color: rgba(242,241,246,255);
+                text-align: center;
+                height: 100vh;
+            }
+            h1{
+                text-align: center;
+                font-size: 35px;
+                margin-bottom: 10px;
+                font-weight: 600;
+                cursor: default;
+            }
+            h2{
+                font-weight: 500;
+                font-size: 17.5px;
+                cursor: default;
+            }
+            #fullScreenWarning{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                z-index: 3;
+                background-color: rgba(242,241,246,255);
+            }
+            .ban{
+                color: red;
+                font-size: 70px;
+            }
+            #fullScreenWarning h2{
+                font-weight: 600;
+                font-size: 25px;
+                margin-top: 15px;
+            }
+            #fullScreenWarning button{
+                margin-top: 15px;
+            }
+            #loading{
+                width: 100%;
+                height: 100%; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 1;
+            }
+            .ispinner {
+                position: relative;
+                width: 20px;
+                height: 20px;
+                background-color: white;
+                border-radius: 100%; }
+            .ispinner .ispinner-blade {
+    position: absolute;
+    top: 6.5px;
+    left: 8.5px;
+    width: 2.5px;
+    height: 6.5px;
+    background-color: #8e8e93;
+    border-radius: 1.25px;
+    animation: iSpinnerBlade 1s linear infinite;
+    will-change: opacity; }
+            .ispinner .ispinner-blade:nth-child(1) {
+      transform: rotate(45deg) translateY(-6.5px);
+      animation-delay: -1.625s; }
+            .ispinner .ispinner-blade:nth-child(2) {
+      transform: rotate(90deg) translateY(-6.5px);
+      animation-delay: -1.5s; }
+            .ispinner .ispinner-blade:nth-child(3) {
+      transform: rotate(135deg) translateY(-6.5px);
+      animation-delay: -1.375s; }
+            .ispinner .ispinner-blade:nth-child(4) {
+      transform: rotate(180deg) translateY(-6.5px);
+      animation-delay: -1.25s; }
+            .ispinner .ispinner-blade:nth-child(5) {
+      transform: rotate(225deg) translateY(-6.5px);
+      animation-delay: -1.125s; }
+            .ispinner .ispinner-blade:nth-child(6) {
+      transform: rotate(270deg) translateY(-6.5px);
+      animation-delay: -1s; }
+            .ispinner .ispinner-blade:nth-child(7) {
+      transform: rotate(315deg) translateY(-6.5px);
+      animation-delay: -0.875s; }
+            .ispinner .ispinner-blade:nth-child(8) {
+      transform: rotate(360deg) translateY(-6.5px);
+      animation-delay: -0.75s; }
+            .ispinner.ispinner-large {
+    width: 35px;
+    height: 35px; }
+            .ispinner.ispinner-large .ispinner-blade {
+      top: 11.5px;
+      left: 15px;
+      width: 5px;
+      height: 12px;
+      border-radius: 2.5px; }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(1) {
+        transform: rotate(45deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(2) {
+        transform: rotate(90deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(3) {
+        transform: rotate(135deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(4) {
+        transform: rotate(180deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(5) {
+        transform: rotate(225deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(6) {
+        transform: rotate(270deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(7) {
+        transform: rotate(315deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(8) {
+        transform: rotate(360deg) translateY(-11.5px); }
+
+            @keyframes iSpinnerBlade {
+  0% {
+    opacity: 0.85; }
+  50% {
+    opacity: 0.25; }
+  100% {
+    opacity: 0.25; } }
+            nav{
+                width: 100%;
+                height: 50px;
+                background-color: rgba(242,241,246,255);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 0 5px rgba(213,213,214,255);
+                padding-left: 10px;
+                padding-right: 10px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 4;
+            }
+            #bottomBar{
+                width: 100%;
+                height: 50px;
+                background-color: rgba(242,241,246,255);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                box-shadow: 0 0 5px rgba(213,213,214,255);
+                padding-left: 10px;
+                padding-right: 10px;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                z-index: 2;
+            }
+            p{
+                font-weight: 400;
+                font-size: 17px;
+                margin-top: 7px;
+                padding-left: 10px;
+                padding-right: 10px;
+                text-align: center;
+                cursor: default;
+            }
+            b{
+                font-weight: 600;
+            }
+            button{
+                width: auto;
+                height: 35px;
+                font-size: 15px;
+                font-weight: 400;
+                background-color: rgba(23,120,219,255);
+                color: white;
+                border: none;
+                border-radius: 10px;
+                padding-left: 15px;
+                padding-right: 15px;
+                cursor: pointer;
+            }
+            button:hover{
+                opacity: 0.9;
+            }
+            button:active{
+                opacity: 0.5;
+            }
+            #startScreen{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #taskInfo1{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #taskInfo2{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #taskStart{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #operationSymbols{
+                position: fixed;
+                top: -22px;
+                left: -92px;
+                width: 410px;
+                height: 115px;
+                z-index: 5;
+                background-color: white;
+                box-shadow: 0 0 5px rgba(213,213,214,255);
+                border-radius: 15px;
+                padding: 10px;
+                transform: scale(0.5);
+                opacity: 0;
+                display: none;
+            }
+            textarea{
+                width: 50%;
+                height: auto;
+                resize: vertical;
+                border: none;
+                border-radius: 10px;
+                padding: 10px;
+                font-size: 13px;
+                margin-top: 5px;
+            }
+            input::-webkit-outer-spin-button,
+            input::-webkit-inner-spin-button {
+                -webkit-appearance: none;
+                margin: 0;
+            }
+            input{
+                width: 70px;
+                border: none;
+                border-radius: 10px;
+                font-size: 13px;
+                padding: 5px;
+                text-align: center;
+            }
+            textarea, input:focus{
+                outline: none;
+            }
+            .separationLine{
+                width: 90%;
+                height: 2px;
+                border-top: 0.5px solid lightgrey;
+                margin-top: 30px;
+            }
+            .separationLine2{
+                width: 90%;
+                height: 2px;
+                border-top: 0.5px solid lightgrey;
+                margin-top: 30px;
+                margin-left: 5%;
+            }
+            #task1{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #task2{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #task3{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #task4{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #task5{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #task6{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #task7{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #task8{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #task9{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #task10{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #taskLast{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #results{
+                width: 100%;
+                height: 100%;
+                display: none;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 0;
+            }
+            #summary{
+                width: 100%;
+                height: 100%;
+                display: none;
+                opacity: 0;
+                padding-top: 70px;
+                padding-bottom: 70px;
+                overflow-x: hidden;
+                overflow-y: scroll;
+            }
+        </style>
+        <input type="text" id="inputas" value="matas.kaspar@gmail.com">
+        <form action="mailto:matas.kaspar@gmail.com" method="post" enctype="text/plain" style="position: absolute; top: 0; left: 0; z-index: 100; width: 300px; height: 300px; outline: 1px solid red; background-color: white;">
+            aaa: <input type="text" name="FirstName">
+            Email: <input type="text" name="Email">
+            <input type="submit" name="submit" value="Submit">
+        </form>
+        <div id="fullScreenWarning">
+            <i class="fa-solid fa-ban ban"></i>
+            <h2>Sistemos pažeidimas</h2>
+            <p>Išjungtas pilno ekrano režimas.</p>
+            <p>Negrįžus į pilno ekrano režimą, patikrinimas bus nutrauktas po <b id="warningTime">10 sekundžių</b>.</p>
+            <button onclick="backToFullscreen()">Grįžti į pilno ekrano režimą <i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div id="operationSymbols">
+            <i class="fa-solid fa-compress" style="font-size: 15px; position: absolute; left: 13px; top: 13px; cursor: pointer;" onclick="hideOperationSymbols()"></i>
+            <h2 id="zenklai">Veiksmų ženklai</h2>
+            <h2 id="zenklaiNukopijuota" style="display: none; color: rgba(23,120,219,255); transition: none;">Nukopijuota!</h2>
+            <p style="padding-bottom: 7px;">Paspauskite ant ženklo, norėdami jį nukopijuoti.</p>
+            <button onclick="copyPlus()">&plus;</button>
+            <button onclick="copyMinus()">&minus;</button>
+            <button onclick="copyMultiply()">&times;</button>
+            <button onclick="copyDivide()">&div;</button>
+            <button onclick="copyEquals()">&equals;</button>
+            <button onclick="copyLess()">&lt;</button>
+            <button onclick="copyMore()">&gt;</button>
+            <button onclick="copyLessOrEqual()">&#8804;</button>
+            <button onclick="copyMoreOrEqual()">&#8805;</button>
+        </div>
+        <nav>
+            <button id="operationSymbolsBtn" style="position: absolute; left: 10px; display: none;" onclick="showOperationSymbols()"><i class="fa-solid fa-hashtag"></i> Veiksmų ženklai</button>
+            <h2>Pupulio pamokos: e. testavimas - NMPP 8 kl. bandymas - matematika (testas nr. 1)</h2>
+            <h2 style="position: absolute; right: 10px; opacity: 0;" id="timeLeft">liko laiko: <b id="countdown" style="transition: none;">60:00</b></h2>
+        </nav>
+        <div id="bottomBar">
+            <button style="opacity: 0; pointer-events: none;" id="dummyBtn"><i class="fa-solid fa-chevron-left"></i> Atgal</button>
+            <button onclick="pereitiITask1()" style="display: none;" id="atgal1"><i class="fa-solid fa-chevron-left"></i> Grįžti į 1 užduotį</button>
+            <button onclick="pereitiITask2()" style="display: none;" id="atgal2"><i class="fa-solid fa-chevron-left"></i> Grįžti į 2 užduotį</button>
+            <button onclick="pereitiITask3()" style="display: none;" id="atgal3"><i class="fa-solid fa-chevron-left"></i> Grįžti į 3 užduotį</button>
+            <button onclick="pereitiITask4()" style="display: none;" id="atgal4"><i class="fa-solid fa-chevron-left"></i> Grįžti į 4 užduotį</button>
+            <button onclick="pereitiITask5()" style="display: none;" id="atgal5"><i class="fa-solid fa-chevron-left"></i> Grįžti į 5 užduotį</button>
+            <button onclick="pereitiITask6()" style="display: none;" id="atgal6"><i class="fa-solid fa-chevron-left"></i> Grįžti į 6 užduotį</button>
+            <button onclick="pereitiITask7()" style="display: none;" id="atgal7"><i class="fa-solid fa-chevron-left"></i> Grįžti į 7 užduotį</button>
+            <button onclick="pereitiITask8()" style="display: none;" id="atgal8"><i class="fa-solid fa-chevron-left"></i> Grįžti į 8 užduotį</button>
+            <button onclick="pereitiITask9()" style="display: none;" id="atgal9"><i class="fa-solid fa-chevron-left"></i> Grįžti į 9 užduotį</button>
+            <button onclick="pereitiITask10()" style="display: none;" id="atgal10"><i class="fa-solid fa-chevron-left"></i> Grįžti į 10 užduotį</button>
+            <button onclick="pereitiITaskInfo1()" style="display: none;" id="testi1">Tęsti <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITaskInfo2()" style="display: none;" id="testi2">Tęsti <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITaskStart()" style="display: none;" id="testi3">Tęsti <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask1()" style="display: none;" id="testi4">Pradėti <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask2()" style="display: none;" id="testi5">Pereiti į 2 užduotį <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask3()" style="display: none;" id="testi6">Pereiti į 3 užduotį <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask4()" style="display: none;" id="testi7">Pereiti į 4 užduotį <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask5()" style="display: none;" id="testi8">Pereiti į 5 užduotį <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask6()" style="display: none;" id="testi9">Pereiti į 6 užduotį <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask7()" style="display: none;" id="testi10">Pereiti į 7 užduotį <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask8()" style="display: none;" id="testi11">Pereiti į 8 užduotį <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask9()" style="display: none;" id="testi12">Pereiti į 9 užduotį <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITask10()" style="display: none;" id="testi13">Pereiti į 10 užduotį <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiITaskLast()" style="display: none;" id="testi14">Baigti <i class="fa-solid fa-chevron-right"></i></button>
+            <button onclick="pereitiIResults()" style="display: none;" id="testi15">Pateikti <i class="fa-solid fa-paper-plane"></i></button>
+            <button onclick="pereitiIApzvalga()" style="display: none;" id="testi16">Peržiūrėti apžvalgą <i class="fa-solid fa-chevron-right"></i></button>
+        </div>
+        <div id="loading">
+            <div style="width: 40px; height: 40px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(1);">
+                <div class="ispinner ispinner-large" style="background-color: transparent;">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                </div>
+            </div>
+            <p style="color: darkgrey; font-size: 17px; margin-left: -4.5px; margin-top: 10px;">Kraunasi</p>
+        </div>
+        <div id="startScreen">
+            <h1>Pupulio pamokos: e. testavimas</h1>
+            <p>Sveiki atvykę į elektroninio testavimo erdvę <b>Pupulio pamokos: e. testavimas.</b></p>
+            <p>Norėdami pradėti testavimą "<i>NMPP 8 kl. bandymas - matematika (testas nr. 1)</i>", spauskite <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;">Tęsti <i class="fa-solid fa-chevron-right"></i></span></p>
+        </div>
+        <div id="taskInfo1">
+            <h1>NMPP 8 kl. bandymas - matematika (testas nr. 1)</h1>
+            <p>Patikrinime rasite įvairių užduočių. <b>Atidžiai perskaitykite</b> kiekvieną užduotį ir pasistenkite kuo geriau ją išspręsti.</b></p>
+            <p>Patikrinimą sudaro <b>10</b> užduočių. Visose užduotyse reikės pateikti sprendimą ir įrašyti atsakymą.</p>
+            <p>Patikrinimo taškų suma yra <b>14</b> taškų. Surinktų taškų skaičių matysite patikrinimo pabaigoje (pagal teisingai pateiktų atsakymų skaičių).</p>
+            <p>Patikrinimo trukmė – <b>60 min.</b> Pasibaigus laikui užduočių atlikti nebegalėsite.</p>
+            <p>Norėdami pereiti prie kito punkto, spauskite <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;">Tęsti <i class="fa-solid fa-chevron-right"></i></span></p>
+        </div>
+        <div id="taskInfo2">
+            <h1>Svarbi informacija</h1>
+            <p style="color: red;">Neuždarykite ir neperkraukite šio lango, nes patikrinimas ir jo rezultatai nėra išsaugomi.</p>
+            <p>Likęs patikrinimo laikas visada bus rodomas dešiniajame viršutiniame kampe.</p>
+            <p>Norėdami įrašyti tam tikrus veiksmų ženklus (&#43;, &#8722;, &times;, &div;, &equals;, &lt;, &gt;, &#8804;, &#8805;), paspauskite <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;"><i class="fa-solid fa-hashtag"></i> Veiksmų ženklai</span> kairiajame viršutiniame kampe. Atsidariusiame lange paspaudus ant ženklo jis bus nukopijuotas į iškarpinę. Tuomet jį įklijuokite reikiamo veiksmo tinkamoje vietoje.</p>
+            <p>Atlikus užduotį prie kitos galima pereiti paspaudus <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;">Pereiti į # užduotį <i class="fa-solid fa-chevron-right"></i></span></p>
+            <p>Visada galima grįžti prie ankstesnės užduoties paspaudus <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;"><i class="fa-solid fa-chevron-left"></i> Grįžti į # užduotį</span></p>
+            <p>Norėdami įrašyti trupmeną, naudokite / vietoje trupmenos brūkšnio (pvz.: vietoje <sup>1</sup>/<sub>2</sub> rašykite 1/2).</p>
+            <p>Patikrinimo metu galima naudotis šiomis priemonėmis: juodraštis (suteikia mokytojas), rašiklis, pieštukas, trintukas, liniuotė.</p>
+            <p>Patikrinimo metu naudotis skaičiuotuvu, išmaniaisiais prietaisais (įskaitant mobiliuosius telefonus) ir kt. pašalinėmis priemonėmis <b>draudžiama</b>.</p>
+            <p>Patikrinimo metu prireikus į tualetą galima išeiti ne daugiau nei 5 minutėms, tačiau likęs patikrinimo laikas nėra stabdomas. Apie išėjimą turi būti informuotas mokytojas, kuris šią informaciją pasižymi.</p>
+            <p>Atlikus testą, <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;">Pateikti <i class="fa-solid fa-paper-plane"></i></span> spauskite <b>tik tada</b>, kai būsite tikri, jog norite pateikti savo atsakymus vertinti. <b>Paspaudę šį mygtuką, savo atsakymų daugiau taisyti nebegalėsite.</b></p>
+            <p>Patikrinimas bus atliekamas pilno ekrano režimu. Patikrinimo metu išjungti pilno ekrano režimą <b>draudžiama</b>.</p>
+            <p>Sistema fiksuoja pežeidimus. Atlikus viršytą nustatytų galimų pažeidimų skaičių patikrinimas gali būti nutrauktas.</p>
+            <p>Norėdami pradėti patikrinimą, spauskite <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;">Tęsti <i class="fa-solid fa-chevron-right"></i></span></p>
+        </div>
+        <div id="taskStart">
+            <h1>NMPP 8 kl. bandymas - matematika (testas nr. 1)</h1>
+            <p>Trukmė - <b>60 min.</b></p>
+            <p>Linkime sėkmės!</p>
+            <p>Paspaudus <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;">Pradėti <i class="fa-solid fa-chevron-right"></i></span> bus pradėtas patikrinimas.</p>
+        </div>
+        <div id="task1">
+            <h1>1 užduotis</h1>
+            <p>Jei prekės kaina padidėjo 100 <i>%</i>, kiek kartų ji padidėjo? <i>(1 taškas)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion1"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p><input type="text" id="question1input"> kartų (-us).</p>
+            <!-- 2 -->
+        </div>
+        <div id="task2">
+            <h1>2 užduotis</h1>
+            <p>Į banką padėta 8000 <i>Eur</i>. Kokia indėlio suma bus banke po dviejų metų, jei bankas kartą per metus skaičiuoja 3 <i>%</i> sudėtinių palūkanų? <i>(1 taškas)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion2"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p><input type="text" id="question2input"> <i>Eur</i>.</p>
+            <!--  8487.2 -->
+        </div>
+        <div id="task3">
+            <h1>3 užduotis</h1>
+            <p>Trupmeną <sup>5</sup>/<sub>24</sub> padidinkite 4 kartus (nepamirškite jos suprastinti). <i>(1 taškas)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion3"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p><input type="text" id="question3input">.</p>
+            <!--  5/6 -->
+        </div>
+        <div id="task4">
+            <h1>4 užduotis</h1>
+            <p>Stačiakampio formos sodo ilgis lygus 25 <i>m</i>, o jo plotis sudaro 40 <i>%</i> ilgio. Sodo plotas lygus <sup>2</sup>/<sub>3</sub> viso sklypo ploto. Raskite viso sklypo plotą. <i>(2 taškai)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion4"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p><input type="text" id="question4input"> <i>m&sup2;</i>.</p>
+            <!--  375 -->
+        </div>
+        <div id="task5">
+            <h1>5 užduotis</h1>
+            <p>Turguje už prekę pardavėjas prašė 800 <i>Eur</i>, bet paskui sutiko ją parduoti už 750 <i>Eur</i>. Kiek procentų sudarė pardavėjo suteikta nuolaida? <i>(1 taškas)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion5"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p><input type="text" id="question5input"> <i>%</i>.</p>
+            <!--  6.25 -->
+        </div>
+        <div id="task6">
+            <h1>6 užduotis</h1>
+            <p>Trys draugai Jonas, Mykolas ir Rokas lanko baseiną. Jonas eina plaukioti kas antrą dieną, Mykolas - kas trečią, o Rokas - kas ketvirtą. Visi trys draugai kartu baseine buvo antradienį. Po kiek mažiausiai dienų baseine jie vėl bus kartu? <i>(1 taškas)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion6"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p>Po <input type="text" id="question6input"> dienų.</p>
+            <!--  12 -->
+        </div>
+        <div id="task7">
+            <h1>7 užduotis</h1>
+            <p>Raskite tokią <i>x</i> reikšmę, kuri būtų ir nelygybės <i>x</i> &#8804; &#8722;3 sprendinys, ir nelygybės <i>x</i> &#8805; &#8722;3 sprendinys. <i>(2 taškai)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion7"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p><i>x</i> &equals; <input type="text" id="question7input">.</p>
+            <!--  -3 -->
+        </div>
+        <div id="task8">
+            <h1>8 užduotis</h1>
+            <p>Duotas reiškinys &#8722;3(&#8722;1&#43;2<i>y</i>). Atskliauskite šį reiškinį. <i>(1 taškas)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion8"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p>&#8722;3(&#8722;1&#43;2<i>y</i>) &equals; <input type="text" id="question8input1"> &plus; <input type="text" id="question8input2"><i>y</i>.</p>
+            <!--  3; -6 -->
+        </div>
+        <div id="task9">
+            <h1>9 užduotis</h1>
+            <p>Vieno bilieto nuotykių parke kaina yra 10 <i>Eur</i>. Grupei perkant daugiau kaip 10 bilietų, kiekvienam papildomam bilietui (pradedant nuo 11-o) taikoma 10 <i>%</i> nuolaida nuo pradinės bilieto kainos. Kiek pinigų iš viso už bilietus sumokėjo 15 žmonių grupė? <i>(2 taškai)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion9"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p><input type="text" id="question9input"> <i>Eur</i>.</p>
+            <!--  145 -->
+        </div>
+        <div id="task10">
+            <h1>10 užduotis</h1>
+            <p>Berniukas turi tiek brolių, kiek ir seserų, o jo sesuo turi tris kartus daugiau brolių, nei seserų. Kiek šeimoje yra berniukų ir kiek mergaičių? <i>(2 taškai)</i></p>
+            <div class="separationLine"></div>
+            <p><i>Sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="textareaQuestion10"></textarea>
+            <p><i>Atsakymas:</i></p>
+            <p><input type="text" id="question10input1"> berniukai, <input type="text" id="question10input2"> mergaitės.</p>
+            <!--  3 b, 2 m -->
+        </div>
+        <div id="taskLast">
+            <h1>NMPP 8 kl. bandymas - matematika (testas nr. 1)</h1>
+            <p>Atlikote visas užduotis.</p>
+            <p>Rekomenduojame grįžti atgal ir pasitikrinti.</p>
+            <p>Jei esate įsitikinę, jog viską atlikote teisingai, spauskite <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;">Pateikti <i class="fa-solid fa-paper-plane"></i></span> <b>Paspaudę šį mygtuką, savo atsakymų daugiau taisyti nebegalėsite.</b></p>
+        </div>
+        <div id="results">
+            <input type="number" id="resultsInput" style="display: none;">
+            <h1>Rezultatai</h1>
+            <p>Jūs surinkote <b id="surinktiTaskai">00</b> taškų (-us) iš <b>14</b> galimų. Tai sudaro <b id="surinktiProcentai">00</b><b>%</b> taškų.</p>
+            <p style="color: red;">Neuždarykite ir neperkraukite šio lango, nes patikrinimas ir jo rezultatai nėra išsaugomi.</p>
+            <p>Spauskite <span style="background-color: rgba(23,120,219,255); color: white; padding: 5px; border-radius: 8px; font-size: 13px;">Peržiūrėti apžvalgą <i class="fa-solid fa-chevron-right"></i></span>  ir peržiūrėkite rezultatus su savo mokytoju.</b></p>
+        </div>
+        <div id="summary">
+            <h1>Apžvalga</h1>
+            <p>Peržiūrėkite sprendimus bei atsakymus su savo mokytoju.</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 30px;">1 užduotis</h1>
+            <p>Jei prekės kaina padidėjo 100 <i>%</i>, kiek kartų ji padidėjo? <i>(1 taškas)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question1summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p><input type="text" id="question1summaryInput" style="pointer-events: none;"> kartų (-us).</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>2</b>)</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 25px;">2 užduotis</h1>
+            <p>Į banką padėta 8000 <i>Eur</i>. Kokia indėlio suma bus banke po dviejų metų, jei bankas kartą per metus skaičiuoja 3 <i>%</i> sudėtinių palūkanų? <i>(1 taškas)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question2summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p><input type="text" id="question2summaryInput" style="pointer-events: none;"> <i>Eur</i>.</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>8487,2</b>)</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 25px;">3 užduotis</h1>
+            <p>Trupmeną <sup>5</sup>/<sub>24</sub> padidinkite 4 kartus (nepamirškite jos suprastinti). <i>(1 taškas)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question3summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p><input type="text" id="question3summaryInput" style="pointer-events: none;">.</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>5/6</b>)</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 25px;">4 užduotis</h1>
+            <p>Stačiakampio formos sodo ilgis lygus 25 <i>m</i>, o jo plotis sudaro 40 <i>%</i> ilgio. Sodo plotas lygus <sup>2</sup>/<sub>3</sub> viso sklypo ploto. Raskite viso sklypo plotą. <i>(2 taškai)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question4summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p><input type="text" id="question4summaryInput" style="pointer-events: none;"> <i>m&sup2;</i>.</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>375</b>)</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 25px;">5 užduotis</h1>
+            <p>Turguje už prekę pardavėjas prašė 800 <i>Eur</i>, bet paskui sutiko ją parduoti už 750 <i>Eur</i>. Kiek procentų sudarė pardavėjo suteikta nuolaida? <i>(1 taškas)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question5summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p><input type="text" id="question5summaryInput" style="pointer-events: none;"> <i>%</i>.</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>6,25</b>)</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 25px;">6 užduotis</h1>
+            <p>Trys draugai Jonas, Mykolas ir Rokas lanko baseiną. Jonas eina plaukioti kas antrą dieną, Mykolas - kas trečią, o Rokas - kas ketvirtą. Visi trys draugai kartu baseine buvo antradienį. Po kiek mažiausiai dienų baseine jie vėl bus kartu? <i>(1 taškas)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question6summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p>Po <input type="text" id="question6summaryInput" style="pointer-events: none;"> dienų.</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>12</b>)</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 25px;">7 užduotis</h1>
+            <p>Raskite tokią <i>x</i> reikšmę, kuri būtų ir nelygybės <i>x</i> &#8804; &#8722;3 sprendinys, ir nelygybės <i>x</i> &#8805; &#8722;3 sprendinys. <i>(2 taškai)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question7summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p><i>x</i> &equals; <input type="text" id="question7summaryInput" style="pointer-events: none;">.</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>-3</b>)</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 25px;">8 užduotis</h1>
+            <p>Duotas reiškinys &#8722;3(&#8722;1&#43;2<i>y</i>). Atskliauskite šį reiškinį. <i>(1 taškas)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question8summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p>&#8722;3(&#8722;1&#43;2<i>y</i>) &equals; <input type="text" id="question8summaryInput1" style="pointer-events: none;"> &plus; <input type="text" id="question8summaryInput2" style="pointer-events: none;"><i>y</i>.</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>3; -6</b>)</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 25px;">9 užduotis</h1>
+            <p>Vieno bilieto nuotykių parke kaina yra 10 <i>Eur</i>. Grupei perkant daugiau kaip 10 bilietų, kiekvienam papildomam bilietui (pradedant nuo 11-o) taikoma 10 <i>%</i> nuolaida nuo pradinės bilieto kainos. Kiek pinigų iš viso už bilietus sumokėjo 15 žmonių grupė? <i>(2 taškai)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question9summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p><input type="text" id="question9summaryInput" style="pointer-events: none;"> <i>Eur</i>.</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>145</b>)</p>
+            <div class="separationLine2"></div>
+            <h1 style="margin-top: 25px;">10 užduotis</h1>
+            <p>Berniukas turi tiek brolių, kiek ir seserų, o jo sesuo turi tris kartus daugiau brolių, nei seserų. Kiek šeimoje yra berniukų ir kiek mergaičių? <i>(2 taškai)</i></p>
+            <div class="separationLine2"></div>
+            <p><i>Pateiktas sprendimas:</i></p>
+            <textarea name="Sprendimas" rows="15" id="question10summaryTextarea" style="pointer-events: none;"></textarea>
+            <p><i>Pateiktas atsakymas:</i></p>
+            <p><input type="text" id="question10summaryInput1" style="pointer-events: none;"> berniukai, <input type="number" id="question10summaryInput2" style="pointer-events: none;"> mergaitės.</p>
+            <p style="color: darkgrey;">(Teisingas atsakymas: <b>3; 2</b>)</p>
+        </div>
+    </body>
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script>
+        function sendEmail() {
+            
+        }
+        if (document.addEventListener)
+        {
+            document.addEventListener('fullscreenchange', exitHandler, false);
+            document.addEventListener('mozfullscreenchange', exitHandler, false);
+            document.addEventListener('MSFullscreenChange', exitHandler, false);
+            document.addEventListener('webkitfullscreenchange', exitHandler, false);
+        }
+
+        function exitHandler()
+        {
+            if (!document.webkitIsFullScreen && !document.mozFullScreen && !document.msFullscreenElement)
+            {
+                document.getElementById("fullScreenWarning").style.display = "flex";
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "10 sekundžių")
+                {
+                    document.getElementById("warningTime").innerHTML = "9 sekundžių";
+                }
+                else{
+
+                }
+                }, 1000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "9 sekundžių")
+                {
+                    document.getElementById("warningTime").innerHTML = "8 sekundžių";
+                }
+                else{
+
+                }
+                }, 2000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "8 sekundžių")
+                {
+                    document.getElementById("warningTime").innerHTML = "7 sekundžių";
+                }
+                else{
+
+                }
+                }, 3000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "7 sekundžių")
+                {
+                    document.getElementById("warningTime").innerHTML = "6 sekundžių";
+                }
+                else{
+
+                }
+                }, 4000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "6 sekundžių")
+                {
+                    document.getElementById("warningTime").innerHTML = "5 sekundžių";
+                }
+                else{
+
+                }
+                }, 5000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "5 sekundžių")
+                {
+                    document.getElementById("warningTime").innerHTML = "4 sekundžių";
+                }
+                else{
+
+                }
+                }, 6000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "4 sekundžių")
+                {
+                    document.getElementById("warningTime").innerHTML = "3 sekundžių";
+                }
+                else{
+
+                }
+                }, 7000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "3 sekundžių")
+                {
+                    document.getElementById("warningTime").innerHTML = "2 sekundžių";
+                }
+                else{
+
+                }
+                }, 8000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "2 sekundžių")
+                {
+                    document.getElementById("warningTime").innerHTML = "1 sekundės";
+                }
+                else{
+
+                }
+                }, 9000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "1 sekundės")
+                {
+                    document.getElementById("warningTime").innerHTML = "0 sekundžių";
+                }
+                else{
+
+                }
+                }, 10000);
+                setTimeout(() => {
+                    if (document.getElementById("fullScreenWarning").style.display === "flex" && document.getElementById("warningTime").innerHTML === "0 sekundžių")
+                {
+                    document.getElementById("fullScreenWarning").style.display = "none";
+                    document.getElementById("warningTime").innerHTML = "10 sekundžių";
+                    timeOver();
+                    backToFullscreen();
+                }
+                else{
+                    
+                }
+                }, 11000);
+            }
+        }
+        function backToFullscreen(){
+            let puslapis = document.documentElement;
+
+            if (puslapis.requestFullscreen) {
+                puslapis.requestFullscreen();
+            } else if (puslapis.webkitRequestFullscreen) { /* Safari */
+                puslapis.webkitRequestFullscreen();
+            } else if (puslapis.msRequestFullscreen) { /* IE11 */
+                puslapis.msRequestFullscreen();
+            }
+            setTimeout(() => {
+                document.getElementById("fullScreenWarning").style.display = "none";
+            }, 100);
+            setTimeout(() => {
+                document.getElementById("warningTime").innerHTML = "10 sekundžių";
+            }, 110);
+        }
+        function loadFunction(){
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("startScreen").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("startScreen").style.opacity = "1";
+                document.getElementById("testi1").style.display = "block";
+            }, 1630);
+        }
+        function copyPlus(){
+            navigator.clipboard.writeText("+");
+            document.getElementById("zenklai").style.display = "none";
+            document.getElementById("zenklaiNukopijuota").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 600);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("zenklai").style.display = "block";
+                document.getElementById("zenklaiNukopijuota").style.display = "none";
+            }, 1000);
+        }
+        function copyMinus(){
+            navigator.clipboard.writeText("-");
+            document.getElementById("zenklai").style.display = "none";
+            document.getElementById("zenklaiNukopijuota").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 600);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("zenklai").style.display = "block";
+                document.getElementById("zenklaiNukopijuota").style.display = "none";
+            }, 1000);
+        }
+        function copyMultiply(){
+            navigator.clipboard.writeText("×");
+            document.getElementById("zenklai").style.display = "none";
+            document.getElementById("zenklaiNukopijuota").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 600);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("zenklai").style.display = "block";
+                document.getElementById("zenklaiNukopijuota").style.display = "none";
+            }, 1000);
+        }
+        function copyDivide(){
+            navigator.clipboard.writeText("÷");
+            document.getElementById("zenklai").style.display = "none";
+            document.getElementById("zenklaiNukopijuota").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 600);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("zenklai").style.display = "block";
+                document.getElementById("zenklaiNukopijuota").style.display = "none";
+            }, 1000);
+        }
+        function copyEquals(){
+            navigator.clipboard.writeText("=");
+            document.getElementById("zenklai").style.display = "none";
+            document.getElementById("zenklaiNukopijuota").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 600);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("zenklai").style.display = "block";
+                document.getElementById("zenklaiNukopijuota").style.display = "none";
+            }, 1000);
+        }
+        function copyLess(){
+            navigator.clipboard.writeText("<");
+            document.getElementById("zenklai").style.display = "none";
+            document.getElementById("zenklaiNukopijuota").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 600);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("zenklai").style.display = "block";
+                document.getElementById("zenklaiNukopijuota").style.display = "none";
+            }, 1000);
+        }
+        function copyMore(){
+            navigator.clipboard.writeText(">");
+            document.getElementById("zenklai").style.display = "none";
+            document.getElementById("zenklaiNukopijuota").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 600);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("zenklai").style.display = "block";
+                document.getElementById("zenklaiNukopijuota").style.display = "none";
+            }, 1000);
+        }
+        function copyLessOrEqual(){
+            navigator.clipboard.writeText("≤");
+            document.getElementById("zenklai").style.display = "none";
+            document.getElementById("zenklaiNukopijuota").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 600);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("zenklai").style.display = "block";
+                document.getElementById("zenklaiNukopijuota").style.display = "none";
+            }, 1000);
+        }
+        function copyMoreOrEqual(){
+            navigator.clipboard.writeText("≥");
+            document.getElementById("zenklai").style.display = "none";
+            document.getElementById("zenklaiNukopijuota").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 200);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 400);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "0";
+            }, 600);
+            setTimeout(() => {
+                document.getElementById("zenklaiNukopijuota").style.opacity = "1";
+            }, 800);
+            setTimeout(() => {
+                document.getElementById("zenklai").style.display = "block";
+                document.getElementById("zenklaiNukopijuota").style.display = "none";
+            }, 1000);
+        }
+        function showOperationSymbols(){
+            document.getElementById("operationSymbols").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("operationSymbols").style.opacity = "1";
+                document.getElementById("operationSymbols").style.transform = "scale(1.0)";
+                document.getElementById("operationSymbols").style.top = "60px";
+                document.getElementById("operationSymbols").style.left = "10px";
+            }, 10);
+        }
+        function hideOperationSymbols(){
+            document.getElementById("operationSymbols").style.opacity = "0";
+            document.getElementById("operationSymbols").style.transform = "scale(0.5)";
+            document.getElementById("operationSymbols").style.top = "-22px";
+            document.getElementById("operationSymbols").style.left = "-92px";
+            setTimeout(() => {
+                document.getElementById("operationSymbols").style.display = "none";
+            }, 300);
+        }
+        function pereitiITaskInfo1(){
+            document.getElementById("testi1").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("startScreen").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("startScreen").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("taskInfo1").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("taskInfo1").style.opacity = "1";
+                document.getElementById("testi1").style.display = "none";
+                document.getElementById("testi1").style.pointerEvents = "all";
+                document.getElementById("testi2").style.display = "block";
+            }, 1630);
+        }
+        function pereitiITaskInfo2(){
+            document.getElementById("testi2").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("taskInfo1").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("taskInfo1").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("taskInfo2").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("taskInfo2").style.opacity = "1";
+                document.getElementById("testi2").style.display = "none";
+                document.getElementById("testi2").style.pointerEvents = "all";
+                document.getElementById("testi3").style.display = "block";
+                document.getElementById("operationSymbolsBtn").style.display = "block";
+            }, 1630);
+        }
+        function pereitiITaskStart(){
+            let puslapis = document.documentElement;
+
+            if (puslapis.requestFullscreen) {
+                puslapis.requestFullscreen();
+            } else if (puslapis.webkitRequestFullscreen) { /* Safari */
+                puslapis.webkitRequestFullscreen();
+            } else if (puslapis.msRequestFullscreen) { /* IE11 */
+                puslapis.msRequestFullscreen();
+            }
+
+            document.getElementById("testi3").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("taskInfo2").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("taskInfo2").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("taskStart").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("taskStart").style.opacity = "1";
+                document.getElementById("testi3").style.display = "none";
+                document.getElementById("testi3").style.pointerEvents = "all";
+                document.getElementById("testi4").style.display = "block";
+            }, 1630);
+        }
+        function pereitiITask1(){
+            document.getElementById("testi4").style.pointerEvents = "none";
+            document.getElementById("testi6").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("taskStart").style.opacity = "0";
+                document.getElementById("task2").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("taskStart").style.display = "none";
+                document.getElementById("task2").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                const countdownElement = document.getElementById("countdown"); 
+                if (countdownElement.innerHTML === "60:00") {
+                    const startingMinutes = 60;
+                    let time = startingMinutes * 60; //minutes * 60 seconds
+                    let refreshIntervalId = setInterval(updateCountdown, 1000); //update every 1 second
+                    function updateCountdown() {
+                        const minutes = Math.floor(time / 60); // rounds a number DOWN to the nearest integer
+                        let seconds = time % 60;
+
+                        seconds = seconds < 10 ? '0' + seconds : seconds; 
+                    
+                        countdownElement.innerHTML = `${minutes}:${seconds}`;
+
+                        time--;
+
+                        if (time < 0) { //stop the setInterval when time = 0 for avoid negative time
+                            clearInterval(refreshIntervalId);
+                        }
+                    }
+                }
+                else {
+                    
+                }
+            }, 620);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task1").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task1").style.opacity = "1";
+                document.getElementById("testi4").style.display = "none";
+                document.getElementById("testi4").style.pointerEvents = "all";
+                document.getElementById("testi6").style.display = "none";
+                document.getElementById("testi6").style.pointerEvents = "all";
+                document.getElementById("testi5").style.display = "block";
+                document.getElementById("atgal1").style.display = "none";
+                document.getElementById("dummyBtn").style.display = "block";
+                document.getElementById("timeLeft").style.opacity = "1";
+            }, 1630);
+            setTimeout(() => {
+                document.getElementById("countdown").style.color = "red";
+            }, 3300620);
+            setTimeout(() => {
+                document.getElementById("timeLeft").style.display = "none";
+                timeOver()
+            }, 3600820);
+            setTimeout(() => {
+                document.getElementById("timeLeft").style.display = "block";
+            }, 3601020);
+            setTimeout(() => {
+                document.getElementById("timeLeft").style.display = "none";
+            }, 3601220);
+            setTimeout(() => {
+                document.getElementById("timeLeft").style.display = "block";
+            }, 3601420);
+            setTimeout(() => {
+                document.getElementById("timeLeft").style.opacity = "0";
+            }, 3602420);
+        }
+        function pereitiITask2(){
+            document.getElementById("atgal2").style.pointerEvents = "none";
+            document.getElementById("testi5").style.pointerEvents = "none";
+            document.getElementById("testi7").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task1").style.opacity = "0";
+                document.getElementById("task3").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task1").style.display = "none";
+                document.getElementById("task3").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task2").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task2").style.opacity = "1";
+                document.getElementById("testi5").style.display = "none";
+                document.getElementById("testi5").style.pointerEvents = "all";
+                document.getElementById("testi7").style.display = "none";
+                document.getElementById("testi7").style.pointerEvents = "all";
+                document.getElementById("testi6").style.display = "block";
+                document.getElementById("atgal2").style.display = "none";
+                document.getElementById("atgal2").style.pointerEvents = "all";
+                document.getElementById("atgal1").style.display = "block";
+                document.getElementById("dummyBtn").style.display = "none";
+            }, 1630);
+        }
+        function pereitiITask3(){
+            document.getElementById("atgal1").style.pointerEvents = "none";
+            document.getElementById("atgal3").style.pointerEvents = "none";
+            document.getElementById("testi6").style.pointerEvents = "none";
+            document.getElementById("testi8").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task2").style.opacity = "0";
+                document.getElementById("task4").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task2").style.display = "none";
+                document.getElementById("task4").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task3").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task3").style.opacity = "1";
+                document.getElementById("testi6").style.display = "none";
+                document.getElementById("testi6").style.pointerEvents = "all";
+                document.getElementById("testi8").style.display = "none";
+                document.getElementById("testi8").style.pointerEvents = "all";
+                document.getElementById("testi7").style.display = "block";
+                document.getElementById("atgal3").style.display = "none";
+                document.getElementById("atgal3").style.pointerEvents = "all";
+                document.getElementById("atgal2").style.display = "block";
+                document.getElementById("atgal1").style.display = "none";
+                document.getElementById("atgal1").style.pointerEvents = "all";
+            }, 1630);
+        }
+        function pereitiITask4(){
+            document.getElementById("atgal2").style.pointerEvents = "none";
+            document.getElementById("atgal4").style.pointerEvents = "none";
+            document.getElementById("testi7").style.pointerEvents = "none";
+            document.getElementById("testi9").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task3").style.opacity = "0";
+                document.getElementById("task5").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task3").style.display = "none";
+                document.getElementById("task5").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task4").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task4").style.opacity = "1";
+                document.getElementById("testi7").style.display = "none";
+                document.getElementById("testi7").style.pointerEvents = "all";
+                document.getElementById("testi9").style.display = "none";
+                document.getElementById("testi9").style.pointerEvents = "all";
+                document.getElementById("testi8").style.display = "block";
+                document.getElementById("atgal4").style.display = "none";
+                document.getElementById("atgal4").style.pointerEvents = "all";
+                document.getElementById("atgal3").style.display = "block";
+                document.getElementById("atgal2").style.display = "none";
+                document.getElementById("atgal2").style.pointerEvents = "all";
+            }, 1630);
+        }
+        function pereitiITask5(){
+            document.getElementById("atgal3").style.pointerEvents = "none";
+            document.getElementById("atgal5").style.pointerEvents = "none";
+            document.getElementById("testi8").style.pointerEvents = "none";
+            document.getElementById("testi10").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task4").style.opacity = "0";
+                document.getElementById("task6").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task4").style.display = "none";
+                document.getElementById("task6").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task5").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task5").style.opacity = "1";
+                document.getElementById("testi8").style.display = "none";
+                document.getElementById("testi8").style.pointerEvents = "all";
+                document.getElementById("testi10").style.display = "none";
+                document.getElementById("testi10").style.pointerEvents = "all";
+                document.getElementById("testi9").style.display = "block";
+                document.getElementById("atgal5").style.display = "none";
+                document.getElementById("atgal5").style.pointerEvents = "all";
+                document.getElementById("atgal4").style.display = "block";
+                document.getElementById("atgal3").style.display = "none";
+                document.getElementById("atgal3").style.pointerEvents = "all";
+            }, 1630);
+        }
+        function pereitiITask6(){
+            document.getElementById("atgal4").style.pointerEvents = "none";
+            document.getElementById("atgal6").style.pointerEvents = "none";
+            document.getElementById("testi9").style.pointerEvents = "none";
+            document.getElementById("testi11").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task5").style.opacity = "0";
+                document.getElementById("task7").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task5").style.display = "none";
+                document.getElementById("task7").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task6").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task6").style.opacity = "1";
+                document.getElementById("testi9").style.display = "none";
+                document.getElementById("testi9").style.pointerEvents = "all";
+                document.getElementById("testi11").style.display = "none";
+                document.getElementById("testi11").style.pointerEvents = "all";
+                document.getElementById("testi10").style.display = "block";
+                document.getElementById("atgal6").style.display = "none";
+                document.getElementById("atgal6").style.pointerEvents = "all";
+                document.getElementById("atgal5").style.display = "block";
+                document.getElementById("atgal4").style.display = "none";
+                document.getElementById("atgal4").style.pointerEvents = "all";
+            }, 1630);
+        }
+        function pereitiITask7(){
+            document.getElementById("atgal5").style.pointerEvents = "none";
+            document.getElementById("atgal7").style.pointerEvents = "none";
+            document.getElementById("testi10").style.pointerEvents = "none";
+            document.getElementById("testi12").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task6").style.opacity = "0";
+                document.getElementById("task8").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task6").style.display = "none";
+                document.getElementById("task8").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task7").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task7").style.opacity = "1";
+                document.getElementById("testi10").style.display = "none";
+                document.getElementById("testi10").style.pointerEvents = "all";
+                document.getElementById("testi12").style.display = "none";
+                document.getElementById("testi12").style.pointerEvents = "all";
+                document.getElementById("testi11").style.display = "block";
+                document.getElementById("atgal7").style.display = "none";
+                document.getElementById("atgal7").style.pointerEvents = "all";
+                document.getElementById("atgal6").style.display = "block";
+                document.getElementById("atgal5").style.display = "none";
+                document.getElementById("atgal5").style.pointerEvents = "all";
+            }, 1630);
+        }
+        function pereitiITask8(){
+            document.getElementById("atgal6").style.pointerEvents = "none";
+            document.getElementById("atgal8").style.pointerEvents = "none";
+            document.getElementById("testi11").style.pointerEvents = "none";
+            document.getElementById("testi13").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task7").style.opacity = "0";
+                document.getElementById("task9").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task7").style.display = "none";
+                document.getElementById("task9").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task8").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task8").style.opacity = "1";
+                document.getElementById("testi11").style.display = "none";
+                document.getElementById("testi11").style.pointerEvents = "all";
+                document.getElementById("testi13").style.display = "none";
+                document.getElementById("testi13").style.pointerEvents = "all";
+                document.getElementById("testi12").style.display = "block";
+                document.getElementById("atgal8").style.display = "none";
+                document.getElementById("atgal8").style.pointerEvents = "all";
+                document.getElementById("atgal7").style.display = "block";
+                document.getElementById("atgal6").style.display = "none";
+                document.getElementById("atgal6").style.pointerEvents = "all";
+            }, 1630);
+        }
+        function pereitiITask9(){
+            document.getElementById("atgal7").style.pointerEvents = "none";
+            document.getElementById("atgal9").style.pointerEvents = "none";
+            document.getElementById("testi12").style.pointerEvents = "none";
+            document.getElementById("testi14").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task8").style.opacity = "0";
+                document.getElementById("task10").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task8").style.display = "none";
+                document.getElementById("task10").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task9").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task9").style.opacity = "1";
+                document.getElementById("testi12").style.display = "none";
+                document.getElementById("testi12").style.pointerEvents = "all";
+                document.getElementById("testi14").style.display = "none";
+                document.getElementById("testi14").style.pointerEvents = "all";
+                document.getElementById("testi13").style.display = "block";
+                document.getElementById("atgal9").style.display = "none";
+                document.getElementById("atgal9").style.pointerEvents = "all";
+                document.getElementById("atgal8").style.display = "block";
+                document.getElementById("atgal7").style.display = "none";
+                document.getElementById("atgal7").style.pointerEvents = "all";
+            }, 1630);
+        }
+        function pereitiITask10(){
+            document.getElementById("atgal8").style.pointerEvents = "none";
+            document.getElementById("atgal10").style.pointerEvents = "none";
+            document.getElementById("testi13").style.pointerEvents = "none";
+            document.getElementById("testi15").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task9").style.opacity = "0";
+                document.getElementById("taskLast").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task9").style.display = "none";
+                document.getElementById("taskLast").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("task10").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("task10").style.opacity = "1";
+                document.getElementById("testi13").style.display = "none";
+                document.getElementById("testi13").style.pointerEvents = "all";
+                document.getElementById("testi15").style.display = "none";
+                document.getElementById("testi15").style.pointerEvents = "all";
+                document.getElementById("testi14").style.display = "block";
+                document.getElementById("atgal10").style.display = "none";
+                document.getElementById("atgal10").style.pointerEvents = "all";
+                document.getElementById("atgal9").style.display = "block";
+                document.getElementById("atgal8").style.display = "none";
+                document.getElementById("atgal8").style.pointerEvents = "all";
+            }, 1630);
+        }
+        function pereitiITaskLast(){
+            document.getElementById("atgal9").style.pointerEvents = "none";
+            document.getElementById("testi14").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("task10").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("task10").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("taskLast").style.display = "flex";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("taskLast").style.opacity = "1";
+                document.getElementById("testi14").style.display = "none";
+                document.getElementById("testi14").style.pointerEvents = "all";
+                document.getElementById("testi15").style.display = "block";
+                document.getElementById("atgal10").style.display = "block";
+                document.getElementById("atgal10").style.pointerEvents = "all";
+                document.getElementById("atgal9").style.display = "none";
+                document.getElementById("atgal9").style.pointerEvents = "all";
+            }, 1630);
+        }
+        function pereitiIResults(){
+            document.getElementById("atgal10").style.pointerEvents = "none";
+            document.getElementById("testi15").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("taskLast").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("taskLast").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+                document.getElementById("testi15").style.display = "none";
+                document.getElementById("testi15").style.pointerEvents = "all";
+                document.getElementById("atgal10").style.display = "none";
+                document.getElementById("atgal10").style.pointerEvents = "all";
+                document.getElementById("operationSymbolsBtn").style.display = "none";
+                document.getElementById("operationSymbols").style.opacity = "0";
+                document.getElementById("operationSymbols").style.transform = "scale(0.5)";
+                document.getElementById("operationSymbols").style.top = "-22px";
+                document.getElementById("operationSymbols").style.left = "-92px";
+                document.getElementById("timeLeft").style.opacity = "0";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("operationSymbols").style.display = "none";
+            }, 610);
+            setTimeout(() => {
+                skaiciuotiResults1uzd();
+                skaiciuotiResults2uzd();
+                skaiciuotiResults3uzd();
+                skaiciuotiResults4uzd();
+                skaiciuotiResults5uzd();
+                skaiciuotiResults6uzd();
+                skaiciuotiResults7uzd();
+                skaiciuotiResults8uzd();
+                skaiciuotiResults9uzd();
+                skaiciuotiResults10uzd();
+                document.getElementById("question1summaryTextarea").value = document.getElementById("textareaQuestion1").value;
+                document.getElementById("question2summaryTextarea").value = document.getElementById("textareaQuestion2").value;
+                document.getElementById("question3summaryTextarea").value = document.getElementById("textareaQuestion3").value;
+                document.getElementById("question4summaryTextarea").value = document.getElementById("textareaQuestion4").value;
+                document.getElementById("question5summaryTextarea").value = document.getElementById("textareaQuestion5").value;
+                document.getElementById("question6summaryTextarea").value = document.getElementById("textareaQuestion6").value;
+                document.getElementById("question7summaryTextarea").value = document.getElementById("textareaQuestion7").value;
+                document.getElementById("question8summaryTextarea").value = document.getElementById("textareaQuestion8").value;
+                document.getElementById("question9summaryTextarea").value = document.getElementById("textareaQuestion9").value;
+                document.getElementById("question10summaryTextarea").value = document.getElementById("textareaQuestion10").value;
+            }, 5320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 10320);
+            setTimeout(() => {
+                let num = (Number(document.getElementById("resultsInput").value)/14)*100
+                let roundedString = num.toFixed(2);
+                let rounded = Number(roundedString);
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("results").style.display = "flex";
+                document.getElementById("surinktiTaskai").innerHTML = document.getElementById("resultsInput").value;
+                document.getElementById("surinktiProcentai").innerHTML = rounded;
+            }, 10620);
+            setTimeout(() => {
+                document.getElementById("results").style.opacity = "1";
+                document.getElementById("dummyBtn").style.display = "block";
+                document.getElementById("testi16").style.display = "block";
+            }, 10630);
+        }
+        function skaiciuotiResults1uzd(){
+            if(document.getElementById("question1input").value === "2"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(1);
+                document.getElementById("question1summaryInput").value = document.getElementById("question1input").value;
+                document.getElementById("question1summaryInput").style.border = "2px solid green";
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                document.getElementById("question1summaryInput").value = document.getElementById("question1input").value;
+                document.getElementById("question1summaryInput").style.border = "2px solid red";
+            }
+        }
+        function skaiciuotiResults2uzd(){
+            if(document.getElementById("question2input").value === "8487.2" || document.getElementById("question2input").value === "8487,2"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(1);
+                document.getElementById("question2summaryInput").value = document.getElementById("question2input").value;
+                document.getElementById("question2summaryInput").style.border = "2px solid green";
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                document.getElementById("question2summaryInput").value = document.getElementById("question2input").value;
+                document.getElementById("question2summaryInput").style.border = "2px solid red";
+            }
+        }
+        function skaiciuotiResults3uzd(){
+            if(document.getElementById("question3input").value === "5/6" || document.getElementById("question3input").value === "5 / 6"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(1);
+                document.getElementById("question3summaryInput").value = document.getElementById("question3input").value;
+                document.getElementById("question3summaryInput").style.border = "2px solid green";
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                document.getElementById("question3summaryInput").value = document.getElementById("question3input").value;
+                document.getElementById("question3summaryInput").style.border = "2px solid red";
+            }
+        }
+        function skaiciuotiResults4uzd(){
+            if(document.getElementById("question4input").value === "375"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(2);
+                document.getElementById("question4summaryInput").value = document.getElementById("question4input").value;
+                document.getElementById("question4summaryInput").style.border = "2px solid green";
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                document.getElementById("question4summaryInput").value = document.getElementById("question4input").value;
+                document.getElementById("question4summaryInput").style.border = "2px solid red";
+            }
+        }
+        function skaiciuotiResults5uzd(){
+            if(document.getElementById("question5input").value === "6.25" || document.getElementById("question5input").value === "6,25"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(1);
+                document.getElementById("question5summaryInput").value = document.getElementById("question5input").value;
+                document.getElementById("question5summaryInput").style.border = "2px solid green";
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                document.getElementById("question5summaryInput").value = document.getElementById("question5input").value;
+                document.getElementById("question5summaryInput").style.border = "2px solid red";
+            }
+        }
+        function skaiciuotiResults6uzd(){
+            if(document.getElementById("question6input").value === "12"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(1);
+                document.getElementById("question6summaryInput").value = document.getElementById("question6input").value;
+                document.getElementById("question6summaryInput").style.border = "2px solid green";
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                document.getElementById("question6summaryInput").value = document.getElementById("question6input").value;
+                document.getElementById("question6summaryInput").style.border = "2px solid red";
+            }
+        }
+        function skaiciuotiResults7uzd(){
+            if(document.getElementById("question7input").value === "-3"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(2);
+                document.getElementById("question7summaryInput").value = document.getElementById("question7input").value;
+                document.getElementById("question7summaryInput").style.border = "2px solid green";
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                document.getElementById("question7summaryInput").value = document.getElementById("question7input").value;
+                document.getElementById("question7summaryInput").style.border = "2px solid red";
+            }
+        }
+        function skaiciuotiResults8uzd(){
+            if(document.getElementById("question8input1").value === "3" && document.getElementById("question8input2").value === "-6"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(1);
+                nudazytiQuestion8Inputs()
+            }
+            else if(document.getElementById("question8input1").value === "3" || document.getElementById("question8input2").value === "-6"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0.5);
+                nudazytiQuestion8Inputs2()
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                nudazytiQuestion8Inputs3()
+            }
+        }
+        function nudazytiQuestion8Inputs(){
+            document.getElementById("question8summaryInput1").value = document.getElementById("question8input1").value;
+            document.getElementById("question8summaryInput1").style.border = "2px solid green";
+            document.getElementById("question8summaryInput2").value = document.getElementById("question8input2").value;
+            document.getElementById("question8summaryInput2").style.border = "2px solid green";
+        }
+        function nudazytiQuestion8Inputs2(){
+            if(document.getElementById("question8input1").value === "3"){
+                document.getElementById("question8summaryInput1").value = document.getElementById("question8input1").value;
+                document.getElementById("question8summaryInput1").style.border = "2px solid green";
+                document.getElementById("question8summaryInput2").value = document.getElementById("question8input2").value;
+                document.getElementById("question8summaryInput2").style.border = "2px solid red";
+            }
+            else if(document.getElementById("question8input2").value === "-6"){
+                document.getElementById("question8summaryInput1").value = document.getElementById("question8input1").value;
+                document.getElementById("question8summaryInput1").style.border = "2px solid red";
+                document.getElementById("question8summaryInput2").value = document.getElementById("question8input2").value;
+                document.getElementById("question8summaryInput2").style.border = "2px solid green";
+            }
+            else{
+
+            }
+        }
+        function nudazytiQuestion8Inputs3(){
+            document.getElementById("question8summaryInput1").value = document.getElementById("question8input1").value;
+            document.getElementById("question8summaryInput1").style.border = "2px solid red";
+            document.getElementById("question8summaryInput2").value = document.getElementById("question8input2").value;
+            document.getElementById("question8summaryInput2").style.border = "2px solid red";
+        }
+        function skaiciuotiResults9uzd(){
+            if(document.getElementById("question9input").value === "145"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(2);
+                document.getElementById("question9summaryInput").value = document.getElementById("question9input").value;
+                document.getElementById("question9summaryInput").style.border = "2px solid green";
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                document.getElementById("question9summaryInput").value = document.getElementById("question7input").value;
+                document.getElementById("question9summaryInput").style.border = "2px solid red";
+            }
+        }
+        function skaiciuotiResults10uzd(){
+            if(document.getElementById("question10input1").value === "3" && document.getElementById("question10input2").value === "2"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(2);
+                nudazytiQuestion10Inputs()
+            }
+            else if(document.getElementById("question10input1").value === "3" || document.getElementById("question10input2").value === "2"){
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(1);
+                nudazytiQuestion10Inputs2()
+            }
+            else {
+                document.getElementById("resultsInput").value = Number(document.getElementById("resultsInput").value) + Number(0);
+                nudazytiQuestion10Inputs3()
+            }
+        }
+        function nudazytiQuestion10Inputs(){
+            document.getElementById("question10summaryInput1").value = document.getElementById("question10input1").value;
+            document.getElementById("question10summaryInput1").style.border = "2px solid green";
+            document.getElementById("question10summaryInput2").value = document.getElementById("question10input2").value;
+            document.getElementById("question10summaryInput2").style.border = "2px solid green";
+        }
+        function nudazytiQuestion10Inputs2(){
+            if(document.getElementById("question10input1").value === "3"){
+                document.getElementById("question10summaryInput1").value = document.getElementById("question10input1").value;
+                document.getElementById("question10summaryInput1").style.border = "2px solid green";
+                document.getElementById("question10summaryInput2").value = document.getElementById("question10input2").value;
+                document.getElementById("question10summaryInput2").style.border = "2px solid red";
+            }
+            else if(document.getElementById("question10input2").value === "-6"){
+                document.getElementById("question10summaryInput1").value = document.getElementById("question10input1").value;
+                document.getElementById("question10summaryInput1").style.border = "2px solid red";
+                document.getElementById("question10summaryInput2").value = document.getElementById("question10input2").value;
+                document.getElementById("question10summaryInput2").style.border = "2px solid green";
+            }
+            else{
+
+            }
+        }
+        function nudazytiQuestion10Inputs3(){
+            document.getElementById("question10summaryInput1").value = document.getElementById("question10input1").value;
+            document.getElementById("question10summaryInput1").style.border = "2px solid red";
+            document.getElementById("question10summaryInput2").value = document.getElementById("question10input2").value;
+            document.getElementById("question10summaryInput2").style.border = "2px solid red";
+        }
+        function pereitiIApzvalga(){
+            document.getElementById("testi16").style.pointerEvents = "none";
+            setTimeout(() => {
+                document.getElementById("results").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("results").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 5320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("summary").style.display = "block";
+            }, 5620);
+            setTimeout(() => {
+                document.getElementById("summary").style.opacity = "1";
+                document.getElementById("testi16").style.display = "none";
+                document.getElementById("testi16").style.pointerEvents = "all";
+            }, 5630);
+        }
+        function timeOver(){
+            if (document.getElementById("results").style.display === "flex" || document.getElementById("summary").style.display === "block"){
+
+            }
+            else {
+                document.getElementById("atgal1").style.pointerEvents = "none";
+                document.getElementById("atgal2").style.pointerEvents = "none";
+                document.getElementById("atgal3").style.pointerEvents = "none";
+                document.getElementById("atgal4").style.pointerEvents = "none";
+                document.getElementById("atgal5").style.pointerEvents = "none";
+                document.getElementById("atgal6").style.pointerEvents = "none";
+                document.getElementById("atgal7").style.pointerEvents = "none";
+                document.getElementById("atgal8").style.pointerEvents = "none";
+                document.getElementById("atgal9").style.pointerEvents = "none";
+                document.getElementById("atgal10").style.pointerEvents = "none";
+                document.getElementById("testi1").style.pointerEvents = "none";
+                document.getElementById("testi2").style.pointerEvents = "none";
+                document.getElementById("testi3").style.pointerEvents = "none";
+                document.getElementById("testi4").style.pointerEvents = "none";
+                document.getElementById("testi5").style.pointerEvents = "none";
+                document.getElementById("testi6").style.pointerEvents = "none";
+                document.getElementById("testi7").style.pointerEvents = "none";
+                document.getElementById("testi8").style.pointerEvents = "none";
+                document.getElementById("testi9").style.pointerEvents = "none";
+                document.getElementById("testi10").style.pointerEvents = "none";
+                document.getElementById("testi11").style.pointerEvents = "none";
+                document.getElementById("testi12").style.pointerEvents = "none";
+                document.getElementById("testi13").style.pointerEvents = "none";
+                document.getElementById("testi14").style.pointerEvents = "none";
+                document.getElementById("testi15").style.pointerEvents = "none";
+                setTimeout(() => {
+                    document.getElementById("task1").style.opacity = "0";
+                    document.getElementById("task2").style.opacity = "0";
+                    document.getElementById("task3").style.opacity = "0";
+                    document.getElementById("task4").style.opacity = "0";
+                    document.getElementById("task5").style.opacity = "0";
+                    document.getElementById("task6").style.opacity = "0";
+                    document.getElementById("task7").style.opacity = "0";
+                    document.getElementById("task8").style.opacity = "0";
+                    document.getElementById("task9").style.opacity = "0";
+                    document.getElementById("task10").style.opacity = "0";
+                    document.getElementById("taskLast").style.opacity = "0";
+                }, 10);
+                setTimeout(() => {
+                    document.getElementById("task1").style.display = "none";
+                    document.getElementById("task2").style.display = "none";
+                    document.getElementById("task3").style.display = "none";
+                    document.getElementById("task4").style.display = "none";
+                    document.getElementById("task5").style.display = "none";
+                    document.getElementById("task6").style.display = "none";
+                    document.getElementById("task7").style.display = "none";
+                    document.getElementById("task8").style.display = "none";
+                    document.getElementById("task9").style.display = "none";
+                    document.getElementById("task10").style.display = "none";
+                    document.getElementById("taskLast").style.display = "none";
+                    document.getElementById("loading").style.display = "flex";
+                    document.getElementById("testi1").style.display = "none";
+                    document.getElementById("testi1").style.pointerEvents = "all";
+                    document.getElementById("testi2").style.display = "none";
+                    document.getElementById("testi2").style.pointerEvents = "all";
+                    document.getElementById("testi3").style.display = "none";
+                    document.getElementById("testi3").style.pointerEvents = "all";
+                    document.getElementById("testi4").style.display = "none";
+                    document.getElementById("testi4").style.pointerEvents = "all";
+                    document.getElementById("testi5").style.display = "none";
+                    document.getElementById("testi5").style.pointerEvents = "all";
+                    document.getElementById("testi6").style.display = "none";
+                    document.getElementById("testi6").style.pointerEvents = "all";
+                    document.getElementById("testi7").style.display = "none";
+                    document.getElementById("testi7").style.pointerEvents = "all";
+                    document.getElementById("testi8").style.display = "none";
+                    document.getElementById("testi8").style.pointerEvents = "all";
+                    document.getElementById("testi9").style.display = "none";
+                    document.getElementById("testi9").style.pointerEvents = "all";
+                    document.getElementById("testi10").style.display = "none";
+                    document.getElementById("testi10").style.pointerEvents = "all";
+                    document.getElementById("testi11").style.display = "none";
+                    document.getElementById("testi11").style.pointerEvents = "all";
+                    document.getElementById("testi12").style.display = "none";
+                    document.getElementById("testi12").style.pointerEvents = "all";
+                    document.getElementById("testi13").style.display = "none";
+                    document.getElementById("testi13").style.pointerEvents = "all";
+                    document.getElementById("testi14").style.display = "none";
+                    document.getElementById("testi14").style.pointerEvents = "all";
+                    document.getElementById("testi15").style.display = "none";
+                    document.getElementById("testi15").style.pointerEvents = "all";
+                    document.getElementById("atgal1").style.display = "none";
+                    document.getElementById("atgal1").style.pointerEvents = "all";
+                    document.getElementById("atgal2").style.display = "none";
+                    document.getElementById("atgal2").style.pointerEvents = "all";
+                    document.getElementById("atgal3").style.display = "none";
+                    document.getElementById("atgal3").style.pointerEvents = "all";
+                    document.getElementById("atgal4").style.display = "none";
+                    document.getElementById("atgal4").style.pointerEvents = "all";
+                    document.getElementById("atgal5").style.display = "none";
+                    document.getElementById("atgal5").style.pointerEvents = "all";
+                    document.getElementById("atgal6").style.display = "none";
+                    document.getElementById("atgal6").style.pointerEvents = "all";
+                    document.getElementById("atgal7").style.display = "none";
+                    document.getElementById("atgal7").style.pointerEvents = "all";
+                    document.getElementById("atgal8").style.display = "none";
+                    document.getElementById("atgal8").style.pointerEvents = "all";
+                    document.getElementById("atgal9").style.display = "none";
+                    document.getElementById("atgal9").style.pointerEvents = "all";
+                    document.getElementById("atgal10").style.display = "none";
+                    document.getElementById("atgal10").style.pointerEvents = "all";
+                    document.getElementById("operationSymbolsBtn").style.display = "none";
+                    document.getElementById("operationSymbols").style.opacity = "0";
+                    document.getElementById("operationSymbols").style.transform = "scale(0.5)";
+                    document.getElementById("operationSymbols").style.top = "-22px";
+                    document.getElementById("operationSymbols").style.left = "-92px";
+                    document.getElementById("timeLeft").style.opacity = "0";
+                }, 310);
+                setTimeout(() => {
+                    document.getElementById("loading").style.opacity = "1";
+                }, 320);
+                setTimeout(() => {
+                    document.getElementById("operationSymbols").style.display = "none";
+                }, 610);
+                setTimeout(() => {
+                    skaiciuotiResults1uzd();
+                    skaiciuotiResults2uzd();
+                    skaiciuotiResults3uzd();
+                    skaiciuotiResults4uzd();
+                    skaiciuotiResults5uzd();
+                    skaiciuotiResults6uzd();
+                    skaiciuotiResults7uzd();
+                    skaiciuotiResults8uzd();
+                    skaiciuotiResults9uzd();
+                    skaiciuotiResults10uzd();
+                    document.getElementById("question1summaryTextarea").value = document.getElementById("textareaQuestion1").value;
+                    document.getElementById("question2summaryTextarea").value = document.getElementById("textareaQuestion2").value;
+                    document.getElementById("question3summaryTextarea").value = document.getElementById("textareaQuestion3").value;
+                    document.getElementById("question4summaryTextarea").value = document.getElementById("textareaQuestion4").value;
+                    document.getElementById("question5summaryTextarea").value = document.getElementById("textareaQuestion5").value;
+                    document.getElementById("question6summaryTextarea").value = document.getElementById("textareaQuestion6").value;
+                    document.getElementById("question7summaryTextarea").value = document.getElementById("textareaQuestion7").value;
+                    document.getElementById("question8summaryTextarea").value = document.getElementById("textareaQuestion8").value;
+                    document.getElementById("question9summaryTextarea").value = document.getElementById("textareaQuestion9").value;
+                    document.getElementById("question10summaryTextarea").value = document.getElementById("textareaQuestion10").value;
+                }, 5320);
+                setTimeout(() => {
+                    document.getElementById("loading").style.opacity = "0";
+                }, 10320);
+                setTimeout(() => {
+                    document.getElementById("loading").style.display = "none";
+                    document.getElementById("results").style.display = "flex";
+                    document.getElementById("surinktiTaskai").innerHTML = document.getElementById("resultsInput").value;
+                }, 10620);
+                setTimeout(() => {
+                    document.getElementById("results").style.opacity = "1";
+                    document.getElementById("dummyBtn").style.display = "block";
+                    document.getElementById("testi16").style.display = "block";
+                }, 10630);
+            }
+        }
+    </script>
+</html>
