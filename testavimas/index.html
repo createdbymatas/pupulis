@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="lt">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" type="image/jpg" href="favicon.ico">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <link rel="shortcut icon" type="image/png" href="favicon.ico">
+        <title>Pupulio pamokos: e. testavimas - NMPP 8 kl. bandymas - matematika (testas nr. 1)</title>
+        <link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet">
+    </head>
+    <body onload="loadFunction()" id="body">
+        <style>
+            *{
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'SF Pro Display', sans-serif;
+                user-select: none;
+                transition: 0.3s;
+                font-weight: 400;
+                -webkit-tap-highlight-color: transparent;
+                -webkit-tap-highlight-color: transparent;
+                -webkit-user-select: none;
+                -khtml-user-select: none;
+                -moz-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+            ::-webkit-scrollbar {
+                width: 0;
+            }
+            body{
+                background-color: rgba(242,241,246,255);
+                text-align: left;
+                height: 100vh;
+            }
+            h1{
+                text-align: left;
+                font-size: 35px;
+                margin-bottom: 10px;
+                font-weight: 600;
+                cursor: default;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            h2{
+                font-weight: 500;
+                font-size: 17.5px;
+                cursor: default;
+            }
+            #loading{
+                width: 100%;
+                height: 100%; 
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                opacity: 1;
+            }
+            .ispinner {
+                position: relative;
+                width: 20px;
+                height: 20px;
+                background-color: white;
+                border-radius: 100%; }
+            .ispinner .ispinner-blade {
+    position: absolute;
+    top: 6.5px;
+    left: 8.5px;
+    width: 2.5px;
+    height: 6.5px;
+    background-color: #8e8e93;
+    border-radius: 1.25px;
+    animation: iSpinnerBlade 1s linear infinite;
+    will-change: opacity; }
+            .ispinner .ispinner-blade:nth-child(1) {
+      transform: rotate(45deg) translateY(-6.5px);
+      animation-delay: -1.625s; }
+            .ispinner .ispinner-blade:nth-child(2) {
+      transform: rotate(90deg) translateY(-6.5px);
+      animation-delay: -1.5s; }
+            .ispinner .ispinner-blade:nth-child(3) {
+      transform: rotate(135deg) translateY(-6.5px);
+      animation-delay: -1.375s; }
+            .ispinner .ispinner-blade:nth-child(4) {
+      transform: rotate(180deg) translateY(-6.5px);
+      animation-delay: -1.25s; }
+            .ispinner .ispinner-blade:nth-child(5) {
+      transform: rotate(225deg) translateY(-6.5px);
+      animation-delay: -1.125s; }
+            .ispinner .ispinner-blade:nth-child(6) {
+      transform: rotate(270deg) translateY(-6.5px);
+      animation-delay: -1s; }
+            .ispinner .ispinner-blade:nth-child(7) {
+      transform: rotate(315deg) translateY(-6.5px);
+      animation-delay: -0.875s; }
+            .ispinner .ispinner-blade:nth-child(8) {
+      transform: rotate(360deg) translateY(-6.5px);
+      animation-delay: -0.75s; }
+            .ispinner.ispinner-large {
+    width: 35px;
+    height: 35px; }
+            .ispinner.ispinner-large .ispinner-blade {
+      top: 11.5px;
+      left: 15px;
+      width: 5px;
+      height: 12px;
+      border-radius: 2.5px; }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(1) {
+        transform: rotate(45deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(2) {
+        transform: rotate(90deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(3) {
+        transform: rotate(135deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(4) {
+        transform: rotate(180deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(5) {
+        transform: rotate(225deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(6) {
+        transform: rotate(270deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(7) {
+        transform: rotate(315deg) translateY(-11.5px); }
+            .ispinner.ispinner-large .ispinner-blade:nth-child(8) {
+        transform: rotate(360deg) translateY(-11.5px); }
+
+            @keyframes iSpinnerBlade {
+  0% {
+    opacity: 0.85; }
+  50% {
+    opacity: 0.25; }
+  100% {
+    opacity: 0.25; } }
+            nav{
+                width: 100%;
+                height: 50px;
+                background-color: rgba(242,241,246,255);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 0 5px rgba(213,213,214,255);
+                padding-left: 10px;
+                padding-right: 10px;
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: 2;
+            }
+            p{
+                font-weight: 400;
+                font-size: 17px;
+                margin-top: 7px;
+                padding-left: 10px;
+                padding-right: 10px;
+                text-align: left;
+                cursor: default;
+            }
+            b{
+                font-weight: 600;
+            }
+            #startScreen{
+                width: 100%;
+                height: 100%;
+                display: none;
+                opacity: 0;
+                padding-top: 70px;
+                padding-left: 10px;
+                padding-right: 10px;
+            }
+            .testas{
+                width: 400px;
+                height: 150px;
+                background-color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                border-radius: 15px;
+                cursor: pointer;
+                margin: 10px;
+            }
+            .testas h1{
+                cursor: pointer;
+            }
+            .testas p{
+                cursor: pointer;
+            }
+            .testas:hover{
+                box-shadow: 0 0 5px lightgrey;
+            }
+        </style>
+        <nav>
+            <h2>Pupulio pamokos: e. testavimas</h2>
+        </nav>
+        <div id="loading">
+            <div style="width: 40px; height: 40px; border-radius: 10px; justify-content: center; align-items: center; transform: scale(1);">
+                <div class="ispinner ispinner-large" style="background-color: transparent;">
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                    <div class="ispinner-blade"></div>
+                </div>
+            </div>
+            <p style="color: darkgrey; font-size: 17px; margin-left: -4.5px; margin-top: 10px;">Kraunasi</p>
+        </div>
+        <div id="startScreen">
+            <h1>Pupulio pamokos: e. testavimas</h1>
+            <p>Pasirinkite testą, kurį norite atlikti:</b></p>
+            <div class="testas" style="margin-top: 20px; margin-left: 10px;" onclick="testas1()">
+                <h1>NMPP 8 kl.</h1>
+                <p>NMPP 8 kl. bandymas - matematika (testas nr. 1)</p>
+            </div>
+        </div>
+    </body>
+    <script src="https://kit.fontawesome.com/a11707644f.js" crossorigin="anonymous"></script>
+    <script>
+        function loadFunction(){
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "0";
+            }, 1320);
+            setTimeout(() => {
+                document.getElementById("loading").style.display = "none";
+                document.getElementById("startScreen").style.display = "block";
+            }, 1620);
+            setTimeout(() => {
+                document.getElementById("startScreen").style.opacity = "1";
+                document.getElementById("testi1").style.display = "block";
+            }, 1630);
+        }
+        function testas1(){
+            setTimeout(() => {
+                document.getElementById("startScreen").style.opacity = "0";
+            }, 10);
+            setTimeout(() => {
+                document.getElementById("startScreen").style.display = "none";
+                document.getElementById("loading").style.display = "flex";
+            }, 310);
+            setTimeout(() => {
+                document.getElementById("loading").style.opacity = "1";
+            }, 320);
+            setTimeout(() => {
+                location.replace("nmpp-8kl-matematika-nr1.html");
+            }, 1320);
+        }
+    </script>
+</html>
